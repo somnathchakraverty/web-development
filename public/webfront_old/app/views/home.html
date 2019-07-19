@@ -1,0 +1,1108 @@
+<style type="text/css">
+.form-area{background: rgba(255, 255, 255, .92);width: 375px;padding: 15px 15px 0;margin-bottom: 0px;min-height: 290px;}
+.submit-form { background: #f26061;outline: 0;border: none;border-radius: 4px;padding: 9px 20px;margin: 0;color: #fff; box-shadow: 1px 3px 5px rgba(0, 0, 0, .35)!important;}
+
+</style>
+<!-- Exit Feedback Form - Start -->
+<div style="display: none; width:100%; height:100%; position:fixed; background:#000000; opacity: .8; filter:alpha(opacity=0.72); z-index:999998;" id="exitpopup_bg" ng-click="closeExitPopup();">
+</div>
+<div class="webexitpanel_form" id="exitpopup">
+    <div class="exit-mid-dialog">
+        <div class="closepop" id="closemodal" ng-click="closeExitPopup();"></div>
+        <div class="webexit-form" ng-hide="exitError">
+            <div class="exit-form-title">
+                <div class="exit-title">Free call back from our Health Advisor</div>
+            </div>
+            <div class="form-exit-popup">
+                <form name="addLeadForm" novalidate>
+                    <div class="input-small-width web_minheight">
+                        <input name="customerno" id="customerno_ex" type="text" maxlength="10" ng-model="customerNo" class="mob-icon" tabindex="2" placeholder="Mobile Number" autocomplete="off" ng-required="true" ng-enter="sendDetails();" ng-change="changeExitPopupButtonColor();" />
+                        <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block" style="text-align: left;padding-left:0px;">
+                            <span style="color:#fff;" ng-show="addLeadForm.customerno.$error.required">Mobile No. is required</span>
+                        </div>
+                        <span class="help-block" style="text-align: left; color:#fff !important;" ng-show="mobile_valid_error" ng-bind="mobile_valid_msg"></span>
+                    </div>
+                    <div class="input-small-width web_minheight">
+                        <input name="name" id="name_ex" type="text" ng-model="customerName" class="user-icon" ng-pattern="/^[A-Za-z ]+$/" tabindex="1" placeholder="Your Name" autocomplete="off" required="false" ng-enter="sendDetails()" />
+                        <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required" class="help-block" style="text-align: left;color:#fff !important;padding-left:0px;">
+                        Enter valid Name
+                    </span>
+                    </div>
+                    <!-- <div id="capt_exitpopup_home_web"></div> -->
+                    <div class="exit-pop-field">
+                        <input type="button" id="exitpopupsubmitbtn" style="background:#b7b7b7; border:1px solid #cecece;background-image:linear-gradient(to bottom, #b7b7b7 0%, #cecece 100%);" name="send" value="Get A Call Back Now" ng-click="sendDetails()" analytics-on="click" analytics-category="Exit Pop up" analytics-event="Click on Get A Call Back Now" class="submit-button" tabindex="3">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="exit-thanks" ng-show="exitError">
+            <h5>Thank You for sharing your details with us.</h5>
+            <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.</p>
+        </div>
+    </div>
+</div>
+<!--App Notification bar -->
+<div class="app-install-bar" ng-show="appdivmobile">
+    <button type="button" class="close-notify-app" aria-label="Close" ng-click="closeAppDivMobile();">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <a target="_blank" href='https://play.google.com/store/apps/details?id=com.healthians.main.healthians&referrer=utm_source%3DHealthians%2520header%2520Appinstall%26utm_campaign%3DWebsite%2520header%2520Appinstall' analytics-on="click" analytics-category="Home" analytics-event="Clicked on small banner">
+        <div class="app-info-mid">
+            <div class="app-launcher">
+                <img src="https://cdn2.healthians.com/assets/images/healthians-app-launcher.png" style="max-width:48px;">
+            </div>
+            <div class="app-promotion-info">
+                <div class="headingtext">Health tests are just 1 click away</div>
+                <p style="margin-bottom:8px;">Get 25% Off on your first booking</p>
+                <p><span>Use Coupon : <strong>APP25</strong></span></p>
+            </div>
+            <div class="app-cta-button">
+                <div class="install-android-app">
+                    INSTALL NOW
+                    <BR />
+                    <img alt='Get it on Google Play' src='https://cdn4.healthians.com/assets/images/en_badge_web_generic.jpg' style="max-width:84px;" />
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </a>
+    <div class="clear"></div>
+</div>
+<!--App Notification bar -->
+<div class="clear"></div>
+
+<div class="header-app-promo" ng-class="appdivmobile ? 'header-app-close' : ''">
+    <!--sticky header -->
+    <div id="top-fixed-header" class="container home-search-box">
+        <div class="row">
+            <div class="searchbox-topfixed">
+                <a href="">
+                    <div class="small-logo">
+                        <img src="https://cdn4.healthians.com/assets/images/logo-sml.png" alt="Healthians - India's largest health & blood test service at home">
+                    </div>
+                </a>
+                <div class="fixed-right">
+                    <div class="auto-location"> <span class="glyphicon glyphicon-map-marker"></span>
+                        <select class="homeselect" analytics-category="Search" analytics-event="Picked City from dropdown" analytics-label="HomePage" id="searchcity" name="searchcity" ng-model="searchCity" ng-options="cities.city_name as cities.city_name for cities in cityList" ng-change="findCityDetail(searchCity);">
+                        </select>
+                    </div>
+                    <div class="tags" ng-click="pkglisting1();" ng-enter="searchResult()">
+                        <tags-input ng-model="tags" display-property="text" placeholder="Find Your Package/Test" add-from-autocomplete-only="true" template="tag-template">
+                            <auto-complete source="loadTags($query)" template="my-custom-autocomplete"></auto-complete>
+                        </tags-input>
+                    </div>
+                    <!--package listing -->
+                    <div class="pop-scroll-pkg-wrap" ng-show="popularPackageList1">
+                        <span class="closepackage" ng-click="popularPackageList1 = !popularPackageList1; showHomeHealthkarma();">
+                        <a href="" class="closepackagebtn"><img src="" lazy-img="https://cdn4.healthians.com/assets/images/close_nav.png"></a></span>
+                        <div class="populartests">
+                            <div class="testsparameter">
+                                <div class="popular-heading">popular tests <span>(Click to select multiple)</span></div>
+                                <ul ng-show="popularTest1.length > 0 && popularPackages1.length > 0">
+                                    <li ng-repeat="(key, value) in popularTest1" ng-click="checkSelection($event)"><a id="{{value.tcategory_id}}" href="" analytics-on="click" analytics-category="Search" analytics-event="Selected One of Popular Tests" analytics-label="{{value.tcategory_name}}">{{value.tcategory_name}}</a></li>
+                                </ul>
+                            </div>
+                            <div class="popular-pkg" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked Popular Packages">
+                                <div class="popular-heading">popular Packages <span>(Click to select multiple)</span></div>
+                                <ul ng-show="popularTest1.length > 0 && popularPackages1.length > 0">
+                                    <li ng-repeat="(key, value) in popularPackages1" ng-click="checkSelection($event)"><a id="{{value.package_id}}" href="" analytics-on="click" analytics-category="Search" analytics-event="Selected One of Popular Packages" analytics-label="{{value.package_name}}">{{value.package_name | titleCase }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--package listing -->
+                    <div class="rightBtn">
+                        <input type="button" class="search_btn" ng-click="searchResult()" value="Search" name="search_btn">
+                    </div>
+                </div>
+                
+                <!--Sticky Navigation -->
+                <div class="tglmenu pull-left right_spacing">
+                            <a href="javascript:void(0)" id="toggle_head" analytics-on="click" analytics-category="Menu" analytics-event="Opened Menu" analytics-label="HomePage">
+                                <span></span>
+                            </a>
+                            <div id="menu_head">
+                                <span class="arrow_menu"></span>
+                                <div ng-show="!$root.loggedin">
+                                    <div class="welcomeuser">Welcome User</div>
+                                </div>
+                                <div ng-show="$root.loggedin">
+                                    <div class="welcomeuser">
+                                        <!-- <a href=""  class="defaultcolor">
+                                            Welcome  <span ng-bind="$root.user"></span>
+                                        </a> -->
+                                        <a href="/dashboard">My Profile</a>
+                                    </div>
+                                </div>
+                                <ul ng-show="!$root.loggedin" class="hidedesktop">
+                                    <li>
+                                        <a href="" analytics-on="click" analytics-category="Login" analytics-event="Clicked Login" analytics-label="HomePage" ng-click="showLoginForm();">Log In / Sign Up</a>
+                                    </li>
+                                </ul>
+                                <ul class="mbview2" ng-show="$root.loggedin">
+                                    <li>
+                                        <a href="/dashboard">Welcome <span ng-bind="$root.user"></span></a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/mybooking" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="My Booking">My Booking</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/myreport" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="My Report">My Report</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/dashboard" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="My Account">My Account</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/myaddress" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="My Address">My Address</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/cart">My Cart</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Change Password" ng-click="showChangePwdForm();">Change Password</a>
+                                    </li>
+                                    <li>
+                                        <a href="/deals" analytics-on="click" analytics-category="Menuoption" analytics-event="Clicked A Menu Option"  analytics-label="Deals">Our Deals</a>
+                                    </li>
+                                    <li>
+                                        <a href="/labs" analytics-on="click" analytics-category="Menuoption" analytics-event="Clicked A Menu Option"  analytics-label="Labs">Our Labs</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://blog.healthians.com/" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Blog" target="_blank">Blog</a>
+                                    </li>
+                                    <li ng-show="!$root.loggedin">
+                                        <a href="" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Download Report" ng-click="downloadreport();">Download Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="/makepayment" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Make Payment">Make Payment</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/referral/{{$root.user_id}}" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Refer and Earn">Refer and Earn</a>
+                                    </li>
+                                    <li>
+                                        <a href="/feedback" analytics-on="click" analytics-category="Feedback" analytics-event="Clicked A Menu Feedback" analytics-label="Feedback" id="feedback">Feedback/Complaints</a>
+                                    </li>
+                                    <li>
+                                        <a href="/contact-us" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Contact Us">Contact Us</a>
+                                    </li>
+                                </ul>
+                                <h4 ng-show="$root.loggedin">
+                                    <a href="#" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Sign Out" ng-click="sigOut();">Sign Out</a>
+                                </h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                <!--Sticky Navigation Ends -->
+                
+                
+            </div>
+        </div>
+    </div>
+    <!--sticky header ends here -->
+    
+    <!--HEADER STARTS HERE -->
+    <header>    
+        <div class="container-fluid" id="topdiv">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        <div class="home_logo">
+                            <a href="/" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked Logo" analytics-label="Top-Left Corner"><img src="https://cdn4.healthians.com/assets/images/logo_healthians.png"  alt="Healthians - India's largest health & blood test service at home"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 talign">
+                    
+                    	<!--web add -->
+                        <div class="web-advt"><a href="/offer-terms-conditions" target="_blank"><img src="/assets/images/webadvttop.png" /></a></div>
+                        <!--web add -->
+                    
+                        <div class="call_ivr ml130">
+                        
+                            <a href="tel:{{companyphone.hyperlink_no}}" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked Telephone No." ng-show="mobileview"><i class="glyphicon glyphicon-earphone"></i>
+                                <span ng-bind="companyphone.display_no"></span>
+                            </a>
+                            <a href="javascript:void(0);" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked Telephone No." ng-hide="mobileview"><i class="glyphicon glyphicon-earphone"></i>
+                                <span ng-bind="companyphone.display_no">999-888-000-5</span>
+                            </a>
+                        </div>
+                        <div class="cart_icon" ng-show="$root.loggedin">
+                            <a href="/cart">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                                <div class="cart_value" ng-bind="totalCartTest"></div>
+                            </a>
+                        </div>
+                        <div class="logintopbar mbview">
+                            <ul ng-show="!$root.loggedin">
+                                <li>
+                                    <a href="" analytics-on="click" analytics-category="Login" analytics-event="Clicked Login" analytics-label="HomePage" ng-click="showLoginForm();">Log In / Sign Up</a>
+                                </li>
+                            </ul>
+                            <ul ng-show="$root.loggedin">
+                                <li>
+                                    <a href="/dashboard">Welcome <span ng-bind="$root.user"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="scroll_tglmenu pull-left">
+                            <a href="javascript:void(0)" id="toggle" analytics-on="click" analytics-category="Menu" analytics-event="Opened Menu" analytics-label="HomePage">
+                                <span></span>
+                            </a>
+                            <div id="menu">
+                                <span class="arrow_menu"></span>
+                                <div ng-show="!$root.loggedin">
+                                    <div class="welcomeuser">Welcome User</div>
+                                </div>
+                                <div ng-show="$root.loggedin">
+                                    <div class="welcomeuser">
+                                        <!-- <a href=""  class="defaultcolor">
+                                            Welcome  <span ng-bind="$root.user"></span>
+                                        </a> -->
+                                        <a href="/dashboard">My Profile</a>
+                                    </div>
+                                </div>
+                                <ul ng-show="!$root.loggedin" class="hidedesktop">
+                                    <li>
+                                        <a href="" analytics-on="click" analytics-category="Login" analytics-event="Clicked Login" analytics-label="HomePage" ng-click="showLoginForm();">Log In / Sign Up</a>
+                                    </li>
+                                </ul>
+                                <ul class="mbview2" ng-show="$root.loggedin">
+                                    <li>
+                                        <a href="/dashboard">Welcome <span ng-bind="$root.user"></span></a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/mybooking" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="My Booking">My Booking</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/myreport" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="My Report">My Report</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/dashboard" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="My Account">My Account</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/myaddress" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="My Address">My Address</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/cart">My Cart</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Change Password" ng-click="showChangePwdForm();">Change Password</a>
+                                    </li>
+                                    <li>
+                                        <a href="/deals" analytics-on="click" analytics-category="Menuoption" analytics-event="Clicked A Menu Option"  analytics-label="Deals">Our Deals</a>
+                                    </li>
+                                    <li>
+                                        <a href="/labs" analytics-on="click" analytics-category="Menuoption" analytics-event="Clicked A Menu Option"  analytics-label="Labs">Our Labs</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://blog.healthians.com/" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Blog" target="_blank">Blog</a>
+                                    </li>
+                                    <li ng-show="!$root.loggedin">
+                                        <a href="" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Download Report" ng-click="downloadreport();">Download Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="/makepayment" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Make Payment">Make Payment</a>
+                                    </li>
+                                    <li ng-show="$root.loggedin">
+                                        <a href="/referral/{{$root.user_id}}" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Refer and Earn">Refer and Earn</a>
+                                    </li>
+                                    <li>
+                                        <a href="/feedback" analytics-on="click" analytics-category="Feedback" analytics-event="Clicked A Menu Feedback" analytics-label="Feedback" id="feedback">Feedback/Complaints</a>
+                                    </li>
+                                    <li>
+                                        <a href="/contact-us" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Contact Us">Contact Us</a>
+                                    </li>
+                                </ul>
+                                <h4 ng-show="$root.loggedin">
+                                  <a href="#" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked A Menu Option" analytics-label="Sign Out" ng-click="sigOut();">Sign Out</a>
+                                </h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </header>
+    <!--HEADER ENDS HERE -->
+    <div class="videocontainer">
+        <div class="homepage-hero-module" ng-click="closePopularList();">
+            <div id="slider-home" class="home-slider-touch">
+                <div>
+                    <a href="/dashboard" ng-show="$root.loggedin">
+                        <img src="https://cdn1.healthians.com/assets/images/mobile-banner-home-03.jpg" />
+                        <div class="welcomeTextBanner">
+                            <h6 ng-show="!$root.loggedin">Hi there</h6>
+                            <h6 ng-show="$root.loggedin">Hi {{$root.user}}</h6>
+                        </div>
+                    </a>
+                    <a ng-click="showLoginForm();" ng-hide="$root.loggedin">
+                        <img src="https://cdn1.healthians.com/assets/images/mobile-banner-home-03.jpg" />
+                        <div class="welcomeTextBanner">
+                            <h6 ng-show="!$root.loggedin">Hi there</h6>
+                            <h6 ng-show="$root.loggedin">Hi {{$root.user}}</h6>
+                        </div>
+                    </a>
+                </div>
+                
+                
+                 <div>
+                   
+                        <img src="/assets/images/mobile-banner-forone.jpg" />
+                 
+                </div>
+                
+                
+                 <div>
+                    <a href="/deals">
+                        <img src="https://cdn1.healthians.com/assets/images/mobkwik_sitebanner.jpg" />
+                    </a>
+                </div>
+                
+                <div>
+                    <a href="/about-us">
+                        <img src="https://cdn1.healthians.com/assets/images/mobile-banner-home-04.jpg" />
+                    </a>
+                </div>
+                
+                
+                
+               
+                
+               
+                
+            </div>
+            <div class="clear"></div>
+            <div class="video-container">
+                <div class="filter"></div>
+                <video autoplay muted loop class="fillWidth">
+                    <source src="https://cdn1.healthians.com/videoclip/healthians-workflow1.mp4" />
+                    <!--Your browser does not support the video tag. We suggest you upgrade your browser. -->
+                </video>
+                <div class="poster hidden">
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="container search_wrap">
+            <div id="top-search" class="home-search-box">
+                <div class="searchbox-wrap">
+                    <h1>India's largest health test @ home service</h1>
+                    <h4>Create the lowest price package for your exact search</h4>
+                    <div class="clear"></div>
+                    <div class="auto-location"> <span class="glyphicon glyphicon-map-marker"></span>
+                        <select class="homeselect" analytics-on="click" analytics-category="Search" analytics-event="Picked City from dropdown" analytics-label="HomePage" id="searchcity" name="searchcity" ng-model="searchCity" ng-options="cities.city_name as cities.city_name for cities in cityList" ng-change="findCityDetail(searchCity);">
+                        </select>
+                    </div>
+                    <div class="tags" ng-click="pkglisting();" ng-enter="searchResult()">
+                        <span class="glyphicon glyphicon-search searchgly"></span>
+                        <tags-input ng-model="tags" display-property="text" placeholder="Find Your Package/Test" add-from-autocomplete-only="true" template="tag-template">
+                            <auto-complete source="loadTags($query)" template="my-custom-autocomplete"></auto-complete>
+                        </tags-input>
+                    </div>
+                    <script type="text/ng-template" id="tag-template">
+                        <div class="tag-template">
+                            <div class="right-panel">
+                                <span>{{$getDisplayText()}}</span>
+                                <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
+                            </div>
+                        </div>
+                    </script>
+                    <script type="text/ng-template" id="my-custom-autocomplete">
+                        <div class="right-panel">
+                            <span ng-model="tags" ng-bind-html="$highlight($getDisplayText())"></span>
+                            <span class="pull-right"><strike>₹&nbsp;{{data.mrp}} </strike> &nbsp;&nbsp;&nbsp;₹&nbsp;{{data.price}}</span>
+                            <span ng-if="data.is_aka_match" class="aka_block">also known as <b>{{data.aka}}</b></span>
+                        </div>
+                    </script>
+                    <div class="rightBtn">
+                        <input type="button" class="search_btn" ng-click="searchResult()" value="Search" name="search_btn">
+                    </div>
+                    <div class="clear"></div>
+                    <div class="choose-pkg" ng-click="closePopularList()">
+                        <ul>
+                            <li><a href="" ng-click="pkgPopularAnchor();">Choose from Popular Packages</a></li>
+                            <li>I</li>
+                            <li><a href="" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked Know About Healthians Labs" ng-click="labHealthiansAnchor();">Know about Healthians Labs</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                    <!--package listing -->
+                    <div id="container" class="popular-pkg-wrap-main" ng-show="popularPackageList">
+                        <span class="closepackage" ng-click="popularPackageList = !popularPackageList;showHomeHealthkarma();">
+                            <a href="javascript:void(0);" class="closepackagebtn">
+                                <img src="" lazy-img="https://cdn4.healthians.com/assets/images/close_nav.png">
+                            </a>
+                        </span>
+                        <div class="populartests">
+                            <div class="testsparameter">
+                                <div class="popular-heading">popular tests <span>(Click to select multiple)</span></div>
+                                <ul ng-show="popularTest1.length > 0 && popularPackages1.length > 0">
+                                    <li ng-repeat="(key, value) in popularTest1" ng-click="checkSelection($event)"><a id="{{value.tcategory_id}}" href="" analytics-on="click" analytics-category="Search" analytics-event="Selected One of Popular Tests" analytics-label="{{value.tcategory_name}}">{{value.tcategory_name}}</a></li>
+                                </ul>
+                            </div>
+                            <div class="popular-pkg" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked Popular Packages">
+                                <div class="popular-heading">popular Packages <span>(Click to select multiple)</span></div>
+                                <ul ng-show="popularTest1.length > 0 && popularPackages1.length > 0">
+                                    <li ng-repeat="(key, value) in popularPackages1" ng-click="checkSelection($event)"><a id="{{value.package_id}}" href="" analytics-on="click" analytics-category="Search" analytics-event="Selected One of Popular Packages" analytics-label="{{value.package_name}}">{{value.package_name | titleCase }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--package listing -->
+                </div>
+                
+                
+                <!--health adviser -->
+                <div class="call-health-adviser">                 
+                <ul>
+                 <li><a href="javascript:void(0);" ng-click="callBackPhone();" analytics-on="click" analytics-category="HomePage" analytics-event="Talk to our Health Advisor">
+                                <span class="talktoadvisor"></span>
+                                <p>Talk to our Health Advisor</p>
+                     </a></li>
+                     
+                        <li>
+                            <a href="/upload-prescription" analytics-on="click" analytics-category="HomePage" analytics-event="Book Test from Prescription">
+                                <span class="bookprescription"></span>
+                                <p>Book Test from Prescription</p>
+                            </a>                            
+                        </li>
+                        
+                        <li>
+                            <a href="/labs" analytics-on="click" analytics-category="HomePage" analytics-event="A Tour of Our Labs">
+                                <span class="touroflabs"></span>
+                                <p>A Tour of Our Labs</p>
+                            </a>                            
+                        </li>
+                        
+                        <li>
+                            <a href="/deals" analytics-on="click" analytics-category="HomePage" analytics-event="Our Deals - Top">
+                            <span class="offerdeals"></span>
+                               <p class="dealsbx">Our Deals</p>
+                            </a>
+                            <span class="ribbon-feature"></span>
+                            </li>
+                        
+                        
+                    </ul>
+                  
+                </div>
+                <!--health adviser ends -->
+               
+              
+                
+            </div>
+            
+            
+            
+            
+                
+                
+                
+                
+        </div>
+        
+        
+        
+        
+                
+                
+                
+                
+        <div class="clear"></div>
+        <!--HEADER ENDS HERE-->
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    
+    
+    
+                
+                
+    <!--About Healthians -->
+    <div class="abouthome_healthians">
+    <div class="container">
+    <div class="col-md-12">
+    <p>Healthians - India’s leading healthcare at home service provider is fast changing the entire diagnostic experience for you. Equipped with latest technology, high end quality process and expert home sample collection team; Healthians brings the best-in-class services at honest prices to your doorstep.</p>
+    </div>
+    </div>
+    </div>
+    <!--About Healthians -->
+    
+    <!--most popular-->
+    <section class="packages" ng-click="closePopularList(); closePopularList1();">
+   
+        <div class="pkganchor" id="popular-pkg" ng-click="closePopularList(); closePopularList1();">&nbsp;</div>
+        <div class="container" ng-click="closePopularList();closePopularList1();">
+            <h2>Our Most Popular Packages</h2>
+            <div class="clearfix"></div>
+            <div class="packages-list" analytics-on="click" analytics-category="HomePage" analytics-event="Explored Most Popular Package Slider">
+                <div class="doc-list">
+                    <div class="package-list-view slider_package">
+                        <ul ng-repeat="list in packageList">
+                            <h3 class="package-title" ng-bind="list.package_name"></h3>
+                            <li style="padding-bottom: 5px;font-size: 15px;">
+                                <strong>Parameters covered : </strong>
+                                <strong><span ng-bind="list.testCount"></span></strong>
+                            </li>
+                            <li><strong>Includes:</strong></li>
+                            <div style="height:60px;">
+                                <li ng-bind="list.test_includes[0]"></li>
+                                <li ng-bind="list.test_includes[1]"></li>
+                                <li ng-bind="list.test_includes[2]"></li>
+                                <li ng-if="list.test_includes.length >3">
+                                    <a href="/{{list.type}}/{{list.link_rewrite}}" target="_blank">
+                                        <strong>+ {{list.test_includes.length - 3}} More</strong>
+                                    </a>
+                                </li>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="nn-fast">
+                                <img src="" lazy-img="https://cdn4.healthians.com/assets/images/nn-fast.png">
+                                <span style="margin-left: 0px;" ng-if="list.fasting_time > 0"> Fasting required : {{list.fasting_time}} Hrs</span>
+                                <span style="margin-left: 0px;" ng-show="list.fasting_time == 0"> Not required</span>
+                                <span class="glyphicon glyphicon-time"></span> Report available in {{list.reporting_time}} Hrs
+                            </div>
+                            <div class="clear"></div>
+                            <section class="taleft">
+                                <div class="healthians_price">
+                                    <font>Healthians Price</font>
+                                    <span class="fontrupee" style="font-size:14px; font-weight:normal; padding:0px;">`</span>
+                                    <strong ng-bind="list.actual_price" style="margin-right:10px;"></strong>
+                                </div>
+                                <div class="limited-offer">
+                                    <font style="color:#00a0a8;">Limited Time Offer</font>
+                                    <span class="fontrupee" style="padding:0px;color:#00959c;">`</span>
+                                    <span style="color:#00a0a8;">{{list.healthian_price}}</span>
+                                </div>
+                                <span class="sv-btn">{{(list.actual_price-list.healthian_price)/list.actual_price*100 | number : 0}}% Off</span>
+                            </section>
+                            <a class="view-detail" href="/{{list.type}}/{{list.link_rewrite}}" target="_blank">View Detail</a>
+                        </ul>
+                    </div>
+                </div>
+                <p class="view_all"><a href="/most-selling">View all Packages</a></p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </section>
+    <div class="clear"></div>
+
+    <!--RISK & HABITS SECTION -->
+    <section class="risk-habits-panel">
+        <div ng-click="closePopularList(); closePopularList1();">
+            <div class="container viewrisks" ng-click="closePopularList();closePopularList1();">
+                <h1>Browse by Risk Areas</h1>
+                <div class="clearfix"></div>
+
+                <div id="riskarea-list" class="riskarea-list">
+                    <div ng-repeat="ra in riskgroups track by $index" ng-click="riskDetails(ra.id,ra.Name, ra.alias);" style="cursor:pointer;">
+                    
+                    <div class="iconrisks">
+                        <img style="opacity:0.6 !important;" data-lazy="{{ra.image}}" title="{{ra.Name}}" alt="{{ra.Name}}" width="100%" height="100%">
+                        <p>
+                            <span ng-bind="ra.Name" style="padding-left:0px;"></span>
+                        </p>
+                        </div>
+                        
+                    </div>                                    
+                </div>
+
+            </div>
+        </div>
+        <div ng-click="closePopularList(); closePopularList1();" ng-init="habitRisk();">       
+            <div class="container habits-panel" ng-click="closePopularList();closePopularList1();">
+                <h1>Browse by Habits</h1>
+                <div class="clearfix"></div>
+                
+                <div id="habit-list" class="habit-list lazy-img-container">
+                    <div ng-repeat="hl in habitList track by $index" ng-click="habitDetails(hl.id,hl.Name, hl.alias);" style="cursor:pointer">
+                    <div class="iconrisks">
+                        <img style="opacity:0.6 !important;" data-lazy="{{hl.image}}" title="{{hl.Name}}" alt="{{hl.Name}}" ng-show="hl.image !== 'https://helma.healthians.com'">
+                        <img style="opacity:0.6 !important;" data-lazy="assets/images/image_riskhabit.jpg" title="{{hl.Name}}" alt="{{hl.Name}}" ng-show="hl.image === 'https://helma.healthians.com'">
+                        
+                        <p>
+                            <span ng-bind="hl.Name" style="padding-left:0px;"></span>
+                        </p>
+                        </div>
+                    </div>                                    
+                </div>
+
+            </div>
+        </div>    
+        <div class="clear"></div>
+    </section> 
+    <br>
+    
+    <!--Services-->
+    <div class="clear"></div>
+    <div class="container services clear" ng-click="closePopularList(); closePopularList1();">
+        <h2>Why Healthians ?</h2>
+        <ul>
+            <li>
+                <div class="why-healthiansser01"></div>
+                <figcaption> <strong>Customized</strong> Real Time Packages </figcaption>
+            </li>
+            <li>
+                <div class="why-healthiansser02"></div>
+                <figcaption> <strong>Cost Effective</strong> Honest Price Guaranteed </figcaption>
+            </li>
+            <li>
+                <div class="why-healthiansser03"></div>
+                <figcaption> <strong>Convenient</strong> Free Home Sample Collection </figcaption>
+            </li>
+            <li>
+                <div class="why-healthiansser04"></div>
+                <figcaption> <strong>Carefree</strong> Accurate Results on Time </figcaption>
+            </li>
+            <li>
+                <div class="why-healthiansser05"></div>
+                <figcaption> <strong>Complete</strong> Pro-active Wellness Support </figcaption>
+            </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <!--Mobile app-->
+    <div class="container" ng-click="closePopularList();closePopularList1();">
+        <div class="mobile-app">
+            <ul class="mob_text">
+                <h2>Easiest way to Book a Health Test is right here!</h2>
+                <p>Healthians App is designed to help you take charge of your Health! From booking a health test to screening, tracking and improving health conditions, all is available at your fingertips. Some of its unique benefits include:</p>
+                <ul>
+                    <li><span class="glyphicon glyphicon-ok" style="color:#fff; font-size:12px;"></span> &nbsp;Instant 1 Click Booking & Reports</li>
+                    <li><span class="glyphicon glyphicon-ok" style="color:#fff; font-size:12px;"></span> &nbsp;Family Health Management</li>
+                    <li><span class="glyphicon glyphicon-ok" style="color:#fff; font-size:12px;"></span> &nbsp;Subscriptions & Alerts</li>
+                    <li><span class="glyphicon glyphicon-ok" style="color:#fff; font-size:12px;"></span> &nbsp;Get E-Reports</li>
+                    <li><span class="glyphicon glyphicon-ok" style="color:#fff; font-size:12px;"></span> &nbsp;Know Your Health Karma</li>
+                    <li><span class="glyphicon glyphicon-ok" style="color:#fff; font-size:12px;"></span> &nbsp;Book Test from Prescription</li>
+                    <li><span class="glyphicon glyphicon-ok" style="color:#fff; font-size:12px;"></span> &nbsp;Track Health with Health Tracker</li>
+                    <li><span class="glyphicon glyphicon-ok" style="color:#fff; font-size:12px;"></span> &nbsp;Avail Special Offers for Friends & Family</li>
+                </ul>
+                <h5>Available on</h5>
+                <div class="app-playstore">
+                    <a href="https://play.google.com/store/apps/details?id=com.healthians.main.healthians" target="_blank">
+                        <img src="" lazy-img="https://cdn1.healthians.com/assets/images/ggl-play.png">
+                    </a>
+                </div>
+            </ul>
+            <ul class="app_Intro" ng-lazyImgContainer>
+                <img lazy-img="https://cdn1.healthians.com/assets/images/yuvraj_with_healthians_app.png">
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="labanchor" id="labs-healthians">&nbsp;</div>
+    <!--quality labs -->
+    <section class="qualitylabs" ng-click="closePopularList();closePopularList1();">
+        <h2>Healthians Branded Labs Promise</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="paging">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" class="active" data-slide-to="0" analytics-on="click" analytics-category="HomePage" analytics-event="Explored Healthians Branded Labs Promise" analytics-label="100% Calibration & Controls">100% Calibration & Controls</li>
+                    <li data-target="#myCarousel" data-slide-to="1" analytics-on="click" analytics-category="HomePage" analytics-event="Explored Healthians Branded Labs Promise" analytics-label="Fully Automated">Fully Automated</li>
+                    <li data-target="#myCarousel" data-slide-to="2" analytics-on="click" analytics-category="HomePage" analytics-event="Explored Healthians Branded Labs Promise" analytics-label="Latest Technology & Equipments">Latest Technology & Equipments</li>
+                    <li data-target="#myCarousel" data-slide-to="3" analytics-on="click" analytics-category="HomePage" analytics-event="Explored Healthians Branded Labs Promise" analytics-label="International Quality Compliance">International Quality Compliance</li>
+                </ol>
+            </div>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img lazy-img="https://cdn1.healthians.com/assets/images/Calibration-and-control.jpg" class="mobile-img-labs" style="width:100%;">
+                    <div class="container">
+                        <div class="carousel-caption" style="top:90px;">
+                            <h3>100% Calibration & Controls</h3>
+                            <p>We have deep analytical control on all our labs and insist them to follow NABL guidelines. The labs present the calibration report in a comprehensive manner using a standard format which shall present the measurement results and all relevant information for easy comprehension and usage.</p>
+                            <div class="cta-lab">
+                                <ul>
+                                    <li><a href="/lab-visit">Visit Lab</a></li>
+                                    <li><a href="/labs">View Labs</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item"> <img lazy-src="https://cdn1.healthians.com/assets/images/Fully-automated.jpg" style="width:100%;">
+                    <div class="container">
+                        <div class="carousel-caption" style="top:90px;">
+                            <h3>Fully Automated</h3>
+                            <p>All of our labs are fully automated labs equipped with internationally renowned machines. It results in increased productivity via the ability to process larger numbers of samples per unit of time and a reduction in human errors.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item"> <img lazy-src="https://cdn4.healthians.com/assets/images/Technology.jpg" style="width:100%;">
+                    <div class="container">
+                        <div class="carousel-caption" style="top:90px;">
+                            <h3>Latest Technology & Equipments</h3>
+                            <p>We are at par with the medical tech-driven advances. Innovation in laboratory technology which includes both new tests and advances in equipment and testing techniques makes testing more efficient. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item"> <img lazy-src="https://cdn1.healthians.com/assets/images/International-quality.jpg" style="width:100%;">
+                    <div class="container">
+                        <div class="carousel-caption" style="top:90px;">
+                            <h3>International Quality Compliance</h3>
+                            <p>Our labs follow more than 150 international quality standard operating procedures for sampling, testing, auditing and managing programs in a robust manner. It results in high-quality testing and examining.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" data-target="#myCarousel" data-slide="prev" ng-non-bindable><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" data-target="#myCarousel" data-slide="next" ng-non-bindable><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
+        <div class="claer"></div>
+    </section>
+    <!--quality labs -->
+    <!--Media-->
+    <div class="container" ng-click="closePopularList();closePopularList1();">
+        <div class="media-sec" analytics-on="click" analytics-category="HomePage" analytics-event="Clicked Press Coverage Link">
+            <h2>Look who’s talking about Healthians</h2>
+            <div class="media-mid">
+                <a target="_blank" href="http://tech.economictimes.indiatimes.com/news/startups/yuvraj-singh-backed-healthians-raises-rs-20-crore-in-fresh-funding/55023196">
+                    <div class="media-spritesc05"></div>
+                </a>
+                <a target="_blank" href="http://www.business-standard.com/article/companies/diagnostic-start-up-healthians-com-raises-3-mn-from-investors-116102400135_1.html">
+                    <div class="media-spritesc02"></div>
+                </a>
+                <a target="_blank" href="https://www.youtube.com/watch?v=oIKXEUskNoA">
+                    <div class="media-spritesc01"></div>
+                </a>
+                <a target="_blank" href="http://www.vccircle.com/news/technology/2016/10/24/japan-s-beenext-leads-series-round-healthcare-marketplace-healthianscom">
+                    <div class="media-spritesc06"></div>
+                </a>
+                <a target="_blank" href="http://www.thehindubusinessline.com/companies/diagnostic-firm-healthians-raises-20-cr/article9262530.ece">
+                    <div class="media-spritesc03"></div>
+                </a>
+                <a target="_blank" href="https://yourstory.com/2016/10/healthians-series-a-funding/">
+                    <div class="media-spritesc04"></div>
+                </a>
+                <a target="_blank" href="https://www.youtube.com/watch?v=lkRTyiKiGf4">
+                    <div class="media-spritesc07"></div>
+                </a>
+                <a target="_blank" href="https://www.youtube.com/watch?v=2cTGRStBvZs">
+                    <div class="media-spritesc08"></div>
+                </a>
+            </div>
+        </div>
+        <!--Media-->
+        <!--LOGIN / SIGNUP MODAL -->
+        <login-modal visible="loginModal">
+            <div ng-include="'template/login_modal.html'" ng-controller="homeControllerLogin"></div>
+        </login-modal>
+        <!--LOGIN MODAL -->
+        <!--FORGOT PASSWORD -->
+        <modal visible="forgotPwdModal">
+            <div style="margin:0px auto;">
+                <form name="forgotpwdForm" class="material" ng-controller="homeControllerForgotpwd" novalidate>
+                    <div class="groupset">
+                        <ul>
+                            <li><i class="glyphicon glyphicon-envelope"></i>
+                                <input name="useremail" id="useremail_forg" type="text" placeholder="Enter Email ID/Mobile No" data-ng-model="forgotpwdForm.userEmail" class="text-field" ng-class="{ 'has-error': ((forgotpwdForm.useremail.$dirty && forgotpwdForm.useremail.$error.required) || (forgotpwdFormSubmitted && !forgotpwdForm.userEmail)) }" ng-pattern="/^([_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,5}))|^[0-9]{10}$/" autofocus required ng-enter="forgotPassword(forgotpwdForm.$valid);" />
+                                <div ng-show="((forgotpwdForm.useremail.$dirty && forgotpwdForm.useremail.$invalid) || (forgotpwdFormSubmitted && !forgotpwdForm.userEmail))" class="help-block">
+                                    <span ng-show="forgotpwdForm.useremail.$error.required" class="help-block">Email/Mobile No. is required</span>
+                                    <span ng-show="forgotpwdForm.useremail.$error.pattern && !forgotpwdForm.useremail.$error.required" class="help-block">Email/Mobile No. is Invalid</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <div>
+                            <div ng-show="forgotdata"><span ng-bind="msg"></span></div>
+                            <div ng-show="forgotdataInvalidEmail" class="error-message-red">Invalid credential</div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="signup" ng-show="hideContinue">
+                            <a href="" ng-click="forgotPassword(forgotpwdForm.$valid);">
+                                <div>Submit</div>
+                            </a>
+                        </div>
+                        <div class="clear"></div>
+                        <div ng-show="loaderVar" class="loader initial loaderstyle1"></div>
+                        <div class="already">
+                            <span>Already have an account with us?</span>
+                            <span class="loginbtn"><a href="javascript:void(0)" ng-click="showLoginModal()">Login</a></span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div>
+        </modal>
+        <!--FORGOT PASSWORD -->
+        <!--OTP MODAL -->
+        <modal visible="forgotPwdOtpModal">
+            <div style="margin:0px auto;">
+                <form name="otpForm" class="material" ng-controller="homeControllerForgotpwd" novalidate>
+                    <div class="groupset">
+                        <ul>
+                            <li><i class="glyphicon glyphicon-lock"></i>
+                                <input name="userotp" id="userotp_fgt" type="text" placeholder="Enter OTP" data-ng-model="otpForm.userOTP" class="text-field" ng-class="{ 'has-error': ((otpForm.useremail.$dirty && otpForm.useremail.$error.required) || (otpFormSubmitted && !otpForm.userEmail)) }" autofocus required ng-enter="otpVerify(otpForm.$valid);" />
+                                <span ng-show="((otpForm.useremail.$dirty && otpForm.useremail.$error.required) || (otpFormSubmitted && !otpForm.userEmail))" class="help-block">Enter OTP</span>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <div>
+                            <div ng-show="forgotdataInvalidEmail" class="help-block">Invalid credential.</div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="signup"><a href="" ng-click="otpVerify(otpForm.$valid)">Submit</a></div>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div>
+        </modal>
+        <!--OTP MODAL -->
+        <!--CHANGE PASSWORD -->
+        <modal visible="changePwdModal">
+            <div style="margin:0px auto;">
+                <form name="changepwdForm" class="material" ng-controller="homeControllerChangepwd" novalidate>
+                    <div class="groupset">
+                        <ul>
+                            <li><i class="glyphicon glyphicon-envelope"></i>
+                                <input name="useroldpwd" id="useroldpwd" type="password" placeholder="Enter Old Password" data-ng-model="changepwdForm.userOldPwd" class="text-field" ng-class="{ 'has-error': ((changepwdForm.useroldpwd.$dirty && changepwdForm.useroldpwd.$error.required) || (changepwdFormSubmitted && !changepwdForm.userEmail)) }" autofocus required/>
+                                <span ng-show="((changepwdForm.useroldpwd.$dirty && changepwdForm.useroldpwd.$error.required) || (changepwdFormSubmitted && !changepwdForm.userOldPwd))" class="error-message">Enter old password</span>
+                            </li>
+                            <li><i class="glyphicon glyphicon-envelope"></i>
+                                <input name="useremail" id="useremailpwd" type="password" placeholder="Enter New Password" data-ng-model="changepwdForm.userEmail" class="text-field" ng-class="{ 'has-error': ((changepwdForm.useremail.$dirty && changepwdForm.useremail.$error.required) || (changepwdFormSubmitted && !changepwdForm.userEmail)) }" autofocus required/>
+                                <span ng-show="((changepwdForm.useremail.$dirty && changepwdForm.useremail.$error.required) || (changepwdFormSubmitted && !changepwdForm.userEmail))" class="error-message">Enter new password</span>
+                            </li>
+                            <li><i class="glyphicon glyphicon-envelope"></i>
+                                <input name="usereconfrmmail" id="usereconfrmmail" type="password" placeholder="Enter Confirm Password" data-ng-model="changepwdForm.userConfmEmail" class="text-field" ng-class="{ 'has-error': ((changepwdForm.usereconfrmmail.$dirty && changepwdForm.usereconfrmmail.$error.required) || (changepwdFormSubmitted && !changepwdForm.userConfmEmail)) }" autofocus required/>
+                                <span ng-show="((changepwdForm.usereconfrmmail.$dirty && changepwdForm.usereconfrmmail.$error.required) || (changepwdFormSubmitted && !changepwdForm.userConfmEmail))" class="error-message" ng-enter="setPassword(forgotpwdForm.$valid);">Enter confirm password</span>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <div>
+                            <div ng-show="confirmpwdmsg" class="help-block">New Password/Confirm Password mismatched!</div>
+                            <div ng-show="invalidmsg" class="help-block">Invalid Credentials!</div>
+                            <div ng-show="setpwdmsg" class="help-block">Password changed sucessfully!</div>
+                            <div ng-show="setpwdmsgerror" class="help-block">Some Error Occured!</div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="signup">
+                            <a href="javascript:void(0);" ng-click="setPassword(forgotpwdForm.$valid)">Update</a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div>
+        </modal>
+        <!--CHANGE PASSWORD -->
+        <!-- Partial Signup Modal -->
+        <partialsignup-modal visible="partialSignUpModal" style="margin-top:20px;">
+            <div style="margin:0px auto;">
+                <div class="login-popup-order">
+                    <div class="h-login-dialog">
+                        <div class="usps-box">
+                            <ul>
+                                <li> <i>&nbsp;</i> <span><strong>Customized</strong>Real Time Packages</span> </li>
+                                <li> <i>&nbsp;</i> <span><strong>Cost Effective</strong>Honest Price Guaranteed</span> </li>
+                                <li> <i>&nbsp;</i> <span><strong>Convenient</strong>Free Home Sample Collection</span> </li>
+                                <li> <i>&nbsp;</i> <span><strong>Carefree</strong>Accurate Results on Time</span> </li>
+                                <li> <i>&nbsp;</i> <span><strong>Complete</strong>Pro-active Wellness Support</span> </li>
+                            </ul>
+                        </div>
+                        <!--partial signup modal -->
+                        <div ng-controller="homeControllerUpdateUserDetails" class="log-register-box mobile-signup-button">
+                            <div class="mobilelogin">Enter your details</div>
+                            <div ng-show="showLoginLoader" style="text-align: center">Please Wait <img src="/assets/images/load_wait.gif" style="margin-left: 3%"> </div>
+                            <div ng-hide="showLoginLoader" class="mobile_padd">
+                                <form name="$parent.partialSignupForm" class="material" novalidate>
+                                    <div class="groupSignups req-minheight">
+                                        <input name="puserName" id="puserName" type="text" data-ng-model="puserName" class="sprite_usericon" ng-pattern="/^[A-z. ]+$/" tabindex="1" autofocus required autocomplete="off" />
+                                        <span class="highlight"></span> <span class="bar"></span>
+                                        <label>Full Name</label>
+                                        <span ng-show="(partialSignupForm.puserName.$dirty && partialSignupForm.puserName.$error.required && !partialSignupForm.puserName.$error.pattern)" class="help-block">Username is required</span>
+                                        <span ng-show="partialSignupForm.puserName.$error.pattern" class="help-block">Enter valid name</span>
+                                    </div>
+                                    
+                                    <div class="groupSignups req-minheight" ng-show="showEmail">
+                                        <input name="puseremail" id="puseremail" type="email" placeholder="Email" ng-blur="visited = true" data-ng-model="puseremail" class="sprite_emailname" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" required tabindex="2" autocomplete="off" />
+                                        <span class="highlight"></span> <span class="bar"></span>
+                                        <label>Email ID</label>
+                                        <span ng-show="partialSignupForm.puseremail.$dirty && partialSignupForm.puseremail.$error.required && !partialSignupForm.puseremail.$error.pattern" class="help-block">Email is required</span>
+                                        <span ng-show="partialSignupForm.puseremail.$error.pattern &&   partialSignupForm.puseremail.$touched" class="help-block">Enter valid Email</span>
+                                    </div>
+                                  
+                                    <div class="btn-group groupSignups req-minheight" style="vertical-align: top;" ng-show="showPhone">
+                                        <button type="button" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding:0px; background:none; font-size:14px; color: #6b6b6b; border-bottom: 1px solid #717171; border-radius:0px; padding-bottom:8px; margin-top:8px; margin-right:12px; font-family: 'GothamNarrow-Book';">
+                                            <img width="24" style="margin-right:5px;" src="{{selected_countryCode.image_path}}"> +{{selected_countryCode.countries_isd_code}}
+                                            <span style="font-size: 7px; margin-left: 10px;" class="glyphicon glyphicon-chevron-down"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li ng-repeat="(key, value) in country_list"><a ng-click="setCountryCode(value.countries_isd_code, value.image_path);" href="javascript:void(0);" title="Select this country">&nbsp;<img width="24" style="margin-right:5px;" src="{{value.image_path}}">
+                                          <span style="font-size:13px;">{{value.countries_name}} </span><span style="float: right;padding-top: 6px;font-weight:bold;">+{{value.countries_isd_code}}</span></a></li>
+                                        </ul>
+                                    </div>
+                                   
+                                    
+                                    <div class="groupSignups req-minheight" ng-show="showPhone" style="width:65%;display:inline-block;">
+                                        <input name="puserphone" id="puserphone" type="text" ng-blur="visited = true" maxlength="10" data-ng-model="puserPhone" class="sprite_mobicon" ng-pattern="/^\d{1,10}$/" tabindex="3" autocomplete="off" autofocus="" required="true" ng-change="hideOTP();">
+                                        <span class="highlight"></span> <span class="bar"></span>
+                                        <label style="width:250px;">Mobile Number</label>
+                                        <span ng-show="partialSignupForm.puserphone.$dirty && partialSignupForm.puserphone.$error.required && !partialSignupForm.puserphone.$error.pattern" class="help-block">Mobile No. is required</span>
+                                        <span ng-show="partialSignupForm.puserphone.$error.pattern &&  partialSignupForm.puserphone.$touched" class="help-block"> Enter valid Mobile</span>
+                                    </div>
+                                    <div class="gender-select req-minheight" style="min-height:45px;">
+                                        <input type="radio" tabindex="1" id="radio0111" name="pusergender" value="M" ng-model="puserGender" required />
+                                        <label for="radio0111" style="height: 35px !important;"><span></span>Male</label>
+                                        <input type="radio" tabindex="2" id="radio0222" name="pusergender" value="F" ng-model="puserGender" required>
+                                        <label for="radio0222" style="height: 35px !important;"><span></span>Female</label>
+                                        <span ng-show="(partialSignupForm.pusergender.$dirty && partialSignupForm.pusergender.$error.required)" class="help-block">Select Gender</span>
+                                    </div>
+                                    <div class="groupSignups req-minheight">
+                                        <input id="puserage" name="puserage" ng-model="puserAge" type="text" ng-blur="visited = true" class="sprite_ageicon" maxlength="3" ng-pattern="/^[1-9]|[1-9][0-9]+\d{0,3}$/" ng-required="true" tabindex="6" autocomplete="off" ng-keyup="getPDOB(puserAge,puserName)">
+                                        <span class="highlight"></span> <span class="bar"></span>
+                                        <label>Age (years)</label>
+                                        <span ng-show="partialSignupForm.puserage.$dirty && partialSignupForm.puserage.$error.required && !partialSignupForm.puserage.$error.pattern" class="help-block">Age is required</span>
+                                        <span ng-show="partialSignupForm.puserage.$error.pattern && partialSignupForm.puserage.$touched" class="help-block">Enter age between 5 to 120</span>
+                                    </div>
+                                    <div class="groupSignups req-minheight" ng-show="showReferCode">
+                                        <input id="referCode" name="referCode" type="text" ng-model="referCode" ng-blur="visited = true" class="sprite_refericon" maxlength="12" ng-required="'false'" tabindex="6" autocomplete="off">
+                                        <span class="highlight"></span> <span class="bar"></span>
+                                        <label>Referral Code (Optional)</label>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="groupSignups" ng-show="showUpdateOTP">
+                                        <input name="puserotp" id="puserotp" type="text" maxlength="6" ng-model="puserOTP" class="mob-icon" tabindex="2" autocomplete="off" ng-required="true" />
+                                        <span class="highlight"></span> <span class="bar"></span>
+                                        <label>Enter OTP</label>
+                                        <span ng-show="((partialSignupForm.puserotp.$dirty && partialSignupForm.puserotp.$error.required)  || (partialSignupFormSubmitted && !puserOTP))" class="help-block" style="text-align: left;">
+                                    Enter OTP
+                                </span>
+                                        <a href="javascript:void(0)" ng-show="showUpdateOTP" style="float:left; color: rgb(0, 0, 0); font-size: 13px; text-align: center; cursor: pointer; text-decoration: underline; padding: 12px 0px 5px;" ng-click="resend_callback_opt();" class="">Resend OTP</a>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="register_btns">
+                                        <input type="button" class="register_btns" value="Update Details" name="register" ng-click="submitPartialUpdate(partialSignupForm.$valid);" tabindex="7">
+                                        <input type="button" class="register_btns" value="Back to Login" style="background:none; color:#000; box-shadow:none !important; padding:0px; outline:none; text-decoration:underline;" name="back_login" ng-click="backToLogin();" tabindex="7">
+                                    </div>
+                                    <!-- OTP Error Message -->
+                                    <div ng-show="callbackopt_error" class="optnotification">
+                                        <p ng-bind="callbackopt_message"></p>
+                                    </div>
+                                    <div style="color:green;" ng-show="callbackopt_success" class="optnotification">
+                                        <p ng-bind="callbackopt_success_message"></p>
+                                    </div>
+                                    <!-- OTP Error Message -->
+                                    <div ng-show="updateUserDetailsError" class="help-block1" style="padding-top:4px;font-size: 13px;">
+                                        {{updateUserDetailsErrorMessage}}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--partial signup modal ends -->
+                    </div>
+                </div>
+            </div>
+        </partialsignup-modal>
+        <!--Mobile MODAL -->
+        <!--Sign up message -->
+        <modal visible="signupmsg">
+            <div style="margin:0px auto; padding:30px 0px;">
+                <p class="signedUp">You have sucessfully signed up!!</p>
+                <p class="signedUpmsg">Please verify your account by clicking the link sent to your email address so that we can be sure while sending you the test reports in future.</p>
+                <p class="thank-You">Thank you.</p>
+            </div>
+        </modal>
+        <modal visible="signupmsgnotverified">
+            <div style="margin:0px auto; padding:30px 0px;" ng-controller="homeControllerLogin">
+                <p class="signedUp">Your account is still not activated.</p>
+                <p class="signedUpmsg">Please verify your email address.</p>
+                <p class="sendLink"><a href="javascript:void(0);" ng-click="sendVerificationLink();">Send link again</a></p>
+                <p>Thank you.</p>
+            </div>
+        </modal>
+        <!--Sign up message -->
+        <!--Call back Mobile MODAL -->
+        <modal visible="callbackMobileModal">
+            <div ng-include="'template/callback_mobile_modal.html?v=1.0'"></div>
+        </modal>
+        <!--Call back Mobile MODAL -->
+        <modal visible="callbackmsg">
+            <div style="margin:0px auto; padding:30px 0px;">
+                <p class="signedUp">You will get a call back shortly.</p>
+            </div>
+        </modal>
+    </div>
+</div>
+
+<!--mobile-exit popup -->
+<div class="overlay-visible" ng-show="mobileExitPopupDiv"></div>
+<div class="sticky-exit-form" ng-show="mobileExitPopupDiv">
+    <div class="mobile-sticky-mid">
+        <div ng-click="closeMobileExitPopup();">
+            <div class="closepop-close-mobile" ng-click="closeMobileExitPopup();">&nbsp;</div>
+        </div>
+        <div ng-hide="exitMobileError">
+            <div class="exit-form-title" style="margin-top:0px;">
+                <div class="exit-title">Free call back from our Health Advisor</div>
+            </div>
+            <div class="mobileform-exit-popup">
+                <form name="addMobileExitPopupLeadForm" novalidate>
+                    <div class="input-small-width mob_minheight">
+                        <input name="exmcustomerno" id="exmcustomerno" type="text" maxlength="10" ng-model="exmcustomerNo" class="mob-icon" tabindex="2" placeholder="Mobile Number" autocomplete="off" ng-required="true" ng-enter="sendMobileExitPopupDetails();" ng-change="changeMobileExitPopupButtonColor();"/>
+                        <div ng-show="((addMobileExitPopupLeadForm.exmcustomerno.$dirty && addMobileExitPopupLeadForm.exmcustomerno.$invalid) || (addLeadFormSubmitted && !addMobileExitPopupLeadForm.exmcustomerno))" class="help-block" style="text-align: left;">
+                            <span style="color:#fff !important;" ng-show="addMobileExitPopupLeadForm.exmcustomerno.$error.required">Mobile No. is required</span>
+                        </div>
+                        <span class="help-block" style="text-align: left;color:#fff !important;" ng-show="mobile_valid_error" ng-bind="mobile_valid_msg"></span>
+                    </div>
+                    <div class="input-small-width mob_minheight">
+                        <input name="exmname" id="exmname" type="text" ng-model="exmcustomerName" class="user-icon" ng-pattern="/^[A-Za-z ]+$/" tabindex="1" placeholder="Your Name" autocomplete="off" required="false" ng-enter="sendMobileExitPopupDetails()" />
+                        <span ng-show="addMobileExitPopupLeadForm.exmname.$error.pattern && !addMobileExitPopupLeadForm.exmname.$error.required" class="help-block" style="text-align: left;color:#fff !important;">
+                            Enter valid Name
+                        </span>
+                    </div>
+                   <!--  <div class="input-small-width mob_minheight">
+                        <div id="capt_exitpopup_home_mobile"></div>
+                    </div> -->
+                    <div class="exit-pop-field">
+                        <input type="button" name="msend" id="exitmobilepopupsubmitbtn" value="Get A Call Back Now" ng-click="sendMobileExitPopupDetails()" style="background:#b7b7b7; border:1px solid #cecece;background-image:linear-gradient(to bottom, #b7b7b7 0%, #cecece 100%);" analytics-on="click" analytics-category="Mobile Exit Pop up" analytics-event="Click on Get A Call Back Now" class="submit-button" tabindex="3">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="exit-thanks-mobile" ng-show="exitMobileError">
+            <h5>Thank You for sharing your details with us.</h5>
+            <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+            </p>
+        </div>
+    </div>
+</div>
+<!--footer section starts here -->
+
+<div ui-view="footer"></div>
+
+<!--footer section ends here -->
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".close-notify-app").click(function() {
+        $('.app-install-bar').css('margin-top', '0px');
+    });
+
+    $('.carousel').carousel({ interval: false });
+
+    $('#app-promotion-mobile').modal('show');
+
+    $('.home-slider-touch').slick({
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 300,
+        slidesToShow: 1,
+        adaptiveHeight: true
+    });
+
+
+    //remove video//
+    if ($(window).width() < 797) {
+        $('.fillWidth').remove();
+    }
+
+});
+</script>

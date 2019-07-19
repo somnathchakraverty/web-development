@@ -1,0 +1,103 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="assets/style/css/materialize.css">
+    <style>
+    footer {
+        background: #fbfafa !important;
+    }
+    
+    .input_gender_mov [type="radio"]:not(:checked) + label,
+    [type="radio"]:checked + label {
+        padding-left: 28px !important;
+        height: 25px;
+        font-weight: normal;
+    }
+    
+    .checkbox_input input:focus~label,
+    input:valid~label {
+        left: 0px !important;
+        top: 0px !important;
+    }
+    </style>
+    <script type="text/javascript" src="assets/js/jquery.scrolling-tabs.js"></script>
+</head>
+<div class="col-md-5 col-xs-12">
+    <div class="contact-form">
+        <!--INFORMATION PANEL -->
+        <section ng-show="instant_booking_state === 'addtocart' ">
+            <h6>BOOK YOUR HEALTH CHECKUP NOW</h6>
+            <form name="getinstantFormI" id="getinstantForm" novalidate>
+                <div class="col-md-12 col-xs-12">
+                    <div class="input-field">
+                        <select class="package_view" name="instant_package" ng-model="package_id" style="color:#585858;" ng-options="package.id as package.name+' ₹ '+package.healthians_price for package in packageList">
+                            <option value="" disabled>Select Package</option>
+                        </select>
+                        <span ng-show="invalid_form && empty_package" class="error">Please choose a Package</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 form-spacing" style="margin-top:10px;">
+                    <input type="text" value="" name="phone" maxlength="10" tabindex="1" ng-model="phone" ng-required="true" placeholder="Mobile Number" ng-pattern="/^\d{10}$/" ng-minlength="10" ng-maxlength="10">
+                    <span ng-show="invalid_form && getinstantFormI.phone.$invalid" class="error">Please Enter a valid Mobile Number</span> 
+                </div>
+                <div class="col-md-12 col-xs-12 form-spacing">
+                    <input type="email" value="" name="email_address" tabindex="2" ng-model="email_address" placeholder="Email Id" ng-required="true">
+                    <span ng-show="invalid_form && getinstantFormI.email_address.$invalid-email" class="error">Please Enter a valid Email Address</span> 
+                </div>
+                <div class="col-md-12 col-xs-12 form-spacing">
+                    <input type="text" value="" name="name" tabindex="3" ng-model="name" required placeholder="Your name" ng-required="true">
+                    <span ng-show="invalid_form && getinstantFormI.name.$invalid" class="error">Name can not be empty</span>
+                </div>
+                <!--age -->
+                <div class="col-md-8 col-xs-12 form-spacing-age">
+                    <div class="col-md-6 col-xs-4 mt__15 input_gender_mov">
+                        <input name="gender" type="radio" class="with-gap" id="M" ng-model="gender" value="M" ng-checked="model" ng-required="true">
+                        <label for="M">Male</label>
+                    </div>
+                    <div class="col-md-6 col-xs-4 mt__15 input_gender_mov">
+                        <input name="gender" type="radio" class="with-gap" tabindex="4" id="F" ng-model="gender" value="F" ng-checked="model" ng-required="true">
+                        <label for="F">Female</label>
+                    </div>
+                    <span ng-show="invalid_form && getinstantFormI.gender.$error.required" class="error" style="float: left">Choose your Gender</span>
+                </div>
+                <div class="col-md-4 col-xs-12 form-spacing-age">
+                    <div class="col-md-12 col-xs-12 checkbox-wrap">
+                        <input type="text" value=age "" name="age" tabindex="5" style="margin-top:4px;" maxlength="3" required ng-model="age" placeholder="Age" ng-required="true">
+                        <span ng-show="invalid_form && getinstantFormI.age.$invalid" class="error">Please Enter Your age</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 form-spacing" style="padding-top:7px;">
+                    <div class="col-md-7  col-xs-12 mt__15" >
+                        <input type="text"  name="hno" tabindex="6" ng-model="hno" placeholder="House No./Apartment/Building" required ng-required="true">
+                        <span ng-show="invalid_form && getinstantFormI.hno.$invalid" class="error">Please Enter House No.</span>
+                    </div>
+                    <div class="col-md-4 col-xs-12 mt__15" style="float:right;">
+                        <input type="text"  name="landmark" tabindex="6" ng-model="landmark" placeholder="Landmark" required ng-required="true">
+                        
+                        <span ng-show="invalid_form && getinstantFormI.landmark.$invalid" class="error">Please Enter landmark</span>
+                    </div>
+                    
+                </div>
+
+                <!--age -->
+                <div class="col-md-12 col-xs-12 form-spacing">
+                    <div class="col-md-7 col-xs-12 mt__15">
+                        <input type="text" value="" name="sublocality" tabindex="6" ng-model="sublocality" placeholder="Enter Locality/Street" ng googleplace class="choose_wid" required autocomplete="off" ng-required="true" ng-focus="distanceError">
+                        <span ng-show="invalid_form && getinstantFormI.sublocality.$invalid || out_of_area" class="error">Enter Location Within Delhi/Ncr </span>
+                    </div>
+                    <div class="col-md-4  col-xs-12 mt__15" style="float:right;">
+                        <input type="text" value="" name="pin_code" tabindex="7" ng-model="pin_code" required placeholder="Pincode" maxlength="6" ng-pattern="/^\d{6}$/" ng-required="true" ng-maxlength="6" ng-minlength="6">
+                        <span ng-show="invalid_form && getinstantFormI.pin_code.$invalid" class="error">Enter a valid Pincode</span>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-xs-12">
+                    <button type="submit" class="waves-effect waves-light btn slide-toggle" tabindex="9" ng-click="validateForm(getinstantFormI)" ng-disabled=" getinstantForm.$invalid">CONTINUE</button>
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-12 col-xs-12 need-help">Need booking assistance? Call us at <span style="color:#00a0a8;"><a style="color:#00a0a8;" href="tel:{{companyphone.hyperlink_no}}"  ng-bind="companyphone.display_no"></a></span> </div>
+            </form>
+        </section>
+        <!--INFORMATION PANEL -->
+        <div ng-show="instant_booking_state =='time_slot' " ng-include="'template/instantPhleboSlot.html'"></div>
+        <div ng-show="instant_booking_state =='payment' " ng-include="'template/instantPayment.html'"></div>
+    </div>
+</div>

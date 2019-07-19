@@ -1,0 +1,330 @@
+<div ui-view="header"></div>
+
+<!--maternal serum starts here -->
+<style type="text/css">
+.paybuttons input[type="radio"]:checked + label span{background-color: #00a0a8; font-weight: bold; border: 1px solid #00a0a8;}
+</style>    
+
+<div class="container">
+  <div class="maternalserum-panel">
+    <div class="feedback-info-area">
+      <h6>Maternal Serum Screen Requisition</h6>
+           
+    </div>
+
+    <div class="mat-ser-mid">
+
+      <section>
+        <div class="mid-maternal"  ng-hide="preTestDataSuccess">
+        
+        <div class="mid-maternal-info">
+              <ul>
+                <li>
+                  <label class="titleformmaternal">Name of the Patient </label>
+                 <strong ng-bind="name"></strong>
+                </li> 
+               
+                
+               <li>
+                  <label class="titleformmaternal">Booking ID </label>
+                <strong ng-bind="booking_id"></strong>
+                </li>
+                
+                
+                 <li>
+                  <label class="titleformmaternal">Age / Gender </label>
+                 <strong>{{age}} Years / {{gender}}</strong>
+                </li>
+                
+                
+                
+                 
+              </ul>
+            </div>
+            
+            
+            
+<div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;"> </div>
+              <h2 ng-hide="maternalForm">Clinical Information <span ng-hide="maternalForm">(Refer your latest ultrasound report)</span></h2>
+         
+
+          <form name="maternalserumForm" >
+            <div class="" ng-hide="maternalForm">
+              <ul>
+                <li>
+                  <label class="titleformmaternal">Date of Ultrasound (USG) </label>
+                  <i class="glyphicon glyphicon-calendar"></i>
+
+                  <input type="text" data-provide="datepicker" id="ultrasound_date" class="form-control text calender-icon" name="ultrasound_date" data-date-format="dd-mm-yyyy" data-date-autoclose="true" placeholder="Ultrasound Date" required="required" ng-model="ultrasound_date"  ng-class="{ 'has-error': (maternalserumForm.ultrasound_date.$dirty && maternalserumForm.ultrasound_date.$error.required) }" readonly style="background: #fff;">
+
+                  <div ng-show="((maternalserumForm.ultrasound_date.$dirty && maternalserumForm.ultrasound_date.$invalid) || (maternalFormSubmitted && !maternalserumForm.ultrasound_date))" class="help-block">
+                   <span ng-show="maternalserumForm.ultrasound_date.$error.required">Date of Ultrasound is required</span>
+                  </div>
+                     <!--  <span ng-show="maternalserumForm.ultrasound_date.$error.pattern && !maternalserumForm.ultrasound_date.$error.required">
+                          Enter valid Name
+                      </span> -->
+                </li>
+                <li>
+                  <label class="titleformmaternal">Gestational age by Ultrasound(USG) </label>
+                  <input name="usg_by_week" id="usg_by_week" placeholder="Week(s)" type="text" class="form-control text half-width" ng-model="usg_by_week" ng-class="{ 'has-error': (maternalserumForm.usg_by_week.$dirty && maternalserumForm.usg_by_week.$error.required)  || (maternalserumForm.usg_by_week.$error.pattern && visited) }" ng-pattern="/^\d{1,4}$/" maxlength="4" required="required">
+                  <input name="usg_by_day" id="name" placeholder="Day(s)" type="text" class="form-control text half-width" ng-model="usg_by_day" ng-class="{ 'has-error': (maternalserumForm.usg_by_day.$dirty && maternalserumForm.usg_by_day.$error.required)  || (maternalserumForm.usg_by_day.$error.pattern && visited) }" ng-pattern="/^\d{1,4}$/" maxlength ="4" required="required">
+                  <div ng-show="((maternalserumForm.usg_by_week.$dirty && maternalserumForm.usg_by_week.$invalid) || (maternalFormSubmitted && !maternalserumForm.usg_by_week))" class="help-block">
+                   <span ng-show="maternalserumForm.usg_by_week.$error.required">USG Week is required</span>
+                      <span ng-show="maternalserumForm.usg_by_week.$error.pattern && !maternalserumForm.usg_by_week.$error.required">
+                          Enter Valid USG Week
+                      </span>
+                  </div>
+                  <div ng-show="((maternalserumForm.usg_by_day.$dirty && maternalserumForm.usg_by_day.$invalid) || (maternalFormSubmitted && !maternalserumForm.usg_by_day))" class="help-block">
+                   <span style="padding-left:160px;" ng-show="maternalserumForm.usg_by_day.$error.required">USG Day is required</span>
+                      <span ng-show="maternalserumForm.usg_by_day.$error.pattern && !maternalserumForm.usg_by_day.$error.required">
+                          Enter Valid USG Day
+                      </span>
+                  </div>
+                </li>
+                <li>
+                  <label class="titleformmaternal">Expected date of delivery (EDD) </label>
+                  <i class="glyphicon glyphicon-calendar"></i>
+
+                  <input type="text" data-provide="datepicker" id="edd" class="form-control text calender-icon half-width" name="edd" data-date-format="dd-mm-yyyy" data-date-autoclose="true" placeholder="Delivery Date" required="required" ng-model="edd"  ng-class="{ 'has-error': (maternalserumForm.edd.$dirty && maternalserumForm.edd.$error.required)}"  required="required" readonly style="background: #fff;">
+
+                  <select class="select_optionpick half-width" name="edd_type" ng-model="edd_type">
+                    <option selected="selected" value="lmp">Last Menstrual Period Date</option>
+                    <option value="ucg">Ultrasound</option>
+                  </select>
+                  <div ng-show="((maternalserumForm.edd.$dirty && maternalserumForm.edd.$invalid) || (maternalFormSubmitted && !maternalserumForm.edd))" class="help-block">
+                   <span ng-show="maternalserumForm.edd.$error.required">Expected Date of delivery is required</span>
+                  </div>
+                  <br />
+                </li>
+                <li>
+                  <label class="titleformmaternal">Last Menstrual Period Date (LMP) </label>
+                  <i class="glyphicon glyphicon-calendar"></i>
+
+                  <input type="text" data-provide="datepicker" id="lmp" class="form-control text calender-icon" name="lmp" data-date-format="dd-mm-yyyy" data-date-autoclose="true" placeholder="LMP Date" required="required" ng-model="lmp" ng-class="{ 'has-error': (maternalserumForm.lmp.$dirty && maternalserumForm.lmp.$error.required)}" required="required" readonly style="background: #fff;">
+
+                  <div ng-show="((maternalserumForm.lmp.$dirty && maternalserumForm.lmp.$invalid) || (maternalFormSubmitted && !maternalserumForm.lmp))" class="help-block">
+                   <span ng-show="maternalserumForm.lmp.$error.required">Last Menstrual Period Date is required</span>
+                  </div>
+                </li>
+               
+           
+               
+             
+                
+               
+                <li>
+                  <label class="titleformmaternal">IVF Pregnancy: </label>
+                  <!-- <input name="name" id="name" type="text" class="form-control text"> -->
+                  <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="ivf_pregnancy1" name="ivf_pregnancy" ng-model="ivf_pregnancy" tabindex="0" value="Yes"/ ng-required="true">
+                    <label for="ivf_pregnancy1"><span></span>Yes</label>
+                  </div>
+                  <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="ivf_pregnancy2" name="ivf_pregnancy" ng-model="ivf_pregnancy" tabindex="1" value="No"/ ng-required="true">
+                    <label for="ivf_pregnancy2"><span></span>No</label>
+                  </div>
+                   <div ng-show="((maternalserumForm.ivf_pregnancy.$dirty && maternalserumForm.ivf_pregnancy.$invalid) || (maternalFormSubmitted && !maternalserumForm.ivf_pregnancy))" class="help-block clear">
+                   <span ng-show="maternalserumForm.ivf_pregnancy.$error.required">IVF Pregnancy field is required</span>
+                  </div>
+                </li>
+
+                <li>
+                  <label class="titleformmaternal">Pregnancy </label>
+                  <select class="select_optionpick" name="pragnancy" ng-model="pregnancy_type">
+                    <option value="single">Single</option>
+                    <option value="multiple">Multiple</option>
+                  </select>
+                </li>
+                <li>
+                  <label class="titleformmaternal">Racial origin</label>
+                  <input name="racial_origin" id="racial_origin" type="text" class="form-control text" ng-model="racial_origin" placeholder="Ex.: Asian" ng-class="{ 'has-error': ((maternalserumForm.racial_origin.$dirty && maternalserumForm.racial_origin.$error.required)) ||(maternalserumForm.racial_origin.$error.pattern && visited) }" ng-pattern="/^[A-Za-z ]+$/" required="required">
+                  <div ng-show="((maternalserumForm.racial_origin.$dirty && maternalserumForm.racial_origin.$invalid) || (maternalFormSubmitted && !maternalserumForm.racial_origin))" class="help-block">
+                   <span ng-show="maternalserumForm.racial_origin.$error.required">Racial Origin is required</span>
+                    <span ng-show="maternalserumForm.racial_origin.$error.pattern && !maternalserumForm.racial_origin.$error.required">
+                          Enter valid Racial Origin 
+                      </span>
+                  </div>
+                </li>
+                
+                   <li>
+                  <label class="titleformmaternal">Weight (In kg)</label>
+                  <input name="weight" id="weight" type="text" class="form-control text" ng-model="weight" ng-class="{ 'has-error': ((maternalserumForm.weight.$dirty && maternalserumForm.weight.$error.required)) ||(maternalserumForm.weight.$error.pattern && visited) }" ng-pattern="/^\d{1,3}$/" maxlength="3" required="required">
+                   <div ng-show="((maternalserumForm.weight.$dirty && maternalserumForm.weight.$invalid) || (maternalFormSubmitted && !maternalserumForm.weight))" class="help-block">
+                   <span ng-show="maternalserumForm.weight.$error.required">Weight is required</span>
+                    <span ng-show="maternalserumForm.weight.$error.pattern && !maternalserumForm.weight.$error.required">
+                          Enter valid Weight 
+                      </span>
+                    </div>
+                </li>
+
+                 <li>
+                  <label class="titleformmaternal">Date Of Birth (DOB) </label>
+                  <i class="glyphicon glyphicon-calendar"></i>
+                  <input type="text" data-provide="datepicker" id="dob" class="form-control text calender-icon" name="dob" data-date-format="dd-mm-yyyy" data-date-autoclose="true" placeholder="DOB" required="required" ng-model="dob" ng-class="{ 'has-error': (maternalserumForm.dob.$dirty && maternalserumForm.dob.$error.required)}" required="required" readonly style="background: #fff;">
+
+                  <div ng-show="((maternalserumForm.dob.$dirty && maternalserumForm.dob.$invalid) || (maternalFormSubmitted && !maternalserumForm.dob))" class="help-block">
+                   <span ng-show="maternalserumForm.dob.$error.required">Date of Birth is required</span>
+                  </div>
+                </li>
+                
+                
+                <li>
+                  <label class="titleformmaternal">Diabetic </label>
+                  <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="diabetic1" name="diabetic" ng-model="diabetic" tabindex="0" value="Yes" ng-required="true" />
+                    <label for="diabetic1"><span></span>Yes</label>
+                  </div>
+                  <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="diabetic2" name="diabetic" ng-model="diabetic" tabindex="1" value="No" ng-required="true"/>
+                    <label for="diabetic2"><span></span>No</label>
+                  </div>
+                  <div ng-show="((maternalserumForm.diabetic.$dirty && maternalserumForm.diabetic.$invalid) || (maternalFormSubmitted && !maternalserumForm.diabetic))" class="help-block clear">
+                   <span ng-show="maternalserumForm.diabetic.$error.required">Diabetic field is required</span>
+                  </div>
+                </li>
+
+                 <li>
+                  <label class="titleformmaternal">Smoking </label>
+                  <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="smoking1" name="smoking" ng-model="smoking" tabindex="0" value="Smoker" ng-required="true"/>
+                    <label for="smoking1"><span></span>Smoker</label>
+                  </div>
+                  <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="smoking2" name="smoking" ng-model="smoking" tabindex="1" value="Non-Smoker" ng-required="true"/>
+                    <label for="smoking2"><span></span>Non-Smoker</label>
+                  </div>
+                   <div ng-show="((maternalserumForm.smoking.$dirty && maternalserumForm.smoking.$invalid) || (maternalFormSubmitted && !maternalserumForm.smoking))" class="help-block clear">
+                   <span ng-show="maternalserumForm.smoking.$error.required">Smoking field is required</span>
+                  </div>
+                </li>
+                
+                
+                 <li>
+                  <label class="titleformmaternal" style="padding-bottom:7px;">Upload latest copy of your ultrasound</label>
+                <input type="file" ng-model="files" name="files" base-sixty-four-input multiple accept=".png, .jpg, .jpeg, .JPG, .JPEG, .PNG , .PDF , .pdf" maxsize="5120" on-after-validate="onLoad" ng-required="true" />
+                       <p style="font-size:13px; padding:5px 0px 0px 0px; color:#C00;">* It is mandatory to upload ultrasound copy</p>
+                        <div ng-show="((maternalserumForm.files.$dirty && maternalserumForm.files.$invalid) || (maternalFormSubmitted && !maternalserumForm.files))" class="help-block clear">
+                   <span ng-show="maternalserumForm.files.$error.required">report field is required</span>
+                  </div>
+                 
+                      
+                   <div ng-repeat="file in files" ng-if="files.length>0"  >
+                      <img src="{{file.image}}" width="80" height="80" style="border:1px solid #ccc; padding:2px;" ng-if="file.filetype !== 'application/pdf'">
+
+                      <img src="assets/images/pdf_default.jpg" width="80" height="80" style="border:1px solid #ccc; padding:2px;" ng-if="file.filetype === 'application/pdf'">
+                            </div>
+                       
+                        
+                </li>
+                
+                
+                
+                
+              </ul>
+            </div>
+          
+            
+            <h2 ng-hide="maternalForm" style="margin-top:5px;">Previous history of Fetal Abnormality<span></span></h2>
+            <div class="" ng-hide="maternalForm">
+              <ul>
+                <li>
+                 <label class="titleformmaternal">Neural tube defects (NTD): </label>
+                  <!-- <input name="name" id="name" type="text" class="form-control text"> -->
+                   <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="ntd1" name="ntd" ng-model="ntd" tabindex="0" value="Yes" ng-required="true"/>
+                    <label for="ntd1"><span></span>Yes</label>
+                  </div>
+                  <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="ntd2" name="ntd" ng-model="ntd" tabindex="1" value="No" ng-required="true"/>
+                    <label for="ntd2"><span></span>No</label>
+                  </div>
+                  <div ng-show="((maternalserumForm.ntd.$dirty && maternalserumForm.ntd.$invalid) || (maternalFormSubmitted && !maternalserumForm.ntd))" class="help-block clear">
+                   <span ng-show="maternalserumForm.ntd.$error.required">Neural tube defect field is required</span>
+                  </div>
+                </li>
+                <li>
+                  <label class="titleformmaternal">Down’s syndrome: </label>
+                  <!-- <input name="name" id="name" type="text" class="form-control text"> -->
+                   <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="ds1" name="ds" ng-model="ds" tabindex="0" value="Yes" ng-required="true"/>
+                    <label for="ds1"><span></span>Yes</label>
+                  </div>
+                  <div class="paybuttons" style="padding-top: 6px;">
+                    <input type="radio" id="ds2" name="ds" ng-model="ds" tabindex="1" value="No" ng-required="true"/>
+                    <label for="ds2"><span></span>No</label>
+                  </div>
+                   <div ng-show="((maternalserumForm.ds.$dirty && maternalserumForm.ds.$invalid) || (maternalFormSubmitted && !maternalserumForm.ds))" class="help-block clear">
+                   <span ng-show="maternalserumForm.ds.$error.required">Down's synfrome field is required</span>
+                  </div>
+                </li>
+                
+                 
+              </ul>
+              
+            
+              
+                
+          
+              
+              
+            </div>
+            
+            <div class="submitmaternalserum" ng-hide="maternalForm">
+              <input type="button" name="send" value="Submit" class="btn btn-default submitted" analytics-event="Click on Submit" ng-click="addMaternalSerumData();">
+            </div>
+           <!--  <h2 style="border-bottom:none; padding-bottom:0px; margin:0px; font-size:15px; color:#F00;" ng-hide="maternalForm">Please Send/Share latest copy of ultrasound report</h2>  -->
+
+           <!--  <div ng-show="callbackopt_error" style="color:#f00;padding-top: 10px;">
+                <p ng-bind="callbackopt_message"></p>
+            </div>
+            <div ng-show="callbackopt_success" style="color:green;padding-top: 10px;">
+                <p ng-bind="callbackopt_success_message"></p>
+            </div>  -->
+          </form>
+        </div>
+         <div class="success-pretest-info-msg mid-maternal" style="text-align:center;" ng-show="preTestDataSuccess">            
+                
+                
+                 <div class="row">
+    <div class="col-md-5"><img src="assets/images/female_doctor_advice.png" style="float:right;" /></div>
+     <div class="col-md-7"> 
+     <div class="thankss" style="text-align:left;">
+     <h2 style="border-bottom:none; padding:5px 0px 2px 0px;">Thank You!!!</h2>
+                <p>Your test details has been saved. Our team will contact you shortly.
+                </p> 
+                </div>
+                
+                </div>
+  </div>
+                
+               
+                
+              </div>  
+      
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+ $('#lmp').datepicker({
+        endDate: '-1d',
+        dateFormat: 'dd-mm-yyyy'
+ });
+ $('#dob').datepicker({
+        endDate: '-1d',
+        dateFormat: 'dd-mm-yyyy'
+ });
+ $("#ultrasound_date").datepicker({
+    endDate: '+0d',
+    dateFormat: 'dd-mm-yyyy'
+ });
+ $("#edd").datepicker({
+    startDate: '+1d',
+    dateFormat: 'dd-mm-yyyy'
+ });
+</script> 
+<!--maternal serum ends here --> 
+
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

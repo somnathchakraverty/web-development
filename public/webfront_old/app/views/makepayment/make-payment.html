@@ -1,0 +1,375 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<div class="wholediv">
+    <div ng-show="wholediv">
+        <!--otp panel starts here -->
+        <div class="otpsection" ng-show="bookingdetail">
+            <div class="otpMid">
+                <h1>Order Payment</h1>
+                <div class="mobforOtp">
+                    <div class="1">
+                        <input type="text" minlength="" maxlength="" autocomplete="off" tabindex="2" placeholder="Enter Booking ID." ng-model="odrderPayment" class="form-control input-md" name="user_mobile">
+                        <span ng-show="sendOrderError" class="has-error">
+                          Please Enter Booking ID
+                          <div class="clear"></div>
+                        </span>
+                        <div class="clear"></div>
+                        <input type="text" minlength="10" maxlength="10" autocomplete="off" tabindex="2" placeholder="Enter Mobile No." ng-model="odrderMobilePayment" class="form-control input-md" name="user_mobile">
+                        <div class="clear"></div>
+                        <span ng-show="sendMobileError" class="has-error">
+                          Please Enter Mobile Number
+                          <div class="clear"></div>
+                        </span>
+                        <span ng-show="error" class="has-error" ng-bind="errorMsg"></span>
+                        <div class="btn_cta"><a ng-click="sendOtpFunction('')" analytics-on="click" analytics-category="Make Payment" analytics-event="Clicks on Verify - Direct Payment">Verify</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--otp panel ends here -->
+        <!--booking details starts here / Combine details and payment -->
+        <div class="otpsection" ng-show="paymentsection">
+            
+            <!-- Booking Payment - Start -->
+            <div class="otpMid1" ng-hide="subscriptionsection || servicesection">
+                <h1>Order <span>Detail</span></h1>
+                <div class="mobforOtp">
+                    <div class="3">
+                        <table width="100%" align="center" class="makepayment-panel" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th>Booking ID :</th>
+                                <th ng-bind="detail.booking_id"></th>
+                            </tr>
+                            <tr ng-if="detail.customer_name">
+                                <th>Customer Name :</th>
+                                <th ng-bind="detail.customer_name"></th>
+                            </tr>
+                            <tr>
+                                <th>Mobile :</th>
+                                <th ng-bind="detail.contact_number"></th>
+                            </tr>
+                            <tr>
+                                <th>Email :</th>
+                                <th ng-bind="detail.email_address"></th>
+                            </tr>
+                            <tr ng-if="detail.order_date">
+                                <th>Booking Date :</th>
+                                <th ng-bind="detail.order_date | moment:'MMM DD, YYYY'"></th>
+                            </tr>
+                            <tr ng-if="detail.package_name">
+                                <th>Package Name :</th>
+                                <!-- <th ng-repeat="deal in detail.deal_name track by $index"><span ng-bind="deal"></span></th>  -->
+                                <th ng-bind="detail.package_name"></th>
+                            </tr>
+                            <tr ng-if="payatcollection == 0">
+                                <th>Payable Amount :</th>
+                                <th><span class="fontrupee">`</span><span ng-bind="payatcollection"></span></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="online-payment-offer" ng-show="payatcollection > 0">
+                    <div class="payonline">
+                        <span class="ttl-book" style="font-weight:bold; font-size:17px;">
+                        <span>Total Payable Amount &nbsp;:&nbsp;</span>
+                        <span class="fontrupee" style="padding:0px;"> &nbsp;`</span>
+                        <span ng-hide="onlineDiscountApplied">{{discountamount}} </span>
+                        <span ng-show="onlineDiscountApplied" ng-show="(discountamount - onlineDiscount) > 0">{{discountamount - onlineDiscount}} <span style="font-size: 12px;">(with Online Discount)</span></span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="paymentTypes" style="background:#fff;" ng-show="(discountamount - onlineDiscount) > 0">
+                    <div class="payleft">
+                        <h2><strong>How would you like to pay?</strong></h2>
+                        <span ng-hide="true">{{payradio}}</span>
+                        <div class="clear"></div>
+                        <ul>
+                            <li>
+                                <div class="paybuttons">
+                                    <input type="radio" id="radio1" name="radio" ng-model="payradio" value="paytm" ng-checked="payradio == 'paytm'" ng-click="payradio = 'paytm';clickPaymentMode('paytm');"/>
+                                    <label for="radio1"><span></span>Pay with PayTm</label>
+                                    &nbsp;
+                                    <!--  <img src="assets/images/paytm-cashback.gif"> -->
+                                </div>
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <div class="paybuttons">
+                                    <input type="radio" id="radio2" name="radio" ng-model="payradio" value="mobikwik" ng-click="payradio = 'mobikwik';clickPaymentMode('mobikwik');" ng-checked="payradio == 'mobikwik';"/>
+                                    <label for="radio2"><span></span>Pay with MobiKwik</label>
+                                    &nbsp;
+                                    <!-- <img src="assets/images/mobi_cashback.gif"> -->
+                                </div>
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <div class="paybuttons">
+                                    <input type="radio" id="radio3" name="radio" ng-model="payradio" value="payu" ng-click="payradio = 'payu';clickPaymentMode('payu');" ng-checked="payradio == 'payu'"/>
+                                    <label for="radio3"><span></span>Pay with Credit Card / Debit Card / Netbanking / PayU Wallet</label>
+                                </div>
+                            </li>
+                            <!-- <div class="clear"></div> -->
+                            <!-- <li ng-show="detail.delivery_status == 0">
+                                <div class="paybuttons">
+                                    <input type="radio" id="radio4" name="radio" ng-model="payradio" value="cash" ng-click="payradio = 'cash';clickPaymentMode('cash');" tabindex="4"  ng-checked="payradio == 'cash'"/>
+                                    <label for="radio4"><span></span>Cash/Card on Sample Collection (Card Swiping Machine available)</label>
+                            </li> -->
+                            <div class="clear"></div>
+                            <li>
+                                <div class="smlab" style="margin-top:10px;">
+                                    <div class="remember">
+                                        <input type="checkbox" name="userterms" id="userterms" ng-model="termsCondition" data-ng-checked="termsCondition">
+                                        <span style="font-size:13px; line-height:21px; padding-left:4px;">I accept the <a href="/terms-condition" target="_blank" style="color:#00b0b9;">Terms & Conditions, Disclaimer and Privacy Policy.</a></span></div>
+                                    <span style="clear:both; padding-left:24px; font-size:11px; color:red;" ng-show="termError" class="help-block">* Please accept terms & conditions by selecting the checkbox.</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="paymentLogos">
+                        <figure><img src="assets/images/pay.png"></figure>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="finalPayment" ng-click="makeFinalPayment();" ng-if="(discountamount - onlineDiscount) > 0" ng-hide="subscriptionsection" analytics-category="Make Payment" analytics-event="Clicked on Pay Now - Direct Payment - Order">
+                <a href="" class="btn">Pay Now</a>
+            </div>
+            <!-- Booking Payment - Ends -->
+
+            <!-- Subscription Payment - Starts -->
+            <div class="otpMid1" ng-if="subscriptionsection">
+                <h1>Subscription  <span>Detail</span></h1>
+                <div class="mobforOtp" style="min-height: 130px;">
+                    <div class="3">
+                        <table width="100%" align="center" class="makepayment-panel" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th>Subscription ID :</th>
+                                <th ng-bind="details.user_subscribe_id"></th>
+                            </tr>
+                            <tr>
+                                <th>Payable Amount :</th>
+                                <th><span class="fontrupee">`</span><span ng-bind="subscription_amount"></span></th>
+                            </tr>
+                            <tr ng-repeat="subs in details.customer_details">
+                                <th>{{subs.customer_name}} :</th>
+                                <th>
+                                    {{subs.name}} ({{subs.total_parameters}} parameters covered)
+                                    <div ng-if="subs.service_booking_details.customer_details" style="font-weight: normal;">
+                                        <div ng-if="subs.service_booking_details.customer_details.length > 0" style="font-weight: normal;">
+                                            <i style="font-style: italic;color: #08939c;">Service :</i>
+                                            <div ng-repeat="serv in subs.service_booking_details.customer_details[0].service">
+                                                {{serv.service_name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--Price Display with Discount Ends -->
+                <!--Price Display with Discount Ends -->
+                <div class="paymentTypes" style="background: #fff;" ng-show="payment_pending">
+                    <div class="payleft">
+                        <h2><strong>How would you like to pay?</strong></h2>
+                        <div class="clear"></div>
+                        <ul>
+                            <li>
+                                <div class="paybuttons">
+                                    <input type="radio" id="radio1" name="radio" ng-model="payradio" value="paytm" ng-checked="payradio == 'paytm'" ng-value="paytm" ng-click="payradio = 'paytm';clickPaymentMode('paytm');"/>
+                                    <label for="radio1"><span></span>Pay with PayTm</label>
+                                </div>
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <div class="paybuttons">
+                                    <input type="radio" id="radio2" name="radio" ng-model="payradio" value="mobikwik" ng-value="mobikwik" ng-checked="payradio == 'mobikwik'" ng-click="payradio = 'mobikwik';clickPaymentMode('mobikwik');"/>
+                                    <label for="radio2"><span></span>Pay with MobiKwik</label>
+                                </div>
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <div class="paybuttons">
+                                    <input type="radio" id="radio3" name="radio" ng-model="payradio" value="payu" ng-value="payu" ng-checked="payradio == 'payu'" ng-click="payradio = 'payu';clickPaymentMode('payu');"/>
+                                    <label for="radio3"><span></span>Pay with Credit Card / Debit Card / Netbanking / PayU Wallet</label>
+                                </div>
+                            </li>
+                            <div class="clear"></div>
+                            <li>
+                                <div class="smlab" style="margin-top:10px;">
+                                    <div class="remember">
+                                        <input type="checkbox" name="userterms" id="userterms" ng-model="termsCondition" data-ng-checked="termsCondition">
+                                        <span style="font-size:13px; line-height:21px; padding-left:4px;">I accept the <a href="/terms-condition" target="_blank" style="color:#00b0b9;">Terms & Conditions, Disclaimer and Privacy Policy.</a></span></div>
+                                    <span style="clear:both; padding-left:24px; font-size:11px; color:red;" ng-show="termError" class="help-block">* Please accept terms & conditions by selecting the checkbox.</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="paymentLogos">
+                        <figure><img src="assets/images/pay.png"></figure>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            
+            <div class="finalPayment" ng-click="makeSubscriptionFinalPayment();" ng-show="payment_pending && subscriptionsection">
+                <a href="" class="btn" analytics-category="Make Payment" analytics-event="Clicked on Pay Now - Direct Payment - Subscription">Pay Now</a>
+            </div>
+            <!-- Subscription Payment - End -->
+
+
+            <!-- Service Payment - Start -->
+            <div class="otpMid1 service-summary" ng-if="servicesection">
+                <h1>Service Detail</h1>
+                <div class="mobforOtp servicerow" style="min-height: 130px;">
+                    <div class="user-infos ser_summary_top">
+                        <h1 class="booking-value"> 
+                  <span class="value">
+                    Service ID : <strong ng-bind="details.service_booking_id"></strong>
+                  </span>
+                </h1>
+                        <div class="clear"></div>
+                        <div class="user-detail">
+                           
+                            
+                            
+                            
+                            <div style="text-align:left;display:block;">
+                                <strong class="detailserv">Service Details : </strong>
+                                
+                                
+                                <div class="servicecustlist">
+                                
+                                <div class="ser_userlist" ng-repeat="p in details.customer_details">                        
+                        <h2 style="clear: both; text-transform: capitalize; display: block; padding-bottom: 10px; border-bottom: 1px solid #eaeaea;">{{p.customer_name.toUpperCase()}}</h2>
+                        
+                                
+                                <div class="sss">
+                                <p ng-repeat="t in p.service">{{t.service_name}}
+                                <strong style="color:#333; font-size:14px;"><span class="fontrupee">`</span>{{t.order_price}} </strong>
+                                </p>
+                                </div>
+                                
+                                
+                                </div>
+                                
+                                </div>
+                                
+                                
+                                
+                                </div>
+                               
+                                
+                                
+                                
+                             </div>
+                             
+                             
+                             
+                             
+                              <div class="servicepayableamnt" style="text-align:left;">
+                                <span style="text-transform:uppercase;">Payable Amount : </span>
+                                <strong style="color:#00a0a8;"><span class="detailuser titleright" style="font-size:20px !important;"><span class="fontrupee">`</span><span ng-bind="service_amount"></span></span></strong>
+                            </div>
+                            
+                            
+                            
+                            
+                            <div class="paymentTypes" style="background: #fff; border-top:1px solid #eaeaea; margin-top:0px;" ng-show="payment_pending">
+                                <div class="payleft" style="padding-left:25px;">
+                                    <h2><strong>How would you like to pay?</strong></h2>
+                                    <div class="clear"></div>
+                                    <ul>
+                                        <li>
+                                            <div class="paybuttons">
+                                                <input type="radio" id="radio1" name="radio" ng-model="payradio" value="paytm" ng-click="payradio = 'paytm';clickPaymentMode('paytm');" ng-checked="payradio == 'paytm';"/>
+                                                <label for="radio1"><span></span>Pay with PayTm</label>
+                                            </div>
+                                        </li>
+                                        <div class="clear"></div>
+                                        <li>
+                                            <div class="paybuttons">
+                                                <input type="radio" id="radio2" name="radio" ng-model="payradio" value="mobikwik" ng-click="payradio = 'mobikwik';clickPaymentMode('mobikwik');" ng-checked="payradio == 'mobikwik'"/>
+                                                <label for="radio2"><span></span>Pay with MobiKwik</label>
+                                            </div>
+                                        </li>
+                                        <div class="clear"></div>
+                                        <li>
+                                            <div class="paybuttons">
+                                                <input type="radio" id="radio3" name="radio" ng-model="payradio" value="payu" ng-click="payradio = 'payu';clickPaymentMode('payu');" ng-checked="payradio == 'payu';"/>
+                                                <label for="radio3"><span></span>Pay with Credit Card / Debit Card / Netbanking / PayU Wallet</label>
+                                            </div>
+                                        </li>
+                                        <div class="clear"></div>
+                                        <li>
+                                            <div class="smlab" style="margin-top:10px;">
+                                                <div class="remember">
+                                                    <input type="checkbox" name="userterms" id="userterms" ng-model="termsCondition" data-ng-checked="termsCondition">
+                                                    <span style="font-size:13px; line-height:21px; padding-left:4px;">I accept the <a href="/terms-condition" target="_blank" style="color:#00b0b9;">Terms & Conditions, Disclaimer and Privacy Policy.</a></span></div>
+                                                <span style="clear:both; padding-left:24px; font-size:11px; color:red;" ng-show="termError" class="help-block">* Please accept terms & conditions by selecting the checkbox.</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="paymentLogos">
+                                    <figure><img src="assets/images/pay.png"></figure>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="finalPayment" ng-click="makeServiceFinalPayment();" ng-show="payment_pending && servicesection">
+                <a href="javascript:void(0);" class="btn" analytics-category="Make Payment" analytics-event="Clicked on Pay Now - Direct Payment - Service">Pay Now</a>
+            </div>
+            <!-- Service Payment - End -->
+
+        </div>
+            <!--booking details ends here / Combine details and payment -->
+    </div>
+</div>
+
+<!--NEW CHECKOUT CONTAINER ENDS HERE -->
+<form action="{{payuAction}}" method="post" name="paymentForm" id="paymentForm">
+    <input type="hidden" name="booking_id" value="" />
+    <input type="hidden" name="txnAmount" value="" />
+    <input type="hidden" name="custName" value="" />
+    <input type="hidden" name="custMobile" value="" />
+    <input type="hidden" name="custEmail" value="" />
+    <input type="hidden" name="payment_type_source" value="">
+    <input type="hidden" name="makePaymentOnlineDiscount" value="">
+</form>
+<!-- Form For MobiKwik -->
+<form action="{{mobikwikAction}}" method="post" name="paymentForm3" id="paymentForm3">
+    <input type="hidden" name="booking_id" value="" />
+    <input type="hidden" name="txnAmount" value="" />
+    <input type="hidden" name="custName" value="" />
+    <input type="hidden" name="custMobile" value="" />
+    <input type="hidden" name="custEmail" value="" />
+    <input type="hidden" name="payment_type_source" value="">
+    <input type="hidden" name="makePaymentOnlineDiscount" value="">
+</form>
+<!-- Form For PayTm -->
+<form action="{{paytmAction}}" method="post" name="paymentForm2" id="paymentForm2">
+    <input type="hidden" name="booking_id" value="" />
+    <input type="hidden" name="txnAmount" value="" />
+    <input type="hidden" name="custName" value="" />
+    <input type="hidden" name="custMobile" value="" />
+    <input type="hidden" name="custEmail" value="" />
+    <input type="hidden" name="user_id" value="" />
+    <input type="hidden" name="payment_type_source" value="">
+    <input type="hidden" name="makePaymentOnlineDiscount" value="">
+</form>
+<style type="text/css">
+  .homehealthkarma { display: none; }
+</style>
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here 

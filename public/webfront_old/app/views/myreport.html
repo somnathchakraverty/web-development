@@ -1,0 +1,131 @@
+<div class="ContentWrap">
+    <div ui-view="header"></div>
+   
+    <div class="clear"></div>
+    <section class="dashboard">
+    <div class="profilenav">
+            <div class="midNav">
+                <ul>                    
+                    <li><a href="/dashboard" id="">Dashboard</a></li>                    
+                    <li><a href="/mybooking" id="booking">My Booking</a></li>
+                    <li><a href="/myreport" id="report" class="selected">My Report</a></li>
+                    <li><a href="/myaddress" id="report">My Address</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!-- <div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;"></div> -->
+        </div>
+    <div class="clear"></div>
+    </section>
+        
+    
+    <!-- my report panel -->
+    <div class="mybooking-main">
+        <div id="mybooking" ng-hide="loaderVar">
+            <figure class="report-panel">
+                <h4>My Report</h4>
+                <div class="my_reports">
+                    <ul>
+                        <li><strong>Booking ID</strong></li>
+                        <li><strong>Name</strong></li>
+                        <li><strong>Booking Date</strong></li>
+                        <li><strong>Test/ Package Name</strong></li>
+                        <li><strong>Price</strong></li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                       
+                    </ul>
+                    <ol ng-repeat="report in myReportData.user_report">
+                    
+                        <li>
+                        <p class="mv_reportStatus">Booking ID  : </p>
+                        <p ng-bind="report.booking_id"></p>
+                        </li>
+                        
+                        <li>
+                        <p class="mv_reportStatus">Name  : </p>
+                        <p ng-bind="report.name"></p>
+                        </li>
+                        
+                        <li>
+                         <p class="mv_reportStatus">Booking Date  : </p>
+                        <p ng-bind="report.date | moment:'MMM DD, YYYY'"></p>
+                        </li>
+                        
+                        <li>
+                         <p class="mv_reportStatus">Test/ Package Name  : </p>
+                         <p ng-bind="report.package_name"></p>
+                        </li>
+                        
+                        <li>
+                        <p class="mv_reportStatus">Price  : </p>
+                        <p><span class="fontrupee">`</span><span ng-bind="report.price"></span></p>
+                        </li>
+                        <!-- <li>                         
+                            <div class="tooltip">
+                                <a href="" ng-click="reportsubscribe(report);">
+                                    <img src="assets/images/inbox-icon.png">
+                                </a>
+                                <span class="tooltiptext">SUBSCRIBE</span>
+                            </div>
+                        </li> -->
+                        <li>
+                            <div class="tooltip">
+                                <a href="" ng-click="reportPdf(report.report_id, report.booking_id, report.customer_id, report.report_name);">
+                                    <img src="assets/images/pdf-icon.png">
+                                </a>
+                                <span class="tooltiptext">REPORT</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tooltip">
+                                <a href="" ng-click="reportShare(report);">
+                                    <img src="assets/images/send-icon.png">
+                                </a>
+                                <span class="tooltiptext">SHARE</span>
+                            </div>
+                        </li>
+                        <div class="clear"></div>
+                    </ol>
+                    <div class="clear"></div>
+                    <div class="noreport" ng-show="nodataReport">No Report Found</div>
+                    <div class="clear"></div>
+                </div>
+                <!-- <div ng-show="nodata" class="more"><a href="" ng-click="reportList('user');">View More</a></div> -->
+            </figure>
+        </div>
+    </div>
+
+       <!--SHARE REPORT -->
+    <div class="sharePanel" ng-show="shareReport">
+        <div class="maskedOverlay"></div>
+        <div class="shareDtlPopup">
+            <div class="popUpMid">
+                <h1>Share this report 
+                  <a ng-click="closereportShare();" href="" class="closenav" style="float:right;">
+                    <img src="assets/images/close.png">
+                  </a>
+                </h1>
+            </div>
+            <div class="panelBooking">
+                <div ng-if="!reportSharemsgflag" class="thank-You">
+                    <p>Enter the email of the person you want to share your report with : </p>
+                    <div class="email_holder">
+                        <input name="" type="text" placeholder="Enter the desired E-mail Id" ng-model="reportEmail">
+                    </div>
+                    <div class="btnreport">
+                        <input type="button" name="" value="Share" class="sharebtn" ng-click="userReportShare(reportEmail);">
+                    </div>
+                </div>
+                <div ng-if="reportSharemsgflag">
+                    <center><span ng-bind="reportSharemsg"></span> </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--SHARE REPORT  reorderReport-->
+  
+    <!--dashboard ends here -->
+    <div ui-view="footer"></div>
+</div>

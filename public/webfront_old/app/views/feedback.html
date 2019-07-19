@@ -1,0 +1,162 @@
+<!--header section starts here -->
+
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+
+<!--BANNER PANEL -->
+<section class="banner-feedback">
+    <section class="panelfigcaption">
+        <div class="caption">
+           
+            <h1 style="text-transform:none;">Send us a feedback</h1>
+            <span>We'd love to hear from you</span>
+        </div>
+    </section>
+</section>
+<!--BANNER PANEL ENDS HERE -->
+
+
+<!--feedback starts here -->
+
+<div class="container">
+  <div class="feedback-panel">
+  
+  <div class="feedback-info-area">
+      <h6>Share your Experience</h6>
+            <p>We welcome your feedback and suggestions to help us improve further and serve you better. <br />
+If you have any query related to our services, please fill out the form</p>
+            </div>
+   
+    <div class="fdbkarea"> 
+      <section>
+      <div class="mid-feedback"  ng-hide="feedbackSuccess">
+          <form name="addFeedbackForm" novalidate>
+            <div class="">
+              <ul>
+                <li>
+                <label class="titleformfeedvback">Full Name *</label>
+                  <input name="name" id="name" type="text" class="form-control text" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addFeedbackForm.name.$dirty && addFeedbackForm.name.$error.required) || (addFeedbackFormSubmitted && !customerName)) ||(addFeedbackForm.name.$error.pattern && visited) }" ng-focus="booknow" ng-pattern="/^[A-Za-z ]+$/">
+                  <div ng-show="((addFeedbackForm.name.$dirty && addFeedbackForm.name.$invalid) || (addFeedbackFormSubmitted && !addFeedbackForm.name))" class="help-block">
+                      <span ng-show="addFeedbackForm.name.$error.required">Name is required</span>
+                      <span ng-show="addFeedbackForm.name.$error.pattern && !addFeedbackForm.name.$error.required">
+                          Enter valid Name
+                      </span>
+                  </div>
+                </li>
+                
+                <li>
+                <label class="titleformfeedvback">Mobile No. *</label>
+                  <input id="customerno" minlength="10" maxlength="10" name="customerno" type="form-control text" class="form-control text" ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addFeedbackForm.customerno.$dirty && addFeedbackForm.customerno.$error.required) || (addFeedbackFormSubmitted && !customerNo)) ||(addFeedbackForm.customerno.$error.pattern && visited) }" ng-required="true">
+                  <div ng-show="((addFeedbackForm.customerno.$dirty && addFeedbackForm.customerno.$invalid) || (addFeedbackFormSubmitted && !addFeedbackForm.customerno))" class="help-block">
+                      <span ng-show="addFeedbackForm.customerno.$error.required">Mobile No. is required</span>
+                      <span ng-show="addFeedbackForm.customerno.$error.pattern && !addFeedbackForm.customerno.$error.required">
+                          Enter valid Mobile
+                      </span>
+                  </div>
+                </li>
+                
+                
+                <li>
+                <label class="titleformfeedvback">Email ID *</label>
+                  <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" class="form-control text" ng-model="customerEmail" ng-class="{ 'has-error': ((addFeedbackForm.customeremail.$dirty && addFeedbackForm.customeremail.$error.required) || (addFeedbackFormSubmitted && !customerEmail)) ||(addFeedbackForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="true">
+                  <div ng-show="((addFeedbackForm.customeremail.$dirty && addFeedbackForm.customeremail.$invalid) || (addFeedbackFormSubmitted && !addFeedbackForm.customeremail))" class="help-block">
+                      <span ng-show="addFeedbackForm.customeremail.$error.required">Email is required</span>
+                      <span ng-show="addFeedbackForm.customeremail.$error.pattern && !addFeedbackForm.customeremail.$error.required">Enter valid Email</span>
+                  </div>
+                </li>
+                
+
+                <li>
+                <label class="titleformfeedvback">Query Type *</label>
+                    <select class="form-control text" id="issue_type" name="issue_type" ng-required="true" ng-model="issuetype"  ng-class="{ 'has-error': ((addFeedbackForm.issue_type.$dirty && addFeedbackForm.issue_type.$error.required) || (addFeedbackFormSubmitted && !addFeedbackForm.issue_type)) }" ng-change="change_query();">
+                        <option value="" selected="selected">Select</option>
+                        <option value="{{list.id}}_{{list.dept_id}}" ng-repeat="list in issuetype_list">{{list.name}}</option>
+                    </select>
+                    <div ng-show="((addFeedbackForm.issue_type.$dirty && addFeedbackForm.issue_type.$invalid) || (addFeedbackFormSubmitted && !issuetype))" class="help-block">
+                      <span ng-show="addFeedbackForm.issue_type.$error.required">Please select issue type.</span>
+                    </div>
+                </li>
+
+                <li ng-show="show_booking">
+                  <label class="titleformfeedvback">Booking ID *</label>
+                  <input id="bookingid" minlength="1" maxlength="10" name="bookingid" type="form-control text" class="form-control text" placeholder="Booking ID" ng-model="booking_id" ng-pattern="/^\d{1,10}$/" ng-required="show_booking">
+                  <div ng-show="(addFeedbackForm.bookingid.$dirty && addFeedbackForm.bookingid.$invalid)" class="help-block">
+                    <span ng-show="addFeedbackForm.bookingid.$error.required">Please enter booking id</span>
+                      <span ng-show="addFeedbackForm.bookingid.$error.pattern">
+                          Enter valid booking id
+                      </span>
+                      <span ng-show="addFeedbackForm.bookingid.$error.minlength">Minimum 1 character is required</span>
+                      <span ng-show="addFeedbackForm.bookingid.$error.maxlength">Maximum 10 character</span>
+                  </div>
+                </li> 
+
+                <li>
+                  <label class="titleformfeedvback">Message *</label>
+                  <textarea class="form-control text" id="message" name="message" minlength="20" maxlength="500" ng-model="Message" style="resize:none;height:80px;" placeholder="Message*" ng-class="{ 'has-error': ((addFeedbackForm.message.$dirty && addFeedbackForm.message.$error.required) || (addFeedbackFormSubmitted && !Message)) ||(addFeedbackForm.message.$error.pattern && visited) }" ng-required="true"></textarea>
+                  <div ng-show="((addFeedbackForm.message.$dirty && addFeedbackForm.message.$invalid) || (addFeedbackFormSubmitted && !addFeedbackForm.Message))" class="help-block">
+                      <span ng-show="addFeedbackForm.message.$error.required">Message is required</span>
+                      <span ng-show="addFeedbackForm.message.$error.minlength">Minimum 20 character is required</span>
+                      <span ng-show="addFeedbackForm.message.$error.maxlength">Maximum 500 character</span>
+                  </div>
+                </li>
+                <li>
+                  <div id="feedback_capt" class="feedbackcapcha"></div>                  
+                </li>
+                <li>
+                <div class="submitfeedback">
+               
+                  <input type="button" name="send" value="Send Feedback" class="btn btn-default feedbacksubmitted" ng-click="sendFeedbackDetails()" analytics-on="click" analytics-category="Landing" analytics-event="Click on Submit">
+                </div>
+                <div class="error_msg_visit" ng-show="feedbackError" ng-bind="feedbackErrorMsg">Something wrong. Please try again.</div>
+              </li>              
+              </ul>
+              
+              
+
+             
+              
+            </div>
+          </form>
+        </div>
+         <div class="success-feedback-msg" style="text-align:center;" ng-show="feedbackSuccess">            
+                <h2>Thank You!!!</h2>
+                <p>Our team will contact you shortly.
+                </p> 
+              </div>  
+      </section>
+    </div>
+  </div>
+</div>
+
+<!--feedback ends here --> 
+
+<script type="text/javascript">
+    var widgetIdFeedback;
+    var onloadCallback = function() {
+       setTimeout(function(){
+        if(typeof grecaptcha !== 'undefined') {
+          if($('#feedback_capt').length) {
+              if(widgetIdFeedback == 0) {
+              }
+              else {
+                widgetIdFeedback = grecaptcha.render('feedback_capt', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+              }             
+          }
+        }
+        else {
+            setTimeout(function(){
+              onloadCallback();
+            }, 500);
+        }
+      }, 500);
+    } 
+    setTimeout(function(){
+      onloadCallback();
+    }, 2000);
+
+</script>
+
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

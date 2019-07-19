@@ -1,0 +1,643 @@
+<link type="text/css" rel="stylesheet" href="assets/style/css/font-awesome.min.css">
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<!--general feedback starts here -->
+<div class="container">
+    <div class="general-feedback-panel" style="text-align:center;">
+        <div class="nps-section">
+            <div class="nps-feedback-title">
+                <h2>Overall Experience Feedback</h2>
+                <!--<p>Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.</p> -->
+            </div>
+            <div class="nps-feedback-panel">
+                <form action="" method="get">
+                    <!--Conditional Booking ID -->
+                    <!--<div class="feed-questionaire" style="display:none;">
+            <div class="question-area">
+              <h6>Enter your Booking ID</h6>
+              <input name="" type="text" class="input_bookingid" />
+            </div>
+            <div class="clear"></div>
+            <div class="prev_next_btn">
+              <ul>
+                <li>
+                  <input type="button" name="" id="" value="Prev">
+                </li>
+                <li>
+                  <input type="button" class="activeinput" name="" id="" value="Next">
+                </li>
+              </ul>
+            </div>
+          </div> -->
+                    <!--Conditional Booking ID -->
+                    <!--    <slick class="slider single-item" responsive="breakpoints" slides-to-show=1 slides-to-scroll=1 infinite="false" draggable="false"> -->
+                    <!-- Overall Rating -->
+                    <div class="feed-questionaire" ng-show="quest.rating">
+                        <div class="question-area">
+                            <h6>Please rate us on your overall experience</h6>
+                            <div class="step-option-rating steptop">
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rating" ng-model="rating_info" ng-required="true" value="5" ng-click="clickRating()" />
+                                    <label class="full" for="star5" title="Excellent - 5 stars"></label>
+                                    <input type="radio" id="star4" name="rating" ng-model="rating_info" ng-required="true" value="4" ng-click="clickRating()" />
+                                    <label class="full" for="star4" title="Good - 4 stars"></label>
+                                    <input type="radio" id="star3" name="rating" ng-model="rating_info" ng-required="true" value="3" ng-click="clickRating()" />
+                                    <label class="full" for="star3" title="Average - 3 stars"></label>
+                                    <input type="radio" id="star2" name="rating" ng-model="rating_info" ng-required="true" value="2" ng-click="clickRating()" />
+                                    <label class="full" for="star2" title="Bad - 2 stars"></label>
+                                    <input type="radio" id="star1" name="rating" ng-model="rating_info" ng-required="true" value="1" ng-click="clickRating()" />
+                                    <label class="full" for="star1" title="Worst - 1 star"></label>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="prev_next_btn">
+                            <ul>
+                                <li>
+                                    <input type="button" class="activeinput nextimg" style="display:none;" name="next_q1" id="next_q1" value="Next" ng-show="rating_info !== ''" ng-click="clickRating();">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Overall Rating ends -->
+                    <!--what went wrong -->
+                    <div class="feed-questionaire" ng-show="quest.category">
+                        <div class="question-area">
+                            <h6 ng-show="rating_info <= 3">What went wrong?</h6>
+                            <h6 ng-show="rating_info > 3">What did you like most?</h6>
+
+                            <div class="category-issues">
+                                <ul>
+                                    <li>
+                                        <div ng-click="clickCategoryDiv('Order Booking Process')">
+                                            <center>
+                                                <img src="assets/images/reason_01.png" />
+                                            </center>
+                                            <p>Order Booking Process</p>
+                                        </div>
+                                        <div class="radio-btn">
+                                            <input type="radio" value="Order Booking Process" id="category1" name="category" ng-click="clickCategory();" ng-model="category" />
+                                            <label style="left:0px !important; top:2px !important; font-size:18px; line-height:25px; font-weight:normal;" for="category1" onclick></label>
+                                        </div>                               
+                                    </li>
+                                    <li>
+                                        <div ng-click="clickCategoryDiv('Sample Collection')">
+                                            <center>
+                                                <img src="assets/images/reason_02.png" />
+                                            </center>
+                                            <p>Sample Collection</p>
+                                        </div>
+                                        <div class="radio-btn">
+                                            <input type="radio" value="Sample Collection" id="category2" name="category" ng-click="clickCategory();" ng-model="category" />
+                                            <label for="category2" onclick></label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div ng-click="clickCategoryDiv('Test Reports')">
+                                            <center>
+                                                <img src="assets/images/reason_03.png" />
+                                            </center>
+                                            <p>Test Reports</p>
+                                        </div>
+                                        <div class="radio-btn">
+                                            <input type="radio" value="Test Reports" id="category3" name="category" ng-click="clickCategory();" ng-model="category" />
+                                            <label for="category3" onclick></label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div ng-click="clickCategoryDiv('Doctor Consultation')">
+                                            <center>
+                                                <img src="assets/images/reason_04.png" />
+                                            </center>
+                                            <p>Doctor Consultation</p>
+                                        </div>
+                                        <div class="radio-btn">
+                                            <input type="radio" value="Doctor Consultation" id="category4" name="category" ng-click="clickCategory();" ng-model="category" />
+                                            <label for="category4" onclick></label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="prev_next_btn">
+                            <ul>
+                                <li>
+                                    <input type="button" class="activeinput previmg" name="prev_rating" id="prev_rating" value="Prev" ng-click="showRating();">
+                                </li>
+                                <li>
+                                    <input type="button" class="activeinput nextimg" name="" id="" value="Next" ng-click="clickCategory();" ng-show="category">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--what went wrong ends here -->
+                    <!-- Bad rating -->
+                    <div ng-if="rating === 'bad'">
+                        <!--Common 3 TO 4 : Order Booking Phase -->
+                        <div class="feed-questionaire" ng-show="quest.bad_cat1" id="bad_cat1">
+                            <div class="question-area">
+                                <center>
+                                    <img src="assets/images/reason_01.png" />
+                                </center>
+                                <h5>What went wrong in ?</h5>
+                                <h6>Order Booking Process</h6>
+                                <div class="category-issues">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <h4>Not able to find all the tests</h4>
+                                            <div class="category-issue-options">
+                                                <ul>
+                                                    <li style="display:block; width:100%;">
+                                                        <div class="checkbox-btn">
+                                                            <input type="checkbox" value="1" id="bad1a1" name="bad1a1" ng-click="clickRadio(1, 'bad1a1');" ng-model="options.bad1a1">
+                                                            <label for="bad1a1" onclick="">On website</label>
+                                                        </div>
+                                                    </li>
+                                                    <li style="display:block;width:100%;">
+                                                        <div class="checkbox-btn">
+                                                            <input type="checkbox" value="2" id="bad1a2" name="bad1a2" ng-click="clickRadio(2, 'bad1a2');" ng-model="options.bad1a2">
+                                                            <label for="bad1a2" onclick="">On Mobile App</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Not happy with the representative who booked the tests on your behalf</h4>
+                                            <div class="category-issue-options">
+                                                <ul>
+                                                    <li style="display:block; width:100%;">
+                                                        <div class="checkbox-btn">
+                                                            <input type="checkbox" value="3" id="bad1a3" name="bad1a3" ng-click="clickRadio(3, 'bad1a3');" ng-model="options.bad1a3">
+                                                            <label for="bad1a3" onclick="">Did not communicate the correct pricing or discounts</label>
+                                                        </div>
+                                                    </li>
+                                                    <li style="display:block; width:100%;">
+                                                        <div class="checkbox-btn">
+                                                            <input type="checkbox" value="4" id="bad1a4" name="bad1a4" ng-click="clickRadio(4, 'bad1a4');" ng-model="options.bad1a4">
+                                                            <label for="bad1a4" onclick="">Poor explanation of the test details</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="feedsubmit" ng-show="(options.bad1a1 || options.bad1a2 || options.bad1a3 || options.bad1a4)"> <a href="javascript:void(0)" ng-click="clickSubmit();">Submit</a> </div>
+                            <div class="clear"></div>
+                            <div class="prev_next_btn">
+                                <ul>
+                                    <li>
+                                        <input type="button" class="activeinput previmg" name="prev_bad1" id="prev_bad1" value="Prev" ng-click="showCategory();">
+                                    </li>
+                                    <li>
+                                        <input type="button" style="display:none;" class="activeinput nextimg" name="next_bad1" id="next_bad_cat1" value="Next" ng-click="clickSubmit();" ng-show="(options.bad1a1 || options.bad1a2 || options.bad1a3 || options.bad1a4)">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Common 3 TO 4 : Order Booking Phase ends -->
+                        <!--Common 3 TO 4 : Sample collection Phase -->
+                        <div class="feed-questionaire" ng-show="quest.bad_cat2" id="bad_cat2">
+                            <div class="question-area">
+                                <center>
+                                    <img src="assets/images/reason_02.png" />
+                                </center>
+                                <h5>What went wrong in ?</h5>
+                                <h6>Sample collection</h6>
+                                <div class="category-issues">
+                                    <div class="col-md-12">
+                                        <div class="category-issue-options">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="5" id="bad2a1" name="bad2a1" ng-click="clickRadio(5, 'bad2a1');" ng-model="options.bad2a1">
+                                                        <label for="bad2a1" onclick="">Sample collection agent (Phlebotomist) was not on time</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="6" id="bad2a2" name="bad2a2" ng-click="clickRadio(6, 'bad2a2');" ng-model="options.bad2a2">
+                                                        <label for="bad2a2" onclick="">Sample collection was painful</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="7" id="bad2a3" name="bad2a3" ng-click="clickRadio(7, 'bad2a3');" ng-model="options.bad2a3">
+                                                        <label for="bad2a3" onclick="">Phlebotomist was not properly dressed and lacked hygiene measures</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="feedsubmit">
+                                <a href="javascript:void(0)" ng-click="clickSubmit();" ng-show="(options.bad2a1 || options.bad2a2 || options.bad2a3)">Submit</a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="prev_next_btn">
+                                <ul>
+                                    <li>
+                                        <input type="button" class="activeinput previmg" name="prev_bad2" id="prev_bad2" value="Prev" ng-click="showCategory();">
+                                    </li>
+                                    <li>
+                                        <input type="button" style="display:none;" class="activeinput nextimg" name="next_bad2" id="next_bad_cat2" value="Next" ng-click="clickSubmit();" ng-show="(options.bad2a1 || options.bad2a2 || options.bad2a3)">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Common 3 TO 4 : Sample collection Phase ends -->
+                        <!--Common 3 TO 4 : Report -->
+                        <div class="feed-questionaire" ng-show="quest.bad_cat3" id="bad_cat3">
+                            <div class="question-area">
+                                <center>
+                                    <img src="assets/images/reason_03.png" />
+                                </center>
+                                <h5>What went wrong in ?</h5>
+                                <h6>Reports</h6>
+                                <div class="category-issues">
+                                    <div class="col-md-12">
+                                        <div class="category-issue-options">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="8" id="bad3a1" name="bad3a1" ng-click="clickRadio(8, 'bad3a1');" ng-model="options.bad3a1">
+                                                        <label for="bad3a1" onclick="">Soft copy of the report was not on time </label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="value-12" id="bad3a2" name="bad3a2" ng-click="clickRadio(9, 'bad3a2');" ng-model="options.bad3a2">
+                                                        <label for="bad3a2" onclick="">Report received was not correct</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="value-12" id="bad3a3" name="bad3a3" ng-click="clickRadio(10, 'bad3a3');" ng-model="options.bad3a3">
+                                                        <label for="bad3a3" onclick="">Report hardcopy was late</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="feedsubmit">
+                                <a href="javascript:void(0)" ng-click="clickSubmit();" ng-show="(options.bad3a1 || options.bad3a2 || options.bad3a3)">Submit</a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="prev_next_btn">
+                                <ul>
+                                    <li>
+                                        <input type="button" class="activeinput previmg" name="prev_bad3" id="prev_bad3" value="Prev" ng-click="showCategory();">
+                                    </li>
+                                    <li>
+                                        <input type="button" style="display:none;" class="activeinput nextimg" name="next_bad3" id="next_bad_cat3" value="Next" ng-click="clickSubmit();" ng-show="(options.bad3a1 || options.bad3a2 || options.bad3a3)">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Common 3 TO 4 : Report Phase ends -->
+                        <!--Common 3 TO 4 : Doctor Consultation -->
+                        <div class="feed-questionaire" ng-show="quest.bad_cat4" id="bad_cat4">
+                            <div class="question-area">
+                                <center>
+                                    <img src="assets/images/reason_04.png" />
+                                </center>
+                                <h5>What went wrong in ?</h5>
+                                <h6>Doctor Consultation</h6>
+                                <div class="category-issues">
+                                    <div class="col-md-12">
+                                        <div class="category-issue-options">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="11" id="bad4a1" name="bad4a1" ng-click="clickRadio(11, 'bad4a1');" ng-model="options.bad4a1">
+                                                        <label for="bad4a1" onclick="">Doctor consultation was not provided after raising the request</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="bad4a2" id="bad4a2" name="bad4a2" ng-click="clickRadio(12, 'bad4a2');" ng-model="options.bad4a2">
+                                                        <label for="bad4a2" onclick="">Doctor wasn’t able to answer my questions</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="feedsubmit">
+                                <a href="javascript:void(0)" ng-click="clickSubmit();">Submit</a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="prev_next_btn">
+                                <ul>
+                                    <li>
+                                        <input type="button" class="activeinput previmg" name="prev_bad4" id="prev_bad4" value="Prev" ng-click="showCategory();">
+                                    </li>
+                                    <li>
+                                        <input type="button" style="display:none;" class="activeinput nextimg" name="next_bad4" id="next_bad_cat4" value="Next" ng-click="clickSubmit();" ng-show="(options.bad4a1 || options.bad4a2)">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Common 3 TO 4 : Doctor Consultation Phase ends -->
+                    </div>
+                    <!--thankyou section 3 to 4 -->
+                    <div class="feed-questionaire" ng-show="quest.bad_feedback" id="bad_feedback">
+                        <div class="question-area">
+                            <center>
+                                <img src="assets/images/feedback_reason.png" />
+                            </center>
+                            
+                            <div class="thankyoufeeds">
+                                <div class="share_msg_textarea">
+                                <h5 style="text-transform: none; margin-bottom: 10px; color: #484848; margin: 0px; padding: 0px 0px 10px 0; font-size: 16px !important; line-height: 18px;">What can be improved ?</h5>
+                                    <textarea name="improvement_msg" id="improvement_msg" cols="" rows="" ng-model="improvement_msg" placeholder="Please write your feedback"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="feedsubmit">
+                            <a href="javascript:void(0)" ng-click="submit_feedback();">Send Feedback</a>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="prev_next_btn">
+                            <ul>
+                                <li>
+                                    <input type="button" class="activeinput previmg" name="prev_bad5" id="prev_bad5" value="Prev" ng-click="showPrevious();">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--thankyou section ends 3 to 4 -->
+                    <div class="thankyouimproved" ng-show="thankyou_improved">
+                        <h4>Thank you for your feedback</h4>
+                        <p>We are working our best to make your experience better.</p>
+                    </div>
+                    <!-- Good rating -->
+                    <div ng-if="rating === 'good'">
+                        <!--Common 4 TO 5 : Order Booking Phase -->
+                        <div class="feed-questionaire" ng-show="quest.good_cat1" id="good_cat1">
+                            <div class="question-area">
+                                <center>
+                                    <img src="assets/images/reason_01.png" />
+                                </center>
+                                <h5>What did you like most?</h5>
+                                <h6>Order Booking Process</h6>
+                                <div class="category-issues">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <h4>Very smooth booking experience using</h4>
+                                            <div class="category-issue-options">
+                                                <ul>
+                                                    <li>
+                                                        <div class="checkbox-btn">
+                                                            <input type="checkbox" value="13" id="good1a1" name="good1a1" ng-click="clickRadio(13, 'good1a1');" ng-model="options.good1a1">
+                                                            <label for="good1a1" onclick="">Website</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="checkbox-btn">
+                                                            <input type="checkbox" value="14" id="good1a2" name="good1a2" ng-click="clickRadio(14, 'good1a2');" ng-model="options.good1a2">
+                                                            <label for="good1a2" onclick="">Mobile App</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Extremely satisfied with the representative booking the health check-up</h4>
+                                            <div class="category-issue-options">
+                                                <ul>
+                                                    <li style="width:100%; display:block;">
+                                                        <div class="checkbox-btn">
+                                                            <input type="checkbox" value="15" id="good1a3" name="good1a3" ng-click="clickRadio(15, 'good1a3');" ng-model="options.good1a3">
+                                                            <label for="good1a3" onclick="">Explained the tests in detail</label>
+                                                        </div>
+                                                    </li>
+                                                    <li style="width:100%; display:block;">
+                                                        <div class="checkbox-btn">
+                                                            <input type="checkbox" value="16" id="good1a4" name="good1a4" ng-click="clickRadio(16, 'good1a4');" ng-model="options.good1a4">
+                                                            <label for="good1a4" onclick="">Adequately suggested tests as per the medical conditions</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="feedsubmit">
+                                <a href="javascript:void(0)" ng-click="clickSubmit();" ng-show="(options.good1a1 || options.good1a2 || options.good1a3 || options.good1a4)">Submit</a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="prev_next_btn">
+                                <ul>
+                                    <li>
+                                        <input type="button" class="activeinput previmg" name="prev_good1" id="prev_good1" value="Prev" ng-click="showCategory();">
+                                    </li>
+                                    <li>
+                                        <input type="button" style="display:none;" class="activeinput nextimg" name="next_good1" id="next_good_cat1" value="Next" ng-click="clickSubmit();" ng-show="(options.good1a1 || options.good1a2 || options.good1a3 || options.good1a4)">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Common 4 TO 5 : Order Booking Phase ends -->
+                        <!--Common 4 TO 5 : Sample collection Phase -->
+                        <div class="feed-questionaire" ng-show="quest.good_cat2" id="good_cat2">
+                            <div class="question-area">
+                                <center>
+                                    <img src="assets/images/reason_02.png" />
+                                </center>
+                                <h5>What did you like most?</h5>
+                                <h6>Sample collection</h6>
+                                <div class="category-issues">
+                                    <div class="col-md-12">
+                                        <div class="category-issue-options">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="17" id="good2a1" name="good2a1" ng-click="clickRadio(17, 'good2a1');" ng-model="options.good2a1">
+                                                        <label for="good2a1" onclick="">Pain free sample collection</label>
+                                                    </div>
+                                                    
+                                                </li>
+                                                
+                                                <li>
+                                                <div class="checkbox-btn">
+                                                        <input type="checkbox" value="18" id="good2a2" name="good2a2" ng-click="clickRadio(18, 'good2a2');" ng-model="options.good2a2">
+                                                        <label for="good2a2" onclick="">Appreciate the whole sample collection experience (well dressed, wearing gloves, showed sealed kit etc.) </label>
+                                                    </div>
+                                                </li>
+                                                
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="feedsubmit">
+                                <a href="javascript:void(0)" ng-click="clickSubmit();" ng-show="(options.good2a1 || options.good2a2)">Submit</a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="prev_next_btn">
+                                <ul>
+                                    <li>
+                                        <input type="button" class="activeinput previmg" name="prev_good2" id="prev_good2" value="Prev" ng-click="showCategory();">
+                                    </li>
+                                    <li>
+                                        <input type="button" style="display:none;" class="activeinput nextimg" name="next_good2" id="next_good_cat2" value="Next" ng-click="clickSubmit();" ng-show="(options.good2a1 || options.good2a2)">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Common 4 TO 5 : Sample collection Phase ends -->
+                        <!--Common 4 TO 5 : Report -->
+                        <div class="feed-questionaire" ng-show="quest.good_cat3" id="good_cat3">
+                            <div class="question-area">
+                                <center>
+                                    <img src="assets/images/reason_03.png" />
+                                </center>
+                                <h5>What did you like most?</h5>
+                                <h6>Reports</h6>
+                                <div class="category-issues">
+                                    <div class="col-md-12">
+                                        <div class="category-issue-options">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="19" id="good3a1" name="good3a1" ng-click="clickRadio(19, 'good3a1');" ng-model="options.good3a1">
+                                                        <label for="good3a1" onclick="">Received report on time</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="20" id="good3a2" name="good3a2" ng-click="clickRadio(20, 'good3a2');" ng-model="options.good3a2">
+                                                        <label for="good3a2" onclick="">Accuracy of the reports </label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="feedsubmit">
+                                <a href="javascript:void(0)" ng-click="clickSubmit();" ng-show="(options.good3a1 || options.good3a2)">Submit</a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="prev_next_btn">
+                                <ul>
+                                    <li>
+                                        <input type="button" class="activeinput previmg" name="prev_good3" id="prev_good3" value="Prev" ng-click="showCategory();">
+                                    </li>
+                                    <li>
+                                        <input type="button" style="display:none;" class="activeinput nextimg" name="next_good3" id="next_good_cat2" value="Next" ng-click="clickSubmit();" ng-show="(options.good3a1 || options.good3a2)">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Common 4 TO 5 : Report Phase ends -->
+                        <!--Common 4 TO 5 : Doctor Consultation -->
+                        <div class="feed-questionaire" ng-show="quest.good_cat4" id="good_cat4">
+                            <div class="question-area">
+                                <center>
+                                    <img src="assets/images/reason_04.png" />
+                                </center>
+                                <h5>What did you like most?</h5>
+                                <h6>Doctor Consultation</h6>
+                                <div class="category-issues">
+                                    <div class="col-md-12">
+                                        <div class="category-issue-options">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="21" id="good4a1" name="good4a1" ng-click="clickRadio(21, 'good4a1');" ng-model="options.good4a1">
+                                                        <label for="good4a1" onclick="">Detailed doctor’s consultation</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox-btn">
+                                                        <input type="checkbox" value="22" id="good4a2" name="good4a2" ng-click="clickRadio(22, 'good4a2');" ng-model="options.good4a2">
+                                                        <label for="good4a2" onclick="">Suggestions and measures recommended</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="feedsubmit">
+                                <a href="javascript:void(0)" ng-click="clickSubmit();" ng-show="(options.good4a1 || options.good4a2)">Submit</a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="prev_next_btn">
+                                <ul>
+                                    <li>
+                                        <input type="button" class="activeinput previmg" name="prev_good4" id="prev_good4" value="Prev" ng-click="showCategory();">
+                                    </li>
+                                    <li>
+                                        <input type="button" style="display:none;" class="activeinput nextimg" name="next_good4" id="next_good_cat3" value="Next" ng-click="clickSubmit();" ng-show="(options.good4a1 || options.good4a2)">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Common 4 TO 5 : Doctor Consultation Phase ends -->
+                    </div>
+                    <!--thankyou section 4 to 5 -->
+                    <div class="feed-questionaire" ng-show="quest.good_feedback" id="good_feedback">
+                        <div class="question-area">
+                            <div class="thankyoufeeds">
+                                <center>
+                                    <img src="assets/images/feedback_reason.png" />
+                                </center>
+                                <h5 style="text-transform: none; margin-bottom: 10px; color: #484848; margin: 0px; padding: 0px 0px 10px 0; font-size: 16px !important; line-height: 18px;">We Would like to hear more from you</h5>
+                                <div class="share_msg_textarea">
+                                    <textarea ng-model="feedback_msg" name="feedback_msg" cols="" rows="" placeholder="Please write your feedback"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="feedsubmit">
+                            <a href="javascript:void(0)" ng-click="submit_feedback();">Send Feedback</a>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="prev_next_btn">
+                            <ul>
+                                <li>
+                                    <input type="button" class="activeinput previmg" name="prev_good5" id="prev_good5" value="Prev" ng-click="showPrevious();">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div ng-show="thankyou_good">
+                        <div class="thankyouimproved">
+                            <h4>Thank you</h4>
+                            <p>Thank you for your feedback. Please rate us on Google play as well</p>
+                        </div>
+                    </div>
+                    <!--thankyou section ends 4 to 5 -->
+                    <!--   </slick> -->
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--general feedback ends here -->

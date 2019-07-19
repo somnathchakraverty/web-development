@@ -1,0 +1,176 @@
+<link type="text/css" rel="stylesheet" href="assets/style/css/font-awesome.min.css">
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<!--general feedback starts here -->
+<div class="container">
+  <div class="general-feedback-panel">
+    <div class="interactive-feeds">
+      <div ng-hide="datasuccess">
+        <div class="general-feedback-info-area">
+          <h6>We value your feedback</h6>
+          <p>In our continuous effort to serve you better, we are seeking your help with our feedback questionnaires below:</p>
+        </div>
+        <div class="totalquestion">Question {{current}} of {{totalQuestion}}</div>
+        <div class="int-question-panel">
+          <form action="" method="get">
+            <!--question 01 -->
+            <article class="step" ng-show="quest.q1" id="q1_div">
+              <h2>Did the sample collector reach within the given time slot ?</h2>
+              <div class="step-option">
+                <div class="divide" ng-class="{selectedaction: quest.q1_select=='y'}">
+                  <div class="radio-btn">
+                    <input type="radio" id="blood_collection_1" name="blood_collection" value="y" ng-model="on_time_blood_collection" ng-required="true" ng-click="clickRadio(1,'y');">
+                    <label style="left:0px !important; top:2px !important; font-size:18px; line-height:25px; font-weight:normal;" for="blood_collection_1" onclick>Yes</label>
+                  </div>
+                </div>
+                <div class="nodivide" ng-class="{selectedaction: quest.q1_select=='n'}">
+                  <div class="radio-btn">
+                    <input type="radio" id="blood_collection_2" name="blood_collection" ng-model="on_time_blood_collection" tabindex="1" value="n" ng-required="true" ng-click="clickRadio(1,'n');" />
+                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="blood_collection_2" onclick>No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="backnextbtn">
+                <ul>
+                  <li>
+                    <input type="button" style="display:none;" name="next_q1" id="next_q1" value="Next" ng-show="quest.q1_select !== ''" ng-click="showNext();">
+                  </li>
+                </ul>
+              </div>
+            </article>
+            
+            <!--question 02 -->
+            <article class="step" ng-show="quest.q2" id="q2_div">
+              <div class="phlebo_dress"><img src="assets/images/phlebo_image.png" /></div>
+              <div class="phlebo_bag"><img src="assets/images/phlebo_bag.png" /></div>
+              <h2>Was the sample collector properly dressed and was carrying Healthians’ bag ?</h2>
+              <div class="step-option">
+                <div class="divide" ng-class="{selectedaction: quest.q2_select=='y'}">
+                  <div class="radio-btn">
+                    <input type="radio" id="add_on_1" name="add_on" value="y" ng-model="add_on_status" ng-required="true" ng-click="clickRadio(2,'y');" />
+                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="add_on_1" onclick>Yes</label>
+                  </div>
+                </div>
+                <div class="nodivide" ng-class="{selectedaction: quest.q2_select=='n'}">
+                  <div class="radio-btn">
+                    <input type="radio" id="add_on_2" name="add_on" ng-model="add_on_status" value="n" ng-required="true" ng-click="clickRadio(2,'n');" />
+                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="add_on_2" onclick>No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="backnextbtn">
+                <ul>
+                  <li>
+                    <input type="button" name="prev_q2" id="prev_q2" value="Back" ng-click="showPrevious();">
+                  </li>
+                  <li>
+                    <input type="button" style="display:none;" name="next_q2" id="next_q2" value="Next" ng-show="quest.q2_select !== ''" ng-click="showNext();">
+                  </li>
+                </ul>
+              </div>
+            </article>
+            
+            <!--question 03 -->
+            <article class="step" ng-show="quest.q3" id="q3_div">
+              <div class="phlebo_kit"><img src="assets/images/bag_kit.jpg" /></div>
+              <div class="phlebo_kit2"><img src="assets/images/smart-prik.jpg" /></div>
+              <h2>Were you duly informed about the sealed kit before the sample collection?</h2>
+              <div class="step-option">
+                <div class="divide" ng-class="{selectedaction: quest.q3_select=='y'}">
+                  <div class="radio-btn">
+                    <input type="radio" id="sample_satisfied_1" name="sample_satisfied" value="y" ng-model="sample_collection_experience" ng-required="true" ng-click="clickRadio(3,'y')" />
+                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="sample_satisfied_1" onclick>Yes</label>
+                  </div>
+                </div>
+                <div class="nodivide" ng-class="{selectedaction: quest.q3_select=='n'}">
+                  <div class="radio-btn">
+                    <input type="radio" id="sample_satisfied_2" name="sample_satisfied" ng-model="sample_collection_experience" value="n" ng-required="true" ng-click="clickRadio(3,'n')" />
+                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="sample_satisfied_2" onclick>No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="backnextbtn">
+                <ul>
+                  <li>
+                    <input type="button" name="prev_q3" id="prev_q3" value="Back" ng-click="showPrevious();">
+                  </li>
+                  <li>
+                    <input style="display:none;" type="button"  value="Next" name="next_q3" id="next_q3" ng-show="quest.q3_select !== ''" ng-click="showNext();">
+                  </li>
+                </ul>
+              </div>
+            </article>
+            
+            <!--question 04 -->
+            <article class="step" ng-show="quest.q4" id="q4_div">
+              <h2>Did the sample collector show you the technical & quality process video?</h2>
+              <div class="step-option">
+                <div class="divide" ng-class="{selectedaction: quest.q4_select=='y'}">
+                  <div class="radio-btn">
+                    <input type="radio" id="discount_booking_1" name="discount_booking" value="y" ng-model="future_discount_status" ng-required="true" ng-click="clickRadio(4,'y')" />
+                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="discount_booking_1" onclick>Yes</label>
+                  </div>
+                </div>
+                <div class="nodivide" ng-class="{selectedaction: quest.q4_select=='n'}">
+                  <div class="radio-btn">
+                    <input type="radio" id="discount_booking_2" name="discount_booking" value="n" ng-model="future_discount_status" ng-required="true" ng-click="clickRadio(4,'n')" />
+                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="discount_booking_2" onclick>No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="backnextbtn">
+                <ul>
+                  <li>
+                    <input type="button" name="prev_q4" id="prev_q4" value="Back" ng-click="showPrevious();">
+                  </li>
+                  <li>
+                    <input style="display:none;" type="button" value="Next" name="next_q4" id="next_q4" ng-show="quest.q4_select !== ''" ng-click="showNext();">
+                  </li>
+                </ul>
+              </div>
+            </article>
+            
+            <!--question 05 -->
+            <article class="step" ng-show="quest.q5" id="q5_div">
+              <h2>Please rate us on your overall experience.</h2>
+              <div class="step-option-rating">
+                <fieldset class="rating">
+                  <input type="radio" id="star5" name="rating" ng-model="rating_info" ng-required="true" value="5" ng-click="clickRadio(5,'y')"/>
+                  <label class = "full" for="star5" title="Excellent - 5 stars"></label>
+                  <input type="radio" id="star4" name="rating" ng-model="rating_info" ng-required="true" value="4" ng-click="clickRadio(5,'y')"/>
+                  <label class = "full" for="star4" title="Good - 4 stars"></label>
+                  <input type="radio" id="star3" name="rating" ng-model="rating_info" ng-required="true" value="3" ng-click="clickRadio(5,'y')"/>
+                  <label class = "full" for="star3" title="Average - 3 stars"></label>
+                  <input type="radio" id="star2" name="rating" ng-model="rating_info" ng-required="true" value="2" ng-click="clickRadio(5,'y')"/>
+                  <label class = "full" for="star2" title="Bad - 2 stars"></label>
+                  <input type="radio" id="star1" name="rating" ng-model="rating_info" ng-required="true" value="1" ng-click="clickRadio(5,'y')"/>
+                  <label class = "full" for="star1" title="Worst - 1 star"></label>
+                </fieldset>
+              </div>
+              <div class="backnextbtn">
+                <ul>
+                  <li>
+                    <input type="button" name="prev" id="prev" value="Back" ng-click="showPrevious();">
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </form>
+        </div>
+      </div>
+      <!--thankyou msg -->
+      <div class="feedback-submit" ng-show="datasuccess">
+        <h5>Thank you for your feedback.</h5>
+        <p>We are working our best towards making your experience better.</p>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!--general feedback ends here --> 
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

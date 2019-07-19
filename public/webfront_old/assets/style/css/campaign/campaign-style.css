@@ -1,0 +1,597 @@
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+img a,
+li,
+ol,
+p,
+ul {
+    padding: 0;
+    margin: 0
+}
+
+.call,
+.logocampaign {
+    display: inline-block;
+    vertical-align: top
+}
+
+.call,
+.call a {
+    font-size: 20px;
+    color: #fff
+}
+
+.bg-grey,
+.bg-grey ul li,
+.offers,
+.packages,
+.works {
+    text-align: center
+}
+
+.bg-grey ul li,
+.call,
+.logocampaign,
+.works ul li {
+    vertical-align: top
+}
+
+body {
+    width: 100%;
+    font-family: Roboto, sans-serif;
+    background: #fff!important
+}
+
+div,
+li,
+ol,
+ul {
+    list-style: none
+}
+
+em,
+input,
+span,
+strong {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-style: normal
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400
+}
+
+a,
+a:hover {
+    text-decoration: none
+}
+
+img,
+img a {
+    border: 0
+}
+
+.clear {
+    clear: both
+}
+
+.header-bg {
+    background: url(/assets/images/campaign/main-banner-landing.jpg) center no-repeat;
+    background-size: cover;
+    min-height:742px;
+    padding: 6px 0 0
+}
+
+.header-bg-dengue {
+    background: url(/assets/images/campaign/main-banner_dengue.jpg) center no-repeat;
+    background-size: cover;
+    min-height:704px;
+    padding: 6px 0 0
+}
+
+.form-area {
+    background: rgba(255, 255, 255, .92);
+    width: 362px;
+    padding:25px 30px;
+    margin-bottom: 0;
+    min-height: 290px; border-radius:5px 5px 0px 0px;
+}
+.healthier{color:#FFF; font-size:23px; font-weight:bold;}
+.fill{font-size:15px; padding:4px 0px; color:#fff; display:block; margin-bottom:5px;}
+
+.call {
+    float: right;
+    padding: 8px 0 0
+}
+
+.form-section {
+    width: 374px;
+    display: block;
+    margin: 0;
+    position: absolute;
+    right: 0px; margin-top:4px;
+}
+
+.form-section p {
+    color: #fff;
+    font-size: 26px;
+    line-height: 36px;
+    font-weight: 500;
+    padding-bottom: 10px
+}
+
+textarea.text {
+    height:60px; margin-bottom:0px;
+    resize: none
+}
+
+.form-area ul {
+    margin: 0;
+    padding: 0
+}
+
+.form-area ul li {
+    margin: 0;
+    padding:0 0px 10px 0;
+}
+
+.form-area ul li .help-block {
+    position: absolute;
+    font-size: 11px;
+    line-height: 19px
+}
+
+.text {
+    margin: 0;
+    width: 100%;
+    transition: none!important;
+    padding:10px 3%;
+    font-size: 100%;
+    background: #fff;
+    border:1px solid #c1c1c1;
+    outline: 0;
+    color: #8a75a0;
+    border-radius: 3px;
+}
+
+.submit-form {
+    background: #f26061;
+    outline: 0;
+    border: none;
+    border-radius:3px;
+    padding:15px 20px; font-size:18px;
+    margin: 0;
+    color: #fff;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, .35)!important
+}
+
+.offers {
+    width: 100%;
+    font-size: 20px;
+    color: #00a0a8;
+    padding: 12px 0;
+    border-bottom: 1px solid #b1b1b1;
+    border-top: 1px solid #b1b1b1;
+    background: #f8f8f8;
+    font-weight: 400
+}
+
+.offers span,
+.offers strong {
+    color: #3a3a3a;
+    font-style: italic
+}
+
+.bg-grey h1,
+.packages h1 {
+    font-size: 28px;
+    border-bottom: 1px solid #b4b4b4;
+    display: inline-block
+}
+
+.offers strong {
+    font-weight: 700
+}
+
+.offers span {
+    font-weight: 500
+}
+
+.packages {
+    background: #fff
+}
+
+.packages h1 {
+    color: #3A3A3A;
+    padding: 50px 50px 22px;
+    font-family: Roboto
+}
+
+.packages h1 span {
+    font-style: italic;
+    color: #00a0a8
+}
+
+.bg-grey {
+    background: #f2f2f2;
+    padding-bottom: 50px
+}
+
+.bg-grey h1 {
+    color: #3A3A3A;
+    padding: 40px 50px 22px
+}
+
+.bg-grey h1 span {
+    font-style: italic;
+    color: #00a0a8
+}
+
+.bg-grey ul {
+    margin: 50px 0 0;
+    padding: 0
+}
+
+.bg-grey ul li {
+    padding: 0;
+    display: inline-block;
+    max-width: 250px;
+    margin: 0 15px
+}
+
+.bg-grey ul li figure {
+    display: block;
+    margin: 0;
+    padding: 0
+}
+
+.bg-grey ul li figcaption {
+    display: block;
+    margin: 0;
+    padding: 18px 0 0;
+    min-height: 65px;
+    font-size: 16px;
+    color: #00a0a8;
+    font-weight: normal;
+    line-height: 20px
+}
+
+.bg-grey ul li figcaption strong {
+    font-weight: bold;
+}
+
+.bg-grey ul li p {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #191919
+}
+
+.works h1 {
+    font-size: 28px;
+    color: #3A3A3A;
+    padding: 50px 50px 22px;
+    display: inline-block
+}
+
+.works h1 span {
+    font-style: italic;
+    color: #00a0a8
+}
+
+.works p {
+    display: block;
+    margin: 35px 0 55px;
+    color: #3a3a3a
+}
+
+.works ul {
+    margin: 0;
+    padding: 0
+}
+
+.works ul li {
+    display: inline-block;
+    margin: 0 20px;
+    padding: 0;
+    width: 220px;
+    text-align: left
+}
+
+.works ul li aside {
+    display: block;
+    margin: 0;
+    padding: 0
+}
+
+.camp-subscribe,
+.social,
+.social ul li,
+.works ul li aside figure,
+.works ul li aside span {
+    display: inline-block;
+    vertical-align: top
+}
+
+.works ul li aside span {
+    background: #00a0a8;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 31px
+}
+
+.works ul li aside figure {
+    border-top: 1px solid #979797;
+    margin: 14px 0 0 20px;
+    width: 160px
+}
+
+.works ul li figcaption {
+    color: #00a0a8;
+    font-size: 20px;
+    font-weight: 700;
+    min-height: 56px
+}
+
+.works ul li p {
+    margin: 20px 0 80px
+}
+
+footer {
+    background: #f9f9f9;
+    padding: 50px 0 25px;
+    text-align: center
+}
+
+.camp-subscribe {
+    width: 50%;
+    border-right: 1px solid #979797;
+    padding: 15px 0
+}
+
+.camp-subscribe h2 {
+    color: #3a3a3a;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 13px
+}
+
+.subscribe-text02 {
+    margin: 0;
+    width: 40%;
+    padding: 9px 3%;
+    background: #fff;
+    border: 1px solid #a7a4a4;
+    outline: 0;
+    color: #333
+}
+
+.btn-sbmt {
+    background: #f26061;
+    outline: 0;
+    padding: 9px 24px;
+    border: 1px solid #f26061;
+    border-left: none;
+    margin: 0 0 0 -4px;
+    color: #fff
+}
+
+.social h2,
+.social ul li a {
+    color: #3a3a3a;
+    font-size: 22px
+}
+
+.social {
+    width: 48%;
+    padding: 15px 0
+}
+
+.social h2 {
+    font-weight: 500
+}
+
+.social ul {
+    margin: 12px 0 50px;
+    padding: 0
+}
+
+.social ul li {
+    margin: 0;
+    padding: 0 5px
+}
+
+.social ul li a {
+    display: block;
+    line-height: 37px;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 50px;
+    border: 4px solid #3a3a3a;
+    height: 45px;
+    width: 45px
+}
+
+.social ul li a:hover {
+    color: #00a0a8;
+    border: 4px solid #00a0a8
+}
+
+footer p,
+footer p span a {
+    color: #3a3a3a
+}
+
+footer p {
+    display: block;
+    margin: 15px 0;
+    padding: 0;
+    font-size: 12px
+}
+
+footer p span {
+    font-size: 13px
+}
+
+footer p span a:hover {
+    text-decoration: underline;
+    color: #3a3a3a
+}
+
+ul.lab_images{ margin:80px 0px;}
+ul.lab_images li{ border: 4px solid #f5f5f5;
+    border-radius: 1px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.30); overflow:hidden;}
+
+/*@-moz-document url-prefix() {
+    .showcase_slider{ padding:10px 8px !important;
+        
+    }
+}*/
+
+@media only screen and (max-width:768px) {
+    .bg-grey ul li {
+        margin-bottom: 40px
+    }
+	ul.lab_images{ margin:10px 0px;}
+    .camp-subscribe,
+    .form-area,
+    .text {
+        width: 100%
+    }
+    .ms-slide {
+        min-height: 350px
+    }
+    .ms-sl-selected h2 {
+        min-height: auto;
+        font-size: 18px
+    }
+    .ms-slide p {
+        font-size: 14px;
+        padding: 12px 0 5px;
+        margin: 0
+    }
+    .ms-slide strong {
+        font-size: 15px;
+        padding-bottom: 10px
+    }
+    .form-section {
+        width: 90%;
+        display: block;
+        float: none;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin: 20px auto 0
+    }
+    .form-section p {
+        color: #fff;
+        font-size: 22px;
+        text-align: center;
+        line-height: 26px;
+        font-weight: 500;
+        padding-bottom: 12px
+    }
+    .form-area {
+        background:rgba(255, 255, 255, .92);
+        padding: 15px;
+        margin-bottom: 23px;
+        min-height: 270px; border-radius:10px; 
+    }
+    .form-area ul {
+        margin: 0;
+        padding: 0
+    }
+    .form-area ul li {
+        margin: 0;
+        padding: 0 0 8px
+    }
+    .text {
+        margin: 0;
+        padding: 6px 3%;
+        background: #fff;
+       
+        outline: 0;
+        color: #333
+    }
+    .camp-subscribe,
+    .subscribe {
+        border-right: none
+    }
+    .submit {
+        background: #f26061;
+        outline: 0;
+        border: none;
+        border-radius: 20px;
+        padding: 6px 20px;
+        margin: 5px 0 0 15px;
+        color: #fff;
+        box-shadow: 1px 3px 5px rgba(0, 0, 0, .35)
+    }
+    .call a {
+        font-size: 17px
+    }
+    .works ul li p {
+        margin: 0 0 20px
+    }
+    .subscribe-text02 {
+        width: 70%
+    }
+    .btn-sbmt {
+        padding: 9px 14px
+    }
+    .social,
+    .subscribe {
+        display: block;
+        width: auto;
+        padding: 15px 0
+    }
+    .social {
+        margin: 20px 0 0
+    }
+    .social ul {
+        margin: 12px 0 20px;
+        padding: 0
+    }
+    .header-bg, .header-bg-dengue {
+        background: 33% 0 #00a0a8!important;
+        padding: 10px 0 0;
+        min-height: 698px;
+        background-size: cover
+    }
+    .call {
+        padding: 18px 0 0
+    }
+}
+
+@media all and (min-width:20px) and (max-width:768px) {
+    .form-section {
+        width: 100%;
+        display: block;
+        float: none;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin:10px auto 0
+    }
+}

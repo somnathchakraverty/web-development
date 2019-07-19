@@ -1,0 +1,123 @@
+<!-- header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="ContentWrap">
+    <!--summary starts here -->
+    <div class="summeryContainer">
+        <div class="summeryMid help-block" ng-show="payment_api_error">
+            {{payment_api_error}} 
+        </div>
+        <div class="summeryMid" ng-show="payment_data">
+            <!--order message starts here -->
+            <div class="order-msg">
+                <div class="orderAction">
+                    <img src="assets/images/book-status.png">
+                </div>
+                <h2>
+                  Thank you
+                </h2>
+                <h5> 
+                  Your Service ID is <span ng-bind="payment_data.service_booking_id.toUpperCase()"></span>
+                </h5>
+                <p>
+                    We have sent you an email confirmation at : <span ng-bind="payment_data.email_address"></span>
+                </p>
+                <p style="font-size:15px;">
+                    In case of any questions, please call us at : <strong ng-bind="companyphone.display_no"></strong>
+                </p>
+                <div class="clear"></div>
+            </div>
+            <!--order message ends here -->
+            <div class="clear"></div>
+            <!--booking summary section -->
+            <div class="pkg-summary">
+                <h2 style="width:100%;">Service Summary</h2>
+                <div class="clear"></div>
+                <!--consumer description -->
+                <div class="user-infos ser_summary_top">
+                    <h1 class="booking-value"> 
+                      <span class="value">
+                        Service ID : {{payment_data.service_booking_id.toUpperCase()}}
+                      </span>
+                    </h1>
+                    <div class="clear"></div>
+                    <div class="user-detail">
+                        <p ng-if="stateParms.amt">
+                            <span class="titleuser titleleft">Transaction Amount : </span>
+                            <span class="detailuser titleright"><span class="fontrupee" style="padding:0px 2px;">`</span>{{total_received_amount}}</span>
+                        </p>
+                        <p ng-if="stateParms.merTxnId">
+                            <span class="titleuser titleleft">Transaction ID : </span>
+                            <span class="detailuser titleright">{{stateParms.merTxnId}}</span>
+                        </p>
+                        <p ng-if="payment_data.customer_name">
+                            <span class="titleuser titleleft">Billing Name : </span>
+                            <span class="detailuser titleright" ng-bind="payment_data.customer_name"></span>
+                        </p>
+                        <p ng-if="payment_data.contact_number">
+                            <span class="titleuser titleleft">Registered Mobile No. : </span>
+                            <span class="detailuser titleright">(+91) {{payment_data.contact_number}}</span>
+                        </p>
+                        <p ng-if="payment_data.email_address">
+                            <span class="titleuser titleleft">Email ID : </span>
+                            <span class="detailuser titleright">{{payment_data.email_address}}</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- Customer Details -->
+                <div class="user-infos ser_summary_top" ng-repeat="sub in payment_data.customer_details">
+                    <div class="clear"></div>
+                    <div class="user-detail ser_custname">
+                        <div class="ser_custname">
+                           <span class="service-cust" ng-bind="sub.customer_name"></span>
+                        </div>
+                       
+                        <div ng-repeat="ser in sub.service" style="margin-top: 15px;">  
+                            <p>
+                                <span class="titleuser titleleft">Service Name : </span>
+                                <span class="detailuser titleright">{{ser.service_name}} <em class="ser-price">(<span class="fontrupee" style="padding:0px 2px;">`</span>{{ser.order_price}})</em>
+                                </span>
+                            </p>
+                             <p>
+                                <span class="titleuser titleleft">Service Validity : </span>
+                                <span class="detailuser titleright">{{ser.service_valid_till | moment:'MMM DD, YYYY' }}</span>
+                            </p>
+                            <p>
+                              <span class="titleuser titleleft">Service Included : </span>
+                              <span class="detailuser subscriptionuserbox">
+                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableservice">
+                                    <tbody>
+                                    <tr>
+                                        <th align="left">
+                                            <div class="tabledataservice">
+                                                <div class="microservice"><b>Service Detail</b></div> 
+                                                <span class="no-times" style="border:none; padding:1px 4px;"><b>Frequency</b></span> 
+                                                <span class="validtill"><b>Validity</b></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                     <tr ng-repeat="inc in ser.microservice">
+                                        <td align="left">
+                                            <div class="tabledataservice">
+                                            <div class="microservice">{{inc.microservice_name}}</div> <span class="no-times">{{inc.count}} times</span> <span class="validtill"><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;{{inc.microservice_valid_till | moment:'MMM DD, YYYY'}}</span></div>
+                                        </td>
+                                      </tr>                                       
+                                    </tbody>
+                                  </table>                               
+                                </span>
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--consumer description ends here -->
+                <div class="clear"></div>
+              
+            </div>
+            <!--summary starts here -->
+        </div>
+    </div>
+</div>
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here

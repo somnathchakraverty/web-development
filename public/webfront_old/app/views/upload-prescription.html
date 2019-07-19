@@ -1,0 +1,118 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<!--upload prescription starts here -->
+<div class="container pres-upload">
+    <h2>Book Test from Prescription</h2>
+    <div class="udp-midsection">
+        <div class="top_navigation" ng-hide="uploadSuccess">
+            <ul>
+                <li>
+                    <strong>STEP 1</strong>
+                    <span>Upload prescription</span>
+                </li>
+                <li class="mobilehide">
+                    <strong>STEP 2</strong>
+                    <span>Enter below information</span>
+                </li>
+            </ul>
+        </div>
+        <!--main section -->
+        <div class="udp-mid-panel" ng-hide="uploadSuccess">
+            <form name="perscriptionForm" class="material" novalidate>
+                <div class="udp-left-panel">
+                    <div class="upload-image">
+                        <h4>Click below to Upload a Prescription</h4>
+                        <!-- <input type="file" name="uploadDoc" id="uploadDoc" accept="image/*" perscription-model="myFile" callback-fn="imageIsLoaded(doc)" multiple> -->
+                        <input type="file" ng-model="files" name="files" base-sixty-four-input multiple accept=".png, .jpg, .jpeg, .JPG, .JPEG, .PNG" maxsize="2048" ng-required="true" on-after-validate="onLoad">
+                        <div ng-show="((perscriptionForm.files.$dirty && perscriptionForm.files.$invalid) || (perscriptionFormSubmitted && !files))" class="help-block">
+                            <span>Image is required</span>
+                        </div>
+                        <p>* Image size should not exceed 2 MB.
+                            <br /> * Maximum 3 prescription can be uploaded.</p>
+                    </div>
+                    <div class="upload-photos">
+                        <h5>Attached Prescription</h5>
+                        <ul>
+                            <li class="defaultprescriptionimage" ng-if="files.length==0">
+                                <img src="assets/images/image-report-default.jpg" width="101" height="103px">
+                            </li>
+                            <li ng-repeat="file in files" ng-if="files.length>0">
+                                <img src="{{file.image}}" width="101" height="103px"> &nbsp;
+                                <span class="removedimage" ng-click="removeImage($index)"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="udp-right-panel">
+                    <div class="top_navigation udpright-navigation">
+                        <ul>
+                            <li>
+                                <strong>STEP 2</strong>
+                                <span>Enter below information</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form_section">
+                        <div class="form-group">
+                            <input name="name" id="name" type="text" class="form-control" placeholder="Full Name of Patient*" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((perscriptionForm.name.$dirty && perscriptionForm.name.$error.required) || (perscriptionFormSubmitted && !customerName)) ||(perscriptionForm.name.$error.pattern && visited) }" ng-pattern="/^[A-Za-z ]+$/">
+                            <div ng-show="((perscriptionForm.name.$dirty && perscriptionForm.name.$invalid) || (perscriptionFormSubmitted && !perscriptionForm.name))" class="help-block">
+                                <span ng-show="perscriptionForm.name.$error.required">Name is required</span>
+                                <span ng-show="perscriptionForm.name.$error.pattern && !perscriptionForm.name.$error.required">
+                                        Enter valid Name
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" class="form-control" placeholder="Mobile*" ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((perscriptionForm.customerno.$dirty && perscriptionForm.customerno.$error.required) || (perscriptionFormSubmitted && !customerNo)) ||(perscriptionForm.customerno.$error.pattern && visited) }" ng-required="true" ng-change="hideOTP();">
+                            <div ng-show="((perscriptionForm.customerno.$dirty && perscriptionForm.customerno.$invalid) || (perscriptionFormSubmitted && !perscriptionForm.customerno))" class="help-block">
+                                <span ng-show="perscriptionForm.customerno.$error.required">Mobile No. is required</span>
+                                <span ng-show="perscriptionForm.customerno.$error.pattern && !perscriptionForm.customerno.$error.required">
+                                        Enter valid Mobile
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="showOTP">
+                            <input name="userotp" id="userotp" type="text"  placeholder="Enter OTP" maxlength="6" ng-model="userOTP" class="form-control" required/>
+                            <span ng-show="((perscriptionForm.userotp.$dirty && perscriptionForm.userotp.$error.required) || (perscriptionFormSubmitted && !perscriptionForm.userotp))" class="help-block">
+                                Enter OTP
+                            </span>
+                        </div>
+
+                        <button type="button" class="btn btn-default upload-complete" ng-click="submitPrescription()">Submit</button>
+                        
+                        <a href="javascript:void(0)" ng-show="showOTP" style="color: #00a0a8;font-size: 12px;float: right;padding: 16px 0;" ng-click="resend_callback_opt();" class="">Resend OTP</a>
+
+                        <div ng-show="callbackopt_error" style="color:#f00;padding-top: 10px;">
+                            <p ng-bind="callbackopt_message"></p>
+                        </div>
+                        <div ng-show="callbackopt_success" style="color:green;padding-top: 10px;">
+                            <p ng-bind="callbackopt_success_message"></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--main section -->
+        <!--thankyou section -->
+        <div class="udp-mid-thanks" ng-show="uploadSuccess">
+            <h2>Thank You !!!</h2>
+            <p>Your prescription has been uploaded,
+                <br /> Our health advisor will get back to you between 10:00 am to 7:00 pm. </p>
+            <p class="view_all"><a href="javascript:void(0)" ng-click="addAnotherPrescription();">Upload another prescription</a></p>
+        </div>
+        <!--thankyou section ends -->
+    </div>
+</div>
+<modal visible="perscriptionMsg">
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p class="signedUp">You have sucessfully signed up!!</p>
+        <p class="signedUpmsg">Please verify your account by clicking the link sent to your email address so that we can be sure while sending you the test reports in future.</p>
+        <p class="thank-You">Thank you.</p>
+    </div>
+</modal>
+<!--upload prescription ends here -->
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

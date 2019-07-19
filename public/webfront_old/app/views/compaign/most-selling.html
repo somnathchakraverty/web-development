@@ -1,0 +1,52 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<!--popular package starts here -->
+<div class="container trending-pkg">
+    <div class="most-selling package-list-view">
+        <h1>Most Selling Packages</h1><hr class="separateLine" />
+        <div class="clear"></div>
+        <ul ng-repeat="list in packageList">
+            <h2 ng-bind="list.package_name"></h2>
+            <p>Parameters covered : <span ng-bind="list.testCount"></span></p>
+            <section>
+                <strong>Includes:</strong>
+           
+                    <li ng-bind="list.test_includes[0]"></li>
+                    <li ng-bind="list.test_includes[1]"></li>
+                    <li ng-bind="list.test_includes[2]"></li>
+              
+                <li ng-if="list.test_includes.length >3">
+                <strong><a href="/{{list.type}}/{{list.link_rewrite}}" analytics-category="master_package" analytics-event="Click on + more button" analytics-label="{{list.package_name}}" target="_blank">+ {{list.test_includes.length - 3}} More</a></strong></li>
+            </section>
+            <aside>
+                <img src="assets/images/nn-fast.png"> &nbsp;
+                <span style="margin-left: 0px;" ng-if="list.fasting_time > 0"> Fasting required : {{list.fasting_time}} Hrs</span>
+                <span style="margin-left: 0px;" ng-show="list.fasting_time == 0"> Not required</span>
+                <strong><span class="glyphicon glyphicon-time"></span> &nbsp;Report available in {{list.reporting_time}} Hrs</strong>
+            </aside>
+            <div class="taleft">
+                <div class="healthians_price">
+                    <font>Healthians Price</font>
+                    <span class="fontrupee" style="font-size:14px; font-weight:normal; padding:0px;">`</span>
+                    <strong style="margin-right:10px;" ng-bind="list.actual_price"></strong>
+                </div>
+                <div class="limited-offer">
+                    <font style="color:#00a0a8;">Limited Time Offer</font>
+                    <span class="fontrupee" style="padding:0px;color:#00959c;">`</span>
+                    <span style="color:#00a0a8;">{{list.healthian_price}}</span>
+                </div>
+                <span class="sv-btn">{{(list.actual_price-list.healthian_price)/list.actual_price*100 | number : 0}}% Off</span>
+            </div>
+            <div class="clear"></div>
+            <a href="/{{list.type}}/{{list.link_rewrite}}" analytics-category="master_package" analytics-event="Click on view detail button" analytics-label="{{list.package_name}}" class="view-detail" target="_blank">View Detail</a>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--popular package section starts here -->
+<div class="clear"></div>
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

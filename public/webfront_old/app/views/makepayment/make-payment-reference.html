@@ -1,0 +1,188 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+
+<!--otp panel starts here -->
+<div class="otpsection" ng-show="bookingdetail">
+    <div class="otpMid">
+        <h1>Order <span>Payment</span></h1>
+        <div class="mobforOtp">
+            <div class="1">
+                <input type="text" minlength="" maxlength="" autocomplete="off" tabindex="2" placeholder="Enter Booking ID." ng-model="orderPayment" class="form-control input-md" name="user_bookingID">
+                <span ng-show="sendBookingError" class="has-error">
+                  Please Enter Booking ID
+                  <div class="clear"></div>
+                </span>
+                <div class="clear"></div>
+                <input type="text" minlength="" maxlength="" autocomplete="off" tabindex="2" placeholder="Enter Reference No." ng-model="orderReferencePayment" class="form-control input-md" name="user_referenceno">
+                <div class="clear"></div>
+                <span ng-show="sendReferenceError" class="has-error">
+                  Please Enter Reference Number
+                  <div class="clear"></div>
+                </span>
+                <span ng-show="error" class="has-error" ng-bind="errorMsg">
+          </span>
+                <div class="btn_cta"><a ng-click="sendDetailFunction()">Submit</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--otp panel ends here -->
+<!--booking details starts here -->
+<div class="otpsection" ng-show="paymentsection">
+    <div class="otpMid1">
+        <h1>Order <span>Detail</span></h1>
+        <div class="mobforOtp">
+            <div class="3">
+                <table width="100%" align="center" class="customerReports" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Booking ID</th>
+                        <th ng-bind="detail.booking_id"></th>
+                    </tr>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th ng-bind="detail.customer_name"></th>
+                    </tr>
+                    <tr>
+                        <th>Mobile</th>
+                        <th ng-bind="detail.contact_number"></th>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <th ng-bind="detail.email_address"></th>
+                    </tr>
+                    <tr>
+                        <th>Booking Date</th>
+                        <th ng-bind="detail.order_date | moment:'MMM DD, YYYY'"></th>
+                    </tr>
+                    <tr>
+                        <th>Deal Name</th>
+                        <!-- <th ng-repeat="deal in detail.deal_name track by $index"><span ng-bind="deal"></span></th>  -->
+                        <th ng-bind="detail.package_name"></th>
+                    </tr>
+                    <tr ng-if="payatcollection == 0">
+                        <th>Payable Amount</th>             
+                        <th><span class="fontrupee">`</span><span ng-bind="payatcollection"></span></th>  
+                    </tr>
+                </table>
+            </div>
+        </div>
+         <!--Price Display with Discount -->
+        <div class="online-payment-offer" ng-show="payatcollection > 0">
+            <!--In Cod Case -->
+            <div class="payamt" ng-if="payradio === 'cash'">
+                Total Payable Amount :
+                <span class="fontrupee" style="padding:0px;">`</span>
+                <span>{{discountamount}} /-</span>
+            </div>
+            <!--Online Payment -->
+            <div class="payonline" ng-if="payradio !== 'cash'">
+                <span class="ttl-book">
+                        <span class="rs-caption">Total booking amount</span>
+                <span class="fontrupee" style="padding:0px;">:&nbsp;&nbsp;`</span>
+                <span ng-bind="discountamount"></span>
+                </span>
+                <span class="ttl-book">
+                        <span class="rs-caption">Online payment discount</span>
+                <span class="fontrupee" style="padding:0px;">  :&nbsp;&nbsp;- `</span>
+                <span> {{onlineDiscount}}</span>
+                </span>
+                <span class="ttl-book bdramnt" style="font-weight:bold; font-size:17px;">
+                        <span class="rs-caption">Total payable Amount</span>
+                <span class="fontrupee" style="padding:0px;">  :&nbsp;&nbsp;`</span>
+                <span>{{discountamount - onlineDiscount}} </span>
+                </span>
+            </div>
+        </div>
+        <!--Price Display with Discount Ends -->
+        <div class="paymentTypes" style="background: #fff;" ng-show="(discountamount - onlineDiscount) > 0">
+            <div class="payleft">
+                <h2>How would you like to pay?</h2>
+                <div class="clear"></div>
+                <ul>
+                    <li>
+                        <div class="paybuttons">
+                            <input type="radio" id="radio02" name="radio" ng-model="payradio" value="payu" />
+                            <label for="radio02"><span></span>Pay with Credit Card / Debit Card / Netbanking / PayU Wallet</label>
+                        </div>
+                    </li>
+                    <div class="clear"></div>
+                    <li>
+                        <div class="paybuttons">
+                            <input type="radio" id="radio04" name="radio" ng-model="payradio" value="mobikwik" />
+                            <label for="radio04"><span></span>Pay with MobiKwik</label>
+                        </div>
+                    </li>
+                    <div class="clear"></div>
+                    <li>
+                        <div class="paybuttons">
+                            <input type="radio" id="radio05" name="radio" ng-model="payradio" value="paytm" />
+                            <label for="radio05"><span></span>Pay with PayTm</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="smlab" style="margin-top:10px;">
+                            <div class="remember">
+                                <input type="checkbox" name="userterms" id="userterms" ng-model="termsCondition" data-ng-checked="termsCondition">
+                                <span style="font-size:13px; line-height:21px; padding-left:4px;">I accept the <a href="/terms-condition" target="_blank" style="color:#2cb8b3;">Terms & Conditions, Disclaimer and Privacy Policy.</a></span></div>
+                            <span style="clear:both; padding-left:24px; font-size:11px; color:red;" ng-show="termError" class="help-block">* Please accept terms & conditions by selecting the checkbox.</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="paymentLogos">
+                <ul>
+                    <li><img src="assets/images/paytm.png"></li>
+                    <li><img src="assets/images/payU.jpg"></li>
+                    <li><img src="assets/images/mobikwik.jpg"></li>
+                    <li><img src="assets/images/payUmoney.jpg"></li>
+                    <li><img src="assets/images/VERISIGN.jpg"></li>
+                    <li><img src="assets/images/secured.jpg"></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="finalPayment" ng-click="makeFinalPayment();" ng-if="discountamount != 0">
+          <a href="" class="btn btn-primary">
+              Pay Now
+          </a>
+        </div>
+    </div>
+</div>
+<!--booking details ends here -->
+
+
+
+<!--NEW CHECKOUT CONTAINER ENDS HERE -->
+<form action="{{payuAction}}" method="post" name="paymentForm" id="paymentForm">
+    <input type="hidden" name="booking_id" value="" />
+    <input type="hidden" name="txnAmount" value="" />
+    <input type="hidden" name="custName" value="" />
+    <input type="hidden" name="custMobile" value="" />
+    <input type="hidden" name="custEmail" value="" />
+    <input type="hidden" name="stm_id" value="" />
+</form>
+<!-- Form For MobiKwik -->
+<form action="{{mobikwikAction}}" method="post" name="paymentForm3" id="paymentForm3">
+    <input type="hidden" name="booking_id" value="" />
+    <input type="hidden" name="txnAmount" value="" />
+    <input type="hidden" name="custName" value="" />
+    <input type="hidden" name="custMobile" value="" />
+    <input type="hidden" name="custEmail" value="" />
+    <input type="hidden" name="stm_id" value="" />
+</form>
+<!-- Form For PayTm -->
+<form action="{{paytmAction}}" method="post" name="paymentForm2" id="paymentForm2">
+    <input type="hidden" name="booking_id" value="" />
+    <input type="hidden" name="txnAmount" value="" />
+    <input type="hidden" name="custName" value="" />
+    <input type="hidden" name="custMobile" value="" />
+    <input type="hidden" name="custEmail" value="" />
+    <input type="hidden" name="stm_id" value="" />
+    <input type="hidden" name="user_id" value="" />
+</form>
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here -->

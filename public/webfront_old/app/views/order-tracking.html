@@ -1,0 +1,299 @@
+<div class="ContentWrap" style="background: #f4f4f4;">
+    <!--header section starts here -->
+    <div ui-view="header"></div>
+    <!--header section ends here -->
+
+    <div class="order-h1">Order Summary</div>
+    <!--ORDER SUMMARY TRACKING STATUS-->
+    <!-- Summary of User Order-->
+    <section class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="order-brief-wrap">
+                    <div class="bookingId">
+                        Your Booking ID is <span ng-bind="bookingDetail.booking_id"></span>
+                    </div>
+                    <div class="phonenumber">
+                        <span class="circle">
+                            <span class="glyphicon glyphicon glyphicon-earphone"></span>
+                        </span>
+                        Phone No. : (+{{bookingDetail.country_code}})<span ng-bind="bookingDetail.contact_number"></span>
+                    </div>
+                    <div class="emailinfo">
+                        <span class="circle">
+                            <span class="glyphicon glyphicon glyphicon-envelope"></span>
+                        </span>
+                        Email ID : <span ng-bind="bookingDetail.email_address"></span>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="dateinfo">
+                        <span class="circle">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        <strong>Date of Booking : {{bookingDetail.order_date | moment:'ddd, DD MMM YYYY'}}</strong>
+                    </div>
+                    <div class="timeslotinfo">
+                        <span class="circle">
+                            <span class="glyphicon glyphicon glyphicon-time"></span>
+                        </span>
+                        <strong>Time of Booking : {{bookingDetail.order_date | dtime}}</strong>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Select All -->
+    <section class="container">
+        <!--  <div class="select-box"> <span>Select All</span>
+            <input name="" type="checkbox" value="">
+        </div> -->
+    </section>
+    <!--Select All Ends -->
+    <!-- Booking Block Starts here-->
+    <section class="container">
+        <!--User 01 -->
+        <div class="row" ng-repeat="(key, value) in bookingDetail.suborders track by $index">
+            <div class="col-sm-12">
+                <div class="booking-wrap-block">
+                    <div class="booking-row-info">
+                        <div class="consumerInfobox">
+                            <aside class="head">
+                                <p>{{value.customer_name}}, {{value.customer_age}} Years, {{value.customer_gender}} </p>
+                                <!-- <div class="select-box1"> <span>Select</span>
+                                    <input name="" type="checkbox" value="">
+                                </div> -->
+                            </aside>
+                            <div class="clear"></div>
+                            <div class="myPackagelist">
+                                <ul>
+                                    <li ng-repeat="(key, orderValue) in value.orders track by $index" ng-init="items.total.amount = items.total.amount + item.amount">
+                                        <div class="mytestinfo">
+                                            <div class="pkg-para-name">{{orderValue.display_name}} <!-- <span class="parameter">(Parameter : 45)</span> --></div>
+                                            <div class="pkg-priceinfo">
+                                                <div class="mrp"><span class="fontrupee">`</span>{{orderValue.actaul_price}}</div>
+                                                <div class="sp"><span class="fontrupee">`</span>{{orderValue.healthians_price}}</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="extraInfos">
+                                <div class="slashed">Total Amount&nbsp; :</div>
+                                <div class="mainprice">
+                                    <span class="fontrupee" style="padding:0px;">`</span> {{value.total_healthians_price}}
+                                </div>
+                                <div class="clear"></div>
+                                
+                                <div class="fasting">
+                                    <img src="https://cdn4.healthians.com/assets/images/nn-fast.png" width="14"> Fasting :
+                                    <strong ng-if="value.fasting_required == 0"> Not required </strong>
+                                    <strong ng-if="value.fasting_required == 1">
+                                        Required for <span ng-bind="value.fasting_time"></span> hrs.
+                                    </strong>
+                                </div>
+                                
+                                <!-- <div class="fasting"> <span class="glyphicon glyphicon-time"></span> Report available in : <strong><span ng-bind="value.reporting_time"></span> hrs.</strong> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="bookingtrack-footer">
+                        <div class="checkout-wrap">
+                            <ul id="liCount{{$index}}" class="checkout-bar row steps steps--step2">
+                                <!--Booking Done -->
+                                <li ng-class="{'selected':(element.flag && (allowedStatus.indexOf(element.status_id)>=0)),'failure':(element.flag && (element.status_id == '3' || element.status_id == '13' || element.status_id == '18')),'line':(element.flag && (element.status_id == '2' || $index == 0))}" ng-repeat="element in value.order_status track by $index" style="width: 10%;" ng-show="allowedStatus.indexOf(element.status_id)>=0">
+                                    <a href="javascript:void(0)" class="track-Tooltip"> <span></span>{{element.status_name}}
+                                        <!-- Tooltip - Start -->
+                                        <div ng-if="element.flag" class="tooltip_trck">
+                                            <div ng-if="element.flag && element.status_id==2">
+                                                <h5>Your order has been booked on</h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==5">
+                                                <h5>
+                                                Your sample pickup is scheduled for
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong><br>
+                                                    <p ng-if="value.phlebo_mobile">{{value.phlebo_name}} +91-{{value.phlebo_mobile}}</p>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==7">
+                                                <h5>
+                                                Sample has been collected at
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                    <br> <p ng-if="value.phlebo_mobile">{{value.phlebo_name}} +91-{{value.phlebo_mobile}}</p>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==8">
+                                                <h5>
+                                                    Sample received at lab
+                                                </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==3">
+                                                <h5>
+                                                This test has been cancelled at
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==13">
+                                                <h5>
+                                                Sample collection for this test has been rescheduled for
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==18">
+                                                <h5>
+                                                Resampling process initiated at
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==9 && element.partial_report ==0">
+                                                <h5>
+                                                Report has been generated at
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==9 && element.partial_report ==1">
+                                                <h5>
+                                                Some of the reports are ready and have been sent to you via email at
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==15">
+                                                <h5>
+                                                Report has been sent to you via email at
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==0">
+                                                <h5>
+                                                Hardcopy of report has been dispatched at
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                            <div ng-if="element.flag && element.status_id==12">
+                                                <h5>
+                                                You have consulted with Healthians Doctor about this report at
+                                              </h5>
+                                                <p>
+                                                    <strong ng-bind="element.date | moment:'ddd, DD MMM'"></strong> |
+                                                    <strong ng-bind="element.date | dtime"></strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- Tooltip - End -->
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </section>
+    <!-- Booking Block Ends here-->
+    <!--PAYMENT SUMMARY STARTS HERE -->
+    <div class="container">
+        <div class="payment-summary">
+            <h1>Payment Summary</h1>
+            <table>
+                <tr>
+                    <td>Payment Type</td>
+                    <td style="text-transform: capitalize;" ng-bind="bookingDetail.order_type"></td>
+                </tr>
+                <tr>
+                    <td>Order Amount</td>
+                    <td><span class="fontrupee">`</span>{{total_amount}}</td>
+                </tr>
+                <tr ng-if="bookingDetail.coupon_code">
+                    <td>Coupon Applied (<span ng-bind="bookingDetail.coupon_code"></span>)</td>
+                    <td>
+                        -<span class="fontrupee">`</span>
+                        <span ng-bind="bookingDetail.discounted_amount"></span>
+                    </td>
+                </tr>
+                <tr ng-if="bookingDetail.hard_copy =='yes'">
+                    <td>Hard Copy Required</td>
+                    <td>+<span class="fontrupee">`</span>50</td>
+                </tr>
+                <tr ng-if="bookingDetail.convenience_fee =='yes'">
+                    <td>Convenience Fees</td>
+                    <td>+<span class="fontrupee">`</span>{{bookingDetail.convenience_amount}}</td>
+                </tr>
+
+                <tr ng-if="bookingDetail.wallet_amount_used > 0">
+                    <td>HCash Amount</td>
+                    <td>-<span class="fontrupee">`</span>{{bookingDetail.wallet_amount_used}}</td>
+                </tr>
+
+                <tr ng-if="bookingDetail.online_discount >= 0">
+                    <td>Online Discount</td>
+                    <td>-<span class="fontrupee">`</span>{{bookingDetail.online_discount}}</td>
+                </tr>
+
+                <tr ng-show="bookingDetail.donation_amount > 0">
+                    <td class="ryt-tab">Donation Amount <br /><span style="color:#000; font-size:12px;">(Yuvraj Singh Foundation)</span></td>
+                    <td>
+                       +<span class="fontrupee">`</span>{{bookingDetail.donation_amount}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="total-pay">Total Payable</td>
+                    <td class="total-pay"><span class="fontrupee">`</span>{{bookingDetail.total_amount | num}}</td>
+                </tr>
+                <tr>
+                    <td class="total-pay" style="border-bottom:none;">Amount Paid</td>
+                    <td class="total-pay" style="border-bottom:none;">
+                        <span ng-show="bookingDetail.amount_paid"><span class="fontrupee">`</span>{{bookingDetail.amount_paid}}</span>
+                        <span ng-show="!bookingDetail.amount_paid">-</span>
+                    </td>
+                </tr>
+            </table>
+            <div class="clear"></div>
+            <span class="invalidCoupon" style="padding-left: 33px;font-size: 12px;" ng-show="coupon_notice_div"> <b>Note </b>: {{coupon_notice_msg}}</span>
+
+        </div>
+    </div>
+    <!--PAYMENT SUMMARY ENDS HERE -->
+    <div class="clear"></div>
+    <!--header section starts here -->
+    <div ui-view="footer"></div>
+    <!--header section ends here -->
+</div>

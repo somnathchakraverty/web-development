@@ -1,0 +1,201 @@
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+<!-- <link rel="stylesheet" href="assets/style/css/campaign/campaign-style.css">
+<link rel="stylesheet" href="assets/style/css/campaign/style2.css"> -->
+<!--Banner starts-->
+
+<div class="header-bg">
+    <div class="container">
+        <div class="logocampaign">
+            <img src="https://cdn1.healthians.com/assets/images/logo_healthians.png">
+        </div>
+        <!-- <div class="call">
+            <a href="tel:01133999933"><i class="fa fa-phone"></i> &nbsp;011 3399 9933</a>
+        </div> -->
+        <div class="clear"></div>
+        <div class="col-md-12" style="position:relative;">
+            <div class="form-section">
+                <h1 class="healthier">The first step to a healthier you!</h1>
+                <span class="fill">Fill in the details below to book your health test today & get FREE health counselling</span>
+              <!--  <span style="font-size:15px;padding:3px 0px; font-weight:normal; padding-right:24px; text-decoration:line-through; letter-spacing:0px; color:#fff; vertical-align: baseline;">Rs. 2700</span>
+                <span style="font-size:24px;padding:3px 0px; font-weight:bold; color:#fff;padding-right:7px; ">Rs. 999 only</span>
+                <span style="display: inline-block; margin-left:10px; padding:2px 10px;background: #fff;color: #3a3a3a; border-radius: 32px;vertical-align: baseline;font-size: 12px;">Save 63%</span> -->
+               <!-- <p style="border-bottom:1px solid #6dc6ca;"></p> -->
+              
+                <form name="addLeadForm" novalidate>
+                    <div class="form-area">
+                        <ul>
+                            <li>
+                                <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" class="text" placeholder="Mobile*" ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadForm.customerno.$dirty && addLeadForm.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadForm.customerno.$error.pattern && visited) }" ng-required="true" autocomplete="false">
+                                <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block">
+                                    <span ng-show="addLeadForm.customerno.$error.required">Mobile No. is required</span>
+                                    <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required && addLeadForm.customerno.$touched">
+                                        Enter valid Mobile
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <input name="name" id="name" type="text" class="text" placeholder="Name*" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadForm.name.$dirty && addLeadForm.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadForm.name.$error.pattern && visited) }" ng-focus="booknow" ng-pattern="/^[A-Za-z ]+$/">
+                                <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block">
+                                    <span ng-show="addLeadForm.name.$error.required">Name is required</span>
+                                    <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required">
+                                        Enter valid Name
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" class="text" placeholder="Email*" ng-model="customerEmail" ng-class="{ 'has-error': ((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$error.required) || (addLeadFormSubmitted && !customerEmail)) ||(addLeadForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="true" autocomplete="false">
+                                <div ng-show="((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$invalid) || (addLeadFormSubmitted && !addLeadForm.customeremail))" class="help-block">
+                                    <span ng-show="addLeadForm.customeremail.$error.required">Email is required</span>
+                                    <span ng-show="addLeadForm.customeremail.$error.pattern && !addLeadForm.customeremail.$error.required  && addLeadForm.customeremail.$touched">Enter valid Email</span>
+                                </div>
+                            </li>
+                            <li>
+                                <select class="text" id="city" name="city" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true" ng-class="{ 'has-error': ((addLeadForm.city.$dirty && addLeadForm.city.$error.required) || (addLeadFormSubmitted && !addLeadForm.city)) }">
+                                    <option value="">City</option>
+                                </select>
+                                <div ng-show="((addLeadForm.city.$dirty && addLeadForm.city.$invalid) || (addLeadFormSubmitted && !addLeadForm.city))" class="help-block">
+                                    <span ng-show="addLeadForm.city.$error.required">Please select city.</span>
+                                </div>
+                            </li>
+                            <li style="padding-bottom:0px;">
+                                <textarea class="text" id="message" name="message" maxlength="500" ng-model="Message" placeholder="Any other detail"></textarea>
+                            </li>
+                            <li>
+                                <div id="capt_landing"></div>
+                            </li>
+                            <li style="padding-bottom:10px;">
+                                <input type="button" name="send" style="display:block; width:100%; font-size:16px;" value="Get A Call Back Now" class="submit-form" ng-click="sendDetails()" analytics-on="click" analytics-category="Landing" analytics-event="Click on Get A Call Back Now">
+                                <!--<p style="display: none;font-size: 15px;padding: 2px 6px;line-height: 0px;font-weight: normal;padding: 25px 0px 10px 0px;color: #000000;text-align: center;" id="timeticker"></p> -->
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+                
+                  
+                <!--<span style="text-transform:uppercase; color:#fff; font-size: 11px; text-align:left; line-height:18px; margin-bottom:6px; letter-spacing: 1.2px; display: block;">Service available in 27 cities of India</span> -->
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--why healthians-->
+<div class="container-fluid bg-grey">
+    <h1>Why Healthians?</h1>
+    <ul>
+        <li>
+            <figure><img style="max-width:50px;" src="assets/images/campaign/home-sample-collection.png"></figure>
+            <figcaption><strong>FREE HOME</strong>
+                <br /> COLLECTION
+            </figcaption>
+            <p>On-time sample collection
+                <br/>From your doorstep.</p>
+        </li>
+        <li>
+            <figure><img style="max-width:50px;" src="assets/images/campaign/honest-prices.png"></figure>
+            <figcaption><strong>HONEST</strong>
+                <br /> PRICES
+            </figcaption>
+            <p>Pay only the honest prices
+                <br/>No commission cost.</p>
+        </li>
+        <li>
+            <figure><img style="max-width:50px;" src="assets/images/campaign/free-doctor-consultation.png"></figure>
+            <figcaption><strong>DOCTOR'S</strong>
+                <br> CONSULTATION
+            </figcaption>
+            <p>Get doctor & dietician
+                <br />consultation.</p>
+        </li>
+        <li>
+            <figure><img style="max-width:50px;" src="assets/images/campaign/money-back.png"></figure>
+            <figcaption><strong>ACCURACY</strong>
+                <br /> GUARANTEED
+            </figcaption>
+            <p>Accurate report or Money Back.
+                <br/>Kyunki baat accuracy ki hai!</p>
+        </li>
+    </ul>
+</div>
+<div class="container-fluid bg-grey">
+    <h1>Healthians Labs Promise</h1>
+    <ul>
+        <li>
+            <figure><img style="max-width:50px;" src="assets/images/campaign/i1.png"></figure>
+            <figcaption><strong style="color: #3a3a3a;">100% Calibration<br>& Controls</strong></figcaption>
+            <p>We have deep analytical control on all our labs and insist them to follow NABL guidelines. </p>
+        </li>
+        <li>
+            <figure><img style="max-width:50px;" src="assets/images/campaign/i2.png"></figure>
+            <figcaption><strong style="color: #3a3a3a;">Fully<br>Automated</strong></figcaption>
+            <p>All of our labs are fully automated labs equipped with internationally renowned machines.</p>
+        </li>
+        <li>
+            <figure><img style="max-width:50px;" src="assets/images/campaign/i3.png"></figure>
+            <figcaption><strong style="color: #3a3a3a;">Latest Technology<br>& Equipments</strong></figcaption>
+            <p>We are at par with the medical tech-driven advances. Innovation in laboratory technology</p>
+        </li>
+        <li>
+            <figure><img style="max-width:50px;" src="assets/images/campaign/i4.png"></figure>
+            <figcaption><strong style="color: #3a3a3a;">International<br>Quality Compliance</strong></figcaption>
+            <p>Our labs follow more than 150 international quality standard operating procedures for sampling</p>
+        </li>
+    </ul>
+    <div style="clear:both;">
+    </div>
+    <!-- -->
+    <ul class="lab_images">
+        <li><img src="assets/images/campaign/lab_promise1.jpg" width="250" /></li>
+        <li><img src="assets/images/campaign/lab_promise2.jpg" width="250" /></li>
+        <li><img src="assets/images/campaign/lab_promise3.jpg" width="250" /></li>
+        <li><img src="assets/images/campaign/lab_promise4.jpg" width="250" /></li>
+    </ul>
+</div>
+<!-- footer -->
+<footer ng-controller="footerController">
+    <div class="container">
+        <span>2018 @ Healthians.com | Legal</span></p>
+    </div>
+</footer>
+<!-- footer -->
+<login-modal visible="compaignmsg">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div style="margin:0px auto; background:#fff; padding:30px 0px;">
+        <div class="lead-pg-popup">
+            <section>
+             <h6>Thank You for sharing your details with us. </h6>   
+            <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+            </p>
+               
+            </section>
+        </div>
+    </div>
+</login-modal>
+<style type="text/css">
+.zopim {
+    display: none !important;
+}
+</style>
+<script type="text/javascript">
+
+    // var widgetId5;
+    // var onloadCallback = function() {
+    //     setTimeout(function(){
+    //         if(typeof grecaptcha !== 'undefined') {
+    //             if($('#capt_landing').length) {
+    //                 widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+    //             }
+    //         }
+    //         else {
+    //             setTimeout(function(){
+    //                 if($('#capt_landing').length) {
+    //                     widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+    //                 }
+    //             }, 500);
+    //         }
+    //     }, 500);
+    // }
+
+</script>

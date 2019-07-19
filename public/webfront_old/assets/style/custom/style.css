@@ -1,0 +1,91 @@
+.thfontSize {
+	font-size: 70%;
+}
+
+.large-Modal .modal-dialog{
+    width:800px;   
+}
+
+.error-message {
+  color: red; font-size: 11px; font-style: italic;
+}
+ .has-error { border-bottom: solid 1px red  !important; }
+/*input.ng-dirty.ng-invalid {
+  border-color: red;
+}*/
+
+
+ /* for drag and drop buttons */
+.btn-droppable { width: 80px; height: 80px; }
+.btn-draggable { width: 60px; height: 60px;}
+.btn-slot { width: 80px; height: 115px; }
+
+/*.homeselect {color: #414042; border:none;-webkit-tap-highlight-color: transparent;background-color: #fff;border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;box-sizing: border-box;clear: both;cursor: pointer;display: block;font-size: 16px;font-weight: normal;
+outline: none;	padding-left: 40px;	position: relative;	text-align: left !important;transition: all 0.2s ease-in-out;
+-webkit-user-select: none;user-select: none;white-space: nowrap;width: auto;background: rgba(255, 255, 255, 0.05) none repeat scroll 0 0;
+font-family: 'Gotham-Book';height:54px; width:223px;  
+border: 0; background:url('../../images/location-detect-arrow.png') no-repeat; background-size:13px; background-position:  right 14px center;  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.homeselect option{ padding:5px 6px;}*/
+
+
+
+
+.select-top {color: #fff; border:none;-webkit-tap-highlight-color: transparent;box-sizing: border-box;clear: both;cursor: pointer;display: block;font-size: 16px;font-weight: normal;
+outline: none;	padding-left: 30px;	position: relative;	text-align: left !important;transition: all 0.2s ease-in-out;
+-webkit-user-select: none;user-select: none;white-space: nowrap;width: auto;
+font-family: 'Gotham-Book';height:34px; width:223px;  
+border: 0; background:url('../../images/location-detect-arrow.png') no-repeat; background-color:none; background-size:13px; background-position:  right 14px center;  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.select-top option{ padding:5px 6px; color: #414042; }
+
+.thumb{
+    width:200px;
+    height:220px;
+    margin:0px;
+    float:left;
+}
+.qw{
+  opacity: 0;
+}
+
+.uploader{
+    clear:both;
+}
+
+
+.doc-list-wrapper {
+  position: relative;
+}
+.doctype-label {
+  position: relative;
+  margin-bottom: 0.8em;
+  color: #aa152d;
+  font-size: 125%;
+  font-weight: bold;
+}
+.doc-list {
+  margin: 0;
+}
+
+.doc-thumbnail {
+  position: relative;
+}
+.no-touch .doc-thumbnail a {
+  text-decoration: none;
+}
+.no-touch .doc-thumbnail a:hover .date-box img {
+  visibility: visible;
+}
+.touch .doc-thumbnail a {
+  text-decoration: none;
+}
+.fix-to-top {
+    position: fixed;
+    top: 0;
+}

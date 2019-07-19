@@ -1,0 +1,297 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<!-- loader -->
+<div class="container test-detail" ng-show="loading">
+    <loading></loading>
+</div>
+<!-- loader -->
+<div ng-show="!loading" ng-if="pkgDetail.package_name">
+    <!-- Breadcrub-->
+    <div class="container test-detail">
+        <div class="bread">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li>»</li>
+                <li class="active"><span ng-bind="pkgDetail.package_name" style="text-transform: capitalize;"></span></li>
+            </ol>
+        </div>
+    </div>
+    <!-- package detail-->
+    <div class="container promotion-box">
+        <div class="col-lg-9">
+            <div class="box">
+                <h1>
+                  <span ng-bind="pkgDetail.package_name" style="text-transform: capitalize;"></span>
+                </h1>
+                <h2>
+                  Our Price : 
+                  <span class="fontrupee" style="font-size:18px; padding:0px;">`</span>
+                  <span ng-bind="pkgDetail.healthians_price"></span>
+                  <strong>MRP : 
+                    <strike>
+                      <span class="fontrupee" style="padding:0px;">`</span> 
+                      <span ng-bind="pkgDetail.actaul_price"></span>
+                    </strike></strong>
+                </h2>
+                <hr class="style1">
+                <p><span ng-bind="pkgDetail.description"></span></p>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="icon">
+                            <figure>
+                                <img src="assets/images/test.png">
+                            </figure>
+                            <figcaption>
+                                Parameters Included :
+                                <strong><span ng-bind="pkgDetail.parameter_included"></span></strong>
+                            </figcaption>
+                        </div>
+                        <div class="icon">
+                            <figure>
+                                <img src="assets/images/clock.png">
+                            </figure>
+                            <figcaption>
+                                Reporting time :
+                                <strong>
+                                <span ng-bind="pkgDetail.reporting_time"></span> Hours
+                              </strong>
+                            </figcaption>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="icon">
+                            <figure>
+                                <img src="assets/images/fast.png">
+                            </figure>
+                            <figcaption>Fasting :
+                                <strong>
+                                  <span ng-if="pkgDetail.fasting==1">Required</span>
+                                  <span ng-if="pkgDetail.fasting==0">Not Required</span>
+                                </strong>
+                            </figcaption>
+                        </div>
+                        <!-- <div class="icon">
+                            <figure><img src="assets/images/age.png"></figure>
+                            <figcaption>Age :  <strong>25 to 40 years</strong></figcaption>
+                        </div> -->
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="" ng-click="pkgSearch(pkgDetail);" class="book-now" style="cursor: pointer;">Book Now</a>
+                    </div>
+                </div>
+                <hr class="style1">
+                <h3>
+                  Test Detail 
+                  <span>(Parameters Included : <span ng-bind="pkgDetail.parameter_included"></span>)</span> 
+                </h3>
+                <div class="col-sm-12 scrl_mb_tests">
+                    <ul class="test-detail" ng-repeat="(key, value) in pkgDetail.test_details track by $index">
+                        <h4><span ng-bind="value.name"></span></h4>
+                        <li ng-repeat="(key1, value1) in value.tests track by $index">
+                            <span class="parameter_name" ng-bind="value1.NAME"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div ng-if="pkgDetail.before_the_test || pkgDetail.after_the_test">
+                    <h3>Precaution </h3>
+                    <h5>Before the Test</h5>
+                    <p>
+                        <span ng-bind="pkgDetail.before_the_test"></span>
+                    </p>
+                    <h5>After the Test</h5>
+                    <p>
+                        <span ng-bind="pkgDetail.after_the_test"></span>
+                    </p>
+                </div>
+                <!-- <a href="" ng-click="pkgSearch(pkgDetail);" class="book-now2">Book Now</a> -->
+            </div>
+        </div>
+        <div class="col-lg-3" ng-show="pkgDetail.also_consider.length > 0">
+            <div class="also-inc">You may also consider</div>
+            <div class="ryt-pack" ng-repeat="(key, value) in pkgDetail.also_consider track by $index">
+                <h1>
+                  <span ng-bind="value.package_name" style="text-transform: capitalize;"></span>
+                </h1>
+                <h2>Parameters covered : <span ng-bind="value.parameter_included"></span></h2>
+                <p>
+                    <strong>Includes</strong>
+                    <ul>
+                        <!-- <li ng-repeat="include in value.also_includes">{{include.name}}&nbsp;{{$last  ? '' : ($index==tcategory_name.length-1) ? ' and ' : ',&nbsp;'}}</li> -->
+                        <li> <span ng-bind="value.also_includes[0].name"></span>,</li>
+                        <li> <span ng-bind="value.also_includes[1].name"></span>,</li>
+                        <li> <span ng-bind="value.also_includes[2].name"></span>...</li>
+                        <li class="parCount">+<span ng-bind="value.also_includes.length - 3"></span> Tests</li>
+                    </ul>
+                </p>
+                <figcaption>
+                    <strong>
+                      <span class="fontrupee" style="padding:0px;">`</span>
+                      <strike>
+                        <span ng-bind="value.actual_price"></span>
+                      </strike>
+                    </strong>
+                    <span class="fontrupee">`</span><span ng-bind="value.healthian_price"></span>
+                </figcaption>
+                <a href="javascript:void(0);" ng-href="{{value.ptype}}/{{value.link_rewrite}}">View Detail</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<!--most popular-->
+<div class="container packages" style="margin:0 auto;">
+    <div class="alert alert-danger" style="margin-top:120px; text-align:center;" ng-show="errorPkg" ng-bind="errorPkgMsg">
+    </div>
+    <div class="packages-list">
+        <h2>Recommended Tests/Packages</h2>
+        <div class="doc-list" bx-slider>
+            <div class="doc-thumbnail" ng-repeat="list in packageList" bx-slider-item>
+                <div class="pack-thumb">
+                    <h3>
+                      <span ng-bind="list.package_name" style="text-transform: capitalize;"></span>
+                    </h3>
+                    <strong>
+                      Parameters covered :<span ng-bind="list.testCount"></span>
+                    </strong>
+                    <h4>          
+                      <div class="priceblock">
+                        <span class="fontrupee">`</span>
+                        <span ng-bind="list.healthian_price"></span>
+                      </div>
+                      <div class="pricecrossed">
+                        <strike>
+                          <span class="fontrupee">`</span>
+                          <span ng-bind="list.actual_price"></span>
+                        </strike>
+                      </div>
+                    </h4>
+                    <figure>
+                        <!-- <img src="assets/images/package-logo.png"> -->
+                    </figure>
+                    <a href="javascript:void(0);" ng-href="{{list.type}}/{{list.link_rewrite}}">View Detail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="clear"></div>
+<!-- Patient Add Modal -->
+<form name="getcustomerForm" novalidate>
+    <div class="maskedOverlay" ng-show="addToCartModal">
+        <div ng-include="'template/patient_template.html'"></div>
+    </div>
+</form>
+<div class="clear"></div>
+<div class="container">
+    <p style="text-align:justify; margin:15px 0 40px 0;font-size: 13px; padding: 20px;">{{meta_footer}}</p>
+</div>
+<!--footer-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 btm-head">
+                <div class="btn-head-title">SUBSCRIBE <span>for Healthy Updates</span></div>
+                <div class="subscribe">
+                    <form name="addAddressForm">
+                        <input ng-blur="visited = true" name="customeremail" type="text" class="input-width" placeholder="Enter your email ID" ng-model="addAddressForm.customerEmail" ng-class="{ 'has-error': ((addAddressForm.customeremail.$dirty && addAddressForm.customeremail.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerEmail)) ||(addAddressForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{3,5}$/" ng-required="true">
+                        <input class="submit" ng-click="subscriber(addAddressForm.customerEmail)" type="submit" value="Submit" />
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-sm-4 btm-head lr-border">
+                <div class="btn-head-title">STAY <span>socially connected</span></div>
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/Healthians?ref=hl">
+                            <img src="assets/images/fb.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/healthians">
+                            <img src="assets/images/tw.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/healthians-com?trk=company_name">
+                            <img src="assets/images/in.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+Healthians/posts">
+                            <img src="assets/images/yt.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-4 btm-head rgt-ftr">
+                <div class="btn-head-title">AWARDS <span>& Recognitions</span></div>
+                <img src="assets/images/btm-logo.png">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3"> <img src="assets/images/healthians-btmlogo.png"> </div>
+            <div class="col-sm-9">
+                <ul class="btm-link">
+                    <li>
+                        <a href="/about-us" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="About us">About us</a>
+                    </li>
+                    <li>
+                        <a href="/healthians-media" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Media">Media</a>
+                    </li>
+                    <li>
+                        <a href="/career" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Careers">Careers</a>
+                    </li>
+                    <li>
+                        <a href="/healthians-investors" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Investors">Investors</a>
+                    </li>
+                    <li>
+                        <a href="/Support-Help" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Support/Help">Support/Help</a>
+                    </li>
+                    <li>
+                        <a href="http://blog.healthians.com/" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Blog" target="_blank">Blog</a>
+                    </li>
+                    <li>
+                        <a href="/contact-us" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Contact us">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="btm-txt">
+            <ul>
+                <li>Best Health Package in Delhi</li>
+                <li>|</li>
+                <li>Thyroid Package in Delhi NCR</li>
+                <li>|</li>
+                <li>Best Package in Gurgaon</li>
+                <li>|</li>
+                <li>Best Packages in Delhi</li>
+                <li>|</li>
+                <li>Thyroid Package in Delhi NCR</li>
+                <li>|</li>
+                <li>Best Package in Gurgaon</li>
+                <li>|</li>
+                <li>Best Health Package in Delhi</li>
+                <li>|</li>
+                <li>Thyroid Package in Delhi NCR</li>
+                <li>|</li>
+                <li>Best Package in Gurgaon</li>
+                <li>|</li>
+                <li>Best Health Package in Delhi</li>
+                <li>|</li>
+                <li>Thyroid Package in Delhi NCR</li>
+                <li>|</li>
+                <li>Best Package in Gurgaon</li>
+                <li>|</li>
+            </ul>
+        </div>
+        <div class="copy">2018 @ Healthians.com | Legal</div>
+    </div>
+    <a href="#" class="scrollup">Scroll</a>
+</footer>

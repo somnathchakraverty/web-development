@@ -1,0 +1,117 @@
+<!--PAYMENT PANEL -->
+<section ng-show="!confirm_booking">
+<h6>{{package_info.name}} (&nbsp;₹ {{package_info.healthians_price}})</h6>
+    <div class="col-md-12" style="padding-top:5px;">
+        <form >
+        <div class="col-md-8 col-xs-7">
+          <input type="text" value="" name="coupon" required="" placeholder="Enter coupon code" ng-model="coupon_code" />
+            <span class="error" ng-bind="couponError"></span>
+            <span ng-show="coupon_message" class="error" ng-bind="coupon_message"></span>
+        </div>
+        
+        <div class="col-md-4 col-xs-5">
+            <input type="submit" ng-hide="onConfirm" ng-click="verifyCoupon(coupon_code);" class="submitconfirm" value="Apply" ng-disabled="couponDisabled"/>
+        </div>
+        </form>
+    </div>
+    <div class="col-md-12 col-xs-12" style="padding-top: 10px; padding-bottom:5px;">
+        <div class="col-md-1 col-xs-1">
+        <input type="checkbox" style="left:0px; position: relative; visibility: visible; width:16px !important; height:16px !important;" ng-checked="hardCopy" ng-click="hardCopyFunc()" ng-model="hardCopy" class="ng-pristine ng-untouched ng-valid">
+       </div>
+          
+       <div class="col-md-7 col-xs-9">Need a hard copy of report ? <br />
+<em class="ng-binding" style="color:#00a0a8;">₹ 50 only</em></div>
+       
+
+       <div class="col-md-4 col-xs-12">
+           <div style="text-align:center; padding:0px;" ng-show="hardcopy_sum_price > 0">
+           <em class="fontrupee">₹ {{hardcopy_sum_price}} </em>
+           </div>
+       </div>
+       
+       
+       </div>
+       
+     
+       
+    <div class="clear"></div>
+
+    <div class="col-md-12 pay-type">
+        <h2>I would like to pay</h2>
+        <ul>
+            <li>
+                <input name="payradio" type="radio" class="with-gap" id="paytm" ng-model="payradio" checked="true" ng-click="setpayradio('paytm')" value="paytm">
+                <label  for="paytm" class="labellogo"><img src="assets/images/icon_paytm.png" /></label>
+            </li>
+            
+            <li><input name="payradio" type="radio" class="with-gap" id="mobikwik" ng-model="payradio" ng-click="setpayradio('mobikwik')" value="mobikwik">
+                <label for="mobikwik" class="labellogo"><img src="assets/images/mobikwik.png" /></label>
+              
+            </li>
+            <li>
+           <input type="radio" id="dc" class="with-gap" name="payradio" ng-model="payradio" ng-click="setpayradio('payu')" value="dc" tabindex="2">
+                    <label for="dc" class="labellogo"><img src="assets/images/payment-method.png" /></label>
+                  
+              
+            </li>
+            <li>
+               <input type="radio" id="cash" class="with-gap" with-gap="" name="payradio" ng-model="payradio" value="cash" ng-click="setpayradio('cash')" tabindex="4">
+                <label for="cash" class="labellogo"><img src="assets/images/cash-machine.png" /></label>
+                   
+              
+            </li>
+        </ul>
+
+        <div class="clear"></div>
+    </div>
+    <div class="col-md-12">
+        <div ng-show="!showBookingLoader" class="" style="text-align: center">Please Wait <img src="/assets/images/load_wait.gif" style="margin-left: 3%"> </div>
+        <button ng-show="showBookingLoader" class="waves-effect waves-light btn slide-toggle" ng-click="finalPay()">Complete Order</button>
+
+        </div>
+
+    <!-- Form For PayU -->
+    <form action="{{payuAction}}" method="post" name="payuForm" id="payuForm">
+        <input type="hidden" name="booking_id" value="" />
+        <input type="hidden" name="txnAmount" value="" />
+        <input type="hidden" name="custName" value="" />
+        <input type="hidden" name="custMobile" value="" />
+        <input type="hidden" name="custEmail" value="" />
+        <input type="hidden" name="stm_id" value="" />
+    </form>
+    <!-- Form For PayZapp -->
+    <form action="{{payzappAction}}" method="post" name="payzappForm" id="payzappForm">
+        <input type="hidden" name="booking_id" value="" />
+        <input type="hidden" name="txnAmount" value="" />
+        <input type="hidden" name="custName" value="" />
+        <input type="hidden" name="custMobile" value="" />
+        <input type="hidden" name="custEmail" value="" />
+        <input type="hidden" name="stm_id" value="" />
+    </form>
+    <!-- Form For PayTM -->
+    <form action="{{paytmAction}}" method="post" name="paytmForm" id="paytmForm">
+        <input type="hidden" name="booking_id" value="" />
+        <input type="hidden" name="txnAmount" value="" />
+        <input type="hidden" name="custName" value="" />
+        <input type="hidden" name="custMobile" value="" />
+        <input type="hidden" name="custEmail" value="" />
+        <input type="hidden" name="stm_id" value="" />
+        <input type="hidden" name="user_id" value="" />
+    </form>
+    <!-- Form For MobiKwik -->
+    <form action="{{mobikwikAction}}" method="post" name="mobikwikForm" id="mobikwikForm">
+        <input type="hidden" name="booking_id" value="" />
+        <input type="hidden" name="txnAmount" value="" />
+        <input type="hidden" name="custName" value="" />
+        <input type="hidden" name="custMobile" value="" />
+        <input type="hidden" name="custEmail" value="" />
+        <input type="hidden" name="stm_id" value="" />
+    </form>
+    <br />
+</section>
+<div class="thank-you" ng-show="confirm_booking">
+    <div class="col-md-12" style="display:block; text-align:center; padding:15px 0px;">Thankyou for the booking.<br /> Please check the order summary</div>
+    <div class="clear"></div>
+    <div class="col-md-12 need-help">Need booking assistance? Call us at <span style="color:#00a0a8;" ng-bind="companyphone.display_no"></span> </div>
+</div>
+<!--PAYMENT PANEL -->

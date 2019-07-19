@@ -1,0 +1,113 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="ContentWrap">
+    <!--NEW CHECKOUT CONTAINER STARTS HERE -->
+    <section class="checkOutwrapper">
+        <div class="checkoutMid">
+            <ul class="order-summary-list">
+                <li><a href=""><span class="active">1</span> <font class="active">Pick Location & Time</font></a></li>
+                <li><a href=""><span class="active">2</span> <font class="active">Order Summary</font></a></li>
+                <li><a href=""><span>3</span> <font>Confirm Address</font></a></li>
+                <li><a href=""><span>4</span> <font>Make Payment</font></a></li>
+            </ul>
+            <div class="clear"></div>
+            <div class="countertimer">Time left to complete this transaction : <span id="counter"></span></div>
+            <div class="chkoutBox">
+                <div class="title-Bar">
+                    <div class="barfirst">details</div>
+                    <div class="barsecond">Collection Schedule</div>
+                    <div class="barmid">Market price</div>
+                    <div class="barthird">Our Price</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <div class="pkgBarsection" ng-repeat="item in customerDetails">
+                    <div class="my-infos">
+                        <div class="p_infos">
+                            <span>{{item.name}}</span><i>/</i><span>{{item.age}}</span><i>/</i> <span>{{item.gender}}</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="pkglist">
+                            <ul>
+                                <!-- <div ng-repeat="items in item.pkg.test_packages" ng-if="item.pkg.test_packages">
+                                  <li ng-bind="items.tcategory_name"></li>
+                                </div> -->
+                                <div class="orderSummry" ng-repeat="items in item.newpkg" ng-if="item.newpkg">
+                                    <li>{{items.display_name}} :</li>
+                                    <h6>
+                                      <div class="pkg_preview">{{items.all_package_StringName | limitTo: 20}}...&nbsp;</div>
+                                      <div class="tooltip-pkg">
+                                      {{items.all_package_name.length}} Tests
+                                        <span class="tooltiptext">
+                                          {{items.all_package_StringName}}
+                                        </span>
+                                      </div>
+                                    </h6>
+                                    <div class="clear"></div>
+                                </div>
+                            </ul>
+                            <!-- <span>{{item.tcategory_name}}</span> -->
+                        </div>
+                        <div class="clear"></div>
+                        <!-- <div class="paraCount">Total tests : {{item.newpkg}}</div> -->
+                        <div class="paraCount" ng-init="totalTest = totalTest(item.newpkg)" ng-model="totalTest">Total tests : {{totalTest}} </div>
+                    </div>
+                    <div class="collectschedule">
+                        <span>{{sample_date | moment:'MMM DD, YYYY'}}</span>
+                        <span>{{time_slot.start_time}}-{{time_slot.end_time}}</span>
+                    </div>
+                    <div class="pricing" ng-repeat="items in item.newpkg" ng-if="item.newpkg">
+                        <div class="slashed"><span class="fontrupee">`</span>{{items.actual_price}} </div>
+                        <div class="main-price"><span class="fontrupee">`</span>{{items.healthian_price}} </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <div class="clear"></div>
+                <div class="printReport">
+                    <div class="hardcopy">
+                        <input name="" type="checkbox" value="" ng-model="hardCopy" ng-click="hardCopyFunc(hardCopy)" tabindex="1">Need a hard copy of report?
+                        <strong><span class="copyprice"><font class="fontrupee">`</font>{{hardcopyPrice}}</span> only</strong></div>
+                    <div class="report-price" ng-show="hardCopy"><span class="added">+</span><span class="fontrupee">`</span>{{hardcopyPrice}} </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <div class="entercoupon">
+                    <div class="couponbox">
+                        <div ng-hide="onConfirm">
+                            <h2>enter coupon code</h2>
+                            <input name="" type="text" placeholder="Enter Coupon" class="couponinput" ng-model="coupon" tabindex="2">
+                            <a href="" class="buttonsbmt" analytics-on="click" analytics-category="Order Summary" analytics-event="Applied Coupon" analytics-label="{{coupon}}" ng-click="verifyCoupon(coupon);" tabindex="3">SUBMIT</a>
+                            <p class="coupon-error" ng-show="invalidCoupon">Invalid coupon</p>
+                        </div>
+                        <div ng-show="onConfirm" class="codeapplied">COUPON CODE <span>{{coupon}}</span>APPLIED</div>
+                    </div>
+                    <!--<div class="codeapplied">COUPON CODE <span>HEAL794</span>APPLIED</div>  -->
+                    <div class="cpnprice" ng-show="onConfirm">
+                        <span class="added">-</span><span class="fontrupee">`</span>{{couponAmount}}
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="total-amount-panel"> Total Amount <span class="amount"><b class="fontrupee" style="padding:0 7px;">`</b>{{discountamount}}</span></div>
+            <!-- <div class="paymentBtn"><a href="#">continue</a></div> -->
+            <!-- <div class="paymentBtn"><a ui-sref="confirm-address" class="btn btn-primary">Continue</a></div> -->
+            <div class="paymentBtn" ng-init="loaderVar=false">
+                <a analytics-on="click" analytics-category="Order Summary" analytics-event="Clicked Continue Button on Order Summary Screen" ng-click="continue();loaderVar = true" class="btn btn-primary">
+                    <div>
+                        <div ng-show="hideContinue" tabindex="4">continue</div>
+                        <div ng-show="loaderVar" class="loader initial loaderstyle1"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </section>
+    <!--NEW CHECKOUT CONTAINER ENDS HERE -->
+</div>
+
+<!--header section starts here -->
+<div class="noview-mobile" ui-view="footer"></div>
+<!--header section ends here -->

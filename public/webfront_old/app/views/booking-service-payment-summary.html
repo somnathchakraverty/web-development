@@ -1,0 +1,312 @@
+<!-- header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="ContentWrap">
+    <!--summary starts here -->
+    <div class="summeryContainer">
+        <div class="summeryMid help-block" ng-show="payment_api_error">
+            <div class="ContentWrap">
+                <!--ERROR MSG CONTAINER -->
+                <div class="error-container">
+                    <div class="mascot"></div>
+                    <div class="Right-errorMsg">
+                        <h1 style=" font-size: 51px;">Something went wrong</h1>
+                        <hr><br><br>
+                        <div class="clear"></div>
+                        <h5>But don’t worry! It can happen to the best of us and it just
+                            happened to you.
+                        </h5><br><br>
+                        <h6>Try one of these instead :</h6>
+                        <span class="link"><a href="/">HOME</a></span>
+                        <span><a href="/contact-us">CONTACT</a></span>
+                    </div>
+                </div>
+                <!--ERROR MSG CONTAINER -->
+            </div>
+        </div>
+        <div class="summeryMid" ng-show="payment_data">
+            <!--order message starts here -->
+            <div class="order-msg">
+                <div class="orderAction">
+                    <img src="assets/images/book-status.png">
+                </div>
+                <h2>
+                  Thank you
+                </h2>
+                <h5> 
+                  Your Booking ID is <span ng-bind="payment_data.booking_id.toUpperCase();"></span> & Service ID is <span ng-bind="payment_data.service_details.service_booking_id.toUpperCase();"></span> 
+
+                </h5>
+                <p>
+                 We have sent you an email confirmation at : <span ng-bind="payment_data.email_address"></span>
+                </p>
+                <p style="font-size:15px;">
+                    In case of any questions, please call us at : <strong ng-bind="companyphone.display_no"></strong>
+                </p>
+                <div class="clear"></div>
+            </div>
+            <!--order message ends here -->
+            <div class="clear"></div>
+
+            <!--booking summary section -->
+            <div class="pkg-summary bookingservicepayment">
+                <h2 style="width:100%;">Booking & Service Summary</h2>
+                <div class="clear"></div>
+                <!--consumer description -->
+                <div class="user-infos">
+                    <div class="clear"></div>
+                    <div class="user-detail">
+                      <p ng-if="stateParms.amt">
+                        <span class="titleuser">Transaction Amount : </span> 
+                        <span class="detailuser"><span class="fontrupee" style="padding:0px 2px;">`</span>{{stateParms.amt}}</span> 
+                      </p>
+                      <p ng-if="stateParms.merTxnId">
+                        <span class="titleuser">Transaction ID : </span> 
+                        <span class="detailuser">{{stateParms.merTxnId}}</span> 
+                      </p>
+                      <p>
+                        <span class="titleuser">Booking Date : </span> 
+                        <span class="detailuser">{{payment_data.order_date | moment:'ddd, DD MMM YYYY'}}</span>
+                      </p>
+                      <p> 
+                        <span class="titleuser">Sample collection date : </span>
+                        <span class="detailuser">{{payment_data.slot_date | moment:'ddd, DD MMM YYYY'}}</span>
+                      </p>
+                      <p>
+                        <span class="titleuser">Sample collection time : </span>
+                        <span class="detailuser">{{payment_data.slot_start_time}}-{{payment_data.slot_end_time}}</span>
+                      </p>
+                      <BR>
+                      <p> 
+                        <span class="titleuser">Billing Name  : </span>
+                        <span class="detailuser" style="text-transform:capitalize;">{{payment_data.customer_name}}</span> 
+                      </p>
+                      <p>
+                        <span class="titleuser">Registered MOBILE NO.  : </span> 
+                        <span class="detailuser">(+{{payment_data.country_code}}) {{payment_data.contact_number}}</span> 
+                      </p>
+                      <p> 
+                        <span class="titleuser">Billing ADDRESS : </span> 
+                        <span class="detailuser">{{payment_data.address}}, {{payment_data.pincode}}</span> 
+                      </p>
+                      <p ng-if="stateParms.source !=='crm'">
+                        <span class="titleuser">EMAIL ID : </span> 
+                        <span class="detailuser" ng-bind="payment_data.email_address"></span>
+                      </p>
+                    </div>
+                </div>
+                <!--consumer description ends here -->
+                <div class="clear"></div>
+                <!--order listing 01 -->
+                <div class="pkgs-infos" ng-if="stateParms.source !=='crm'">
+                    <div class="pay-summary-item">
+                        <h2 style="width: 100%;">Booking & Service Details</h2>
+                        <div class="clear"></div>
+                        <div class="title_border"> 
+                            <span class="booking-id">
+                                Booking ID : {{payment_data.booking_id}}
+                            </span>
+                        </div>
+
+                        <div class="summary-row" ng-repeat="item in payment_data.orderDetail">
+                            <div class="name-block">
+                                <div class="base-detail">
+                                    <p>{{item.cust_name}}</p>
+                                    <p>{{item.cust_age}} years / {{item.cust_gender}}</p>
+                                </div>
+                                <div class="fasting-block" ng-if="item.fasting_required!=0">
+                                    Fasting required for {{item.fasting_time}} hours
+                                </div>
+                                <div class="fasting-block" ng-if="item.fasting_required==0">
+                                    Fasting not required
+                                </div>
+                            </div>
+                            <div class="right-summary-block" ng-init="item.subTotal=0">
+                                <div class="top-row">
+                                    <div class="test-pack">Test/Package</div>
+                                    <!--<div class="you-save">You Save</div> -->
+                                    <div class="test-mrp">Market Price</div>
+                                    <div class="test-price">Our Price</div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="bottom-row" ng-repeat="items in item.Package" ng-if="item.Package">
+                                    <div class="test-pack" ng-init="item.subTotal = item.subTotal + stringToInt(items.healthians_price)">
+                                        <div class="package_name_mobile">Test/ Package : </div>
+                                         
+                                        <h6 ng-bind="items.display_name"></h6>
+                                        <h6 ng-bind="items.package_name" ng-show="!items.display_name"></h6>
+                                        <p>{{items.all_package_StringName | limitTo: 20}}...{{items.test_detail.length}}&nbsp;Tests</p>
+                                    </div>
+
+                                    <div class="test-mrp">
+                                        <div class="our_price_mobile">Market Price : </div>
+                                        <span class="fontrupee" style="padding:0px 2px;">`</span>{{items.actaul_price}} </div>
+                                    <div class="test-price">
+                                        <div class="our_price_mobile">Our Price : </div>
+                                        <span class="fontrupee" style="padding:0px 2px;">`</span>{{items.healthians_price}}</div>
+                                </div>
+                                <div class="total-row">
+                                    <div class="ttl-pack">
+                                        <div class="totalrupee-counts ng-binding">
+                                            <span>Total : </span>
+                                            <span class="fontrupee">`</span>{{item.subTotal}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <!--payment summary ui -->
+
+                        
+
+                         <!-- Service summary section-->
+                         <div class="title_border">  
+                            <span class="booking-id">
+                                Service ID : {{payment_data.service_details.service_booking_id.toUpperCase();}}
+                            </span>
+                        </div>
+                        <div class="user-infos ser_summary_top" ng-repeat="sub in payment_data.service_details.customer_details">
+                        
+                            <div class="clear"></div>
+                            <div class="user-detail ser_custname">
+                                <div class="ser_custname">
+                                   <span class="service-cust" ng-bind="sub.customer_name"></span>
+                                </div>
+                               
+                                <div ng-repeat="ser in sub.service" style="margin-top: 15px;">  
+                                    <p>
+                                        <span class="titleuser titleleft">Service Name : </span>
+                                        <span class="detailuser titleright">{{ser.service_name}} <em class="ser-price">(<span class="fontrupee" style="padding:0px 2px;">`</span>{{ser.order_price}})</em>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span class="titleuser titleleft">Service Validity : </span>
+                                        <span class="detailuser titleright">{{ser.service_valid_till | moment:'MMM DD, YYYY' }}</span>
+                                    </p>
+                                    <p>
+                                      <span class="titleuser titleleft">Service Included : </span>
+                                      <span class="detailuser subscriptionuserbox">
+                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableservice">
+                                            <tbody>
+                                                <tr>
+                                                    <th align="left" >
+                                                        <div class="tabledataservice">
+                                                            <div class="microservice"><b>Service Detail</b></div> 
+                                                            <div class="no-times"><b>Frequency</b></div> 
+                                                            <div class="validtill"><b>Validity</b></div>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                <tr ng-repeat="inc in ser.microservice">
+                                                    <td align="left" style="text-align:left;">
+                                                        <div class="tabledataservice">
+                                                        <div class="microservice">{{inc.microservice_name}}</div> <span class="no-times">{{inc.count}} times</span> <span class="validtill"><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;{{inc.microservice_valid_till | moment:'MMM DD, YYYY'}}</span></div>
+                                                    </td>
+                                                </tr>                                       
+                                            </tbody>
+                                          </table>                               
+                                        </span>
+                                    </p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- Service summary section ends here -->
+
+ 						<div class="clear"></div>
+                        
+                        <div class="coupon-hardcopy-infos">
+                        <table class="discount-coupon-hardcopy" border="0" cellspacing="0" cellpading="0" align="right">
+                            <tr ng-show="payment_data.coupon_code">
+                                <td class="ryt-tab">Discount </td>
+                                <td class="coupon-discounts">
+                                  <span style="margin-right:0px; font-size:15px; color:#000;">-</span> 
+                                  <span class="fontrupee">`</span>{{payment_data.discounted_amount}} 
+                                </td>
+                            </tr>
+                            <tr ng-show="payment_data.hard_copy == 'yes'">
+                                <td class="ryt-tab">Hardcopy Amount</td>
+                                <td class="coupon-discounts">
+                                  <span style="margin-right:0px; font-size:15px; color:#000;">+</span> 
+                                  <span class="fontrupee">`</span>{{hardcopyPrice}} 
+                                </td>
+                            </tr>
+                            <tr ng-show="payment_data.convenience_fee == 'yes'">
+                                <td class="ryt-tab">Convenience Fees <span class="glyphicon glyphicon-info-sign" title="Click to see How Convenience Fees is charged ?" ng-click="showConvenienceFeesDialog();" style="cursor:pointer;"></span></td>
+                                <td class="coupon-discounts">
+                                  <span style="margin-right:0px; font-size:15px; color:#000;">+</span> 
+                                  <span class="fontrupee">`</span>{{payment_data.convenience_amount}} 
+                                </td>
+                            </tr>
+                            <tr ng-show="payment_data.donation_amount > 0">
+                                <td class="ryt-tab">Donation Amount <span class="tsfdonation">(Yuvraj Singh Foundation)</span></td>
+                                <td class="coupon-discounts">
+                                  <span style="margin-right:0px; font-size:15px;color:#000;">+</span> 
+                                  <span class="fontrupee">`</span>{{payment_data.donation_amount}}
+                                </td>
+                            </tr>
+                            
+                        </table>
+                        <div class="clear"></div>
+                        </div>
+                        
+                        
+                        <div class="clear"></div>
+                        <div class="totalPricingsummery">
+                            <div class="rgtprice"> 
+                              <span class="tapaid">Total Amount : </span> 
+                              <span class="pamnt"> &nbsp;&nbsp;<strong>`</strong> 
+                              {{total_booking_service_order_price}} </span> 
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <h2 style="width:100%;"> Payment Summary</h2>
+                        <div class="clear"></div>
+                        <!--order listing 01 -->
+                        <div class="pkgs-infos_btm" style="border:1px solid #e4e4e4;">
+                            <table id="old-sum" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <th class="smtext" ng-if="order_type.toLowerCase() == 'online'">Payment Date</th>
+                                    <th class="smtext" ng-if="order_type.toLowerCase() != 'online'">Payment Due Date</th>
+                                    <th class="smtext">Mode of Payment</th>
+                                    <th class="smtext">Payment Via</th>
+                                    <th class="smtext" style="padding-right:35px;">Total Amount</th>
+                                </tr>
+                                <tr>
+                                    <td class="paydataorder" ng-if="payment_data.order_type.toLowerCase() != 'online'"> 
+                                      {{payment_data.slot_date | moment:'ddd, DD MMM YYYY'}} 
+                                    </td>
+                                    <td class="paydataorder" ng-if="payment_data.order_type.toLowerCase() == 'online'">
+                                      {{payment_data.slot_date | moment:'ddd, DD MMM YYYY'}} 
+                                    </td>
+                                    <td class="paydataorder" ng-if="payment_data.order_type == 'Cash on delivery'"> 
+                                      Cash on Sample Collection 
+                                    </td>
+                                    <td class="paydataorder" ng-if="payment_data.order_type == 'Online' || payment_data.order_type == 'online'"> Online
+                                        <!-- {{stateParms.cardClassificationType}} -->
+                                    </td>
+                                    <td class="paydataorder">
+                                      <span ng-show="stateParms.cardType">{{stateParms.cardType}}</span> 
+                                      <span ng-show="!stateParms.cardType">-</span>
+                                    </td>
+                                    <td class="fsrupeefnl paydataorder">
+                                      <span class="fontrupee">`</span>{{total_booking_service_amount}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--order listing 01 ends here -->
+                        <div class="clear"></div>
+                    </div>
+                    <!--booking summary section ends here -->
+                    <div class="clear"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here

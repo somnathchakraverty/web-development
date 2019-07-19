@@ -1,0 +1,316 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+
+footer {
+    background: #fff !important;
+}
+
+.help-block {
+    text-align: left;
+    color: #fff !important;
+}
+.span_sub_test {font-size:50% !important; line-height:40px; display: inline-block !important;}
+.rs_class {font-weight:normal; padding:0px; padding-right:2px;}
+</style>
+<!--header section starts here -->
+<header class="campaign-header-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="midpanel">
+                    <!--logo starts -->
+                    <div class="logo-panel">
+                        <div class="main-logo"><img src="assets/images/campaign/healthians-logo-campaign.png" /></div>
+                        <div class="contactRight">Call us<span><img src="assets/images/call_icon.png" class="callImage" />999-888-000-5</span></div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--logo ends -->
+                    <div class="clear"></div>
+                    <div class="content-panel">
+                        <div class="col-sm-12">
+                            <div class="col-sm-7">
+                                <div class="package-info">
+                                    <h1 ng-bind-html="display_name"></h1>
+                                    <h2 ng-bind-html="display_order_price"></h2>
+                                    <img ng-src="{{display_image}}" />
+                                    <div class="infonew">
+                                        <ul ng-repeat="item in display_data">
+                                            <h6 ng-bind-html='item.headline'></h6>
+                                            <li ng-repeat="i in item.data" ng-bind-html="i"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 text-right">
+                                <div class="form-campaign-new">
+                                    <h2>Talk to our Health Advisor!</h2>
+                                    <p>Fill out the form below and get a call back from our health advisor </p>
+                                    <form name="addLeadForm" novalidate>
+                                        <div class="field-form">
+                                            <input id="customerno" class="mob-icon pl10" minlength="10" maxlength="10" name="customerno" type="text" placeholder="Enter your Mobile No. *" ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadForm.customerno.$dirty && addLeadForm.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadForm.customerno.$error.pattern && visited) }" ng-required="true" autocomplete="false">
+                                            <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block">
+                                                <span ng-show="addLeadForm.customerno.$error.required">Mobile No. is required </span>
+                                                <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required && addLeadForm.customerno.$touched">
+                                                    Enter valid Mobile
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="field-form">
+                                            <input name="name" id="name" type="text" class="user-icon pl10" placeholder="Enter your Name *" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadForm.name.$dirty && addLeadForm.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadForm.name.$error.pattern && visited) }" ng-focus="booknow" ng-pattern="/^[A-Za-z ]+$/">
+                                            <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block">
+                                                <span ng-show="addLeadForm.name.$error.required">Name is required</span>
+                                                <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required">
+                                                    Enter valid Name
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="field-form">
+                                            <input ng-blur="visited = true" class="email-icon pl10" id="customeremail" name="customeremail" type="text" placeholder="Enter your Email" ng-model="customerEmail" ng-class="{ 'has-error': ((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$error.required) || (addLeadFormSubmitted && !customerEmail)) ||(addLeadForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="false" autocomplete="false">
+                                            <div ng-show="((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$invalid) || (addLeadFormSubmitted && !addLeadForm.customeremail))" class="help-block">
+                                                <span ng-show="addLeadForm.customeremail.$error.required">Email is required</span>
+                                                <span ng-show="addLeadForm.customeremail.$error.pattern && !addLeadForm.customeremail.$error.required  && addLeadForm.customeremail.$touched">Enter valid Email</span>
+                                            </div>
+                                        </div>
+                                        <div class="field-form">
+                                            <select class="form-select minimal" id="city" name="city" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true" ng-class="{ 'has-error': ((addLeadForm.city.$dirty && addLeadForm.city.$error.required) || (addLeadFormSubmitted && !addLeadForm.city)) }">
+                                                <option value="">City</option>
+                                            </select>
+                                            <div ng-show="((addLeadForm.city.$dirty && addLeadForm.city.$invalid) || (addLeadFormSubmitted && !addLeadForm.city))" class="help-block">
+                                                <span ng-show="addLeadForm.city.$error.required">Please select city.</span>
+                                            </div>
+                                        </div>
+                                        <div class="field-form">
+                                            <div id="capt_landing" class="gcapcha-healthtest"></div>
+                                        </div>
+                                        <div class="field-button">
+                                            <input name="send" value="Get Free Call Now" type="button" ng-click="sendDetails();" analytics-on="click" analytics-category="Health Test Campaign - Desktop" analytics-event="Get Free Call Now" />
+                                        </div>
+                                        <span style=" float:left; color:#8af8fd; font-size:11px;">* Mandatory fields</span>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</header>
+<!--header section ends here -->
+<!--why healthians -->
+<div class="our-achievment-new">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="text-align:center;">
+                <h1 class="mt45">Why only Healthians?</h1>
+                <div class="clear"></div>
+                <div class="col-sm-3">
+                    <div class="uspdetail">
+                        <div><img src="assets/images/campaign/home_sample_icon.png" /></div>
+                        <h4>FREE SAMPLE PICKUP</h4>
+                        <p>Cost free sample pickup from Home or Office. </p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="uspdetail">
+                        <div><img src="assets/images/campaign/rightprices_icon.png" /></div>
+                        <h4>HONEST PRICES</h4>
+                        <p>Say NO to cuts & commissions.</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="uspdetail">
+                        <div><img src="assets/images/campaign/healthcounselling_icon.png" /></div>
+                        <h4>FREE HEALTH COUNSELLING</h4>
+                        <p>Professional consultation.</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="uspdetail">
+                        <div><img src="assets/images/campaign/accuracy_icon.png" /></div>
+                        <h4>GUARANTEED ACCURACY</h4>
+                        <p>Money back guarantee on accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--why healthians ends -->
+<div class="our-achievment-new">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="text-align:center;">
+                <h1>
+          <img src="assets/images/campaign/star1.png" />
+          <img src="assets/images/campaign/star1.png" />&nbsp;&nbsp;Our Achievements&nbsp;&nbsp;
+          <img src="assets/images/campaign/star1.png" />
+          <img src="assets/images/campaign/star1.png" />
+        </h1>
+                <div class="bigstar">
+                    <p>National PPTCT Programme </p>
+                </div>
+                <div class="bigstar">
+                    <p>Innovative Health care Start-Up </p>
+                </div>
+                <div class="bigstar">
+                    <p>Health & Social care Enterprise </p>
+                </div>
+                <div class="bigstar">
+                    <p>Healthcare Innovator Programme </p>
+                </div>
+                <div class="bigstar">
+                    <p>State Level consultation Memento </p>
+                </div>
+                <div class="bigstar">
+                    <p>Enterprise leadership </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="our-trust">
+    <div class="container-fluid">
+        <h1 class="mt45"> Trusted by Employees of </h1>
+        <ul>            
+            <li><img src="assets/images/campaign/logo2.jpg" /></li>
+            <li><img src="assets/images/campaign/logo3.jpg" /></li>
+            <li><img src="assets/images/campaign/logo4.jpg" /></li>
+            <li><img src="assets/images/campaign/logo5.jpg" /></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="in-media">
+    <div class="container-fluid">
+        <h1 class="mt45"> In the media </h1>
+        <div class="col-sm-12" style="text-align:center;">
+            <div class="media-mid middle-media">
+                <a>
+                    <div class="media-spritesc05"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc02"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc01"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc06"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc03"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc04"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc07"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc08"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--sticky form -->
+<div class="sticky-bottom cms-campaign">
+    <form name="addLeadFormMobile" novalidate>
+        <div class="overlay-visible" ng-show="showLeadMobileForm"></div>
+        <div ng-class="showLeadMobileForm ? 'white-visible' : 'green-visible'"> <a class="mob-close" href="javascript:void(0);" ng-click="hideTabOnMobileLead();" ng-show="showLeadMobileForm"><span aria-hidden="true" style="font-size: 42px; line-height: 10px;color: #ccc;">&times;</span></a>
+            <div class="field-form">
+                <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" class="mob-icon" placeholder="Enter your Mobile Number *" ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadFormMobile.customerno.$dirty && addLeadFormMobile.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadFormMobile.customerno.$error.pattern && visited) }" ng-required="true" autocomplete="false" ng-click="tabOnMobileLead();" />
+            </div>
+             <div ng-show="((addLeadFormMobile.customerno.$dirty && addLeadFormMobile.customerno.$invalid) || (addLeadFormSubmitted && !addLeadFormMobile.customerno))" class="help-block"> <span ng-show="addLeadFormMobile.customerno.$error.required" style="color:#e75354;">Mobile No. is required</span> <span ng-show="addLeadFormMobile.customerno.$error.pattern && !addLeadFormMobile.customerno.$error.required && addLeadFormMobile.customerno.$touched" style="color:#e75354;"> Enter valid Mobile </span> </div>
+
+            <div class="field-form" ng-show="showLeadMobileForm">
+                <input name="name" id="name" type="text" class="user-icon" placeholder="Enter your Name  *" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadFormMobile.name.$dirty && addLeadFormMobile.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadFormMobile.name.$error.pattern && visited) }" ng-pattern="/^[A-Za-z ]+$/" />                
+            </div>
+            <div ng-show="((addLeadFormMobile.name.$dirty && addLeadFormMobile.name.$invalid) || (addLeadFormSubmitted && !addLeadFormMobile.name))" class="help-block"> 
+                <span ng-show="addLeadFormMobile.name.$error.required" style="color:#e75354;">Name is required</span> 
+                <span ng-show="addLeadFormMobile.name.$error.pattern && !addLeadFormMobile.name.$error.required" style="color:#e75354;"> Enter valid Name </span> 
+            </div>
+
+            <div class="field-form" ng-show="showLeadMobileForm">
+                <input name="email" id="email" type="text" class="user-icon" placeholder="Enter your Email" ng-required="false" ng-model="custEmail" ng-class="{ 'has-error': ((addLeadFormMobile.email.$dirty && addLeadFormMobile.email.$error.required) || (addLeadFormSubmitted && !custEmail)) ||(addLeadFormMobile.email.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" autocomplete="false"/>
+            </div>
+            <div ng-show="((addLeadFormMobile.email.$dirty && addLeadFormMobile.email.$invalid) || (addLeadFormSubmitted && !addLeadFormMobile.email))" class="help-block"> 
+                <span ng-show="addLeadFormMobile.email.$error.required" style="color:#e75354;">Email is required</span> 
+                <span ng-show="addLeadFormMobile.email.$error.pattern && !addLeadFormMobile.email.$error.required" style="color:#e75354;"> Enter valid Email </span> 
+            </div>
+
+            <div class="field-form" ng-show="showLeadMobileForm">
+                <select class="form-select minimal" id="city" name="city" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true" ng-class="{ 'has-error': ((addLeadFormMobile.city.$dirty && addLeadFormMobile.city.$error.required) || (addLeadFormSubmitted && !addLeadFormMobile.city)) }">
+                    <option value="">Select your City</option>
+                </select>                
+            </div>
+            <div ng-show="((addLeadFormMobile.city.$dirty && addLeadFormMobile.city.$invalid) || (addLeadFormSubmitted && !addLeadFormMobile.city))" class="help-block"> <span ng-show="addLeadFormMobile.city.$error.required" style="color:#e75354;">Please select city.</span> </div>
+            <div class="field-form">
+                <div id="capt_mobile_landing_page"></div>
+            </div>
+            <div class="field-button">
+                <input name="sendLandingMobileDetails" value="Get Free Call Now" type="button" ng-click="sendLandingMobileDetails();" analytics-on="click" analytics-category="Health Test Campaign - Mobile" analytics-event="Get Free Call Now" />
+            </div>
+        </div>
+    </form>
+    <!--visible div ends -->
+    <!--invisible div -->
+    <!--visible div ends -->
+    <!--sticky div mobile ends -->
+</div>
+<!--sticky form ends -->
+<!-- footer -->
+<login-modal visible="compaignmsg">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div style="margin:0px auto; background:#fff; padding:30px 0px;">
+        <div class="lead-pg-popup web2-thankyou">
+            <section>
+                <h6>Thank You for sharing your details with us. </h6>
+                <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+                </p>
+            </section>
+        </div>
+    </div>
+</login-modal>
+<style type="text/css">
+.zopim {
+    display: none !important;
+}
+</style>
+
+<script type="text/javascript">
+
+    // var widgetId5;
+    // var widgetId6;
+    // var onloadCallback = function() {
+    //     setTimeout(function(){
+    //         if(typeof grecaptcha !== 'undefined') {
+    //             if($('#capt_landing').length) {
+    //                 widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+    //             }
+
+    //             if($('#capt_mobile_landing_page').length) {
+    //                 widgetId6 = grecaptcha.render('capt_mobile_landing_page', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+    //             }
+    //         }
+    //         else {
+    //             onloadCallback();
+    //         }
+    //     }, 500);     
+    // }
+    // setTimeout(function(){
+    //     onloadCallback();
+    // }, 2000);
+
+</script>

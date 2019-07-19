@@ -1,0 +1,184 @@
+<div class="ContentWrap">
+    <!--header section starts here -->
+    <div ui-view="header"></div>
+    <!--header section ends here -->
+    <div class="clear"></div>
+    <!--checkOut panel starts here -->
+    <div class="checkOutContainer">
+        <div class="checkoutMid">
+            <div class="countertimer">Session time Remain : <span id="counter"></span></div>
+            <h1>Order <span>Checkout</span></h1>
+            <div class="clear"></div>
+            <div>
+                <!-- customer list + package -->
+                <div ng-repeat="item in customerDetails">
+                    <div class="patientFillDtl">
+                        <ul>
+                            <li>Name: <span ng-bind="item.name"></span></li>
+                            <li>Age: <span ng-bind="item.age"></span></li>
+                            <li>Gender: <span ng-bind="item.gender"></span></li>
+                            <li>Mobile: (+91) <span ng-bind="item.phone"></span></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div>
+                        <div class="testListings">
+                            <div class="testsPrescribed">
+                                <ul>
+                                    <div ng-repeat="items in item.pkg.test_packages" ng-if="item.pkg.test_packages">
+                                        <li ng-bind="items.tcategory_name"></li>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div ng-show="pickhr" class="pkgAmnt">PACKAGE Amount
+                                <h3><span class="fontrupee">`</span><span ng-bind="item.pkg.healthian_price">/-</span></h3>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="clear"></div>
+                <div class="hardcopy">
+                    <input type="checkbox" ng-model="hardCopy" ng-click="hardCopyFunc(hardCopy)">
+                    <label for="">Need a hardcopy of my report : Rs. 30 (extra)</label>
+                </div>
+                <div class="clear"></div>
+                <!--coupon div -->
+                <div class="couponDiv" ng-show="couponShow">
+                    <div ng-hide="onConfirm" class="havcode">Have a coupon code?
+                        <input name="" class="couponInput" placeholder="Enter Code" type="text" ng-model="coupon">
+                        <div class="clear"></div>
+                    </div>
+                    <div ng-hide="onConfirm" class="applycouponcode" style="float:left;"><a href="" ng-click="verifyCoupon(coupon);">Apply</a></div>
+                    <div class="payableamnt">PAYABLE Amount
+                        <br>
+                        <h2><span class="fontrupee">`</span>{{discountamount}}/-</h2>
+                        <!-- <div ng-show="pickupcharge">Peak hours charges applied!</div> -->
+                        <div ng-show="hardCopy">Hard Copy Charges :RS 30</div>
+                    </div>
+                    <!--  <div class="chkOutBtn" ng-click="confirm();onConfirm = true;"><a href="">Confirm</a></div> -->
+                    <div class="clear"></div>
+                    <div class="chkOutBtn" ng-hide="onConfirm" ng-click="confirm();onConfirm = true;"><a href="">Confirm</a></div>
+                </div>
+                <!--coupon div ends here -->
+            </div>
+            <div class="clear"></div>
+            <!--add member ends here -->
+            <div class="patienttofill" ng-show="address">
+                <div ng-if="islogin">
+                    <ul ng-show="!displayAdd">
+                        <li>
+                            ADDRESS:
+                            <select class="wdth200" id="customerlocation" name="customerlocation" ng-change="selectListedAdd(address)" ng-model="address" ng-required="true" ng-options="address as address.address for address in addressList">
+                            </select>
+                        </li>
+                        <li>
+                            <div style="float:left;"><a href="" ng-click="newAddress();">Enter New Address</a></div>
+                        </li>
+                    </ul>
+                </div>
+                <form name="addAddressForm" novalidate>
+                    <div ng-if="displayAdd">
+                        <ul>
+                            <li>
+                                <input id="customerhno" name="customerhno" type="text" class="wdth200" placeholder="House No." ng-model="addAddressForm.customerHno" ng-class="{ 'has-error': ((addAddressForm.customerhno.$dirty && addAddressForm.customerhno.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerHno)) }" ng-required="true">
+                                <span ng-show="((addAddressForm.customerhno.$dirty && addAddressForm.customerhno.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerHno))" class="error-message">Enter House No.</span>
+                                <!-- <input name="" type="text" class="wdth200" placeholder="House No."> -->
+                            </li>
+                            <li>
+                                <input id="customersublocality" name="customersublocality" type="text" class="wdth200" placeholder="Sublocality/Street Name" ng-model="addAddressForm.sublocality" ng-class="{ 'has-error': ((addAddressForm.customersublocality.$dirty && addAddressForm.customersublocality.$error.required) || (addAddressFormSubmitted && !addAddressForm.sublocality)) }" ng-required="true">
+                                <span ng-show="((addAddressForm.customersublocality.$dirty && addAddressForm.customersublocality.$error.required) || (addAddressFormSubmitted && !addAddressForm.sublocality))" class="error-message">Enter Street name</span>
+                                <!-- <input name="" type="text" class="wdth200" placeholder="Sublocality/Street Name"> -->
+                            </li>
+                            <li>
+                                <input name="" type="text" class="wdth200" placeholder="Locality" ng-model="localityObj.location_name" ng-disabled="true">
+                            </li>
+                            <li>
+                                <input name="" type="text" class="wdth200" placeholder="City" ng-model="city.city_name" ng-disabled="true">
+                            </li>
+                            <li>
+                                <input id="customerpin" minlength="6" maxlength="6" name="customerpin" type="text" class="wdth200" placeholder="Pincode" ng-model="addAddressForm.Pin" ng-class="{ 'has-error': ((addAddressForm.customerpin.$dirty && addAddressForm.customerpin.$error.required) || (addAddressFormSubmitted && !addAddressForm.Pin)) }" ng-change="verifyAddress();" ng-required="true">
+                                <span ng-show="((addAddressForm.customerpin.$dirty && addAddressForm.customerpin.$error.required) || (addAddressFormSubmitted && !addAddressForm.Pin && !addAddressForm.customerEmail))" class="error-message">Enter Pin code</span></li>
+                            <!-- <div class="clear"></div> -->
+                            <li>
+                                <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" class="wdth200" placeholder="Email address" ng-model="addAddressForm.customerEmail" ng-class="{ 'has-error': ((addAddressForm.customeremail.$dirty && addAddressForm.customeremail.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerEmail)) ||(addAddressForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{3,5}$/" ng-change="verifyAddress();" ng-required="true" ng-readonly="islogin">
+                                <span ng-show="((addAddressForm.customeremail.$dirty && addAddressForm.customeremail.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerEmail)) ||(addAddressForm.customeremail.$error.pattern && visited)" class="error-message">Enter valid email</span></li>
+                        </ul>
+                    </div>
+                </form>
+                <div class="clear"></div>
+            </div>
+            <!--payment tYPE -->
+            <div class="paymentTypes" ng-show="payment">
+                <h2>How would you like to pay?</h2>
+                <div class="clear"></div>
+                <div class="payleft">
+                    <ul>
+                        <li>
+                            <div class="paybuttons" ng-init="payradio = 'online'">
+                                <input type="radio" id="radio01" name="radio" ng-model="payradio" value="cash" ng-change="createotp()" />
+                                <label for="radio01"><span></span>Cash on Collection</label>
+                            </div>
+                            <div class="clear"></div>
+                            <!-- fuction for apply otp -->
+                            <!-- <div class="otpcode" ng-show="payradio == 'cash'">Please Enter OTP 
+                                <input name="" class="couponInput" placeholder="Enter OTP" type="text" ng-model="otpcode">
+                                <input type="button" value="Resend" ng-click="createotp()">
+                                <div class="clear"></div>
+                            </div> -->
+                            <div class="clear"></div>
+                            <div ng-show="otp_status_msg">
+                                {{otp_msg}}
+                            </div>
+                        </li>
+                        <li>
+                            <div class="paybuttons">
+                                <input type="radio" id="radio02" name="radio" ng-model="payradio" value="online" />
+                                <label for="radio02"><span></span>online collection</label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="paymentLogos">
+                    <ul>
+                        <li><img src="assets/images/payzapp.jpg"></li>
+                        <li><img src="assets/images/payU.jpg"></li>
+                        <li><img src="assets/images/VERISIGN.jpg"></li>
+                        <li><img src="assets/images/secured.jpg"></li>
+                        <li><img src="assets/images/privacy-assured.jpg"></li>
+                        <li><img src="assets/images/payUmoney.jpg"></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!--PAYMENT TYPE  ends-->
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="paymentBtn" ng-show="payment" ng-click="makePayment()">
+            <a>Make Payment</a>
+        </div>
+        <div class="goBackEdit">
+            <a href="" ng-click="editbooking();">Go back to Edit your Booking</a>
+        </div>
+    </div>
+    <form action="//crm2.healthians.com/paymentController" method="post" name="paymentForm" id="paymentForm">
+        <input type="hidden" name="amount" value="" />
+        <input type="hidden" name="billing_cust_name" value="" />
+        <input type="hidden" name="billing_cust_tel" value="" />
+        <input name="billing_cust_address" type="hidden" value="" />
+        <input name="billing_cust_city" type="hidden" value="" />
+        <input name="billing_cust_state" type="hidden" value="" />
+        <input name="billing_cust_country" type="hidden" value="" />
+        <input name="billing_zip_code" type="hidden" value="" />
+        <input type="hidden" name="billing_cust_email" value="" />
+        <input type="hidden" name="booking_id" value="" />
+    </form>
+    <!--header section starts here -->
+    <div ui-view="footer"></div>
+    <!--header section ends here -->
+    <!--checkOut panel ends here -->
+</div>

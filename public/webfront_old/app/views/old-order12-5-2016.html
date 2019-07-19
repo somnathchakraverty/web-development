@@ -1,0 +1,766 @@
+<style>
+.has-error{ border:none !important; border-bottom: 1px solid #f00 !important;}
+</style>
+<div class="ContentWrap"> 
+  <!--header section starts here -->
+
+   <div ui-view="header"></div>
+
+  <!--header section ends here -->
+
+    <form name="getcustomerForm" novalidate>
+    <div class="maskedOverlay" ng-show="addToCartModal"> <!--ng-show="addToCartModal" -->
+        <section class="patientDtlPopup">
+        <!--     <div ng-show="false" class="maskedOverlay" ></div>
+        <section ng-show="false" class="patientDtlPopup" > -->
+            <div class="popUpMid">
+            <h1>Please provide your details here
+            <a class="closenav" href="" ng-click="closeaddToCartModal();"><img src="assets/images/close_nav.png"></a></h1>
+            <div class="clear"></div>
+            <!--<div ng-if="customerDetails.length!=0" class="customerDataPop">
+                <ul ng-repeat="items in customerDetails track by $index"><div style="float:left;">Customer Details : </div> 
+                    <li>Name: <a href = ""><span ng-bind="items.name" ng-click="customerEdit(items,$index);"></span></a></li>
+                    <li>Age: <span ng-bind="items.age"> <span> years</span></span></li>
+                    <li>Gender: <span ng-bind="items.gender"></span></li>
+                    <li>Mobile: (+91) <span ng-bind="items.phone"></span></li>
+                    <br/>
+                </ul>
+            </div> -->
+                <div class="panelBooking"> 
+                <div ng-show="addfield">
+                    <!--left -->
+                    <div class="personalInfo">
+                        <!-- <div class="bookingFor">
+                        <label>Is this booking for you?</label>
+                            <div class="bookingforstatus">
+                                <div class="radiobuttons">
+                                    <input type="radio" id="radio01" name="bookingfor" value="yes" ng-model="getcustomerForm.bookingFor" ng-class="{ 'has-error': ((getcustomerForm.bookingfor.$dirty && getcustomerForm.bookingfor.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.bookingFor)) }" ng-click="existinguser(1)" ng-required="true"/>
+                                    <label for="radio01"><span></span>Yes</label>
+                                </div>
+                                <div class="radiobuttons">
+                                    <input type="radio" id="radio02" name="bookingfor" value="no" ng-model="getcustomerForm.bookingFor" ng-class="{ 'has-error': ((getcustomerForm.bookingfor.$dirty && getcustomerForm.bookingfor.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.bookingFor)) }" ng-click="existinguser(0)" ng-required="true"/>
+                                    <label for="radio02"><span></span>No</label>
+                                </div>
+                                <span ng-show="((getcustomerForm.bookingfor.$dirty && getcustomerForm.bookingfor.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.bookingfor))" class="error-message">Select one</span>
+                            </div>
+                        </div> -->
+                        <div class="clear"></div>
+                        <div ng-show="relative">
+                          <div>
+                            <select class="relationInfo" id="selectcustomer" name="selectcustomer" ng-model="getcustomerForm.relationlist" ng-required="true" ng-options="list as list.name for list in member" ng-change="listdata(getcustomerForm.relationlist);">
+                              <option value="">Select Patient</option>
+                            </select> 
+
+                            <span ng-show="((getcustomerForm.selectcustomer.$dirty && getcustomerForm.selectcustomer.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.relation))"class="error-message">Select patient</span>
+                          </div>
+                          <a href="" class="new-cust" ng-click="newCustomer();">Add new patient</a>
+                        </div>
+                        <div>
+                          <div class="fieldsType" ng-hide="guestUser">
+                              <input id="customername" name="customername" type="text" ng-blur="visited = true" class="wdth260" placeholder="Name" ng-model="getcustomerForm.name" maxlength="35" ng-class="{ 'has-error': ((getcustomerForm.customername.$dirty && getcustomerForm.customername.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.name))||(getcustomerForm.customername.$error.pattern && visited)}" ng-pattern="/^[A-z. ]+$/" ng-required="true" ng-disabled="disableName" uib-typeahead="list as list.name for list in tempUser | filter:$viewValue | limitTo:8" typeahead-no-results="noResults" typeahead-on-select="fillPatientDetail(getcustomerForm.name);" autocomplete="off">
+                              <div ng-if="noResults">
+                              <a class="add-user" href="" ng-click="addPatient();">Add Patient</a>
+                              </div>
+                              <span ng-show="((getcustomerForm.customername.$dirty && getcustomerForm.customername.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.name))" class="error-message pad-top">Enter name</span>
+                              <span ng-show="(getcustomerForm.customername.$error.pattern && visited)" class="error-message">Enter valid name</span>
+                          </div>
+                          <div class="fieldsType" ng-show="guestUser">
+                              <input id="customername" name="customername" type="text" ng-blur="visited = true" class="wdth260" placeholder="Name" ng-model="getcustomerForm.name" maxlength="35" ng-class="{ 'has-error': ((getcustomerForm.customername.$dirty && getcustomerForm.customername.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.name))||(getcustomerForm.customername.$error.pattern && visited)}" ng-pattern="/^[A-z. ]+$/" ng-required="true" ng-disabled="disableName" autocomplete="off">
+                              <span ng-show="((getcustomerForm.customername.$dirty && getcustomerForm.customername.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.name))" class="error-message pad-top">Enter name</span>
+                              <span ng-show="(getcustomerForm.customername.$error.pattern && visited)" class="error-message">Enter valid name</span>
+                          </div>
+                          <div ng-hide="rel" class="relationInfo">
+                            <select id="selectrelation" name="selectrelation" ng-model="getcustomerForm.relation" ng-options="list.value | lowercase as list.value | lowercase for list in RelationShip"  ng-required="true" ng-disabled="disableRelation">
+                              <option value="">Relation</option>
+                            </select>
+
+                            <span ng-show="((getcustomerForm.selectrelation.$dirty && getcustomerForm.selectrelation.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.relation))"class="error-message">Select relation</span>
+                          </div>
+                          <div ng-show="rel" class="relationInfo">
+                            <select id="selectrelation" name="selectrelation" ng-model="getcustomerForm.relation" ng-options="list.value | lowercase as list.value | lowercase for list in RelationShipwithoutSelf"  ng-required="true" ng-disabled="false">
+                              <option value="">Relation</option>
+                            </select>
+
+                            <span ng-show="((getcustomerForm.selectrelation.$dirty && getcustomerForm.selectrelation.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.relation))"class="error-message">Select relation</span>
+                          </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="fieldsType">
+                        <label for="country-code">+91</label>
+                            <input id="customerphone" name="customerphone" type="text" ng-blur="visited = true" class="pL20" placeholder="" ng-model="getcustomerForm.phone" maxlength="10" ng-class="{ 'has-error': ((getcustomerForm.customerphone.$dirty && getcustomerForm.customerphone.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.phone))||(getcustomerForm.customerphone.$error.pattern && visited)}" ng-pattern="/^\d{10}$/" ng-required="true" ng-disabled="disablePhone" autocomplete="off">
+                            <span ng-show="((getcustomerForm.customerphone.$dirty && getcustomerForm.customerphone.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.phone))||(getcustomerForm.customerphone.$error.pattern && visited)" class="error-message pad-top">Enter 10 digit mobile no.</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="age-gender">
+                            <div class="col-date">
+                                <input type="text" data-provide="datepicker" id="usedob" name="userdob" data-date-format="dd/mm/yyyy" data-date-autoclose="true" ng-model="getcustomerForm.userDOB" ng-class="{ 'has-error': ((getcustomerForm.userdob.$dirty && getcustomerForm.userdob.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.userDOB)) }" ng-required="true" placeholder="Date of Birth" ng-change="calculateAge(getcustomerForm.userDOB);" class="Collection Date dobtap" autocomplete="off">
+                                <!-- <span style="line-height:26px;" ng-show="((getcustomerForm.userdob.$dirty && getcustomerForm.userdob.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.userDOB))"class="error-message">Select collection date</span> -->
+                                <!-- <input type="date" ng-model="getcustomerForm.userDOB" ng-change="calculateAge(getcustomerForm.userDOB);"/> -->
+                                
+                                <span class="option">or</span>
+                            </div>
+                            <div class="age_T">
+                                <input id="customerage" name="customerage" type="text" ng-blur="visited = true" class="wdth80" placeholder="Age (years)" ng-model="getcustomerForm.age" maxlength="3" ng-class="{ 'has-error': ((getcustomerForm.customerage.$dirty && getcustomerForm.customerage.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.age))||(getcustomerForm.customerage.$error.pattern && visited)}" ng-pattern="/^[0-9]\d{0,2}$/" ng-keyup="getDOB(getcustomerForm.age)" ng-required="true" autocomplete="off"/>
+                          
+                                <div style="clear:both;"></div>
+                                <span ng-show="((getcustomerForm.customerage.$dirty && getcustomerForm.customerage.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.age))||(getcustomerForm.customerage.$error.pattern && visited)" class="error-message">Enter age</span>
+                            </div>
+                            <div class="gender-select">
+                           <!-- <label>Gender</label> -->
+                                <div class="maleFemale">
+                                    <div class="radiobuttons">
+                                        <input type="radio" id="male" name="customergender" value="M" ng-model="getcustomerForm.gender" ng-class="{ 'has-error': ((getcustomerForm.customergender.$dirty && getcustomerForm.customergender.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.gender)) }" ng-required="true" ng-disabled="disableGender"/>
+                                        <label for="male"><span></span>Male</label>
+                                    </div>
+                                    <div class="radiobuttons">
+                                        <input type="radio" id="female" name="customergender" value="F" ng-model="getcustomerForm.gender" ng-class="{ 'has-error': ((getcustomerForm.customergender.$dirty && getcustomerForm.customergender.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.gender)) }" ng-required="true" ng-disabled="disableGender"/>
+                                        <label for="female"><span></span>Female</label>
+                                    </div>
+                                    
+                                </div>
+                                <span style="margin-left:5px; margin-top:75px;" ng-show="((getcustomerForm.customergender.$dirty && getcustomerForm.customergender.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.gender))" class="error-message pad-top">Select Gender</span>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="savetestbtn" ng-init="loaderVar = false" ng-show="addhide"><a href="" ng-click="getcustomerdetails(getcustomerForm.$valid)">Add</a></div>
+
+                        <div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;">
+                        </div>
+
+                    </div>
+                <!--left --> 
+                <!-- right -->
+                     <div class="locBillPanel">
+                        <div>
+                           <!-- <h2>YOUR ORDER</h2> -->
+
+                           <div class="hoversection" ng-show="previewDiv0">
+                              <span class="arrow-left"></span>
+                                <ul ng-repeat="item in previewList">
+                                  <li>
+                                    <span ng-bind="item.tcategory_name"></span>
+                                  </li>
+                                </ul>
+                            </div>
+                            <div class="hoversection" style="margin-top:58px" ng-show="previewDiv1">
+                              <span class="arrow-left"></span>
+                                <ul ng-repeat="item in previewList">
+                                  <li>
+                                    <span ng-bind="item.tcategory_name"></span>
+                                  </li>
+                                </ul>
+                            </div>
+                            <div class="hoversection" style="margin-top:115px" ng-show="previewDiv2">
+                              <span class="arrow-left"></span>
+                                <ul ng-repeat="item in previewList">
+                                  <li>
+                                    <span ng-bind="item.tcategory_name"></span>
+                                  </li>
+                                </ul>
+                            </div>
+                           
+                            <div class="customerwiseInfo" ng-repeat="item in customerDetails track by $index" ng-mouseover="hoverIn($index);" ng-mouseleave="hoverOut($index);">
+                            
+                            
+                            
+                                <!-- <div ng-if="item.pkg.test_packages.length">
+                                    <p ng-bind="item.name"><br>
+                                    <span ng-bind="item.age"> years</span>  <span ng-bind="item.gender"></span></p>
+                                    <div class="clear"></div>
+                                    <ul>
+                                        <div ng-repeat="items in item.pkg.test_packages track by $index">
+                                        <li ng-bind="items.tcategory_name"></li>
+                                        </div>
+                                    </ul>
+                                    <div class="clear"></div>
+                                    <div class="clear"></div>
+                                </div> -->
+                                
+                                
+                                <div class="LeftBox">{{item.name}}<span>/</span>{{item.age}}<span>/</span>{{item.gender}}
+                                <div class="ph">{{item.phone}}
+                                <div class="testCount">{{getTestCount(item.pkg, $index)}}</div>
+           
+           
+                                <div class="closebox"  ng-click="customerEdit(item.pkg,item.name,$index);">x</div>
+                                </div>
+                                 
+                                 
+                                 
+                                 
+                       
+                                 
+                                </div>
+                                
+                                 
+                                <div class="testprice"><span class="fontrupees" style="float:left; margin:0 2px;">`</span>{{ getSubTotal(item.pkg, $index) }}</div>
+                                
+                                <div class="clear"></div>
+                                
+                                
+                                
+                                
+                     
+                     
+                     
+                            </div>
+                            
+                            
+                             
+                            
+                            <div class="clear"></div>
+                            <div class="totalamounttopaid" ng-if="customerDetails.length!=0;"><span style="float:left; margin-right:30px;">Total Amount</span><span class="fontrupees" style=" float:left; margin:0 2px;">`</span><strong>{{amount}}</strong></div>
+                        </div>
+                     </div>
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     <!--did you know -->
+                     <div class="did-you-know" ng-if="customerDetails.length==0;">
+                     <img src="assets/images/did-you-know.png" />
+                     <div class="clear"></div>
+                     <p>“An apple a day, keeps the doctor away”</p>
+                     
+                     </div>
+                     
+                     <!--did you know -->
+                     
+                     
+                     
+                     
+
+
+                    
+                <!-- right -->
+
+
+
+
+                
+                </div>
+
+<div class="clear"></div>
+
+
+
+
+<div class="booking-alert" ng-show="alertDiv">
+                       <section class="bookingpop">
+                       <!-- <span><img src="assets/images/close_nav.png"></span> -->
+                       <div class="max-order-alert">* Maximum number of customer per booking is achieved. Please do another booking.</div>
+                <!-- <div class="proceed"><a href="#">Proceed to Cart</a></div> -->
+
+                       </section>
+                   </div>
+
+
+
+
+
+                <div class="clear"></div>
+                <div ng-show="btnshow">
+                    <hr class="bdrseparate">
+                    <div class="booksamepkg" ng-hide="alertDiv"><a href="" ng-click="booksamePkg();">Book SAME PACKAGE FOR<br> ANOTHER PERSON</a></div>
+                    <div class="bookanotherpkg"><a href="" ng-click="bookanotherPkg()">Add another <br>package / person</a></div>
+        
+                    <div class="checkout"><a href="" ng-click="confirmBook();">BOOK</a></div>
+                </div>
+                </div>
+            </div>
+        <div class="clear"></div>
+        </section>
+    </div>
+    </form>
+  
+  <!--popup patient box -->
+
+  <div class="clear"></div>
+  <!--search bar starts here -->
+  <section class="search_panelInside">
+    <div class="midwrap">
+      <section class="searchbox">
+        <!-- <figure class="detect-inside">
+          <select name="">
+            <option selected>Delhi/ NCR</option>
+            <option>Gurgaon</option>
+            <option>Noida</option>
+            <option>Greater Noida</option>
+          </select>
+        </figure> -->
+        <div class="tags">
+          <!-- <div class="tags" style="height:50px;" ng-click="popularPackageList = 'True'"> -->
+         
+         <!-- <tags-input ng-model="tags"></tags-input> -->
+          <tags-input ng-model="tags" add-from-autocomplete-only="true" display-property="text">
+            <auto-complete source="loadTags($query)"></auto-complete>
+          </tags-input>
+        </div>
+
+        <div class="custom-tagsearch">
+          <a href="" ng-click="toggleList()">Add More Tests/Packages</a>
+        </div>
+
+        <!-- <div class="searchPackage">
+          <input name="" placeholder="Find your tests/packages" type="text">
+        </div>
+        <div class="rightactionbtn">
+          <input type="button" name="" value="Search" class="actionBtn">
+        </div> -->
+        
+        <div class="search_Package" >
+
+          <input type="submit" value="Search" class="search_Btn" ng-click="updateSearch()">
+          
+        </div>
+
+        <div class="clear"></div>
+      </section>
+    </div>
+  </section>
+  <!--search bar ends here --> 
+
+  <!-- popular package -->
+
+<div class="packageDropdown" ng-show="popularPackageList" >
+  
+  <div class="midwrapDrp">
+  
+  <div class="Navpopulartests populartests">
+            <h2>Popular Tests <span>(click to select multiple)</span></h2>
+            <div class="clear"></div>
+         
+            <ul class="navtests" >
+               <li ng-repeat ="(key, value) in popularTest1" ng-click="checkSelection($event)"><a id="{{value.tcategory_id}}" href="">{{value.tcategory_name | titleCase }}</a></li>
+<!-- 
+                 <li ng-repeat ="(key, value) in popularTest1" ng-click="checkSelection($event)"><a id="{{value.tcategory_id}}" href="" ng-bind="value.tcategory_name"></a></li> -->
+            </ul>
+
+            <div class="clear"></div>
+            <h2>Popular Packages <span>(click to select multiple)</span></h2>
+            <div class="clear"></div>
+
+            <ul class="navpackages" >
+   <!--              <li ng-repeat ="(key, value) in popularPackages1" ng-click="checkSelection($event)"><a id="{{value.package_id}}" href="" ng-bind="value.package_name"></a></li> -->
+
+            <li ng-repeat ="(key, value) in popularPackages1" ng-click="checkSelection($event)"><a id="{{value.package_id}}" href="" >{{value.package_name | titleCase }}</a></li>
+            </ul>
+            
+            <div class="clear"></div>
+            
+     <!-- old -->       
+<!--           <div class="add-new-testDrpdwn">
+            <div class="added-parameter1" id="suggestTestMsg" style="display: none;">New search based on suggested package</div>
+
+            <input name="" ng-focus="hideSuggestedTest = false" placeholder="Find your tests/packages" ng-model="customSearchVal" ng-keyup="customSearch()" type="text">
+             <div class="drpdwn-search">
+              <input type="submit" value="Search" class="btns-search" ng-click="updateSearch()">
+             </div>
+
+          </div> -->
+
+
+ <!--add from test suggestion -->        
+        <div class="testSuggested" ng-hide="hideSuggestedTest" ng-click="suggestedListActions()">
+          <ul ng-repeat="row in suggestPackageList">
+            <!-- <h4>SUGGESTED SEARCHES</h4> -->
+            <div class="clear"></div>
+            <li ng-click="checkSelection($event)" class="suggestpackage"><a href="" id="{{row.id}}" value={{row.id}}>{{row.text}}</a></li>
+          </ul>
+          <div class="clear"></div>
+        </div>        
+        <!--add from test suggestion ends here -->
+
+
+
+
+        
+            
+            <div class="clear"></div>
+            
+            <!-- <div class="drpdwn-search"><input type="submit" value="Search" class="btns-search" ng-click="updateSearch()"></div> -->
+            
+            
+            
+  </div>
+  
+  </div>
+  
+   <div class="clear"></div>
+  </div>
+  
+  <!--search panel -->
+  <section class="searchListWrap"> 
+
+    <div class="clear"></div>
+    
+    <!--left filter starts here -->
+    <div class="filterCategory">
+        <uib-accordion close-others="oneAtATime">
+            <!-- <accordion-group heading="{{group.title}}" ng-repeat="group in riskgroups">
+                    <accordion>
+                        <accordion-group heading="{{item.title1}}" ng-repeat="item in group.subtitle">  
+                        <div ng-repeat="items in item.content1">
+                            <div class="checkbox">
+                                <input id="{{items.id}}" type="checkbox" value="{{items}}" ng-checked="selection.indexOf(items) > -1" ng-click="toggleSelection(items)">
+                                <label for="{{items.id}}" ng-bind="items.name"></label>
+                            </div>
+                        </div>
+                        </accordion-group>
+                    </accordion>
+            </accordion-group> -->
+             <uib-accordion-group is-open="true">
+                <uib-accordion-heading>
+                    <div class="byRisks">
+                        <h1>Suggested Tests<br>
+                            <strong>by Risk Areas</strong>
+                        </h1>
+                    </div>
+                </uib-accordion-heading>
+                <uib-accordion  style="margin:0px !important;">
+                    <!-- <accordion-group heading="{{item.title1}}" ng-repeat="item in group.subtitle"> -->
+                    <uib-accordion-group ng-repeat="item in riskgroups">
+                        <uib-accordion-heading>
+                            <span ng-bind="item.Name"></span>
+                        </uib-accordion-heading>
+                        <div ng-repeat="items in item.tests">
+                            <div class="checkbox">
+                                 <input id="{{items}} " type="checkbox" ng-model="habitListCheckbox[items.test_id]" ng-disabled="habitListCheckbox[items.test_id]" ng-click="toggleSelection(items)">
+                                 <label for="{{items}}" ng-bind="items.test_name"></label>
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                </accordion>
+            </uib-accordion-group>
+
+            <uib-accordion-group>
+                <uib-accordion-heading>
+                    <div class="byRisks">
+                        <h1>Suggested Tests<br>
+                            <strong>by Habits</strong>
+                        </h1>
+                    </div>
+                </uib-accordion-heading>
+                <uib-accordion>
+                    <uib-accordion-group heading="{{item.Name}}" ng-repeat="item in habitList">  
+                    <div ng-repeat="items in item.tests">
+                        <div class="checkbox">
+                            <input id="{{items}} " type="checkbox" ng-model="habitListCheckbox[items.test_id]" ng-disabled="habitListCheckbox[items.test_id]" ng-click="toggleSelection(items)">
+                            <label for="{{items}}" ng-bind="items.test_name"></label>
+                        </div>
+                    </div>
+                    </uib-accordion-group>
+                </uib-accordion>
+            </uib-accordion-group>
+        </uib-accordion>
+        <div class="addmore_tests" ng-click="addTest();"><a href="">add more tests</a></div>
+        <div class="added-parameter" id="fadeOuttest" style="display: none;">New search based on suggested package</div>
+    </div>
+    <!--left filter ends here --> 
+    
+    <!--middle area -->
+    <div class="midResultSection">
+
+      <!-- loader -->
+   
+      <div class="testsLoad">
+        <loading></loading>
+      </div>
+      <!-- loader -->
+
+
+      <div ng-show="firstPageList.length == 0 && !loading" class="pkg_notfound">
+          <h2>Sorry</h2>
+          <h3> We could not find the specific test requested by you.</h3>
+          <p>Please make sure you have entered the right spelling/word or we do not currently serve<br />
+ the tests you are looking for! </p>
+      </div>
+
+      <div class="resultSearch" ng-show="firstPageList.length !=0">
+          <!--deal 1 -->
+          <div class="deal_Listrow">
+            <div class="toprowpnl">
+              <h3>Your Searched <span>({{firstPageList.custom_package.resultsCount}})</span> Tests</h3>
+              <div class="pricingTop">
+                <div class="head-Logo"><img src="assets/images/head-logo.png"></div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="middlerow">
+              <div class="testInfo">
+                <!-- <ul>
+                  <li style="font-size:17px;">{{firstPageList.custom_package.display_name}}</li>
+                </ul> -->
+                <div class="alsoIncludeTests"> <span>Includes:</span>
+                  <ul>
+                    <li ng-repeat="item in customincludeList">{{item.tcategory_name}}</li>
+                  </ul>
+                </div>
+                <div class="clear"></div>
+                <!--parameter keyword -->
+                <!-- <div class="alsoIncludeTests"> <span>Also includes:</span>
+                  <div class="clear"></div>
+                  <div class="tagged-data">
+                    <ul>
+                      <li>Renal (5)</li>
+                      <li>Thyroid (3)</li>
+                      <li>Heart health (5)</li>
+                    </ul>testInfo
+                  </div>
+                </div> -->
+                <!--parameter keyword -->
+                <div class="fasting"><img src="assets/images/fasting-icon.png" width="12"> Fasting : <strong> <span ng-if="firstPageList.custom_package.fasting!=0">Required</span><span ng-if="firstPageList.custom_package.fasting==0">Not required</span></strong></div>
+                <div class="report-time"><img src="assets/images/report-time.png"> Report available in : <strong>{{firstPageList.custom_package.time_of_report}} <span ng-if="firstPageList.custom_package.time_of_report==1 || firstPageList.custom_package.time_of_report==0">day</span><span ng-if="firstPageList.custom_package.time_of_report!=1 && firstPageList.custom_package.time_of_report!=0">days</span></strong></div>
+              </div>
+              <div class="package_details">
+                <div class="brandrate">
+                  <div class="left-shape"><img src="assets/images/left-shape.png"></div>
+                  <div class="txt-bg">High Quality Certified Labs only</div>
+                  <div class="right-shape"><img src="assets/images/right-shape.png"></div>
+                  <div class="clear"></div>
+                  <div class="new-para">
+                    <table width="100%" align="center">
+                      <tbody>
+                        <tr>
+                          <td class="small-txt">Total Tests</td>
+                          <td class="small-txt">MRP</td>
+                          <td class="small-txt">Our Price</td>
+                        </tr>
+                        <tr>
+                          <td>{{firstPageList.custom_package.test_count}} </td>
+                          <td class="grey-txt"><span class="fontrupee">`</span>{{firstPageList.custom_package.actual_price}}</td>
+                          <td class="blue-txt"><span class="fontrupee">`</span>{{firstPageList.custom_package.healthian_price}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="clear"></div>
+                  <div class="selectBtn"><a href="" ng-click="addToCart(firstPageList.custom_package)">SELECT</a></div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <!--deal 1 end -->
+
+
+          <!--deal 2 -->
+          <div class="recommendedpkg"> <span class="recommendTitle">RECOMMENDED</span>
+          <div class="deal_Listrow">
+            <div class="toprowpnl">
+              <h3>Healthians <span>Comprehensive</span> Package</h3>
+              <div class="pricingTop">
+                <div class="head-Logo"><img src="assets/images/head-logo.png"></div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="middlerow">
+              <div class="testInfo">
+                <div class="alsoIncludeTests"> <span>Includes:</span>
+                  <ul>
+                    <li ng-repeat="item in includeList">{{item.tcategory_name}}</li>
+                  </ul>
+                </div>
+                <!-- <ul>
+                  <li style="font-size:17px;">{{firstPageList.healthian_package[0].display_name}}</li>
+                </ul> -->
+                <div class="clear"></div>
+                <!--parameter keyword -->
+                <div class="alsoIncludeTests"> <span>Also includes:</span>
+                  <div class="clear"></div>
+                  <div class="tagged-data">
+                    <ul>
+                      <li ng-repeat="item in arrayList">{{item.tcategory_name}}</li>
+                    </ul>
+                  </div>
+                </div>
+                <!--parameter keyword -->
+                <div class="clear"></div>
+                <div class="fasting"><img src="assets/images/fasting-icon.png" width="12"> Fasting : <strong> <span ng-if="firstPageList.healthian_package[0].fasting!=0">Required</span><span ng-if="firstPageList.healthian_package[0].fasting==0">Not required</span> </strong></div>
+                <div class="report-time"><img src="assets/images/report-time.png"> Report available in : <strong>{{firstPageList.healthian_package[0].time_of_report}} <span ng-if="firstPageList.healthian_package[0].time_of_report==1 || firstPageList.healthian_package[0].time_of_report==0">day</span><span ng-if="firstPageList.healthian_package[0].time_of_report!=1 && firstPageList.healthian_package[0].time_of_report!=0">days</span></strong></div>
+              </div>
+              <div class="package_details">
+                <div class="brandrate">
+                  <div class="left-shape"><img src="assets/images/left-shape.png"></div>
+                  <div class="txt-bg">High Quality Certified Labs only</div>
+                  <div class="right-shape"><img src="assets/images/right-shape.png"></div>
+                  <div class="clear"></div>
+                  <div class="new-para">
+                    <table width="100%" align="center">
+                    <tbody>
+                      <tr>
+                        <td width="33%" class="small-txt">Total Tests</td>
+                        <td width="33%" class="small-txt">MRP</td>
+                        <td width="33%" class="small-txt">Our Price</td>
+                      </tr>
+                      <tr>
+                        <td width="33%">{{firstPageList.custom_package.test_count}} </td>
+                        <td width="33%" class="grey-txt"><span class="fontrupee">`</span>{{firstPageList.custom_package.actual_price}}</td>
+                        <td width="33%" class="blue-txt"><span class="fontrupee">`</span>{{firstPageList.custom_package.healthian_price}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                  <div class="clear"></div>
+                  <div class="selectBtn"><a href="" ng-click="addToCart(firstPageList.healthian_package[0])">SELECT</a></div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          </div>
+          <!--deal 2 end -->
+
+           <!--recommendation panel ends here -->
+          <section class="other-recommendation"> <span ng-show="accordionList.length !=0">Other Recommended Packages</span>
+          <div class="pkg-other-recommendation" ng-show="accordionList.length !=0">
+              <uib-accordion>
+                  <!-- <accordion-group heading="{{item.title}}" ng-repeat="item in others"> -->
+                  <uib-accordion-group ng-repeat="item in accordionList">
+                      <uib-accordion-heading>
+                          <div class="pkg-other-recommendation">
+                            <h2>{{item.merchant_name}}</h2>
+                            <div class="pricingTop">
+                              <div class="slashed">{{item.actual_price}}</div>
+                              <div class="mainPrice">{{item.healthian_price}}</div>
+                            </div>
+                          </div>
+                      </uib-accordion-heading>
+                      <!-- <div class="pricingTop">
+                          <div class="slashed">1199/-</div>
+                          <div class="mainPrice">899/-</div>
+                      </div> -->
+                      <section class="middlerow">
+                          <div class="testInfo_recommend">
+                            <ul>
+                              <li>{{item.display_name}}</li>
+                              <!-- <li>HBA1C - Glycosylated Haemoglobin (2)</li>
+                              <li>TSH - Thyroid Stimulating Hormones (1)</li>
+                              <li>Lipid Profile (1)</li> -->
+                            </ul>
+                            <div class="clear"></div>
+
+                            <div>
+                              Total Tests Covered : {{item.test_count}} 
+                            </div>
+
+                            <!-- <div class="alsoIncludeTests"> <span>Also includes:</span>
+                              <div class="clear"></div>
+                              <div class="tagged-data">
+                                <ul>
+                                  <li ng-repeat="parameters in item.tests">{{parameters.tcategory_name}}</li>
+                                </ul>
+                              </div>
+                            </div> -->
+                          </div>
+                          <div class="package_details">
+                            <div class="brandrate">
+                              <div class="leftLogo"><img src="{{item.logo}}"></div>
+                              <!-- review data -->
+                             <!--  <div class="rate">
+                                <ul>
+                                  <li><img ng-src="assets/images/rate_{{item.rating}}.png"></li>
+                                </ul>
+                              </div>
+                              <div class="review"><a href="">({{item.reviews}} reviews)</a></div> -->
+                            </div>
+                            <div class="clear"></div>
+                            <!-- <div class="reco-accrediation">{{item.certification}} </div> -->
+                            <div class="reco-accrediation">High Quality Certified Lab</div>
+                            <div class="selectBtn"><a href="" ng-click="addToCart(item)">SELECT</a></div>
+                          </div>
+                          <div class="clear"></div>
+                          <div class="alsoIncludeTests"> <span>Also includes:</span>
+                            <div class="clear"></div>
+                            <div class="tagged-data">
+                              <ul>
+                                <li ng-repeat="parameters in item.tests">{{parameters.tcategory_name}}</li>
+                              </ul>
+                            </div>
+                          </div>
+                      </section>
+                  </uib-accordion-group>
+              </uib-accordion>
+          </div>
+      </section>
+        <!--recommendation panel ends here -->
+          <div class="clear"></div>
+      </div>
+    </div>
+    <!--middle area -->
+
+
+    <!--right panel starts here -->
+    <div class="order-status" ng-show="orderList">
+        <h2>Your Order</h2>
+        <!-- <div class="countertimer"><span id="counter"></span></div> -->
+        <div class="clear"></div>
+
+        <div class="patientInfo" ng-repeat="item in customerDetails track by $index">
+          <div ng-if="item.pkg.test_packages.length">
+              <p ng-bind="item.name"><br>
+               <span ng-bind="item.age"> years</span>  <span ng-bind="item.gender"></span></p>
+              <div class="clear"></div>
+
+              <ul>
+              <div ng-repeat="items in item.pkg.test_packages track by $index">
+                <li ng-bind="items.tcategory_name"></li>
+                  <!-- <li ng-bind="items.tcategory_name" ng-click="testEdit(items,item.name,$index);"><a href="" >X</a></li> -->
+              </div>
+              <!-- <div ng-if="!item.pkg.tests_pkg">
+                  <li ng-bind="item.pkg.display_name"><a href="">X</a></li>
+              </div> -->
+              <!-- <li>HBA1C</li>
+              <li>Lipid Profile</li>
+              <li>TSH</li> -->
+              </ul>
+
+
+              <!-- <div class="subtotal">
+              <ul>
+              <li class="bg-none">Sub Total<span class="fontrupee">` {{ getSubTotal(item.pkg, $index) }}</span></li>
+              </ul>
+              </div> -->
+
+              <div class="clear"></div>
+
+              <!-- <div class="totalPrice">
+              Total             <b class="fontrupees">`<span>899</span></b> 
+              </div> -->
+              <div class="clear"></div>
+
+          </div>
+        </div>
+        <div class="totalPrice">
+            Total             <b class="fontrupees">`<span>{{amount}}</span></b> 
+        </div>
+        <div class="clear"></div>
+
+        <div class="booktest" ><a href="" ng-click="confirmBook();">Book</a></div>
+    </div>
+    
+    <!--right panel ends here -->
+
+    </div>
+      
+    <div class="clear"></div>
+  </section>
+
+<!-- <div class="added-parameter" id="fadeOuttest" style="display: none;">New search based on suggested package</div> -->
+  
+  <!--search panel starts here --> 
+ <div class="clear"></div>
+  <!--header section starts here -->
+   <div ui-view="footer"></div>
+  <!--header section ends here -->
+  
+</div>

@@ -1,0 +1,59 @@
+<!--SLOT PANEL -->
+<div>
+    <h6>Schedule Lab Test Booking</h6>
+    <span style="color:#333; display:block; text-align:left; padding:0px 0 5px 20px;">CHOOSE A SLOT</span>
+    <span style="color:#FF0000;display:inline;font-size:11px;text-align:center;padding:0px;position:absolute;left:44%;top:53px;}">{{SlotError}}</span>
+    <div class="time-container">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" ng-repeat="slotDate in availableSlotDates" ng-class="{active: {{$index}} == 0}"><a href="#tab{{$index +1}}" ng-click="getDateWiseSlot(slotDate.date,$index +1);" role="tab" data-toggle="tab">{{slotDate.day}}</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="tab1">
+                <div class="timings">
+                    <ul>
+                        <li ng-repeat="firstslot in firstDateslots"><a ng-class="{'selected': selected === true}" ng-click="selected = !selected; setTimeSlot(firstslot.slot_id, firstslot.start_time, firstslot.end_time); " href="#">{{firstslot.start_time}} - {{firstslot.end_time}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab2">
+                <div class="timings">
+                    <ul>
+                        <li ng-repeat="secondSlot in secondDateslots"><a ng-class="{'selected': selected === true}" ng-click="selected = !selected; setTimeSlot(secondSlot.slot_id, secondSlot.start_time, secondSlot.end_time); " href="#" ng-click="setTimeSlot(secondSlot.slot_id)">{{secondSlot.start_time}} - {{secondSlot.end_time}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab3">
+                <div class="timings">
+                    <ul>
+                        <li ng-repeat="thirdSlot in thirdDateslots"><a ng-class="{'selected': selected === true}" ng-click="selected = !selected; setTimeSlot(thirdSlot.slot_id, thirdSlot.start_time, thirdSlot.end_time); " href="#" ng-click="setTimeSlot(thirdSlot.slot_id)">{{thirdSlot.start_time}} - {{thirdSlot.end_time}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab4">
+                <div class="timings">
+                    <ul>
+                        <li ng-repeat="fourthSlot in fourthDateslots"><a ng-class="{'selected': selected === true}" ng-click="selected = !selected; setTimeSlot(fourthSlot.slot_id, fourthSlot.start_time, fourthSlot.end_time); " href="#" ng-click="setTimeSlot(fourthSlot.slot_id)">{{fourthSlot.start_time}} - {{fourthSlot.end_time}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tab5">
+                <div class="timings">
+                    <ul>
+                        <li ng-repeat="fifthSlot in fifthDateslots"><a ng-class="{'selected': selected === true}" ng-click="selected = !selected; setTimeSlot(fifthSlot.slot_id, fifthSlot.start_time, fifthSlot.end_time); " href="#" ng-click="setTimeSlot(fifthSlot.slot_id)">{{fifthSlot.start_time}} - {{fifthSlot.end_time}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button class="waves-effect waves-light btn slide-toggle" ng-click="freezeTimeSlot()">Proceed</button>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-12 need-help">Need booking assistance? Call us at <span style="color:#00a0a8;" ng-bind="companyphone.display_no"></span> </div>
+        </div>
+    </div>
+</div>
+<!--SLOT PANEL -->
+<script>
+
+</script>

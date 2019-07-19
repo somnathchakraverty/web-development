@@ -1,0 +1,201 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,700i" rel="stylesheet">
+<style type="text/css">
+  .help-block {
+    text-align: left;
+    color: #fff !important;
+}
+</style>
+<!--Top Header -->
+<div class="healthcheck_top_header">
+    <div class="fluid-container">
+        <a name="myAnchor" id="myAnchor">
+            <div class="top_logo"> <a href="/"><img src="/assets/images/healthians_logo.png"></a>
+            </div>
+        </a>
+        <div class="topcall_us">
+            <a class="call_us" href="">
+                <p>Talk our Health Advisor</p>
+                <span>080 33 99 99 33</span></a>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--Top Header Ends -->
+<div class="clear"></div>
+<!-- Page Header -->
+<header class="bangalore_page_header">
+    <div class="midwrapper">
+        <div class="header_caption">
+            <h4>India's Largest Health Test</h4>
+            <h3>@Home Service</h3>
+            <div class="launch">Now in <span>Bengaluru</span></div>
+        </div>
+        <div class="formBlocks">
+            <div class="formcontainer" id="getaQuote">
+            <p class="enquirefor">enquire for</p>
+                <h1 style="font-weight:700; font-size:36px;" ng-show="package_info === ''">Full Body Checkup <br>
+                    <!-- <span>Starting @ <span class="fontrupee">`</span>999</span> -->
+                </h1>
+                <h1 ng-show="package_info !== ''" ng-bind="package_info"></h1>
+                <div class="clear"></div>
+                <div class="mainFormBlock">
+                    <form name="addLeadForm" novalidate>
+                        <ul>
+                            <li>
+                                <div class="form-field">
+                                  <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" placeholder="Contact No. * " ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadForm.customerno.$dirty && addLeadForm.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadForm.customerno.$error.pattern && visited) }" ng-required="true" autocomplete="false">
+                                  <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block">
+                                      <span ng-show="addLeadForm.customerno.$error.required">Contact No. is required</span>
+                                      <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required && addLeadForm.customerno.$touched">
+                                          Enter valid Contact no.
+                                      </span>
+                                  </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="form-field">
+                                    <input name="name" id="name" type="text" placeholder="Full Name * " ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadForm.name.$dirty && addLeadForm.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadForm.name.$error.pattern && visited) }" ng-focus="booknow" ng-pattern="/^[A-Za-z ]+$/" autocomplete="false">
+                                    
+                                    <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block">
+                                        <span ng-show="addLeadForm.name.$error.required">Name is required</span>
+                                        <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required">
+                                            Enter valid Name
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-field">
+                                    <input  id="customeremail" name="customeremail" type="email" placeholder="Email ID" ng-model="customerEmail" ng-class="{ 'has-error': (addLeadForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="false" autocomplete="false">
+
+                                    <div ng-show="((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$invalid) || (addLeadFormSubmitted && !addLeadForm.customeremail))" class="help-block">
+                                        <span ng-show="addLeadForm.customeremail.$error.pattern && !addLeadForm.customeremail.$error.required  && addLeadForm.customeremail.$touched">Enter valid Email ID</span>
+                                    </div>
+
+                                </div>
+                            </li>                            
+                            <li>
+                                <div class="form-field">
+
+                                  <select id="city" name="city" class="form-select-opt minimal" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true">
+                                    <option value="">City</option>
+                                  </select>
+                                  <div ng-show="((addLeadForm.city.$dirty && addLeadForm.city.$invalid) || (addLeadFormSubmitted && !addLeadForm.city))" class="help-block">
+                                      <span ng-show="addLeadForm.city.$error.required">Please select city.</span>
+                                  </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="capt_landing"></div>
+                            </li>
+                            <li>
+                                <div class="form-ctabtn">
+                                    <input name="send" type="button" class="ctabutton" value="Get Free Call" ng-click="sendLandingDetails();" analytics-on="click" analytics-category="campaign-complete-body-screening" analytics-event="Click on Get A Call Back Now">
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</header>
+<!--Cities -->
+<div class="expandedcities">
+    <p>Agra | Ambala | Amritsar | Bahadurgarh | Bengaluru | Chandigarh | Dehradun | Delhi | Faridabad | Ghaziabad | Greater Noida | Gurgaon | Haridwar | Jaipur | Jalandhar | Kanpur | Karnal | Kurukshetra | Lucknow | Ludhiana | Meerut | Mohali | Noida | Panchkula | Panipat | Rohtak | Shuklaganj | Sonipat | Unnao</p>
+</div>
+<!--Cities -->
+<!-- Page Header -->
+<div class="clear"></div>
+<!--Product Panel -->
+<div class="healthcheck_productpanel">
+    <div class="container">
+        <div class="producttitle">
+            <h2>Our Health Checkup Packages</h2>
+        </div>
+        <div class="clear"></div>
+        <!--Product Thumbnail -->
+        <div class="proThumb" ng-repeat="list in packageList | limitTo:6">
+            <div class="productThumb">
+                <h4 ng-bind="list.package_name"></h4>
+                <div class="testBrief">
+                    <p class="testInclude">Tests Included : <span ng-bind="list.testCount"></span></p>
+                    <p class="fastingTime">
+                        <span style="margin-left: 0px;" ng-if="list.fasting_time > 0"> Fasting required : {{list.fasting_time}} Hrs</span>
+                        <span style="margin-left: 0px;" ng-show="list.fasting_time == 0"> Not required</span>
+                            &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Reporting Time: {{list.reporting_time}} Hours</p>
+                </div>
+                <div class="testParameter">
+                    <ul>
+                        <li ng-repeat="item in list.test_includes" ng-bind="item"></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="pricingsection">
+                    <div class="leftPrice"> <span class="mrpTest">Price: <span class="fontrupee">`</span>{{list.actual_price}}</span>
+                        <div class="mainPrice"><span class="fontrupee">`</span>{{list.healthian_price}}</div>
+                    </div>
+                    <div class="rightBook"><a href="#myAnchor" rel="" id="anchor1" class="anchorLink" ng-click="setPackageInfo(list.package_name)">Get a call</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Product Panel Ends -->
+<div class="clear"></div>
+<div ui-view="footer"></div>
+<!-- footer -->
+<login-modal visible="compaignmsg">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div style="margin:0px auto; background:#fff; padding:30px 0px;">
+        <div class="lead-pg-popup">
+            <section>
+             <h6>Thank You for sharing your details with us. </h6>   
+            <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+            </p>
+               
+            </section>
+        </div>
+    </div>
+</login-modal>
+
+<style type="text/css">
+.zopim {
+    display: none !important;
+}
+</style>
+<script>
+    $('a').click(function(){
+        $('html, body').animate({
+            scrollTop: $( $(this).attr('href') ).offset().top
+        }, 500);
+    	$("#customerno").focus();
+        return false;
+    });
+
+    // var widgetId5;
+    // var onloadCallback = function() {
+    //     setTimeout(function(){
+    //         if(typeof grecaptcha !== 'undefined') {
+    //             if($('#capt_landing').length) {
+    //                 widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+    //             }
+    //         }
+    //         else {
+    //             setTimeout(function(){
+    //                 if($('#capt_landing').length) {
+    //                     widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+    //                 }
+    //             }, 500); 
+    //         }
+    //     }, 500);       
+    // }
+
+
+</script>
+

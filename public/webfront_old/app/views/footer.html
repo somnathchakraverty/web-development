@@ -1,0 +1,217 @@
+
+<!--home health karma cta-->
+
+<div class="homehealthkarma" ng-show="!$root.loggedin && !hide_healthkarma_popup">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-md-12 col-xs-12">
+                <div class="col-md-6 col-xs-7">
+                    <p class="tag_text">Today’s lifestyle is a disease in itself!</p>
+                    <p class="tag_text2">Know the impact of your lifestyle on your health with our unique AI tool</p>
+                    					
+                </div>
+                <div class="col-md-6 col-xs-5">
+                    <p><a href="/healthkarma" class="know_scorehk" analytics-on="click" analytics-category="Home Page" analytics-event="Click on Know Your Score">Check for FREE!</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--home health karma cta-->
+
+<!--footer-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 btm-head" >
+                <div class="btn-head-title">SUBSCRIBE <span>for Healthy Updates</span></div>
+                <div class="subscribe">
+                    <!-- <input type="text" name="" placeholder="Enter your email ID" class="text01">
+                     <input type="button" class="submit" value="Submit"> -->
+                    <form name="addAddressForm" novalidate>
+                        <input ng-blur="visited = true" name="customeremail" type="text" class="input-width" placeholder="Enter your email ID" ng-model="addAddressForm.customerEmail" ng-class="{ 'has-error': ((addAddressForm.customeremail.$dirty && addAddressForm.customeremail.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerEmail)) ||(addAddressForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{3,5}$/" ng-required="true" analytics-on="click" analytics-category="Footer" analytics-event="Entered Subscribed Form" ng-enter="subscriber(addAddressForm.$valid)">
+                        <input class="submit" ng-click="subscriber(addAddressForm.$valid)" type="submit" value="Submit" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4 btm-head lr-border">
+                <div class="btn-head-title">STAY <span>socially connected</span></div>
+                <ul>
+                    <li>
+                   <a target="_blank" href="https://www.facebook.com/Healthians?ref=hl" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Social Media Link" analytics-label="Facebook">
+                   <div class="social-media-linksocial-icon1"></div>
+                   </a>
+                   </li>
+                   
+                    <li>
+                        <a target="_blank" href="https://twitter.com/healthians" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Social Media Link" analytics-label="Twitter">
+                          <div class="social-media-linksocial-icon2"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/company/healthians-com?trk=company_name" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Social Media Link" analytics-label="Linked-In">
+                          <div class="social-media-linksocial-icon3"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.youtube.com/user/Healthians" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Social Media Link" analytics-label="Youtube">
+                         <div class="social-media-linksocial-icon4"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-4 btm-head rgt-ftr">
+                <div class="btn-head-title">AWARDS <span>& Recognitions</span></div>
+                <img src="" lazy-img="https://cdn1.healthians.com/assets/images/btm-logo.png">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <a href=""><img class="btm-logo-site" src="" lazy-img="https://cdn1.healthians.com/assets/images/healthians-btmlogo.png"></a>
+            </div>
+            <div class="col-sm-10">
+                <ul class="btm-link">
+                    <li>
+                        <a href="/about-us" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="About us">
+                        About us
+                      </a>
+                    </li>
+                    <li>
+                        <a href="/healthians-media" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Media">
+                        Media
+                      </a>
+                    </li>
+                    <li>
+                        <a href="/career" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Careers">
+                        Career
+                      </a>
+                    </li>
+                    <li>
+                        <a href="/healthians-investors" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Investors">
+                        Investors
+                      </a>
+                    </li>
+                    <li>
+                        <a href="/labs" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Labs">
+                        Our Labs
+                      </a>
+                    </li>
+                    
+                     <li>
+                        <a href="/deals" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Deals">
+                        Our Deals
+                      </a>
+                    </li>
+                 
+                    <li>
+                        <a href="http://blog.healthians.com/" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Blog" target="_blank">
+                        Blog
+                      </a>
+                    </li>
+                    <li>
+                        <a href="/contact-us" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Contact us">
+                        Contact Us
+                      </a>
+                    </li>
+                    <li>
+                        <a href="/refund-policy" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Money back policy">
+                            Money Back Policy
+                      </a>
+                    </li>
+                    <li>
+                        <a href="/feedback" analytics-on="click" analytics-category="Footer" analytics-event="Clicked feedback" analytics-label="Money back policy">
+                            Feedback/Complaints
+                      </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="btm-txt">
+            <p style="text-align:justify;">
+
+                Healthians.com is India’s largest health test @ home service offering a wide range of online blood test in Delhi NCR. We also offer all kind of pathology tests including blood, urine and other lab tests with free sample collection from home. Users can avail free health Counselling with every booking. All samples are evaluated at our network of NABL labs spread across Delhi NCR. We have our own team of highly skilled phlebotomist who specialize in blood sample collection from home.<br><br>
+
+                For all blood test at home including <a href="/parameter/chikungunya-dna-detection-by-pcr-blood" target="_blank">Chikungunya test</a>, <a href="/package/healthians-dengue-profile" target="_blank">dengue test in Delhi</a>, <a href="/profile/complete-hemogram" target="_blank">Complete Hemogram (CBC)</a>, <a href="/parameter/random-blood-sugar" target="_blank">Blood sugar</a>, <a href="/profile/liver-function-test" target="_blank">Liver function test (LFT)</a>, <a href="/profile/kidney-function-test" target="_blank">Kidney function test (KFT)</a>, <a href="/profile/lipid-profile" target="_blank">Lipid profile</a>, <a href="/parameter/dengue-ns1-antigen-detection-elisa" target="_blank">Dengue (NS1 and antigen)</a>, <a href="/parameter/chikungunya-igm-antibody" target="_blank">Chikungunya (PCR and IgM antibody)</a>, <a href="/profile/thyroid-profile-total" target="_blank">Thyroid</a>, <a href="/parameter/typhi-dot-igm" target="_blank">Typhoid</a>, <a href="/profile/hba1c" target="_blank">HbA1c</a>, <a href="/parameter/glucose" target="_blank">Glucose</a>, <a href="/parameter/iron-serum" target="_blank">Iron Serum</a>, <a href="/package/healthians-pancreatitis-package" target="_blank">Pancreatic profile</a>, <a href="/profile/electrolytes-profile" target="_blank">Electrolytes profile</a>, <a href="/package/vitamin-plus-package" target="_blank">Vitamins profile</a> and <a href="/package/healthians-full-body-checkup">full body checkups</a>, all you need to do is to give us a miss call. With 1 click booking and same day online reports, lab test at home was never so convenient!
+            </p>
+        </div>
+        <div class="copy" style="font-size:14px; color:#94959a;">2018 @ Healthians.com |
+            <a style="color:#94959a;" target="_blank" href="/terms-condition">Legal</a>
+        </div>
+    </div>
+    
+  
+    <a href="javascript:void(0);" class="scrollup" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Scroll-to-top image">Scroll</a>
+<br><br>
+</footer>
+
+
+
+
+<!--footer-->
+<!--Web Coupon -->
+<!-- <section class="discount-code" >
+    <div class="box-content active">
+        <div id="couponclose">x</div>
+        <a href="/deals"><img src="assets/images/couponweb.jpg" alt="" copy-to-clipboard text-to-copy="'SUMMER20'"></a>
+    </div>
+    <div class="clear"></div>     
+    <a class="box-toggle fl active" href="#">
+        <div class="coupon-handle">
+            <strong>Get 20% Discount</strong>
+            <span class="glyphicon glyphicon-chevron-down" style="font-size:11px; margin-left:10px;"></span>
+        </div>
+    </a>  
+    <div class="clear"></div>
+</section> -->
+<!--Web Coupon Ends -->
+<!--back to top -->
+<script>
+$(document).ready(function() {
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 250) {
+            $('.scrollup').fadeIn();
+        } else {
+            $('.scrollup').fadeOut();
+        }
+    });
+    $('.scrollup').click(function() {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    });	
+});
+ 
+
+$("a.box-toggle").on('click', function () {
+		$("div.box-content").removeClass('removed');
+		$('div.box-content').slideToggle(250).toggleClass('active');
+		$(".coupon-handle span").toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
+});  
+  	
+$("#couponclose").click(function(){
+		$("div.box-content").addClass('removed');
+		$("div.box-content").hide(0);
+        $(".coupon-handle span").toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+});
+var previousScroll = 0;
+$(window).scroll(function() {
+    var currentScroll = $(this).scrollTop();
+    if(currentScroll > previousScroll) {
+        //down
+        if ($(this).scrollTop()>50 && $(this).scrollTop() <100) {
+            $('div.box-content').fadeOut(); 
+        }
+    }
+    else {
+        //up scroll
+    }
+    previousScroll = currentScroll;
+});
+</script>
+

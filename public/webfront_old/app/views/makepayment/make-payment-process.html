@@ -1,0 +1,61 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<!--otp panel starts here -->
+<div class="otpsection">
+    <div class="otpMid">
+        <h1>Order <span>Detail</span></h1>
+        <div class="mobforOtp">
+            <div class="3">
+                <table width="100%" align="center" class="customerReports" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Booking ID</th>
+                        <th ng-bind="detail.booking_id">qqqqq</th>
+                    </tr>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th ng-bind="detail.customer_name">Ritesh kumar</th>
+                    </tr>
+                    <tr>
+                        <th>Mobile</th>
+                        <th ng-bind="detail.contact_no">9311561338</th>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <th ng-bind="detail.email">ritesh.daffodil@healthians.com</th>
+                    </tr>
+                    <tr>
+                        <th>Order Date</th>
+                        <th ng-bind="detail.booking_date">16-06-2016</th>
+                    </tr>
+                    <tr ng-repeat="deal in detail.deal_name track by $index">
+                        <th>Deal Name</th>
+                        <th ng-bind="deal">Comprehensive Health Check</th>
+                    </tr>
+                    <tr>
+                        <th>Payable Amount</th>
+                        <th ng-bind="detail.payble_amount">1500</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <div class="btn_cta"><a ng-click="payFunction()">Pay Online</a></div>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--otp panel ends here -->
+<!--header section starts here -->
+<form action="//crm2.healthians.com/payzapppayment" method="post" name="paymentForm" id="paymentForm">
+    <input type="hidden" name="booking_id" value="" />
+    <input type="hidden" name="txnAmount" value="" />
+    <input type="hidden" name="custName" value="" />
+    <input type="hidden" name="custMobile" value="" />
+    <input type="hidden" name="custEmail" value="" />
+    <input type="hidden" name="stm_id" value="" />
+</form>
+<div ui-view="footer"></div>
+<!--header section ends here -->

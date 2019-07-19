@@ -1,0 +1,240 @@
+<div class="ContentWrap">
+    <div ui-view="header"></div>
+    <div class="clear"></div>
+    
+    <section class="dashboard">
+        <div class="profilenav">
+                <div class="midNav">
+                    <ul>                    
+                        <li><a href="/dashboard" id="dashboard">Dashboard</a></li>
+                        <li><a href="/mybooking" id="booking">My Booking</a></li>
+                        <li><a href="/myreport" id="report">My Report</a></li>
+                        <li><a href="/myaddress" id="report" class="selected">My Address</a></li>    
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <!-- <div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;"></div> -->
+            </div>
+        <div class="clear"></div>
+    </section>
+    
+    <div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;"> </div>
+    
+    <div class="mybooking-main">
+        <div class="my-address-panel" id="myreport" ng-hide="loaderVar">
+          
+            <h2><span ng-hide="addNewAddressFlag">My Address</span> <span ng-show="addNewAddressFlag">Add New Address</span>
+                <div class="add-new-add" ng-hide="addNewAddressFlag"><a href="javascript:void(0);" ng-click="showAddNewAddress();"> + Add new address</a></div>
+                 <div class="add-new-add" ng-show="addNewAddressFlag"><a href="javascript:void(0);" ng-click="backMyAddress();"> Back to saved address</a></div>
+            </h2>
+            <!--add new address -->
+            <div class="seperate_address" ng-show="addNewAddressFlag">
+                <div class="new-address-section">
+                    <section>
+                        <div class="">
+                        <form name="addAddressForm" novalidate>
+                        
+                            <div class="groupSignups">
+                           	<input id="pacinput" name="pacinput" class="choosePlaces" ng-model="chosenPlace" type="text"  placeholder="Enter a location" googleplaceseperate ng-required="true" ng-readonly="sublocalityDropDownSelectedSeperate" ng-class="{ 'address_select_bottom_border': ( sublocalityDropDownSelectedSeperate)}"/>
+                                <!--<span class="highlight"></span> <span class="bar"></span>
+                    			<label>Enter Locality</label> -->
+                                <div class="location-checked location-checked-myaddress" ng-show="chosenPlace && sublocalityDropDownSelectedSeperate"></div>
+
+                                <div ng-show="((addAddressForm.pacinput.$dirty && addAddressForm.pacinput.$error.required) || (addAddressFormSubmitted && !chosenPlace))" class="help-block" style="display:inline-block; width:26%;">Enter location</div>
+                                <span ng-show="distanceErrorSeperate" ng-bind="distanceErrorMsg" class="error-message leftmsg-outofservice2"></span>   
+                                
+                                <a href="javascript:void(0);" ng-show="sublocalityDropDownSelectedSeperate" ng-click="resetSubLocalitySeperate();" class="address_reset_btn" title="Click to edit location">
+                                   <span class="glyphicon glyphicon-map-marker"></span> Reset
+                                </a>
+
+                            </div>
+                            
+                            <div class="groupSignups">
+                                <input ng-model="houseno" id="shouseno" name="shouseno" type="text" ng-required="true"/>
+                                <span class="highlight"></span> <span class="bar"></span>
+                    			<label>Enter House No./Apartment/Building</label>                                
+                                <div ng-show="((addAddressForm.shouseno.$dirty && addAddressForm.shouseno.$error.required) || (addAddressFormSubmitted && !houseno))" class="help-block">Enter House No.</div>
+                            </div>
+                            
+                            <div class="groupSignups">
+                                <input ng-model="landmark" name="landmark" id="landmark" type="text" required="false"/>
+                                <span class="highlight"></span> <span class="bar"></span>
+                    			<label>Enter Landmark</label>
+                            </div>
+                            
+                            <div class="groupSignups">
+                                <input ng-model="postal_code_new" type="text"  name="s_postal_code" id="s_postal_code" ng-required="true" maxlength="6" ng-pattern="/^[0-9]{6,6}$/"/>
+                                <span class="highlight"></span> <span class="bar"></span>
+                    			<label>Enter Pincode</label>
+                                
+                                
+                                <div ng-show="(addAddressForm.s_postal_code.$dirty && addAddressForm.s_postal_code.$error.required && !addAddressForm.s_postal_code.$error.pattern)" class="help-block">Enter Pincode</div>
+                                <span ng-show="addAddressForm.s_postal_code.$error.pattern &&  addAddressForm.s_postal_code.$touched" class="help-block">Enter valid Pincode</span>
+                            </div>
+                            
+                            <div class="save-address" ng-hide="showLoginLoader">
+                                <a href="javascript:void(0);" ng-click="sendNewAddressDetails()">Submit</a>
+                                
+                                &nbsp;
+                                
+
+                                <div ng-show="addAddressError" class="help-block" style="padding-top: 7px;">
+                                    <span ng-bind-html="addAddressErrorMsg"></span>
+                                </div>
+                            </div>
+                            <div ng-show="showLoginLoader">Please Wait <img src="/assets/images/load_wait.gif" style="margin-left: 3%"> </div>
+                        </form>
+                        </div>
+                    </section> 
+                </div>
+            </div>
+            <!--add new address -->
+            <div class="clear" style="margin-bottom:0px;"></div>
+            
+            
+            <div class="myaddress-section" ng-hide="addNewAddressFlag">
+                <div ng-if="addressList.length==0" class="no-addmid">               
+                <img src="/assets/images/no_location_mark.png" />
+                <h6>No saved addresses found</h6>
+                
+                </div>
+                
+                
+                <!--my all address -->
+                <div class="myall-addresslist">
+                    <div ng-repeat="adl in addressList" class="seperate_address">
+                        <!--address edit -->
+                        <div>                                            
+                            <div ng-class="{ 'active-class': (modifyAddressFlag[adl.address_id] === true && editCheck), 'dull-class':(modifyAddressFlag[adl.address_id] === false && editCheck)}">
+                                <div class="my-selected-address" ng-class="{ 'edit-modify-address': (modifyAddressFlag[adl.address_id] === true && editCheck)}">
+                                	<div class="default-status">
+                                	   <div class="default-address-sign" ng-if="adl.default_status == 1"><span class="glyphicon glyphicon-home" style="color: #d4f5dd;display: inline;"></span> &nbsp;Default Address</div>
+                                    </div>
+                                    <section class=" " ng-class="{ 'def-address-selected': (adl.default_status == 1), 'all-address-list': (adl.default_status == 0)}">
+                                        <div class="my-address-view" ng-hide="modifyAddressFlag[adl.address_id]">
+                                            <!--<h2>{{userDetail.name}}</h2> -->
+                                            <p style="min-height:150px;">
+                                                <span class="display_blck"><strong>House No.: </strong> <font>{{adl.house_number}}</font></span><br>
+                                                <span class="display_blck">
+                                                    <strong>Landmark: </strong> 
+                                                    <font ng-if="adl.landmark !== ''">{{adl.landmark}} </font>
+                                                    <font ng-if="adl.landmark === ''" style="font-size: 11px;"> N/A </font>
+                                                </span> <br>
+                                                <span class="display_blck"><strong>Location: </strong> <font>{{adl.sub_locality}} </font></span><br>
+                                                <span class="display_blck"><strong>Pincode: </strong> <font>{{adl.pincode}} </font></span>
+                                            </p>
+
+                                            <div class="delete_mydefault_address" ng-if="adl.default_status == 0">
+                                                <a href="javascript:void(0);" ng-click="setDefaultAddress(adl)" style="float:right;"><span class="glyphicon glyphicon-home" style="color:#b3b3b3;"></span> Set as Default
+                                                </a>
+                                                <a href="javascript:void(0);" ng-click="address_delete_confirmation(adl)" style="float:left;"><span class="glyphicon glyphicon-trash" style="color:#b3b3b3;"></span> Delete
+                                                </a>
+                                            </div>
+                                            
+                                            <!--edit address icon -->
+                                            <div class="edit-my-address">
+                                                <a href="javascript:void(0)" ng-click="modifyAddress(adl.address_id.toString(),adl.sub_locality, adl.house_number, adl.landmark, adl.pincode);">
+                                                    <b class="glyphicon glyphicon-pencil" style="font-size:15px;"></b>                                        
+                                                </a>
+                                            </div>
+                                            <!--edit address icon -->
+                                            
+                                        </div>
+                                        <div class="edit-myaddress" ng-show="modifyAddressFlag[adl.address_id]">
+                                            
+                                            <a ng-class="{ 'cancel_default': (adl.default_status == 1), 'cancel_edit_address': (adl.default_status == 0) }" href="javascript:void(0);" ng-click="cancelEditingAddress(adl.address_id);">
+                                                <img src="assets/images/cancel-editaddress.png" />
+                                            </a>
+                                            
+                                            <form name="editAddressForm[adl.address_id]" novalidate>
+                                                <div class="groupSignups edit_detail_groups">
+                                                    <strong class="edit-houseno">Location </strong>
+                                                    <div class="location-matched" ng-show="sublocalityDropDownSelected[adl.address_id]"></div>
+                                                    <input id="pacinput_{{adl.address_id}}" name="pacinput_{{adl.address_id}}" ng-model="editAddressFormModel[adl.address_id].locality" type="text" placeholder="Location" data-address="{{adl.address_id}}" googleplaceaddress ng-required="true"  ng-disabled="sublocalityDropDownSelected[adl.address_id]"  ng-class="{ 'address_select_bottom_border': (modifyAddressFlag[adl.address_id] === true && editCheck)}"/>
+                                                    
+                                                    <span ng-show="distanceError[adl.address_id]" ng-bind="distanceErrorMsg" class="error-message leftmsg-outofservice"></span>
+                                                    
+                                                    <div ng-show="((editAddressForm[adl.address_id].pacinput_{{adl.address_id}}.$dirty && editAddressForm[adl.address_id].pacinput_{{adl.address_id}}.$error.required) || (editAddressFormSubmitted && !editAddressFormModel[adl.address_id].locality))" class="help-block">Enter Location</div>
+
+                                                    <a href="javascript:void(0);" ng-show="sublocalityDropDownSelected[adl.address_id]" ng-click="resetSubLocality(adl.address_id);" class="address_reset_btn" title="Click to edit location">
+                                                       <span class="glyphicon glyphicon-map-marker"></span> Reset
+                                                    </a>
+                                                </div>
+                                                
+                                                <div class="groupSignups edit_detail_groups">
+                                                <strong class="edit-houseno">House No. </strong>
+                                                    <input ng-model="editAddressFormModel[adl.address_id].houseno" id="houseno" name="houseno" type="text"  placeholder="House No./Apartment/Building" ng-required="true"/>
+                                                    
+                                                    <div ng-show="((editAddressForm[adl.address_id].houseno.$dirty && editAddressForm[adl.address_id].houseno.$error.required) || (editAddressFormSubmitted && !editAddressFormModel[adl.address_id].houseno))" class="help-block">Enter House No.</div>
+                                                </div>
+                                                
+                                                <div class="groupSignups edit_detail_groups">
+                                                <strong class="edit-houseno">Landmark </strong>
+                                                    <input ng-model="editAddressFormModel[adl.address_id].landmark" name="landmark" id="landmark" type="text" placeholder="Landmark"/>
+                                                </div>
+                                                
+                                                <div class="groupSignups edit_detail_groups">
+                                                <strong class="edit-houseno">Pincode </strong>
+                                                    <input ng-model="editAddressFormModel[adl.address_id].postal_code" type="text"  placeholder="Pincode" name="postal_code" id="postal_code" ng-required="true" minlength="6" maxlength="6" ng-pattern="/^[0-9]{6,6}$/"/>
+                                                    
+                                                    <div ng-show="((editAddressForm[adl.address_id].postal_code.$dirty && editAddressForm[adl.address_id].postal_code.$error.required && !editAddressForm[adl.address_id].postal_code.$error.pattern) || (editAddressFormSubmitted && !editAddressFormModel[adl.address_id].postal_code))" class="help-block">Enter Pincode</div>
+                                                    <span ng-show="editAddressForm[adl.address_id].postal_code.$error.pattern && !editAddressFormModel[adl.address_id].postal_code && editAddressForm[adl.address_id].postal_code.$touched" class="help-block">Enter valid Pincode</span>
+
+                                                </div>
+
+                                               
+                                                <div class="savedAddress">
+
+                                                    <!--<a href="javascript:void(0);" ng-click="cancelEditingAddress(adl.address_id);">Cancel</a> -->
+                                                    <a href="javascript:void(0);" ng-click="updateAddressDetails(adl.address_id.toString(), adl.locality_id.toString(), adl.city)">Save</a>
+
+                                                    <div ng-show="addAddressErrorAll[adl.address_id]" class="help-block" style="padding-top: 1px;">
+                                                        <span ng-bind-html="addAddressErrorMsgAll[adl.address_id]"></span>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div> 
+                                    </section>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                         
+                            <div class="clear"></div>
+                        </div>  
+                        <!--address edit -->   
+                        
+                    </div>
+                <!--my all address -->    
+                   
+                </div>
+            
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <message-modal visible="address_msg_visible">
+            <div style="margin:0px auto; padding:30px 0px;">
+                <p class="signedUp" ng-bind="address_message"></p>
+                <button type="button" class="success_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="closeMessageModal();">Close</button>
+            </div>
+        </message-modal>
+
+        <!-- Delete Confirmation -->
+        <message-modal visible="address_delete_visible">
+            <div style="margin:0px auto; padding:30px 0px;">
+                <p style="font-size: 17px;"> Are you sure you want to delete this address ? </p>
+                <div style="margin:0px auto;text-align: center;">
+                    <button type="button" class="confirm_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="deleteUserAddress(deleteaddress);">Yes</button>
+                    <button type="button" class="confirm_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="closeMessageModal();">No</button>
+                </div>
+            </div>
+        </message-modal>
+    </div>
+
+        <!--dashboard ends here -->
+        <div ui-view="footer"></div>
+</div>

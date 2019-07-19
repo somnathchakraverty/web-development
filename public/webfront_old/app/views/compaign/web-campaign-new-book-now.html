@@ -1,0 +1,428 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700" rel="stylesheet">
+<style>
+body{font-family: 'Roboto', sans-serif; font-weight: normal;}
+.arrowbounce { text-align: center; margin: 0px auto;}
+body { background: #f9f9f9 !important;}
+.in-media{ background: #f9f9f9;}
+.bounce { -moz-animation: bounce 2s infinite; -webkit-animation: bounce 2s infinite; animation: bounce 2s infinite;}
+footer {  background: #fff !important;}
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-14px);
+    }
+    60% {
+        transform: translateY(-7px);
+    }
+}
+</style>
+<!--header section starts here -->
+<header class="campaign-header">
+    <div class="container-fluid mid-section-campaign">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="midpanel">
+                    <!--logo starts -->
+                    <div class="logo-panel">
+                        <div class="main-logo"> <img src="assets/images/campaign/healthians-logo-campaign.png" /> </div>
+                    </div>
+                    <!--logo ends -->
+                    <div class="clear"></div>
+                    <div class="content-panel">
+                        <div class="col-sm-12">
+                            <div class="col-sm-5">
+                                <div class="package-info">
+                                    <div class="yuv-mobile">
+                                        <div class="sign">
+                                            <h2>“I only trust Healthians for all Health Check ups.”</h2>
+                                            <h4>-Yuvraj Singh, <em style="font-style:italic;">Brand Ambassador</em></h4>
+                                            <img style="margin-right:10px;" src="assets/images/campaign/signature.png" /> </div>
+                                    </div>
+                                    <!--mob-yuv -->
+                                    <h1>
+                                    
+                                        <div class="save-percents">
+                                            <div class="mobile-slashed">
+                                                <span class="fontrupee" style="font-weight:normal; padding:0px; font-size:16px; padding-right:0px;">`</span>
+                                                <p class="slash" style="font-size:15px !important;" ng-bind="display_order_price"></p>
+                                            </div>
+                                            <span class="savings-percent">Save <span ng-bind="display_saving"></span></span>
+                                        </div>
+                                        
+                                        <span ng-bind="display_parameter_count"></span> Health Tests @ 
+                                        
+                                        <div class="slashedprice">
+                                            <span class="fontrupee" style="font-weight:normal; padding:0px; font-size:22px; padding-right:2px;">`</span>
+                                            <p class="slash" ng-bind="display_order_price"></p>
+                                        </div>
+                                        
+                                        <strong> 
+                                            <span class="fontrupee" style="font-weight:normal; padding:0px;">`</span>
+                                            <span ng-bind="display_healthians_price"></span> 
+                                        </strong>
+                                        <div class="fs_30" ng-bind="display_package_name"></div>  
+                                    </h1>
+                                    <p ng-bind="display_package"></p>
+                                    <p> + Free Health Counselling</p>
+                                    
+                                    <div class="clear"></div>
+                                    <div class="form-campaign">
+                                        <form name="addLeadForm" novalidate>
+                                            <div class="field-form">
+                                                <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" class="mob-icon" placeholder="Enter your Mobile Number" ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadForm.customerno.$dirty && addLeadForm.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadForm.customerno.$error.pattern && visited) }" ng-required="true" autocomplete="false" style="background-color:#fff !important;" />
+                                                <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block">
+                                                    <span ng-show="addLeadForm.customerno.$error.required">Mobile No. is required</span>
+                                                    <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required && addLeadForm.customerno.$touched"> Enter valid Mobile </span>
+                                                </div>
+                                            </div>
+                                            <div class="field-form">
+                                                <input name="name" id="name" type="text" class="user-icon" placeholder="Enter your Name" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadForm.name.$dirty && addLeadForm.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadForm.name.$error.pattern && visited) }" ng-pattern="/^[A-Za-z ]+$/" style="background-color:#fff !important;" />
+                                                <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block">
+                                                    <span ng-show="addLeadForm.name.$error.required">Name is required</span> <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required"> Enter valid Name </span>
+                                                </div>
+                                            </div>
+                                            <div class="field-form">
+                                                <select class="form-select minimal" id="city" name="city" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true" ng-class="{ 'has-error': ((addLeadForm.city.$dirty && addLeadForm.city.$error.required) || (addLeadFormSubmitted && !addLeadForm.city)) }">
+                                                    <option value="">Select your City</option>
+                                                </select>
+                                                <div ng-show="((addLeadForm.city.$dirty && addLeadForm.city.$invalid) || (addLeadFormSubmitted && !addLeadForm.city))" class="help-block">
+                                                    <span ng-show="addLeadForm.city.$error.required">Please select city.</span>
+                                                </div>
+                                            </div>
+                                            <div class="field-form">
+                                                 <div id="capt_landing" class="gcapcha-wcnbn"></div>
+                                            </div>  
+                                            <div class="field-button">
+                                                <input name="" value="Book Now" type="button" ng-click="sendLandingDetails()" analytics-on="click" analytics-category="New Landing Yuvraaj" analytics-event="Get Free Call Now" />
+                                                <p style="display: none;font-size: 15px;padding: 2px 6px;line-height: 0px;font-weight: normal;padding: 25px 0px 10px 0px;color: #000000;text-align: center;" id="timeticker"></p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-7 text-right visible-web">
+                                <div class="yuv-msg">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-8">
+                                            <div class="signature">
+                                                <h2>“I only trust Healthians for all Health Check ups.”</h2>
+                                                <h4>-Yuvraj Singh, <em style="font-style:italic;">Brand Ambassador</em></h4>
+                                                <img style="margin-right:10px;" src="assets/images/campaign/signature.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bouncing-icon">
+                                <h2>Why only Healthians?</h2>
+                                <div class="arrowbounce bounce"><img src="assets/images/campaign/bouncing.png" /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</header>
+<!--header section ends here -->
+<div class="usp-campaign">
+    <div class="container-fluid mid-section-campaign">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="home"></div>
+                        <h4>FREE SAMPLE PICKUP</h4>
+                        <p>Cost free sample pickup from Home or Office. </p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="hands"></div>
+                        <h4>HONEST PRICES</h4>
+                        <p>Say NO to cuts & commissions.</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="doc"></div>
+                        <h4 ng-bind="display_doc"></h4>
+                        <p ng-bind="display_doc_text"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="lab"></div>
+                        <h4>GUARANTEED ACCURACY</h4>
+                        <p>Money back guarantee on accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="healthians-lab">
+    <div class="container-fluid mid-section-campaign">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="card-lab"> <img src="assets/images/campaign/lab1.jpg" />
+                        <h5>100% CALIBRATION AND RESULTS</h5>
+                        <p>We have deep analytical control on all our labs and insist them to follow NABL guidelines.</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card-lab"> <img src="assets/images/campaign/lab2.jpg" />
+                        <h5>FULLY AUTOMATED</h5>
+                        <p>All of our labs are fully automated, equipped with internationally renowned machines.</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card-lab"> <img src="assets/images/campaign/lab3.jpg" />
+                        <h5>LATEST TECHNOLOGY AND EQUIPMENTS</h5>
+                        <p>We are at par with the medical tech-driven advances. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card-lab"> <img src="assets/images/campaign/lab4.jpg" />
+                        <h5>INTERNATIONAL QUALITY COMPLIANCE</h5>
+                        <p>Our labs follow more than 150 international quality operating procedures for sampling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="our-achievment">
+    <div class="container-fluid mid-section-campaign">
+        <div class="row">
+            <div class="col-sm-12" style="text-align:center;">
+                <h1> <img src="assets/images/campaign/star.png" /> <img src="assets/images/campaign/star.png" />&nbsp;&nbsp;Our Achievements&nbsp;&nbsp; <img src="assets/images/campaign/star.png" /> <img src="assets/images/campaign/star.png" /> </h1>
+                <div class="bigstar">
+                    <p>National PPTCT Programme </p>
+                </div>
+                <div class="bigstar">
+                    <p>Innovative Health care Start-Up </p>
+                </div>
+                <div class="bigstar">
+                    <p>Health & Social care Enterprise </p>
+                </div>
+                <div class="bigstar">
+                    <p>Healthcare Innovator Programme </p>
+                </div>
+                <div class="bigstar">
+                    <p>State Level consultation Memento </p>
+                </div>
+                <div class="bigstar">
+                    <p>Enterprise leadership </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="our-trust">
+    <div class="container-fluid mid-section-campaign">
+        <h1>Trusted by Employees of</h1>
+        <ul>            
+            <li><img src="assets/images/campaign/logo2.jpg" /></li>
+            <li><img src="assets/images/campaign/logo3.jpg" /></li>
+            <li><img src="assets/images/campaign/logo4.jpg" /></li>
+            <li><img src="assets/images/campaign/logo5.jpg" /></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="in-media">
+    <div class="container-fluid mid-section-campaign">
+        <h1>In the media</h1>
+        <div class="col-sm-12" style="text-align:center;">
+            <div class="media-mid middle-media">
+                <a>
+                    <div class="media-spritesc05"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc02"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc01"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc06"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc03"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc04"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc07"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc08"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--sticky div mobile -->
+<!--visible div -->
+<div class="sticky-bottom">
+    <form name="addLeadFormMobile" novalidate>
+        <div class="overlay-visible" ng-show="showLeadMobileForm"></div>
+        <div ng-class="showLeadMobileForm ? 'white-visible' : 'dark-visible'">
+            <a class="mob-close" href="javascript:void(0);" ng-click="hideTabOnMobileLead();" ng-show="showLeadMobileForm"><span aria-hidden="true" style="font-size: 42px; line-height: 10px;color: #ccc;">&times;</span></a>
+            <div class="field-form">
+                <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" class="mob-icon" placeholder="Enter your Mobile Number" ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadFormMobile.customerno.$dirty && addLeadFormMobile.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadFormMobile.customerno.$error.pattern && visited) }" ng-required="true" autocomplete="false" ng-click="tabOnMobileLead();" />
+            </div>
+            <div ng-show="((addLeadFormMobile.customerno.$dirty && addLeadFormMobile.customerno.$invalid) || (addLeadFormSubmitted && !addLeadFormMobile.customerno))" class="help-block">
+                <span ng-show="addLeadFormMobile.customerno.$error.required">Mobile No. is required</span>
+                <span ng-show="addLeadFormMobile.customerno.$error.pattern && !addLeadFormMobile.customerno.$error.required && addLeadFormMobile.customerno.$touched">
+                  Enter valid Mobile
+              </span>
+            </div>
+            <div class="field-form" ng-show="showLeadMobileForm">
+                <input name="name" id="name" type="text" class="user-icon" placeholder="Enter your Name" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadFormMobile.name.$dirty && addLeadFormMobile.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadFormMobile.name.$error.pattern && visited) }" ng-pattern="/^[A-Za-z ]+$/" />
+                <div ng-show="((addLeadFormMobile.name.$dirty && addLeadFormMobile.name.$invalid) || (addLeadFormSubmitted && !addLeadFormMobile.name))" class="help-block">
+                    <span ng-show="addLeadFormMobile.name.$error.required">Name is required</span>
+                    <span ng-show="addLeadFormMobile.name.$error.pattern && !addLeadFormMobile.name.$error.required">
+                  Enter valid Name
+              </span>
+                </div>
+            </div>
+            <div class="field-form" ng-show="showLeadMobileForm">
+                <select class="form-select minimal" id="city" name="city" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true" ng-class="{ 'has-error': ((addLeadFormMobile.city.$dirty && addLeadFormMobile.city.$error.required) || (addLeadFormSubmitted && !addLeadFormMobile.city)) }">
+                    <option value="">Select your City</option>
+                </select>
+                <div ng-show="((addLeadFormMobile.city.$dirty && addLeadFormMobile.city.$invalid) || (addLeadFormSubmitted && !addLeadFormMobile.city))" class="help-block">
+                    <span ng-show="addLeadFormMobile.city.$error.required">Please select city.</span>
+                </div>
+            </div>
+            <div class="field-form-capcha">
+                <div id="capt_mobile_landing_page"></div>
+            </div>
+            <div class="field-button">
+                <input name="sendLandingMobileDetails" value="Book Now" type="button" ng-click="sendLandingMobileDetails();" analytics-on="click" analytics-category="New Landing Yuvraaj" analytics-event="Get Free Call Now" />
+            </div>
+        </div>
+    </form>
+    <!--visible div ends -->
+    <!--invisible div -->
+    <!--visible div ends -->
+    <!--sticky div mobile ends -->
+</div>
+<!-- footer -->
+<login-modal visible="compaignmsg">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div style="margin:0px auto; background:#fff; padding:30px 0px;">
+        <div class="lead-pg-popup web-thankyou">
+            <section>
+                <h6>Thank You for sharing your details with us.</h6>
+                <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+                </p>
+            </section>
+        </div>
+    </div>
+</login-modal>
+<a href="javascript:void(0);" class="scrollup-campaign" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Scroll-to-top image">Scroll</a>
+<style type="text/css">
+.zopim {
+    display: none !important;
+}
+</style>
+<script>
+$(document).ready(function() {
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 250) {
+            $('.scrollup-campaign').fadeIn();
+        } else {
+            $('.scrollup-campaign').fadeOut();
+        }
+    });
+    $('.scrollup-campaign').click(function() {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    });
+
+    var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+
+    if (isMobile.any()) {
+
+    }
+    else {
+        console.log("hehhehe");
+        $(".card")
+            .mouseover(function() {
+                $(this).find("p").addClass("colorwhite");
+                $(this).find("div:eq(0)").css("background-position", '0px -44px');
+            })
+            .mouseout(function() {
+                $(this).find("p").removeClass("colorwhite");
+                $(this).find("div:eq(0)").css("background-position", '0px 0px');
+            });
+    }    
+});
+
+// var widgetId5;
+//  var widgetId6;
+//     var onloadCallback = function() {
+//         setTimeout(function(){
+//             if(typeof grecaptcha !== 'undefined') {
+//                 if($('#capt_landing').length) {
+//                     widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+//                 }
+
+//                 if($('#capt_mobile_landing_page').length) {
+//                     widgetId6 = grecaptcha.render('capt_mobile_landing_page', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+//                 }
+//             }
+//             else {
+//                 setTimeout(function(){
+//                     if($('#capt_landing').length) {
+//                         widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+//                     }
+
+//                     if($('#capt_mobile_landing_page').length) {
+//                         widgetId6 = grecaptcha.render('capt_mobile_landing_page', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+//                     }
+//                 }, 500);      
+//             }
+//         }, 500);        
+//     }
+
+</script>

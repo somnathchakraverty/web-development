@@ -1,0 +1,1097 @@
+/*responsive area*/
+@media only screen and (max-width: 1199px){
+
+    .select2-results__option{ width:100%; }
+    .select2-results__group{ margin-bottom:5px; }
+    .select2-container--default .select2-results__option .select2-results__option{ margin-bottom:0px;}
+
+    #navigation {margin: 10px 0px 0px 0px;}
+    .bannerdiv .carousel-caption h3 {font-size: 50px;}
+    .bannerdiv .carousel-caption h3 b {font-size: 50px;}
+    .bannerdiv .carousel-caption p {font-size: 35px;line-height: 30px;}
+    .bannerdiv a{margin-top: 25px;}
+    .about-section, .getcloser-section, .commonrisk-section, .special-offer, .popular-section, .choose-us{padding: 30px 0px;}
+    .liver-section p{font-size: 12px;}
+    .smart-section h3{font-size: 16px;}
+    .smart-section a{font-size: 15px;}
+    .myhistory{display: flex;align-items: center;}
+    .about-section h1, .mysubscriptions-section h2, .banner-text-secion h1, .commonrisk-section h3, .special-offer h2,.popular-section h3, .downloadapp-section h3, .choose-us h2, .mydashbordiv h1{font-size: 30px;}
+    .post-slide1{margin-top: 30px;}
+    .special-offer h2{ margin-bottom:0px; }
+    .subcribe-content ul li:first-child::after {height: 20px;}
+    .teamcontent1 p br{display: none;}
+    .yourhealth-section .thumbnail p{font-size: 14px;}
+    .icon-content p{font-size: 12px;}
+    .choose-icon {padding: 15px 7px;margin-top: 30px;}
+    .zigzag-area {margin-top: 50px;}
+    .zigzag-content ul li:nth-child(odd)::after{content: '';position: absolute; top: 175px; right: 0px; width: 100%; height: 100%; width: 108px;height: 80px;background-color: transparent;border-top-left-radius: 110px;border-top-right-radius: 110px;border: 15px solid #00a0a8;border-bottom: 0;transform: rotate(-180deg);}
+    .zigzag-content ul li:nth-child(even)::after{content: ''; position: absolute; top: 95px;right: 0px; width: 100%; height: 100%;width: 108px;height: 80px;background-color: transparent;border-top-left-radius: 110px;border-top-right-radius: 110px;border: 15px solid #00a0a8;border-bottom: 0;}
+
+    .inner-banner h1{font-size: 30px;}
+    .inner-banner p{font-size: 25px;}
+    .about-icon-content, .meet-us {padding: 30px 0px;}
+    .about-icon-area h2{font-size: 30px;padding-top: 15px;}
+    .aboutpage-content p {font-size: 17px;padding-top: 10px;}
+    .about-icon-content p {padding-top: 20px;font-size: 14px;}
+    .lft-member {width: 30%;}
+    .rgt-mem {width: 67%;}
+    .member-details h3 {font-size: 20px;margin-bottom: 5px;}
+    .member-details p{font-size: 14px;}
+    .class-margin {margin-top: 30px;}
+    .about-team {padding-top: 20px;padding-bottom: 40px;}
+    .field_myfamilyblade input{ padding:5px 10px 0px 38px; }
+
+    /*13-2-2019*/
+    .summery-pakage h4 {font-size: 16px;}
+    .cust_nme{ padding:0px 15px; }
+    .div-inner-padding{height: auto !important; border: none;}
+    .booking-id {    float: left;     font-size: 11px; padding:3px 5px;  margin-top: 8px;}
+    .summery-content h4 { margin:0px 0px; line-height:1.4; font-size:14px !important;}
+    ..summery-content .col-xs-12{ margin:0px; padding:0px; }
+    .summery-pakage h5 {font-size: 13px;}
+    .div-inner-padding {height: auto !important;border: none;padding: 0 15px;}
+    .summery-pakage h4 {font-size: 13px;}
+    .payment-summery h5 {padding-top:0;margin:0px; line-height:23px;}
+    .payment-table h4{font-size: 14px;}
+    .totlamnt{ margin-right:30px !important; }
+    .cust_nme{ padding-top:0px; margin-bottom:0px !important; }
+    .servicesec h5{ padding:0px 30px 0px 15px; }
+    .servicesec .col-xs-12{ margin:0px; padding:0px; }
+    .summery-cart{ padding:10px 12px; }
+    .summery-border{ margin-bottom:0px; padding-bottom:10px; }
+    .total_price_head{ text-align:center;margin-bottom:6px; }
+    .total_pkg_test_head{text-align:center; margin-bottom:6px;}
+    .total_pkg_test{ margin-bottom:6px;}
+    .total_mktprice{margin-bottom:6px;}
+    .brdrtop .col-xs-12{ margin:0px; padding:0px; }
+    .servicesec .col-xs-3{ margin:0px; padding:0px; }
+     .servicesec .col-xs-6{ margin:0px; padding:0px; }
+     .totlamnt{ margin-right:10px; }
+    
+    .total_pkg_test{ padding-right:13px; }
+    .total_price{ margin-bottom:6px; }
+    .ml350{ margin-left:0px; }
+    .total_pkg_test_head{text-align:center;}
+    .total_pkg_test_head h6{ padding-bottom:0px; }
+    .total_mktprice_head h6{ padding-bottom:0px; }
+    .total_price_head h6{ padding-bottom:0px; }
+    .summery-pakage{ margin-top:0px; }
+    .payment-summery .fa-check{ width:50px; line-height:50px; height:50px; }
+     /*13-2-2019*/
+
+    .contact-cont {width: 300px;}
+    .Expedient-Healtdiv{ float:none; }
+    .Expedient-Healtdiv h1 {font-size: 25px;line-height: 34px;}
+    .Expedient-Healtdiv .Wing-Floordiv p {font-size: 16px;padding-top: 20px;}
+    .contact-info {margin-top: 20px;}
+    .contact-heading p, .contact-cont p{font-size: 16px;}
+    .cont-d {margin-top: 10px;}{margin-bottom: 15px;}
+    .contact-cont p span{margin-bottom: 15px;}
+    .Expedientwraper .For-anyquerydiv p {font-size: 17px;margin-bottom: 20px;}
+    .For-anyquerydiv .cpcha-btn{padding: 25px 0px 0px 0px;}
+    .cart-right{display: inline-block; vertical-align: top; float: left; margin: 15px 0px 0px 0px; text-align: left;}
+
+    .db_titlecaption{}
+    .edit-address{ float:left; }
+    .edit-address .editico{ float:left; }
+    .edit-address .delico{ float:left; }
+    .db_titleinfo{}
+    .add_newaddress{ float:none; }
+    .termsrefer{ padding-left:20px; }
+    .refertext p{ padding:0px 20px; }
+    .book-your-test {padding: 30px 0px;}
+    .step-div {padding: 20px;}
+    .step-div h2{font-size: 20px;}
+    .step-div p {font-size: 14px;padding: 5px 0px 0px 0px;}
+    .book-content {padding: 15px;}
+    .show-div {width: 131px;height: 100px;margin: 0 auto;}
+    .show-div img {max-width: 100%;height: 100%;}
+    .right-content-sec p{font-size: 14px;}
+    .book-content{min-height: 205px;}
+    .book-content input.form-control {margin-bottom: 15px; font-size: 14px;}
+    .blog-breadcumbs ul{ margin:0px; }
+    .deal_detail .step-div{ padding:15px 10px !important; }
+    .hpriceright .discount{ float:left; margin-bottom:0px; }
+    .hpriceright .price{ float:left; }
+    .hpriceright .ltoffer{ float:left; font-size:20px; }
+    .gplayreview{ display:none; }
+
+    .detailbtm_book{ float: none; margin:5px 6px; padding: 0px; }
+    .detailbtm_book ul{ margin:14px 0px; }
+    .detailbtm_book ul li{ display:block; }
+    .detailbtm_book .booknow-package{ width:100%;}
+    .detailbtm_book .detailbtm_book{ width:100%; }
+    .mobextraspc{ padding:0px 15px; }
+
+
+    .group-img img{max-width: 100%; height: auto;}
+    .group-text {width: 100%;}
+    .group-img{width: 50%;}
+    .practice-area p {padding: 40px 0px 0px 0px;}
+    .group-text .know-more{font-size: 18px;}
+    .meet-us h2{font-size: 30px; padding-bottom: 8px;}
+    .career p {padding-top: 20px; font-size: 14px;}
+    .carer-group {margin-top: 20px;}
+    .group-text h3{font-size: 20px;}
+    .group-text .know-more {font-size: 16px;}
+    .practice-area {margin-top: 30px;}
+    .practice-area p {padding: 20px 0px 0px 0px;}
+    .opportunity-area {margin-top: 20px;padding-bottom: 20px;}
+    .work-us {padding: 20px 25px 0px;}
+
+    .editaddress_modal .col-md-12{ margin:0px; padding:0px; }
+    .editaddress_modal .modal-body{ padding:0px 15px; }
+    .select-member-option .reminds .checkbox-circle{ margin-left:25px; margin-bottom:30px; }
+    .commonpopup_title{ margin-bottom:20px; }
+
+    .copy-page-cont {padding: 15px;}
+    .recommend span{ margin-right:9px; }
+    .recommend span img{ margin-right:5px; }
+    .recommend{ margin-top:5px; }
+    .offer-heading h4 {font-size: 20px;line-height: 24px;}
+    .offer-heading h4 a{ font-size:19px; }
+    .parameter_min{min-height:82px;}
+    .pricebar .healthiansprice{ font-size:24px; }
+    .special-offer .offer-main{ margin:5px 12px 10px 12px !important; height:350px; }
+    .special-offer .offer-main .offer-heading{ min-height:46px; padding-top:5px; }
+    .special-offer .offer-main .offers-content h5{ font-size:14px; margin-bottom:7px; }
+    .special-offer .owl-controls .owl-next{bottom: 210px;}
+    .special-offer .owl-controls .owl-prev{bottom: 210px;}
+    .common-page-banner { padding: 20px 0px;}
+    .riskcontent .offer-heading h4 {font-size: 18px;line-height: 25px; padding:0px;}
+    .offers-content {margin-top: 15px;}
+    .offers-content h5{font-size: 18px;}
+    .offers-content ul li {padding-top:7px;font-size: 14px;}
+    .know-more {font-size: 18px;margin:4px 0px 0px 0px;}
+    .offers-content del{font-size: 16px;}
+    .offers-content .ruree{background-size: 15px;font-size: 20px;}
+    .buy-book-btn {margin-top: 15px;}
+    .buy-book-btn a {margin-right: 5px;margin-left: 0px;font-size: 12px; padding: 2px 6px;}
+    .pricebar .slashedprice del span{ font-size:18px; font-weight:normal; }
+    .marbottom{margin-bottom:15px;}
+    .selectmemberpanel .cart-div{ margin-top:0px; background:#00a0a8; margin-bottom:0px; }
+    .selectmemberpanel .cart-div .cart-sec{ margin-top:10px; }
+    .add-btn ul li{ margin-bottom:15px; margin-left:0px; margin-right:0px; }
+    .big-h2{ margin-top:0px !important; padding-top:0px !important; }
+    .discount{margin-bottom: 15px;}
+    .add-btn ul li a{ width:100%;height: 48px; line-height: 38px; min-width:100%; margin-left:0px; margin-right:0px; }
+    .add-btn ul li{ width:100%; }
+    .modaltitle{ margin-bottom:0px; }
+    .checkoutbtn{ margin-bottom:5px; }
+    .cart-section-area .cart-div .step-div{ padding:10px 15px; }
+    .checkoutbtn a{ line-height:31px; }
+    .modaltitle h2{ margin-bottom:5px; font-size:22px; }
+    .carttopopt .cart-top-info{ padding:15px 0px; }
+    .getcallback_popup .modal-body{ padding:0px 5px; }
+    .loginbtndiv{ margin:10px auto 30px auto; }
+    .carttopopt .cart-top-info ul li{ border-right:none; padding: 0px 12px; font-size: 16px; }
+       
+
+    .selectSlot .cart-div{ background:#00a0a8; }
+    .cust_pkgopt .cart-div{ background:#00a0a8; margin-top:10px; }
+    .cartpackage-list .packagename{ font-size:20px; }
+    .cartpricedisplay .limitedprice{ font-size:20px; }
+    .cart-section-area .checkbox{ margin:0px 0px 15px 0px; }
+    .banner-text-secion h1{ margin-top: 15px; text-align:center; }
+
+    .modal-footer-popup{ padding:25px 15px 30px 15px; }
+    .modal-footer-popup .btn_cmncolor{ width:100%; margin-right:none; }
+
+    .newOTPwrap{ margin:18px 15px 0px 15px; max-width:250px; }
+    .pincode-input-container.touch .touchwrapper .pincode-input-text{text-align:left; border:1px solid #ccc; letter-spacing:28px;}
+    .pincode-input-container{ display:block; }
+    .pincode-input-container.touch .touchwrapper.touch6{ width:100%; }
+    .pincode-input-container.touch .touchwrapper{ height:50px; }
+    .otppagearea{ margin:0px; padding:0px; }
+    .otppagearea .col-md-4{margin:0px; padding:0px;}
+    .right-boxdiv h3{font-size: 18px;}
+    .right-boxdiv .mob-input {padding: 40px 0px 10px 0px;}
+    .right-boxdiv .btn {padding: 18px 5px 5px 0px;font-size: 14px;}
+    .right-boxdiv .dropdown{padding-top: 0px;}
+    .right-boxdiv .loginbtndiv .btn-danger{margin: 0px;}
+    .right-boxdiv .login-sign .btn-danger{margin: 15px 0px 0px 0px; padding: 10px;}
+    .right-boxdiv .orsignup a{margin: 0px; font-size: 16px;}
+    .right-boxdiv .orsignup {padding: 10px 0px;}
+    .right-boxdiv .fb-mailbtndiv{padding-bottom: 10px;}
+    .right-boxdiv .fb-mailbtndiv .btn-dangerfb, .right-boxdiv .fb-mailbtndiv .btn-dangergplus {width: auto;padding: 5px 15px;font-size: 12px;margin: 0 auto 10px; float: none;}
+    .right-boxdiv .fb-mailbtndiv{text-align: center;}
+    .right-boxdiv p {font-size: 12px;text-align: center;}
+    .Wlcm-Healthians .left-boxdiv {position: absolute; height: 100%;}
+    .login-wraper{position: relative; overflow: hidden;}
+    .Wlcm-Healthians .right-boxdiv{float: right; min-height:430px;}
+    .riskcontent {padding: 30px 0px;}
+    .our-deal .copy-page-cont {padding: 10px 0px 0px;}
+    .mydashbordiv{padding: 30px 0px 10px;}
+    .select2-results__option{ padding-right:12px; }
+    .content_leftsearch .offers-content{ margin-top:0px; }
+
+    .Retake-Healthkarmadiv{padding:0px;}
+    .editmembermidhgt{ min-height:auto; }
+    .field_myfamilyblade{ margin-bottom:20px; }
+    .f-div .add-box{ margin-bottom:0px; border-bottom:5px solid #eeeeee; }
+    .f-div .add-box .edit{ float: right; display: inline-block; margin:12px 0 0 10px; position: absolute; z-index:9; right:30px;}
+    .f-div .add-box .col-sm-6{ margin:0px; padding:0px; }
+
+    .shubham .add-box h2{font-size: 30px;}
+    .shubham .add-box h3{font-size:22px;margin:0px 0px 0px 0px;}
+    .shubham .add-box{margin-bottom: 15px;}
+    .shubham .add-box h4{font-weight: 400;margin: 0px 0px 20px;}
+    .shubham .add-box .Lipid-div p {font-size: 18px;}
+    .health-usear h5{font-size: 25px;}
+    .health-usear h4, .health-karma .meet-us h3{font-size: 20px;}
+
+    .media-page .rgt-mem {width: 68%;}
+    .media-page .rgt-mem h4{font-size: 18px;}
+    .media-page .rgt-mem .know-more{font-size: 15px;}
+
+    .labs-para {width: 90%;}
+
+
+    .product-stiky-header{ display:none; }
+    .detailbtm_book ul{ padding:0px; }
+    .getcallbackprdtl{ width:100%; margin-left:0px; } 
+    .booknow-package{ padding:11px 40px !important; }
+    .pro-content-area{ padding:20px 0px; }
+   
+    .searchresultrgt .sr_booknow{line-height: 36px; width: 100%;}
+    .searchresultrgt .sr_callback{ line-height: 32px; width: 100%; margin-left:0px;}
+    .filter-box img{ width:25px; }
+    .genderInfo{ margin:25px 0px 19px 0px; }
+
+
+
+
+
+
+
+
+
+
+    /*Select Slot Starts here*/
+    .cart-price ul li{font-size: 15px; padding:10px 15px 20px 15px;}
+    .cart-price{padding-top: 20px;}
+    .cart-checkbox{margin-top: 20px;}
+    .cart-div .step-div {padding:5px 15px 15px 15px;}
+    .step-div h2, .cart-checkbox h3 {font-size: 20px;}
+    .cart-checkbox{ margin-top:0px; }
+    .padd30{padding:17px 21px 10px 21px; }
+    .cart-cont p{ padding:7px 0px 0px 0px; }
+    .step-div::after {background-size: 40px;}
+    .cart-cont h4, .cart-right h5 {font-size: 21px;}
+    .cart-cont h4{ margin:5px 0px 0px 0px; }
+    .address-content h4{ font-size:20px; }
+    #view-arrow{margin-bottom: 40px;}
+    #view-arrow::after{ top:43%; }
+    .cart-cont .remove {font-size: 13px;margin: 2px 0px 0px 0px;}
+    .cart-right .price {font-size: 15px;}
+    .cart-right .discount {font-size: 15px;height: 35px;line-height: 35px;margin-top: 4px;}
+    .cart-add-member {margin: 20px 0px;}
+    .viewslotopt{}
+    .defaultaddress{ min-height: 104px !important; }
+    .cart-add-member ul li a {font-size: 15px;}
+    .address-area h5{ font-size: 18px;}
+    .filladdress .col-xs-12{ padding:0px; }
+    .selectSlot .cart-div{ margin-top:0px; }
+    .cart-add-member a.btn-danger{margin-top: 15px;}
+    .checkbox label::before {margin-left: -29px;}
+    .select-member-option input{ height:35px; }
+    .address-area{ background-color: #f5f5f5;padding:15px 20px; min-height:auto; margin-top:15px; margin-bottom:10px;}
+
+    .product-stiky-header form .form-control{min-width: auto;}
+    .product-stiky-header ul {column-count: 1;}
+    .addsavecheckoutbtn{ margin:10px 0px 40px 0px; }
+    .addsavecheckoutbtn ul li{ display:block; margin-bottom:15px; }
+    .addsavecheckoutbtn ul li a{ margin-left:0px; margin-right:0px; min-width:100%;height: 46px; line-height: 38px; }
+
+    /*24-1-2019*/
+    .payment-summery .fa-check {font-size: 25px;}
+    .summery-content h3{ width:100%; line-height:1.3; }
+    .sp_area .col-xs-4{ margin:0px; padding:0px; }
+    .servicesec{ margin-bottom:10px; padding:0px; }
+    .summery-total-green{ padding:10px 20px; }
+    .odpkg .col-xs-12{ margin:0px; }
+    .cusnameinfos{ margin-top:10px !important; }
+    .cusnameinfo{ margin-top:0px !important; }
+    .serviceincl{ padding:0px; }
+    .fastingfo{ margin-top:0px !important; }
+    .payment-summery h2 { font-size: 16px;padding-top:3px; line-height:22px;}
+    .payment-summery p {font-size: 14px;padding-top: 0px;}
+    .payment-summery p a{font-size: 14px;}
+    .payment-summery h5 {font-size:14px;padding-top:0px; line-height:19px; margin-bottom:0px;}
+    .fastingfo {    font-size: 13px !important;  padding-top: 16px !important;}
+    .payment-summery h5 a{font-weight: 12px;}
+    .summery-pakage h6{ font-size:14px; text-align:left; }
+    .summery-pakage .subcharges{text-align:right; padding-right:20px;}
+    .ttlprice{  margin-left:0px !important; }
+    .odrprice{  margin-left:0px  !important; }
+    .note-tble{ font-size:11px !important; }
+    .finalprices{border-top:1px solid #00a1aa; padding:8px 18px; margin:0px; padding:0px; }
+.lftprice { padding-left: 0px !important; text-align: right; padding-right: 20px; display: block;}
+    .total-border{ margin:3px 0px 5px 0px; }
+    .cart-cont{ margin:8px 0px 0px 0px; }
+    .nomarnopadd{ margin:4px 0px 2px 0px; }
+    .mr0{ margin:0px 0px 7px 0px; }
+   /* .nomarnopadd{ margin:10px; padding:10px; }*/
+   .payment-s .table th h2 {font-size: 20px;}
+    .middle-table .table table tr th{width: 100px;}
+    .summery-total-green h3{ text-align:right; }
+    .middle-top h3{font-size: 14px;}
+    td.middle-top h4 {font-weight: 400;}
+    .telno{ display:block; }
+    .online-text {font-size: 14px;}
+    .table-middle tr td.td-heading {width: 200px; float: left;}
+}
+
+@media only screen and (max-width: 1024px){
+    .bannerdiv .carousel-caption h3 {font-size: 50px;}
+    .thumbnail p {font-size: 15px;}
+    .orderdtl{ margin:5px 0px 5px 0px; border-right:1px solid #f39f61; display: inline-block;width: 49%; float: left; vertical-align: top;}
+    .myrprt{margin: 5px 0px 0px 0px; width: 49%; border-top:none !important; float: right; vertical-align: top; padding: 0px 0px 0px 0px;}
+
+    .headerrightdiv .headerrightdiv-content {padding-right: 10px;margin-right: 10px; border: none;}
+    .headerrightdiv p{font-size: 14px;}
+    .bannerdiv .carousel-caption h3 {font-size: 35px; margin: 0px;}
+    .bannerdiv .carousel-caption h3 b {font-size: 40px;}
+    .bannerdiv .carousel-caption p {font-size: 32px;}
+    .about-section, .mysubscriptions-section, .commonrisk-section, .special-offer, .popular-section, .yourhealth-section, .downloadapp-section, .choose-us, .subscribe-section{padding: 30px 0px;}
+    .about-section h1, .getcloser-section h2, .mysubscriptions-section h2, .special-offer h2, .popular-section h3, .yourhealth-section h3, .choose-us h2, .subscribe-section h3, .popular-section h3{font-size: 30px;}
+    .about-section img {margin-bottom: 30px;}
+    .liver-section{padding: 30px;}
+    .history-img{width: 27%;}
+    .history-img img{max-width: 100%;height: auto;margin: 0px;}
+    .getcloser-section{padding-top: 10px; padding-bottom: 10px;}
+    .getcloserdiv h4 {font-size: 18px;}
+    .getcloserdiv h4 b {font-size: 20px;padding-top: 4px;}
+    .right-icon {position: absolute;right: 10px;top: 10px;width: 80px;}
+    .getcloserdiv p{margin-top: 10px;}
+    .post-slide1{width: 40%;}
+    .mysubscriptions-div{padding: 20px;}
+    .mysubscriptions-div h3{font-size: 20px; margin-bottom: 0px;}
+    .mysubscriptions-div img{max-width: 100%; height: auto;}
+    .subcribe-content {width: 50%;}
+    .subcribe-content ul li:first-child::after {height: 22px;}
+    .subcribe-content ul li{padding-bottom: 25px;}
+    .commonrisk-section h3{font-size: 30px; margin-top: 0px;}
+    .commonrisk-section h3 + img{margin-bottom: 20px !important;}
+    .recomendation-upper{padding: 15px;}
+    .recomendation-upper h4{font-size: 18px;}
+    .recomendation-upper p {font-size: 13px;padding: 8px 0px 0px 0px;margin: 0px;}
+    .recomendation-bottom{padding: 15px;}
+    .recomendation-bottom h5{font-size: 17px;}
+    .recomendation-bottom ul li {padding-top: 10px;font-size: 14px;}
+    .know-more{font-size: 15px; margin-top: 10px;}
+    .ruree {background-size: 14px;padding-left: 20px;font-size: 20px;margin-top: 10px;}
+    .commonrisk-section .btn-danger {margin-top: 30px;}
+    #recomendation .owl-prev, #recomendation .owl-next{bottom: 150px;}
+    #teams-slider5 h3, #teams-slider3 h3{font-size: 18px;margin-top: 20px;}
+    #teams-slider5 p, .popular-slide p{line-height: 20px;}
+    #teams-slider5 p br, .popular-slide p br{display: none;}
+    .teamcontent1 {padding: 15px 15px 0px;}
+    .offer-heading h4{font-size: 20px;}
+    .offers-content {margin-top: 10px;}
+    .offers-content ul li {padding-top:6px;font-size:14px;}
+    .offers-content .ruree {background-size: 15px;padding-left: 23px;font-size: 20px; margin-top: 10px;}
+    .owl-carousel .owl-wrapper {min-height: auto;}
+    .yourhealth-section .thumbnail {margin-top: 0px;}
+    .yourhealth-section .thumbnail p, .yourhealth-section .readmore{font-size: 14px;}
+    .yourhealth-section .btn-danger {margin-top: 30px;}
+    .downloadapp-section h3{font-size: 20px; color:#fff;}
+    .icon-content p{font-size: 12px;}
+    .choose-icon{border:2px solid #19b1a8;padding: 10px 9px;}
+    .zigzag-area {margin-top: 30px;}
+    .zigzag-content ul li::after{display: none !important;}
+    .zigzag-content ul {display: inherit;float: left;}
+    .zigzag-content ul li {float: left;display: inline-block;position: relative;width: 33%;margin-top: 20px;position: relative;padding-left: 85px;min-height: 95px;}
+    .icon-zigzag{position: absolute; left: 0; top: 0;}
+    .zigzag-content ul li:nth-child(odd) p{min-height: auto;}
+    .zigzag-content ul li:nth-child(even) .icon-zigzag{margin-top: 0px;}
+    .zigzag-content ul li:nth-child(odd) p{margin-top: 30px;}
+    .zigzag-content ul li:nth-child(even) p{margin-top: 30px;}
+    footer{padding-top: 30px;}
+    .otherlinks ul li a{font-size: 13px;}
+
+    .about-icon-content p {padding-top: 10px;}
+    .about-icon-area h2 {font-size: 20px;}
+    .about-icon-content, .meet-us {padding: 20px 0px;}
+    .meet-us h2, .about-team h2{font-size: 25px;padding-bottom: 10px;}
+    .about-team-area {padding-top: 30px;}
+    .about-team-area ul:nth-child(odd) {float: none; text-align: center;}
+    .about-team-area ul li{padding-right: 50px;}
+    .about-team-area ul:nth-child(even) {margin-top: 0px;}
+    .rgt-mem {width: 65%;}
+    .team-sec img{max-width: 100%; height: auto;}
+    .team-hover{overflow: hidden;}
+    .team-hover h3{font-size: 15px;}
+    .team-hover h4{font-size: 14px;}
+    .team-hover {width: 100%;height: 100%; left: 0; top: 0;}
+    .about-team-area ul:nth-child(even) {float: none;text-align: center;}
+    .about-team-area ul li:last-child{padding-right: 0px;}
+    .dropdown-toggle.btn-default { max-width: 790px;}
+    .refertext{ float:left; }
+
+    .Expedientwraper {padding-top: 30px; background-color: #fafafa;}
+    .informations span{ margin:0px 20px 0px 0px; display:block; font-size:14px; }
+    .informations span p{ margin-bottom:5px; }
+    .pricebarorderbook{ margin: 30px 0px 30px 0px; display: block; float: left; }
+    .offers-content .col{margin:0px 25px 0px 0px; text-align:left;float:left; font-size:20px;}
+    .choose-us h2{ margin-bottom:5px; }
+    .address-cont{ padding:0px; }
+    .relative-div{ float:none; }
+   /* .slidingDiv{ margin:0px; }*/
+    .submenu_filterparameter{ display: block; width: 100%;}
+
+    .buy-book-btn a {/*height: 35px!important;line-height: 30px;*/}
+    .orderheading{ margin-bottom:10px; }
+    .offer-content { padding:20px 20px 0px 20px;}
+    .media-page .lft-member {width: 28%;}
+
+    .user-profile-details{width: 74%; margin-left:0px;}
+    .edit-profile .Family-headingdiv{margin-top: 0px;}
+
+    .inner-banner p {font-size: 15px;}
+    .labs-para{margin: 20px auto;}
+    .doctor-details h3 {font-size: 14px;}
+
+    .owl-controls .owl-prev{left:-10px;}
+    .owl-controls .owl-next{right: -10px;}
+    .product-stiky-header {padding: 10px 0px;}
+    .product-stiky-header form .form-control {height: 50px; line-height: 50px}
+    .product-stiky-header ul li{line-height: 20px; display: inline-block; padding-right: 25px;}
+    .get-btn{height: 50px;}
+
+    .location-dropdown .dropdown-menu li{width: 100%;}
+    .location-dropdown .navbar-nav > li > .dropdown-menu {width: 100%;}
+    
+    /*24-1-2019*/
+    .heading-table {font-size: 16px !important;}
+    .heading-table span {font-size: 11px;height: 35px;line-height: 35px;width: 165px;}
+    .table-middle, .table-last {margin-top: 20px;margin-bottom: 20px !important;}
+    .middle-table .table table tr td {padding: unset;width: 400px;padding-left: 20px;}
+    .middle-table .table table tr th {padding-left: 20px;}
+    .middle-table .table {margin-bottom: 20px;}
+    .table-last{margin-top: 0px; margin-bottom: 20px;}
+}
+
+@media only screen and (max-width: 991px){
+    .bannerdiv .carousel-caption h3, .bannerdiv .carousel-caption h3 b {font-size: 20px; font-weight: 600;}
+    .bannerdiv .carousel-caption p {font-size: 19px; margin-bottom: 0px;}
+    .liver-section {padding: 32px;}
+    .history-img {width: 100%;text-align: center;margin-bottom: 15px;}
+    .myhistory{text-align: center; padding: 8px;}
+    .owl-controls .owl-prev {left: -20px;}
+    .owl-controls .owl-next {right: -20px;}
+    .yourhealth-section .thumbnail {margin-top: 30px;}
+    .yourhealth-section h3 + img{margin-bottom: 0px !important;}
+    .choose-icon{min-height: 157px;}
+    .footerright ul li {margin-right: 5px;}
+    .footer-btm {padding: 5px 0px;}
+    header {padding: 10px 0px;}
+    .header-top-information{margin-top: 15px;}
+    #navigation .nv-left {width: 100%;padding: 10px;}
+    #navigation ul li {padding-right: 25px;display: block;float: left;width: 100%;padding-bottom: 10px;}
+    .underline{position: relative;z-index: 9;}
+    .menu{position: absolute;top: 40px;right: 50px;}
+    header .navbar-toggle {position: absolute;right:10px;top: -40px;margin: 0;}
+    header .navbar-default .navbar-toggle {border-color: #fff;border-radius: 0px;}
+    header .navbar-default .navbar-toggle .icon-bar {background-color: #00a0a8;}
+    header .navbar-default .navbar-toggle:hover, header .navbar-default .navbar-toggle:focus{background-color: #fff;}
+    header .navbar-default .navbar-toggle:hover .icon-bar, header .navbar-default .navbar-toggle:focus .icon-bar{background-color: #00a0a8;}
+    #bs-example-navbar-collapse-1{z-index: 9999999;position: absolute;text-align: left;float: left;top: 10px;left: 0px;width: 100%;}
+    #navigation .nv-left{text-align: left;}
+    #navigation {z-index: 99;margin: 10px 0px 0px 0px;position: absolute;width: 100%;left: 0px;}
+    .navbar-toggle{display: block;}
+    .navbar-collapse.collapse {display: none !important;}
+    .collapse.in {display: block !important;z-index: 9;width: 100%;left: 0px;margin: 0px;background-color: #ffffff;right: 0;padding: 0;}
+    header .navbar-nav .open .dropdown-menu{background-color: #ffffff; box-shadow:0 6px 12px rgba(0, 0, 0, .175);position: absolute;left: 0; height:150px; overflow:scroll;}
+    header .dropdown-menu a{ padding:6px 0px; }
+    .inner-banner figcaption{top: 20px;}
+    .inner-banner h1 {font-size: 20px;}
+    .inner-banner p {font-size: 20px;}
+    .about-icon-area {margin-bottom: 15px; min-height: 175px;}
+    .meet-us h2, .about-team h2 {font-size: 20px;}
+    .member-details h3 {font-size: 17px;}
+    .dropdown-toggle.btn-default { max-width: 568px;}
+
+    .contact-heading {width: 70px;}
+    .contact-cont {width: 260px;padding-left: 10px;}
+    .Expedientwraper .For-anyquerydiv p {font-size: 15px;}
+    .Expedientwraper .For-anyquerydiv{padding: 13px 13px;}
+    .Expedient-Healtdiv .Wing-Floordiv p {font-size: 13px;}
+    .contact-heading p, .contact-cont p {font-size: 14px;}
+
+    .book-content {min-height: auto;}
+    .left-content-sec {width: 100%;}
+    .book-div {overflow: visible;float: left;width: 100%;}
+    .right-content-sec {float: left;position: relative;right: 0;bottom: 0;margin-top: 15px;text-align: center;width: 100%;}
+
+    .banner-text-secion h1{font-size: 20px;}
+    .inner-bnr-sldr .owl-controls .owl-prev {left:-10px; bottom:230px;}
+    .inner-bnr-sldr .owl-controls .owl-next{right:-10px; bottom:230px;}
+    .mobheight{ height:65px; }
+    .locationwdth img{margin-right:5px;}
+    .riskcontent .offer-main {margin: 15px 0px!important;/*float: left;min-height: 455px;*/}
+    .riskcontent {padding: 20px 0px;}
+    .pricedtl{font-size: 15px; margin-bottom:0px;}
+    .black{font-size: 19px; margin: 0px; padding: 13px 0px;}
+    .pdleft20{ padding-left:15px; }
+    .ywctext{color:#000; font-size:12px; display:block;}
+    #youwecan_visible{line-height:15px; clear:both; }
+    .lt25{ line-height:21px; padding-top:10px; padding-bottom:10px;}
+    .Wlcm-Healthians .left-boxdiv {position: relative;height: auto;}
+    .right-boxdiv .fb-mailbtndiv .btn-dangerfb {width: auto !important;float: none;padding: 10px; min-height: 40px;}
+    .right-boxdiv .fb-mailbtndiv .btn-dangergplus {min-height: 40px;line-height: 25px;}
+    .login-outer{ width: 100%; margin:0 auto; }
+    .subscribe-section .input-group {margin-top: 0px;}
+    .subscribe-section .error{ color:#fff; }
+    .f-div .userinfobar{ font-size:14px; margin-top:15px; }
+    .timeline ul li b{ font-size:16px; }
+    .timeline li{ font-size:13px; }
+    .locationwdth{ width:100%; font-size:14px; }
+    .f-div .userinfobar strong{ font-size:18px; }
+    .our-deal .riskcontent .offer-main {min-height: auto;}
+    .fixed-bar{position: fixed;top: 200px;left: 0px;background-color: #f37d26;width: 40px;height: 40px; line-height: 40px;text-align: center;display:none;font-size: 20px;color: #ffffff;z-index: 99;}
+    .slidingDiv {position: relative;left: 0px;top:-64px; margin:0px auto; bottom:0px;z-index: 9;width:92%;height: 100%;display: block;}
+    .slidingDivRiskAreas{position: relative;left: 0px;top:3px; margin:0px auto; bottom:0px;z-index: 9;width:92%;height: 100%;display: block;}
+    .filter-box h4::after{ right:20px; }
+    .filter-box .col-xs-12{ margin:0px; padding:0px; }
+    .filter-box .checkbox{ padding:5px 20px 7px 10px; display:block; }
+    .filter-box .check-boxes{ position:static; background-color:#fff; }
+    .filter-box h4{padding:10px 0px; }
+    .user-area {padding:20px 20px 20px 30px;}
+    .testdetailinformation .testprices .healthiansprice{ font-size:18px; }
+    .asidenavdiv .dash-left .dashbordul{ margin-bottom:0px; }
+    .asidenavdiv .dash-left .dashbordul li a{padding-left:0px; margin-left:0px;}
+    .asidenavdiv .dash-left .dashbordul li{padding-left: 30px; padding-top:10px; padding-bottom:10px;}
+
+    .show_hide {display:none;}
+    .infor h3 p{ font-size:16px; }
+    .f-div .test_addbox{ padding:0px 10px 15px 20px; margin:0px; box-shadow:none; border-left:none; border-right:none; border-top:1px solid #ccc; border-bottom:none; }
+    .testdetailinformation .testprices{ float:left; }
+    .testdetailinformation{ padding-top:7px; padding-bottom:2px; }
+    .shubham{margin-top:10px; margin-bottom:20px;}
+    .green-band{height: 60px;}
+    .media-page .rgt-mem {margin-top: 0; padding-left: 10px;}
+    .media-page .rgt-mem h4 {font-size: 16px;}
+    .testdetailinformation h4{margin-bottom:0px; line-height:26px; font-size:18px;}
+    .odfastinginfo{ font-size: 13px; padding-bottom: 0px; margin-bottom: 0px;}
+
+    .subscription-page .liver-section {padding: 15px;}
+    .edit-profile .center-bnt a{margin-bottom: 20px;padding: 0px 20px;}
+
+    .map-right {border-left: none;padding-left: 0;text-align: center;padding-top: 40px;padding-bottom: 0px;border-top: 2px solid #1a9ca6;margin-top: 50px;}
+    .labs-map-area {margin: 30px 0px 0px;}
+
+    .headerrightdiv-content{padding-right: 10px;}
+    .headerrightdiv-content img{display: none;}
+    header .dropdown-toggle .caret{position: relative; top: 0px; right: 0px;}
+    .headerrightdiv-content ul li a{margin: 0px;}
+    .headerrightdiv-content:last-child{padding-right: 61px;}
+}
+
+@media only screen and (max-width:990px){
+    .img-sectiondiv .box{ margin-bottom: 30px; }
+}
+
+@media screen and (max-width: 781px) {
+    .our-labs-page .tab_container {width: 100%;}
+    ul.tabs {display: none;}
+    .tab_container {display: block;margin: 0 auto;width: 95%;border-top: none;border-radius: 0; box-shadow: 0px 0px 10px black;}
+    .tab_drawer_heading {
+        background-color: #ccc;
+    @include tab-bg-gradient();
+        color: #fff;
+        margin: 0;
+        padding: 5px 20px;
+        display: block;
+        cursor: pointer;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    text-align: center;
+    &:hover {background: #ccc;@include tab-bg-gradient-hover();color: $tab_text_color_hover;} }
+    .d_active {background: #767676;color: #ffffff !important;}
+    .map-right{margin-top: 0px;}
+
+    .our-labs-page .tab_container {min-height: auto !important;}
+    .doctors-area{margin: 20px 0px 0px;}
+    .visit-form{margin-top: 30px;}
+    .doctors {float: left;padding-left: 81px;}
+    .labortary-details {margin-top: 30px;padding: 30px 30px;}
+    .labs-para {width: 90%;padding: 0px;margin: 30px auto 20px;}
+    .tab_drawer_heading{font-size: 15px;color: #000000;}
+    .inner-banner p {font-size: 15px;}
+
+    .product-stiky-header form{display: block; text-align: center;}
+    .product-stiky-header form .form-control{width: 100%; min-width: 100%;}
+    .product-stiky-header form .form-control {height: 40px; background:#fff; padding: 0px 0px 0px 20px;border: none; line-height: 40px;border-radius: 40px 40px 40px 40px;margin: 15px 0px;}
+    .form-second {margin-left: 0px !important; border: none !important;}
+    .cart-div .step-div{ background:#00a0a8; }
+    .get-btn{margin-left: 0px !important; height: 40px; line-height: 40px; padding: 0px;}
+    .product-stiky-header ul {column-count: 3;margin-top: 20px;padding-left:0px; text-align: center;}
+
+    .sticky{position: relative; box-shadow: none;}
+}
+
+@media only screen and (max-width: 767px){
+    .menu-mobile-nw{position: absolute;top: 75px;right: 0;}
+    .navbar-brand{position: absolute;top: -80px;left: 0px;width: 170px;}
+    .headerrightdiv img{display: none;}
+    .headerrightdiv {width: 60%;margin-right: 100px;}
+    .navbar-toggle{position: absolute;right: 0;top: -55px;}
+    #bs-example-navbar-collapse-1{position: absolute;width: 100%;left: 0px;top: 0px;z-index: 1;background-color: #ffffff;margin: 0;}
+    .navbar-nav {margin: 0;}
+    .navbar-default .navbar-nav li:first-child a {padding-left: 15px;}
+    .navbar{min-height: auto;}
+    .myhistory {margin: 30px auto;float: none;}
+    .getcloserdiv h4{width: 100%;}
+    .right-icon{width: auto;}
+    .getcloserdiv p{width: 100%;}
+    .owl-controls .owl-prev {left:-10px;}
+    .owl-controls .owl-next {right:-10px;}
+    .icon-content p {font-size: 12px;}
+    .choose-icon {min-height: 155px; text-align: center;}
+    .zigzag-content ul li{min-height: 100px;}
+    footer{text-align: center;}
+
+    footer .img-responsive{margin: 0 auto;}
+    .footermid{float: left;width: 100%;text-align: center;}
+    .footermid ul li {width: auto;float: none;display: inline-block;padding: 10px 4px 0;}
+    .footerright ul{text-align: center;}
+    .footerright ul li {margin-right: 5px;display: inline-block;float: none;}
+    .footerright {float: left;width: 100%;text-align: center; margin-top: 20px;}
+    .otherlinks{margin-top: 20px;}
+    .zigzag-content ul li:nth-child(odd) p{margin-top: 10px;}
+    .zigzag-content ul li:nth-child(even) p{margin-top: 10px;}
+    #bs-example-navbar-collapse-1 {position: absolute;width: 98%;left: 30px;top: 0px;z-index: 99;background-color: #ffffff;margin: 0;}
+    #navigation .nv-left {width: 100%;}
+    #navigation .navbar-right {float: left !important;text-align: left;width: 100%; margin: 20px 0px;}
+    #navigation ul li {padding-right: 25px;padding-bottom: 5px;padding-top: 10px;}
+    .headerrightdiv-content img{display: none;}
+    .headerrightdiv-content {padding-right: 24px;margin-right: 4px; border: none;}
+    header {padding: 10px 0px;margin: 0px;}
+    .header-top-information{display: inline-block; vertical-align: top;position: absolute;top: -63px;width: 100%;right: 30px;}
+    .header-main-menu{display: inline-block; vertical-align: top;}
+    header .navbar-toggle{top: -60px;}
+    .header-information {position: absolute;right: 0px;top: -10px;}
+    .headerrightdiv-content ul li a{font-size: 11px;}
+    .headerrightdiv-content {padding-right: 4px;}
+    .headerrightdiv-content:last-child ul li{margin-top: 6px;}
+    .filter-icon{display: none;}
+    .filter-icon a {width: 90px;height: 35px;line-height: 18px;margin: 0px;}
+    .filter-icon span{display: none;}
+    .filter-icon {position: relative;margin-top: 20px;}
+    .right-icon {width: 20%;top: 40px;}
+    .downloadapp-section{position: relative;}
+    .downloadapp-section::before{content: '';position: absolute;background-color:#03584cc9;top: 0px;left: 0px;width: 100%;height: 100%;}
+    .downloadapp-section p{color: #ffffff;}
+    .popular-slide h3 a{ font-size:20px !important; }
+    .downloadapp-section h3 {color: #fff;}
+    .about-section h1, .getcloser-section h2, .mysubscriptions-section h2, .special-offer h2, .popular-section h3, .yourhealth-section h3, .choose-us h2, .subscribe-section h3, .popular-section h3{ font-size: 20px;}
+    .commonrisk-section h3 { font-size:22px;}
+    .getcloserdiv .btn {position: relative;padding: 0px;width: auto;height: 35px;text-align: center;margin-left: 0;}
+    .getcloserdiv a span {margin-top: 8px;float: none;padding-right: 15px;font-size: 16px;padding-left: 13px;line-height: 33px;}
+    .getcloserdiv .btn img {margin: 6px;width: 22px;}
+    .subcribe-content ul {font-size: 0px;list-style: none;margin-left: 0;padding-left: 0;}
+    .subcribe-content ul li b { margin-top: 5px;}
+    .subcribe-content ul li span {font-size: 16px;}
+    .commonrisk-section .btn-danger { margin-top: 0;}
+    .commonrisk-section .btn-danger, .popular-section .btn-danger, .ourexpert-section .btn-danger, .yourhealth-section .btn-danger {padding: 6px 40px 6px 19px;position: relative;}
+    .commonrisk-section a img, .popular-section a img, .ourexpert-section a img, .yourhealth-section a img {position: absolute;right: 8px;top: 5px;}
+    .special-offer .btn-danger {padding: 6px 40px 6px 19px;position: relative;margin-top: 0;}
+    .history-content .btn-danger {width: auto;margin-left: 0px;}
+    .myhistory a {padding: 10px 49px 10px 20px;position: relative;min-height: 40px;line-height: 20px;}
+    .myhistory a img {top: 0px;}
+    .getcloserdiv p {min-height: 44px;}
+
+    .subcribe-content ul{ margin-bottom:0;}
+    .special-offer .btn-danger img { top: 5px;}
+    .subscribe-section{margin-top: 10px;}
+
+    .without-login .headerrightdiv-content:first-child {padding-right: 5px;}
+    .without-login .getcloserdiv{margin-top: 20px; margin-bottom: 10px;}
+    .getcloser-section {padding-top: 20px;padding-bottom: 10px;}
+    .subscribe-section button {font-size: 17px;}
+
+    .lft-member {width: 70%;margin: 0 auto;float: none;display: block;}
+    .rgt-mem {width: 100%;margin: 30px 0px 0px;}
+    .about-team-area ul{display: block;}
+    .about-team-area ul li {padding-right: 0px;margin-bottom: 30px; margin-top: 0px;}
+    .about-team-area ul li:last-child{margin-bottom: 0px;}
+    .about-team-area ul:nth-child(odd) li:last-child{margin-bottom: 30px;}
+   
+    .dropdown-toggle.btn-default { max-width: 555px;}
+
+    .Expedient-Healtdiv .Wing-Floordiv{text-align: center;}
+    .contact-info{text-align: center;}
+    .contact-heading{width: 100%;}
+    .contact-heading::after{display: none;}
+    .contact-cont{width: 100%;}
+    .Expedient-Healtdiv h1 {font-size: 24px;line-height: 17px;}
+    .contact-info {margin-top: 10px;}
+
+    .right-content-sec {float: none; position: absolute;right: 20px; bottom: 0;margin-top: 15px;text-align: center; width: auto;}
+    .book-div{margin-bottom: 20px;}
+    .book-your-test {padding: 30px 0px 0px;}
+
+    .nutrition-tip {margin-top: 30px;}
+    .health { margin-top: 30px;}
+    .details ul li img{width: 20px;}
+    .details ul li{margin-right:10px;}
+
+    .Referdiv .add-box a {border-radius: 0 4px 4px 0; margin-left: 0; line-height: 37px;}
+   .Referdiv .add-box .input-group .form-control{width: 58%;padding-left: 20px;}
+   .Referdiv .Retake-Healthkarmadiv .social-iconsdiv { padding-top: 20px; float: left; text-align: center; width: 100%;}
+
+   .Family-headingdiv{margin-top:5px;}
+   .faimly-friendwraper .asidenavdiv {margin: 20px 0px;}
+
+    .health ul {padding-left: 0;} 
+    .blog-img{width: 100%;}  
+    .blog-img img{width: 100%;}
+    #pinBoot{ margin: 0 auto; }
+    .related-image img{width: 100%;}
+
+    .Wlcm-Healthians .left-boxdiv {width: 100%;float: none; display:none;background-image: url(../../img/left-div-background.jpg );padding-bottom: 26px;background-repeat: no-repeat;background-size: 100% 100%;}
+    .Wlcm-Healthians .right-boxdiv { float: left;width: 100%;background-color: #fff;padding: 4px 25px 16px 25px;}
+    .Wlcm-Healthians #owl-demo .item {margin: 3px;padding-top: 161px;}
+    .left-boxdiv .owl-theme .owl-controls {display: none!important;}
+    .right-boxdiv .fb-mailbtndiv .btn-dangerfb {width: 100%!important;float: none;padding: 8px 0px;text-align: center;margin-right: 10px;border: 1px solid #465892;font-size: 12px;}
+    .right-boxdiv .fb-mailbtndiv .btn-dangerfb {width: auto !important;padding: 5px 15px;line-height: 30px;}
+    .right-boxdiv .fb-mailbtndiv .btn-dangergplus {padding: 5px 15px;}
+    .right-boxdiv p{width:100%;}
+
+    .col-extra-xs img{ height: auto;}
+    .shubham .add-box h2 {font-size: 20px;}
+    .shubham .add-box h4 {font-size: 16px; padding-left: 10px;}
+    .shubham .add-box .Lipid-div span {font-size: 14px;}
+    .shubham .add-box .Lipid-div{padding: 20px 10px;}
+    .Retake-Healthkarmadiv .add-box .btnrdiv {padding-top:0px;}
+    .user-form{margin-top:20px;}
+    .pricebarorderbook .healthiansprice{ font-size:28px; }
+
+    .lft-f-details, .rgt-f-details {width: 100%; margin:10px 0 5px 0px;}
+    .edit-profile .add-box{margin:0px 20px 10px 0px;}
+    .edit-profile .shubham .Ramesh-56div h4{padding-left: 0px;}
+    .edit-profile .center-bnt a { line-height:42px; width: auto;height: 44px;margin-left: 0;margin-bottom: 20px; width:100%;}
+    .user-profile-details {width: 100%;}
+    .center-bnt .btn_cmncolor{ width:100%; }
+
+    #bs-example-navbar-collapse-1 .btn-danger {padding: 5px 5px;}
+    #navigation .navbar-right{margin: 0px 0px 0px 9px;}
+    #bs-example-navbar-collapse-1{padding-bottom: 20px;}
+
+    .blog-page .blog-content {padding: 20px 0px;}
+    .blog-page .nutrition-tip {margin-top: 20px;}
+
+    footer p{margin-top:5px;}
+    .f-div .Ramesh-56div .table > thead > tr > th{font-size: 20px !important;}
+    .f-div .Ramesh-56div td{font-size: 14px !important;}
+    .lft-f-details p, .rgt-f-details p {width: 100%; padding-top:7px; padding-bottom:11px;}
+    .edit-profile .shubham .add-box h4 {padding-left: 0;}
+    .user-profile-details {margin-top: 20px;}
+    .modal-dialog {width: 97%!important;}
+    .contact-div{float: left; width: 47%;}
+    .mar-top { margin-top: 0;}
+    .col-md-4.text-center.devide {border-right: 0;border-bottom:none;}
+    .col-md-6.devide {border-right: 0 solid #ddd;}
+    #profile-slider img {width: 148px;border-radius: 50%;padding: 15px;}
+    #profile-slider .owl-controls{display: none!important;}
+    .add-box .smart-section {margin:0px 0px 0px;}
+    .smart-section {position: relative;width: 100%;}
+    .liver-section { width: 100%;}
+    .right-button .caret {margin: 10px 0 10px 0;display: inherit;}
+    .mar-top-min {margin-top: 0px!important;}
+    .new-member-form{display:block;width: 100%; box-shadow:none;}
+    .hgt {line-height: 47px;display: flex;}
+    .amount-area .off {font-size: 20px;}
+
+    .amount-area .total { font-size: 20px;}
+    .amount-area .price{margin-top: -20px;}
+    .amount-area {padding: 10px 0;}
+    .amount-area .total{margin-top: -20px;}
+    .total .removes {display: initial;line-height: 71px;}
+    .coupon {float: right;width: 100%;position: relative;margin: 15px 0;}
+    .block p {margin: 10px 46px 10px;}
+    .rght span {color: #FF9800;margin: 15px 0;display: block;}
+    .payment {padding: 25px 15px 10px;}
+
+    .all-doctors{display: flex;width: 100%;text-align: center;}
+    .doctors {padding-left: 0px;}
+    .doctors {padding-left: 0px;display: inline-block;float: none;width: 100%;text-align: center;}
+    .doctors img{margin: 0 auto;}
+
+    .payment a{font-size: 16px !important;}
+    .product-package .gray {margin-top: 20px;float: left;width: 100%;}
+
+    .condition-cont ol li { padding: 0px 0px 10px;font-size: 14px;}
+
+    .headerrightdiv-content ul li a span{display: block;}
+    .result-box .offers h3{ font-size:16px; }
+    .result-box .offer-content .offer-heading h4{ margin-bottom:0px; }
+    .result-box .offer-content{ padding:20px 0px 15px 0px; }
+    .result-box {background-color: #fff;box-shadow:0 6px 10px rgba(148,148,148,0.3);padding:20px 15px;color:#000;
+    margin-bottom: 40px;margin-top:25px;border-radius:4px;position:relative; margin: 10px; width: 94%;}
+    a.drop-filter.risk-tab {margin: 10px 0;}
+
+    a.drop-filter1.risk-tab { margin: 0;}
+    .offers-content .col h4{ font-size:16px; }
+    .result-box .offers-content del{ font-size:24px; }
+    .result-box .offers-content del span{ font-size:24px; }
+    .drop-filter-show1 {top: 183px;width: 93%;margin: 15px;}
+    .drop-filter-show {top: 137px;width: 93%;margin: 15px;}
+    .apply {width: 150px;height: 40px;line-height: 37px;margin-bottom: 20px;}
+    .certified {background-image: none;background-repeat: no-repeat;background-color: #1a9ca6;background-size: contain;
+    padding: 12px 0px;color: #fff;font-size:14px;}
+    .right-side{padding: 0;}
+
+    .related-package .offers h3{ font-size:16px; }
+    .related-package .offers{ margin-bottom:15px; }
+    .related-package .owl-controls .owl-next{ right:-15px; }
+    .related-package .owl-controls .owl-prev{ left:-15px; }
+    .related-package .riskcontent .offer-main{ min-height:auto; }
+    .related-package .riskcontent .offer-heading{ min-height:40px !important ; }
+    .related-package .offer-content{ padding:0px 20px 0px 20px; font-size:20px; }
+}
+
+@media only screen and (max-width: 500px){
+    .menu-mobile-nw {top: 68px;}
+}
+
+@media only screen and (max-width: 480px){ 
+    .getcloserdiv .btn img { margin: 3px 0;}
+    .navbar-toggle{margin-right: 0px;}
+    .headerrightdiv p {font-size: 11px;}
+    .headerrightdiv { width: 100%; margin-right: 0;}
+    header .navbar-toggle {top: -50px;}
+    .navbar-brand {top: -23px; padding-left: 0px;}
+    .navbar-toggle{top: 0px;}
+    .bannerdiv .carousel-caption{display: none;}
+    #bs-example-navbar-collapse-1 {top: 10px; z-index: 99;left: 0px;}
+    .headerrightdiv-content:last-child{padding-right: 6px;margin-top: -2px;}
+    .headerrightdiv-content:last-child a span{padding-top: 0px;display: inline-block;padding-bottom: 4px;}
+    .header-information {top: -25px;}
+    .search-section .form-control{padding-left: 12px;font-size: 13px;}
+    .search-section .btn{font-size: 14px;padding: 5px 15px;}
+    .search-section, .about-section, .mysubscriptions-section, .commonrisk-section, .special-offer, .popular-section, .yourhealth-section, .downloadapp-section, .choose-us, .subscribe-section{padding: 20px 0px;}
+    .about-section h1, .getcloser-section h2, .mysubscriptions-section h2, .special-offer h2, .popular-section h3, .yourhealth-section h3, .choose-us h2, .subscribe-section h3, .popular-section h3 {font-size:22px;}
+    .commonrisk-section h3 {font-size: 22px;}
+    .subscriptionarea{ max-width:97%; }
+    .liver-section{width: 100%; text-align: center;}
+    .smart-section{width: 100%;border-radius: 0px 0px 6px 6px;}
+    .post-slide1 {width: 100%; margin: 30px 0px 0px;}
+    .subcribe-content {width: 100%;float: left;margin-top: 30px;}
+    .view-details{display: block; margin: 0 auto;}
+    .zigzag-content ul {float: left;width: 90%;margin: 0 0 0 20px;padding: 0% 1%;}
+    .zigzag-content ul li{width: 100%; min-height: 70px;}
+    .zigzag-content ul li:nth-child(odd) p{margin-top: 15px;}
+    .zigzag-content ul li:nth-child(even) p{margin-top: 15px;}
+    .subscribe-section .input-group{display: block;}
+    .subscribe-section .form-control{margin-bottom: 20px;}
+    .liver-section h3, .myhistory h3, .liver-section p{width: 100%; float: left;}
+    .liver-section img{margin: 0 auto 20px;display: block;float: none;}
+    .smart-section{position: relative;}
+    .headerrightdiv-content {padding-right: 0px; padding-left: 10px;}
+    .carousel-indicators{display:none;}
+    .mob span{display:none;}
+    .view-details {width: 150px;margin-left: 45px;height: 40px; line-height: 37px; margin: 0 auto;}
+    .inner-banner figcaption p{display: none;}
+    button.btn.dropdown-toggle.btn-default {width: 300px;}
+
+    .blog-content h2{font-size: 20px;}
+
+    .carer-group{display: block; text-align: center;}
+    .group-img {width: 100%;margin: 0px 0px 20px;}
+    .work-us .left-form {width: 100%;float: left;padding: 0px;}
+    .work-us .right-form {width: 100%;padding: 0px;}
+    .work-us .right-form{padding: 0px;}
+    .work-us .form-group {margin-bottom: 15px;}
+    .work-us label {margin: 0px 0px 15px;}
+    .work-us form{margin-top: 15px;}
+    .practice-area p{font-size: 14px;}
+
+    .book-div {overflow: visible;float: left;width: 100%;}
+    .right-content-sec {float: left;position: relative;right: 0;bottom: 0;margin-top: 15px;text-align: center;width: 100%;}
+
+    .common-risk #inner-banner .buy-book-btn a {font-size: 12px;}
+    .copy-page-cont p{font-size: 10px;}
+    .right-boxdiv .mob-input {width:65%; float:right; padding:17px 0px 10px 0px;}
+    .For-anyquerydiv .btn-submitform {width: auto;margin-top: 20px;}
+    .riskcontent .col-xs-6{width: 100%;}
+    .blog-breadcumbs {padding:0; margin: -15px 0 0 0;}
+    .blog-inner-page .blog-breadcumbs {padding:0; margin: 0px 0 0 0;}
+    .blog-inner-page .blog-heading {padding: 20px 0px;}
+    .blog-inner-page .underline-img {margin-bottom: 0;}
+    .blog-inner-page .top-space {margin-top: 20px;}
+    .bookpackage_btn{ width:46%; }
+    .getcallback_yml{ width:49%; }
+    .blog-inner-page .buy-book-btn a:last-child, .common-risk .buy-book-btn a:last-child, .common-pages .buy-book-btn a:last-child {height: 34px !important;padding: 0px 8px;line-height: 31px;}
+    .blog-inner-page .nutrition-tip {margin-top: 0px;}
+    .search-detail{ margin-bottom:0px; display:inline-block; }
+    .blog-inner-page .related-area {padding-top: 0px; padding-bottom: 0px;}
+    .blog-inner-page .nutrition-tip {margin-bottom: 40px;}
+    .inner-banner p {font-size: 18px;}
+    .Wlcm-Healthians h2 { font-size: 24px;}
+    .col-extra-xs{width: 100%;}
+    .book-content .right-form {text-align: center;margin-top: 50px;}
+    .buy-book-btn a:last-child{}
+    .buy-book-btn a{margin-right:4px; width: 100%; font-size:16px; }
+    .right-boxdiv .fb-mailbtndiv .btn-dangerfb{ margin-right: 0; }
+    a.btn.btn-danger img { /*width: 24px; position: initial; float:right;*/}
+    .searchresultrgt .sr_booknow img{margin-left: 10px; float: right; margin: 6px 0 6px 0;}
+    .countrycode_select{ margin-bottom:10px; }
+    .blog-details { margin-top: 0;}
+    .inner-banner { margin-top:0px;}
+    .blog-heading h2 {font-size: 20px;}
+    .blog-heading{padding: 10px 0px 0px;}
+    .Retake-Healthkarmadiv .add-box .btnrdiv {padding-top: 10px;float: right;width: 100%;position: relative;}    
+    .default-address {bottom: 0;top: initial;}
+    .edit-add {float: right;width: 50%;margin-bottom: 50px;}
+    .set-def {margin-top: 10px; float: left;}
+    .Retake-Healthkarmadiv .Add-New-Member {padding: 0 0px;}
+    .cart-box {width: 100%;margin-right: 0;}
+    .cart-sec .col-md-5{width: 100%}
+    .cart-sec .col-md-7{width: 100%;text-align: left;}
+    .cart-sec {display: block;margin-top:0px;}
+    .gray-band{ margin-bottom:20px; }
+    .gray-band span {margin-right:0px;margin-bottom: 10px;display: block;text-align: center;}
+    .right-button { float: none; text-align: center;}
+    .right-button a.btn.btn-danger {margin: 0;font-size: 16px;padding: 10px 15px;}
+    .call-def {font-size: 12px;line-height: 23px; padding: 8px 16px;}
+    a.btn.btn-danger {   margin-bottom: 10px; margin-left:0px; margin-right:0px; padding:6px 48px 6px 30px;}
+
+    .pay {width: 218px;}
+    .title{font-size: 20px;}
+    .green-band{height: 60px;}
+    .collapse.in{position: relative;}
+    .col-width:last-child {width: 20%;}
+    .col-width {width:75%;display: inline-block;}
+    .servicesec h5{ margin-bottom:10px; }
+    .cart-section {padding: 25px 0px 0;}
+    .riskcontent {padding: 20px 20px;}
+    .contact-div{width: 94%}
+    .gray-band span img{ display:none; }
+   
+    .text-area.col-md-12{ margin-bottom:0px; }
+    .text-area label{width: 24%;}
+    .text-area textarea {width:100%;}
+    .feedback-div .cpcha-btn{ margin-left:0px; padding:0px 15px;  margin-top: 5px;  float:none; }
+    .feedback-div .btn-submitform {float:none;margin-top:0px; padding:0px; margin-bottom:10px; width: 100%;text-align: center;}
+    .feedback-div .btn-submitform .btn_cmncolor{ width:100%; }
+    .feedback-div label{ width:100%; }
+    .feedback-div{ padding:10px 0px; }
+    .feedback-div .form-control{ width:100%; }
+    .width .modal-dialog {width: 94%!important;}
+    .float-none{width: 100%;}
+    .switch-right {float: right;margin-top: 0;}
+    .health-usear h5{font-size: 25px;}
+    .health-usear h4, .health-karma .meet-us h3{font-size: 20px;}
+    .score-img{display: block; text-align: center; float: left; margin-top: 20px; width: 100%;}
+    .score-img img{margin: 0 auto;}
+    .health-q-heading h4 span {float: left;width: 100%;}
+    .health-q-heading h4 img {float: none; margin: 0 auto 20px;}
+    .health-q-heading h4{font-size: 20px; text-align: center;}
+
+    .media-page .lft-member {width: 100%;}
+    .media-page .member-sec img{float: none;}
+    .media-page .rgt-mem {padding-left: 0;margin-top: 20px;text-align: center;width: 100%;}
+
+    .blog-page .blog-details {margin-top : 30px;}
+
+    .contact-us .For-anyquerydiv .btn-submitform {width: 100%;margin-top: 20px;text-align: center;}
+    .txt { font-size: 20px;}
+    .amount-area .price {font-size: 18px;}
+    .amount-area strike {font-size: 16px;}
+    .user-profile-details a{top:0px; position:relative; float:left; margin-top:15px;}
+    .modal-dialog { width: 94%!important;}
+    .center-bnt a {line-height: 26px;}
+    .underline-img {margin-bottom: 13px;}
+    .center-bnt{margin-bottom:20px; margin-top:20px;  padding:0px 20px;}
+    .toppaneldivide{ padding-top:15px; }
+    .col-md-4.text-center.devide {border-right: 0;border-bottom:none;}
+    .col-md-6.devide {border-right: 0 solid #ddd;}
+    .book-link { font-size: 21px;}
+    .Retake-Healthkarmadiv{margin-bottom: 20px; margin-top:0px;}
+    .mt_10{ margin-top:10px; }
+    .address-sample{margin-bottom: 0px;}
+    .Family-headingdiv h3{ display:block; text-align:center; padding:15px 10px 2px 10px;}
+    .hb-circle{ margin:20px auto 15px auto; }
+    .Family-headingdiv {margin-top: 15px; text-align:center;}
+    .addmemberright{ float:none; }
+    #profile-slider img {width: 148px;border-radius: 50%;padding: 15px;}
+    #profile-slider .owl-controls{display: none;}
+    h3, .h3 {font-size: 20px;}
+    .f-div .add-box td {border-top: 0px;margin: 0px;padding:7px 0px 0px 0px;font-size: 14px;line-height: 28px; /*display:table;*/}
+    .subscription-page p { margin-top: 0px;}
+    .view-next{float: left; width: 100%; margin: 20px 0;}
+    .top-mar { margin-top: 0!important; margin-bottom: 10px!important;}
+    .gray a.btn.btn-danger {padding: 8px 11px; margin: 0px;}
+    .check-size {font-size: 17px;}
+    .black-font {font-size: 15px;}
+    .reminds{float: left; width: 100%;}
+    .labortary-details ul{column-count: 2;}
+    .labortary-details ul li {font-size: 14px;}
+    .labortary-details h4{font-size: 15px;}
+    .visit-heading h5{font-size: 20px;}
+    .visit-form form .form-control, .visit-form form img {margin-bottom: 20px;}
+    .map{width: 100%;}
+    .address-txt {width: 100%;float: left;padding-left: 0;text-align: center;margin: 20px 0px;}
+    .address-txt h5{text-align: center;}
+    .map-right {border-left: none;padding-left: 0;text-align: center;padding-top: 30px;padding-bottom: 0px;border-top: 2px solid #1a9ca6;}
+    .labs-map-area {margin: 30px 0px 0px;}
+    #teams-slider3 img{ margin-bottom:0px; }
+    #teams-slider5 img{margin-bottom:0px; }
+    .banner-icon img{display: none;}
+    .product-stiky-header ul {column-count: 1;}
+    .retry-button{padding: 10px 50px!important; margin: 30px 0;}
+    a.drop-filter.risk-tab {margin: 10px 0;}
+    a.drop-filter1.risk-tab { margin: 0;}
+    .drop-filter-show1 {top: 183px;width: 93%;margin: 15px;}
+    .drop-filter-show {top: 137px;width: 93%;margin: 15px;}
+    .apply {width: 150px;height: 40px;line-height: 37px;margin-bottom: 20px;}
+    .certified {background-image: none;background-repeat: no-repeat;background-color: #1a9ca6;background-size: contain;
+    padding: 12px 22px;color: #fff;font-size: 14px;}
+    .right-side{padding: 0;}
+}
+
+@media only screen and (max-width:479px){
+    .img-sectiondiv .box:hover .box-content{ bottom: 10%; }
+    .header-top-information{right: 0px;}
+    .header-information { width: 100%;text-align: center;}
+    .headerrightdiv-content:last-child a span{text-align: right; display: block;}
+    .mobile-logo{margin-top: 30px;width: 150px; z-index: 100;}
+    header .navbar-toggle {top: -10px;}
+    .header-top-information{top: -53px;}
+    #bs-example-navbar-collapse-1 {top: 37px;}
+    .headerrightdiv-content ul li a {line-height: 13px;}
+    .headerrightdiv-content:last-child ul li {margin-top: 0px;}
+    #navigation {margin: -10px 0px 0px 0px;}
+}
+
+@media only screen and (max-width: 420px){
+    .menu {position: absolute;top: 40px;right: auto;width: 100%;left: auto;}
+    button.btn.dropdown-toggle.btn-default { width: 290px;}
+    .tabarea .nav-tabs > li > a {padding: 10px 34px 10px 10px; font-size: 13px;}
+    .tabarea .nav-tabs > li > a::after {right: 7px;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid #848484;}
+    .health-content p { font-size: 12px; line-height: 20px;}
+}
+@media only screen and (max-width: 320px){
+    button.btn.dropdown-toggle.btn-default { width: 250px;}
+    .f-div .add-box{padding: 10px;}
+    .default-address{right: 5px;}
+}
+
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+    
+}
+
+/* ##Device = Most of the Smartphones Mobiles (Portrait)  ##Screen = B/w 320px to 479px*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  
+}

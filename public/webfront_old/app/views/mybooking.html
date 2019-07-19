@@ -1,0 +1,189 @@
+<div class="ContentWrap">
+    <div ui-view="header"></div>
+    <div class="clear"></div>
+    
+     <section class="dashboard">
+    <div class="profilenav">
+            <div class="midNav">
+                <ul>                    
+                    <li><a href="/dashboard" id="dashboard">Dashboard</a></li>                    
+                    <li><a href="/mybooking" id="booking" class="selected">My Booking</a></li>
+                    <li><a href="/myreport" id="report">My Report</a></li>
+                    <li><a href="/myaddress" id="report">My Address</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!-- <div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;"></div> -->
+        </div>
+    <div class="clear"></div>
+    </section>
+    
+    <div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;"> </div>
+    
+    <div class="mybooking-main">
+        <div id="myreport" ng-hide="loaderVar">
+            <div class="clear" style="margin-bottom:0px;"></div>
+            <figure class="report-panel">
+                <h4>My Booking </h4>
+                <div class="myBookings">
+                    <ul>
+                        <li><strong>Booking ID</strong></li>
+                        <li><strong>Booking Date</strong></li>
+                        <li><strong>Price</strong></li>
+                        <li><strong>Status</strong></li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                    </ul>
+                    <ol ng-repeat="list in mybookingList">
+                        <li>
+                            <p class="mv_bookingStatus">Booking ID : </p>
+                            <p ng-bind="list.booking_id"></p>
+                        </li>
+                        <li>
+                            <p class="mv_bookingStatus">Booking Date : </p>
+                            <p ng-bind="list.booking_date | moment:'MMM DD, YYYY'"></p>
+                        </li>
+                        <li>
+                            <p class="mv_bookingStatus">Price : </p>
+                            <p><span class="fontrupee">`</span>&nbsp;<span ng-bind="list.total_amount"></span></p>
+                        </li>
+                        <li>
+                            <p class="mv_bookingStatus">Status : </p>
+                            <font ng-bind="list.status"></font>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" ng-click="getBookingOrderDetail(list.booking_id);" title="ORDER DETAIL" class="tooltip" ng-show="list.booking_date < '2016-12-08'">
+                                    <img src="assets/images/info_Icon.png">
+                                </a>
+                            <a href="order/{{list.booking_id}}" title="ORDER DETAIL" class="tooltip" ng-show="list.booking_date >= '2016-12-08'">
+                                    <img src="assets/images/info_Icon.png">
+                                </a>
+                        </li>
+                       <!--  <li> <a class="order-detail-makepayment" href="makepayment?booking_id={{list.booking_id}}&mobile={{userContact}}" ng-if="list.status === 'pending' && mobile !== ''"><img src="assets/images/pay-credit-card.png" style=" padding-right:8px; width:26px;">&nbsp;Make Payment</a></li> -->
+                    </ol>
+                    <div class="clear"></div>
+                    <div class="noreport" ng-show="nodataBooking">No Booking Found</div>
+                    <div class="clear"></div>
+                </div>
+            </figure>
+            <div class="clear" style="margin-bottom:10px;"></div>
+        </div>
+    </div>
+    <!--popup infos orderDetail-->
+    <div class="info-Popup" ng-show="orderDetail">
+        <div class="maskedOverlay"></div>
+        <div class="info-Popup">        
+            <div class="popUpMid">
+                <h1>Order Detail 
+                  <a ng-click="closeBookingOrderDetail();" href="" class="closenav" style="float:right;">
+                    <img src="assets/images/close.png">
+                  </a>
+                </h1>
+            </div>
+            <div class="popsectionmid">
+                <div ng-show="loaderVar1" class="loader initial" style="font-size: 15px;margin-top:0px;"> </div>
+                <div ng-show="showOrderDetail">
+                    <table width="100%" border="0" cellspacing="" cellpadding="10">
+                        <tr bgcolor="#f7f7f7">
+                            <td class="t1title">Booking ID : </td>
+                            <td class="t1info" ng-bind="order.booking_id"></td>
+                        </tr>
+                        <tr bgcolor="#f7f7f7">
+                            <td class="t1title">Sample Collection Date : </td>
+                            <td class="t1info" ng-bind="order.sample_collection_date | moment:'dddd MMMM DD, YYYY'"></td>
+                        </tr>
+                        <tr bgcolor="#f7f7f7">
+                            <td class="t1title">Sample Collection Time : </td>
+                            <td class="t1title">
+                                <span ng-bind="order.slot_start_time"></span> - <span ng-bind="order.slot_end_time"></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="clear" style="height:20px;"></div>
+                    <div class="Order_Detail_title">
+                        <ul>
+                            <li class="title2">Order Summary</li>
+                            <!-- <li class="text3">LAB</li> -->
+                            <li class="text4">TEST / PACKAGE</li>
+                            <li class="text3">PRICE</li>
+                        </ul>
+                    </div>
+                    <div class="customer_Order_Detail">
+                        <ol ng-repeat="items in order.suborders">
+                            <li class="pInfo ptitle">{{items.customer_name | titleCase}}
+                                <br> {{items.customer_age}} years / {{items.customer_gender}}</li>
+                            <li class="fastingInfo" ng-if="items.fasting_required == 1">
+                                <div class="no-fasting-pop">Fasting required for {{items.fasting_time}} hours.</div>
+                            </li>
+                            <li class="fastingInfo" ng-if="items.fasting_required == 0">
+                                <div class="no-fasting-pop">No Fasting required</div>
+                            </li>
+                            <li class="odtb">
+                                <div class="itemOrders" ng-repeat="item in items.orders">
+                                    <div class="pkgitemlist"> {{item.package_name}} </div>
+                                    <div class="pkgitemprice"><span style="padding:0px 1px;" class="fontrupee">`</span>&nbsp;{{item.healthians_price}}</div>
+                                </div>
+                            </li>
+                        </ol>
+                        <table class="discount-coupon-hardcopy dash" border="0" cellspacing="0" cellpading="0" align="right">
+                            <tbody>
+                                <tr>
+                                    <td class="ryt-tab" ng-show="hardcopy">Hardcopy Needed</td>
+                                    <td ng-show="hardcopy" class="coupon-discounts ng-binding">
+                                        <span style="margin-right:5px; font-size:15px; color:rgba(255, 0, 0, 0.64);">+</span>
+                                        <span class="fontrupee">`</span>50
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                        <tr>
+                            <td class="title2">Payment Summary</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #edeeee;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr bgcolor="#f5f5f5" style="font-size:10px; color:#636466; text-align:center;">
+                                        <td style="padding:8px 0;" width="20%">PAYMENT DATE</td>
+                                        <td>MODE OF PAYMENT</td>
+                                        <td ng-if="order.coupon_code">COUPON APPLIED</td>
+                                        <td ng-if="order.coupon_code">DISCOUNT</td>
+                                        <td>AMOUNT TO BE PAID</td>
+                                        <td>AMOUNT PAID</td>
+                                    </tr>
+                                    <tr style="text-align:center; color:#414042; font-size:12px;">
+                                        <td ng-if="order.payment_date==null"></td>
+                                        <td ng-if="order.payment_date!=null">
+                                            <span ng-bind="order.payment_date | moment:'DD.MM.YYYY'"></span>
+                                        </td>
+                                        <td ng-if="order.order_type.toLowerCase() !='online'">Cash on Sample Collection</td>
+                                        <td ng-if="order.order_type.toLowerCase() =='online'">Online</td>
+                                        <td ng-if="order.coupon_code">
+                                            {{order.coupon_code}} - <span class="fontrupee">`</span>&nbsp;{{order.discounted_amount}}
+                                        </td>
+                                        <td style="color:red; padding:15px 0" ng-if="order.coupon_code">
+                                            {{order.discount_percent}}%
+                                        </td>
+                                        <td style="font-size:17px;">
+                                            <span class="fontrupee">`</span>{{order.total_amount | num}}
+                                        </td>
+                                        <td style="font-size:17px;" ng-if="order.amount_paid">
+                                            <span class="fontrupee">`</span>{{order.amount_paid}}
+                                        </td>
+                                        <td style="font-size:17px;" ng-if="!order.amount_paid">
+                                            <span class="fontrupee">`</span>&nbsp;0
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>          
+        </div>
+    </div>
+    <!--popup infos -->
+    <!--dashboard ends here -->
+    <div ui-view="footer"></div>
+</div>

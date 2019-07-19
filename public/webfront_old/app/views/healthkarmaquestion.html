@@ -1,0 +1,993 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700" rel="stylesheet">
+<style type="text/css">
+.ko-progress-circle {margin: 20px auto; width: 140px;height: 140px; background-color: #ececec; border-radius: 50%;}
+.ko-progress-circle .ko-progress-circle__slice, .ko-progress-circle .ko-progress-circle__fill {
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1s;
+  border-radius: 50%;
+}
+.ko-progress-circle .ko-progress-circle__slice {
+  clip: rect(0px, 140px, 140px, 60px);
+}
+.ko-progress-circle .ko-progress-circle__slice .ko-progress-circle__fill {
+  clip: rect(0px, 60px, 140px, 0px);
+  /*background-color: #1291D4;*/
+}
+
+.red {
+  background-color: #f45b43 !important;
+}
+
+.green {
+  background-color: #8fbb06 !important;
+}
+
+.female_img [type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
+  height: auto !important;
+}
+
+.male_img [type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
+  height: auto !important;
+}
+
+.probable-risks { padding: 0px !important; }
+
+.ko-progress-circle .ko-progress-circle__overlay {
+  width: 125px;
+  height: 125px;
+  position: absolute;
+  margin-left: 7.5px;
+  margin-top: 7.5px;
+  background-color: #fbfbfb;
+  border-radius: 50%;
+}
+.ko-progress-circle[data-progress='0'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='0'] .ko-progress-circle__fill {
+  transform: rotate(0deg);
+}
+.ko-progress-circle[data-progress='0'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(0deg);
+}
+.ko-progress-circle[data-progress='1'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='1'] .ko-progress-circle__fill {
+  transform: rotate(1.8deg);
+}
+.ko-progress-circle[data-progress='1'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(3.6deg);
+}
+.ko-progress-circle[data-progress='2'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='2'] .ko-progress-circle__fill {
+  transform: rotate(3.6deg);
+}
+.ko-progress-circle[data-progress='2'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(7.2deg);
+}
+.ko-progress-circle[data-progress='3'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='3'] .ko-progress-circle__fill {
+  transform: rotate(5.4deg);
+}
+.ko-progress-circle[data-progress='3'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(10.8deg);
+}
+.ko-progress-circle[data-progress='4'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='4'] .ko-progress-circle__fill {
+  transform: rotate(7.2deg);
+}
+.ko-progress-circle[data-progress='4'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(14.4deg);
+}
+.ko-progress-circle[data-progress='5'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='5'] .ko-progress-circle__fill {
+  transform: rotate(9deg);
+}
+.ko-progress-circle[data-progress='5'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(18deg);
+}
+.ko-progress-circle[data-progress='6'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='6'] .ko-progress-circle__fill {
+  transform: rotate(10.8deg);
+}
+.ko-progress-circle[data-progress='6'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(21.6deg);
+}
+.ko-progress-circle[data-progress='7'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='7'] .ko-progress-circle__fill {
+  transform: rotate(12.6deg);
+}
+.ko-progress-circle[data-progress='7'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(25.2deg);
+}
+.ko-progress-circle[data-progress='8'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='8'] .ko-progress-circle__fill {
+  transform: rotate(14.4deg);
+}
+.ko-progress-circle[data-progress='8'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(28.8deg);
+}
+.ko-progress-circle[data-progress='9'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='9'] .ko-progress-circle__fill {
+  transform: rotate(16.2deg);
+}
+.ko-progress-circle[data-progress='9'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(32.4deg);
+}
+.ko-progress-circle[data-progress='10'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='10'] .ko-progress-circle__fill {
+  transform: rotate(18deg);
+}
+.ko-progress-circle[data-progress='10'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(36deg);
+}
+.ko-progress-circle[data-progress='11'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='11'] .ko-progress-circle__fill {
+  transform: rotate(19.8deg);
+}
+.ko-progress-circle[data-progress='11'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(39.6deg);
+}
+.ko-progress-circle[data-progress='12'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='12'] .ko-progress-circle__fill {
+  transform: rotate(21.6deg);
+}
+.ko-progress-circle[data-progress='12'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(43.2deg);
+}
+.ko-progress-circle[data-progress='13'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='13'] .ko-progress-circle__fill {
+  transform: rotate(23.4deg);
+}
+.ko-progress-circle[data-progress='13'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(46.8deg);
+}
+.ko-progress-circle[data-progress='14'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='14'] .ko-progress-circle__fill {
+  transform: rotate(25.2deg);
+}
+.ko-progress-circle[data-progress='14'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(50.4deg);
+}
+.ko-progress-circle[data-progress='15'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='15'] .ko-progress-circle__fill {
+  transform: rotate(27deg);
+}
+.ko-progress-circle[data-progress='15'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(54deg);
+}
+.ko-progress-circle[data-progress='16'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='16'] .ko-progress-circle__fill {
+  transform: rotate(28.8deg);
+}
+.ko-progress-circle[data-progress='16'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(57.6deg);
+}
+.ko-progress-circle[data-progress='17'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='17'] .ko-progress-circle__fill {
+  transform: rotate(30.6deg);
+}
+.ko-progress-circle[data-progress='17'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(61.2deg);
+}
+.ko-progress-circle[data-progress='18'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='18'] .ko-progress-circle__fill {
+  transform: rotate(32.4deg);
+}
+.ko-progress-circle[data-progress='18'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(64.8deg);
+}
+.ko-progress-circle[data-progress='19'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='19'] .ko-progress-circle__fill {
+  transform: rotate(34.2deg);
+}
+.ko-progress-circle[data-progress='19'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(68.4deg);
+}
+.ko-progress-circle[data-progress='20'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='20'] .ko-progress-circle__fill {
+  transform: rotate(36deg);
+}
+.ko-progress-circle[data-progress='20'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(72deg);
+}
+.ko-progress-circle[data-progress='21'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='21'] .ko-progress-circle__fill {
+  transform: rotate(37.8deg);
+}
+.ko-progress-circle[data-progress='21'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(75.6deg);
+}
+.ko-progress-circle[data-progress='22'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='22'] .ko-progress-circle__fill {
+  transform: rotate(39.6deg);
+}
+.ko-progress-circle[data-progress='22'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(79.2deg);
+}
+.ko-progress-circle[data-progress='23'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='23'] .ko-progress-circle__fill {
+  transform: rotate(41.4deg);
+}
+.ko-progress-circle[data-progress='23'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(82.8deg);
+}
+.ko-progress-circle[data-progress='24'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='24'] .ko-progress-circle__fill {
+  transform: rotate(43.2deg);
+}
+.ko-progress-circle[data-progress='24'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(86.4deg);
+}
+.ko-progress-circle[data-progress='25'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='25'] .ko-progress-circle__fill {
+  transform: rotate(45deg);
+}
+.ko-progress-circle[data-progress='25'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(90deg);
+}
+.ko-progress-circle[data-progress='26'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='26'] .ko-progress-circle__fill {
+  transform: rotate(46.8deg);
+}
+.ko-progress-circle[data-progress='26'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(93.6deg);
+}
+.ko-progress-circle[data-progress='27'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='27'] .ko-progress-circle__fill {
+  transform: rotate(48.6deg);
+}
+.ko-progress-circle[data-progress='27'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(97.2deg);
+}
+.ko-progress-circle[data-progress='28'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='28'] .ko-progress-circle__fill {
+  transform: rotate(50.4deg);
+}
+.ko-progress-circle[data-progress='28'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(100.8deg);
+}
+.ko-progress-circle[data-progress='29'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='29'] .ko-progress-circle__fill {
+  transform: rotate(52.2deg);
+}
+.ko-progress-circle[data-progress='29'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(104.4deg);
+}
+.ko-progress-circle[data-progress='30'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='30'] .ko-progress-circle__fill {
+  transform: rotate(54deg);
+}
+.ko-progress-circle[data-progress='30'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(108deg);
+}
+.ko-progress-circle[data-progress='31'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='31'] .ko-progress-circle__fill {
+  transform: rotate(55.8deg);
+}
+.ko-progress-circle[data-progress='31'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(111.6deg);
+}
+.ko-progress-circle[data-progress='32'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='32'] .ko-progress-circle__fill {
+  transform: rotate(57.6deg);
+}
+.ko-progress-circle[data-progress='32'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(115.2deg);
+}
+.ko-progress-circle[data-progress='33'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='33'] .ko-progress-circle__fill {
+  transform: rotate(59.4deg);
+}
+.ko-progress-circle[data-progress='33'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(118.8deg);
+}
+.ko-progress-circle[data-progress='34'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='34'] .ko-progress-circle__fill {
+  transform: rotate(61.2deg);
+}
+.ko-progress-circle[data-progress='34'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(122.4deg);
+}
+.ko-progress-circle[data-progress='35'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='35'] .ko-progress-circle__fill {
+  transform: rotate(63deg);
+}
+.ko-progress-circle[data-progress='35'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(126deg);
+}
+.ko-progress-circle[data-progress='36'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='36'] .ko-progress-circle__fill {
+  transform: rotate(64.8deg);
+}
+.ko-progress-circle[data-progress='36'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(129.6deg);
+}
+.ko-progress-circle[data-progress='37'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='37'] .ko-progress-circle__fill {
+  transform: rotate(66.6deg);
+}
+.ko-progress-circle[data-progress='37'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(133.2deg);
+}
+.ko-progress-circle[data-progress='38'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='38'] .ko-progress-circle__fill {
+  transform: rotate(68.4deg);
+}
+.ko-progress-circle[data-progress='38'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(136.8deg);
+}
+.ko-progress-circle[data-progress='39'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='39'] .ko-progress-circle__fill {
+  transform: rotate(70.2deg);
+}
+.ko-progress-circle[data-progress='39'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(140.4deg);
+}
+.ko-progress-circle[data-progress='40'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='40'] .ko-progress-circle__fill {
+  transform: rotate(72deg);
+}
+.ko-progress-circle[data-progress='40'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(144deg);
+}
+.ko-progress-circle[data-progress='41'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='41'] .ko-progress-circle__fill {
+  transform: rotate(73.8deg);
+}
+.ko-progress-circle[data-progress='41'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(147.6deg);
+}
+.ko-progress-circle[data-progress='42'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='42'] .ko-progress-circle__fill {
+  transform: rotate(75.6deg);
+}
+.ko-progress-circle[data-progress='42'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(151.2deg);
+}
+.ko-progress-circle[data-progress='43'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='43'] .ko-progress-circle__fill {
+  transform: rotate(77.4deg);
+}
+.ko-progress-circle[data-progress='43'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(154.8deg);
+}
+.ko-progress-circle[data-progress='44'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='44'] .ko-progress-circle__fill {
+  transform: rotate(79.2deg);
+}
+.ko-progress-circle[data-progress='44'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(158.4deg);
+}
+.ko-progress-circle[data-progress='45'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='45'] .ko-progress-circle__fill {
+  transform: rotate(81deg);
+}
+.ko-progress-circle[data-progress='45'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(162deg);
+}
+.ko-progress-circle[data-progress='46'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='46'] .ko-progress-circle__fill {
+  transform: rotate(82.8deg);
+}
+.ko-progress-circle[data-progress='46'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(165.6deg);
+}
+.ko-progress-circle[data-progress='47'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='47'] .ko-progress-circle__fill {
+  transform: rotate(84.6deg);
+}
+.ko-progress-circle[data-progress='47'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(169.2deg);
+}
+.ko-progress-circle[data-progress='48'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='48'] .ko-progress-circle__fill {
+  transform: rotate(86.4deg);
+}
+.ko-progress-circle[data-progress='48'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(172.8deg);
+}
+.ko-progress-circle[data-progress='49'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='49'] .ko-progress-circle__fill {
+  transform: rotate(88.2deg);
+}
+.ko-progress-circle[data-progress='49'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(176.4deg);
+}
+.ko-progress-circle[data-progress='50'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='50'] .ko-progress-circle__fill {
+  transform: rotate(90deg);
+}
+.ko-progress-circle[data-progress='50'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(180deg);
+}
+.ko-progress-circle[data-progress='51'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='51'] .ko-progress-circle__fill {
+  transform: rotate(91.8deg);
+}
+.ko-progress-circle[data-progress='51'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(183.6deg);
+}
+.ko-progress-circle[data-progress='52'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='52'] .ko-progress-circle__fill {
+  transform: rotate(93.6deg);
+}
+.ko-progress-circle[data-progress='52'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(187.2deg);
+}
+.ko-progress-circle[data-progress='53'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='53'] .ko-progress-circle__fill {
+  transform: rotate(95.4deg);
+}
+.ko-progress-circle[data-progress='53'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(190.8deg);
+}
+.ko-progress-circle[data-progress='54'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='54'] .ko-progress-circle__fill {
+  transform: rotate(97.2deg);
+}
+.ko-progress-circle[data-progress='54'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(194.4deg);
+}
+.ko-progress-circle[data-progress='55'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='55'] .ko-progress-circle__fill {
+  transform: rotate(99deg);
+}
+.ko-progress-circle[data-progress='55'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(198deg);
+}
+.ko-progress-circle[data-progress='56'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='56'] .ko-progress-circle__fill {
+  transform: rotate(100.8deg);
+}
+.ko-progress-circle[data-progress='56'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(201.6deg);
+}
+.ko-progress-circle[data-progress='57'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='57'] .ko-progress-circle__fill {
+  transform: rotate(102.6deg);
+}
+.ko-progress-circle[data-progress='57'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(205.2deg);
+}
+.ko-progress-circle[data-progress='58'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='58'] .ko-progress-circle__fill {
+  transform: rotate(104.4deg);
+}
+.ko-progress-circle[data-progress='58'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(208.8deg);
+}
+.ko-progress-circle[data-progress='59'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='59'] .ko-progress-circle__fill {
+  transform: rotate(106.2deg);
+}
+.ko-progress-circle[data-progress='59'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(212.4deg);
+}
+.ko-progress-circle[data-progress='60'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='60'] .ko-progress-circle__fill {
+  transform: rotate(108deg);
+}
+.ko-progress-circle[data-progress='60'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(216deg);
+}
+.ko-progress-circle[data-progress='61'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='61'] .ko-progress-circle__fill {
+  transform: rotate(109.8deg);
+}
+.ko-progress-circle[data-progress='61'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(219.6deg);
+}
+.ko-progress-circle[data-progress='62'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='62'] .ko-progress-circle__fill {
+  transform: rotate(111.6deg);
+}
+.ko-progress-circle[data-progress='62'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(223.2deg);
+}
+.ko-progress-circle[data-progress='63'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='63'] .ko-progress-circle__fill {
+  transform: rotate(113.4deg);
+}
+.ko-progress-circle[data-progress='63'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(226.8deg);
+}
+.ko-progress-circle[data-progress='64'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='64'] .ko-progress-circle__fill {
+  transform: rotate(115.2deg);
+}
+.ko-progress-circle[data-progress='64'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(230.4deg);
+}
+.ko-progress-circle[data-progress='65'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='65'] .ko-progress-circle__fill {
+  transform: rotate(117deg);
+}
+.ko-progress-circle[data-progress='65'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(234deg);
+}
+.ko-progress-circle[data-progress='66'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='66'] .ko-progress-circle__fill {
+  transform: rotate(118.8deg);
+}
+.ko-progress-circle[data-progress='66'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(237.6deg);
+}
+.ko-progress-circle[data-progress='67'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='67'] .ko-progress-circle__fill {
+  transform: rotate(120.6deg);
+}
+.ko-progress-circle[data-progress='67'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(241.2deg);
+}
+.ko-progress-circle[data-progress='68'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='68'] .ko-progress-circle__fill {
+  transform: rotate(122.4deg);
+}
+.ko-progress-circle[data-progress='68'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(244.8deg);
+}
+.ko-progress-circle[data-progress='69'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='69'] .ko-progress-circle__fill {
+  transform: rotate(124.2deg);
+}
+.ko-progress-circle[data-progress='69'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(248.4deg);
+}
+.ko-progress-circle[data-progress='70'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='70'] .ko-progress-circle__fill {
+  transform: rotate(126deg);
+}
+.ko-progress-circle[data-progress='70'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(252deg);
+}
+.ko-progress-circle[data-progress='71'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='71'] .ko-progress-circle__fill {
+  transform: rotate(127.8deg);
+}
+.ko-progress-circle[data-progress='71'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(255.6deg);
+}
+.ko-progress-circle[data-progress='72'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='72'] .ko-progress-circle__fill {
+  transform: rotate(129.6deg);
+}
+.ko-progress-circle[data-progress='72'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(259.2deg);
+}
+.ko-progress-circle[data-progress='73'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='73'] .ko-progress-circle__fill {
+  transform: rotate(131.4deg);
+}
+.ko-progress-circle[data-progress='73'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(262.8deg);
+}
+.ko-progress-circle[data-progress='74'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='74'] .ko-progress-circle__fill {
+  transform: rotate(133.2deg);
+}
+.ko-progress-circle[data-progress='74'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(266.4deg);
+}
+.ko-progress-circle[data-progress='75'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='75'] .ko-progress-circle__fill {
+  transform: rotate(135deg);
+}
+.ko-progress-circle[data-progress='75'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(270deg);
+}
+.ko-progress-circle[data-progress='76'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='76'] .ko-progress-circle__fill {
+  transform: rotate(136.8deg);
+}
+.ko-progress-circle[data-progress='76'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(273.6deg);
+}
+.ko-progress-circle[data-progress='77'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='77'] .ko-progress-circle__fill {
+  transform: rotate(138.6deg);
+}
+.ko-progress-circle[data-progress='77'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(277.2deg);
+}
+.ko-progress-circle[data-progress='78'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='78'] .ko-progress-circle__fill {
+  transform: rotate(140.4deg);
+}
+.ko-progress-circle[data-progress='78'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(280.8deg);
+}
+.ko-progress-circle[data-progress='79'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='79'] .ko-progress-circle__fill {
+  transform: rotate(142.2deg);
+}
+.ko-progress-circle[data-progress='79'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(284.4deg);
+}
+.ko-progress-circle[data-progress='80'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='80'] .ko-progress-circle__fill {
+  transform: rotate(144deg);
+}
+.ko-progress-circle[data-progress='80'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(288deg);
+}
+.ko-progress-circle[data-progress='81'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='81'] .ko-progress-circle__fill {
+  transform: rotate(145.8deg);
+}
+.ko-progress-circle[data-progress='81'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(291.6deg);
+}
+.ko-progress-circle[data-progress='82'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='82'] .ko-progress-circle__fill {
+  transform: rotate(147.6deg);
+}
+.ko-progress-circle[data-progress='82'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(295.2deg);
+}
+.ko-progress-circle[data-progress='83'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='83'] .ko-progress-circle__fill {
+  transform: rotate(149.4deg);
+}
+.ko-progress-circle[data-progress='83'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(298.8deg);
+}
+.ko-progress-circle[data-progress='84'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='84'] .ko-progress-circle__fill {
+  transform: rotate(151.2deg);
+}
+.ko-progress-circle[data-progress='84'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(302.4deg);
+}
+.ko-progress-circle[data-progress='85'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='85'] .ko-progress-circle__fill {
+  transform: rotate(153deg);
+}
+.ko-progress-circle[data-progress='85'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(306deg);
+}
+.ko-progress-circle[data-progress='86'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='86'] .ko-progress-circle__fill {
+  transform: rotate(154.8deg);
+}
+.ko-progress-circle[data-progress='86'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(309.6deg);
+}
+.ko-progress-circle[data-progress='87'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='87'] .ko-progress-circle__fill {
+  transform: rotate(156.6deg);
+}
+.ko-progress-circle[data-progress='87'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(313.2deg);
+}
+.ko-progress-circle[data-progress='88'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='88'] .ko-progress-circle__fill {
+  transform: rotate(158.4deg);
+}
+.ko-progress-circle[data-progress='88'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(316.8deg);
+}
+.ko-progress-circle[data-progress='89'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='89'] .ko-progress-circle__fill {transform: rotate(160.2deg);}
+.ko-progress-circle[data-progress='89'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(320.4deg);}
+.ko-progress-circle[data-progress='90'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='90'] .ko-progress-circle__fill {transform: rotate(162deg);}
+.ko-progress-circle[data-progress='90'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(324deg);}
+.ko-progress-circle[data-progress='91'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='91'] .ko-progress-circle__fill {transform: rotate(163.8deg);}
+.ko-progress-circle[data-progress='91'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(327.6deg);}
+.ko-progress-circle[data-progress='92'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='92'] .ko-progress-circle__fill {transform: rotate(165.6deg);}
+.ko-progress-circle[data-progress='92'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(331.2deg);}
+.ko-progress-circle[data-progress='93'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='93'] .ko-progress-circle__fill {transform: rotate(167.4deg);}
+.ko-progress-circle[data-progress='93'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(334.8deg);}
+.ko-progress-circle[data-progress='94'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='94'] .ko-progress-circle__fill { transform: rotate(169.2deg);}
+.ko-progress-circle[data-progress='94'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(338.4deg);}
+.ko-progress-circle[data-progress='95'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='95'] .ko-progress-circle__fill { transform: rotate(171deg);}
+.ko-progress-circle[data-progress='95'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(342deg);}
+.ko-progress-circle[data-progress='96'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='96'] .ko-progress-circle__fill {transform: rotate(172.8deg);}
+.ko-progress-circle[data-progress='96'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(345.6deg);}
+.ko-progress-circle[data-progress='97'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='97'] .ko-progress-circle__fill { transform: rotate(174.6deg);}
+.ko-progress-circle[data-progress='97'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(349.2deg);}
+.ko-progress-circle[data-progress='98'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='98'] .ko-progress-circle__fill {transform: rotate(176.4deg);}
+.ko-progress-circle[data-progress='98'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(352.8deg);}
+.ko-progress-circle[data-progress='99'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='99'] .ko-progress-circle__fill { transform: rotate(178.2deg);}
+.ko-progress-circle[data-progress='99'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(356.4deg);}
+.ko-progress-circle[data-progress='100'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='100'] .ko-progress-circle__fill { transform: rotate(180deg);}
+.ko-progress-circle[data-progress='100'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(360deg);}
+
+</style>
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+
+<!--health karma starts -->
+<div class="hk_wrapper">
+  <section>
+    <div class="container healthkarma">
+      <div class="row"> 
+        <!--enter details starts -->
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 karmamain" ng-hide="showResult"> 
+          <!--left intro starts -->
+          <div class="col-md-5 col-sm-5 col-xs-12 col-lg-5 leftintro">
+            <div class="title-head">
+              <h3><span>Introducing</span>Health Karma</h3>
+              <p>A lifestyle based comprehensive health risk assessment</p>
+            </div>
+            <div class="step-wizard">
+              <ol class="list-group vertical-steps">
+                <li class="list-group-item completed"> <span class="number_count">1</span>
+                  <h5>Tell us about your Lifestyle</h5>
+                  <p>
+                    Fill in your lifestyle choices to evaluate your health. 
+                  </p>
+                </li>
+                <li class="list-group-item completed"> <span class="number_count">2</span>
+                  <h5>Get your Health Score</h5>
+                  <p> 
+                    Know your health risks and where you stand among your Peers.
+                  </p>
+                </li>
+                <li class="list-group-item completed"> <span class="number_count">3</span>
+                  <h5>Take Corrective Actions</h5>
+                  <p>
+                    Get recommended tests on the basis of your health risks.
+                  </p>
+                </li>
+              </ol>
+            </div>
+          </div>
+          <!--left intro starts --> 
+          
+          <!--individual detail panel-->
+          <div class="col-md-7 col-sm-7 col-xs-12 col-lg-7 rightquestionaire"> 
+            
+            <!--individual details -->
+            <div class="individual-detail">
+            
+              <!--panel 1 -->
+              <div class="cust_info" ng-hide="showQuestion">
+              
+              <div class="title-head-mobile">
+                  <h3><span>Introducing</span>Health Karma</h3>
+                  <p>A lifestyle based comprehensive health risk assessment based on Artificial Intelligence</p>
+            </div>
+            
+                <h3>Please enter your details</h3>
+                <form name="healthKarmaForm"  id="healthKarmaForm" class="material" novalidate>
+                <div class="healthkarma_mid">
+                  <div class="groupSignups req-minheight names-field">
+                    <input name="huserName" id="huserName" type="text" ng-model="huserName" class="user-icon" ng-pattern="/^[A-z. ]+$/" tabindex="1" autofocus required autocomplete="off" />
+                    <span class="highlight"></span> <span class="bar"></span>
+                    <label>Full Name</label>
+                    <span ng-show="(healthKarmaForm.huserName.$dirty && healthKarmaForm.huserName.$error.required && !healthKarmaForm.huserName.$error.pattern)" class="help-block">Name is required</span> <span ng-show="healthKarmaForm.huserName.$error.pattern" class="help-block">Enter valid name</span> </div>
+                    
+                    
+                    <div class="groupSignups req-minheight ages-field">
+
+                    <input id="huserAge" name="huserAge" ng-model="huserAge" type="text" ng-blur="visited = true" class="age_icon" maxlength="3" ng-pattern="/^[1-9]|[1-9][0-9]+\d{0,3}$/" ng-required="true" tabindex="2" autocomplete="off">
+
+                    <span class="highlight"></span> <span class="bar"></span>
+
+                    <label>Age (years)</label>
+                    <span ng-show="healthKarmaForm.huserAge.$dirty && healthKarmaForm.huserAge.$error.required && !healthKarmaForm.huserAge.$error.pattern" class="help-block">Age is required</span> <span ng-show="healthKarmaForm.huserAge.$error.pattern && healthKarmaForm.huserAge.$touched" class="help-block">Enter age between 5 to 120</span> </div>
+                  
+                  
+                  <div class="groupSignups req-minheight" ng-show="showMobile">
+                    <input name="huserphone" id="huserphone" type="text" ng-blur="visited = true" maxlength="10" data-ng-model="huserphone" class="mob-icon" ng-pattern="/^\d{10}$/" tabindex="3" autocomplete="off" autofocus="" required="true" ng-change="hideOTP();">
+
+                    <label>Mobile Number</label>
+                    <span ng-show="healthKarmaForm.huserphone.$dirty && healthKarmaForm.huserphone.$error.required && !healthKarmaForm.huserphone.$error.pattern" class="help-block">Mobile No. is required</span> <span ng-show="healthKarmaForm.huserphone.$error.pattern &&  healthKarmaForm.huserphone.$touched" class="help-block"> Enter valid Mobile</span> </div>
+                  
+
+                  <div class="gender-select req-minheight" style="min-height:30px;">
+
+                    <input type="radio" tabindex="4" id="radio01112" name="husergender" value="m" ng-model="husergender" required />
+                    <label for="radio01112"><span></span>Male</label>
+                    <input type="radio" tabindex="5" id="radio02222" name="husergender" value="f" ng-model="husergender" required>
+                    <label for="radio02222"><span></span>Female</label>
+                    <span ng-show="(healthKarmaForm.husergender.$dirty && healthKarmaForm.husergender.$error.required)" class="help-block">Select Gender</span> </div>
+                    
+
+                  <div class="clear"></div>
+                    
+                  
+                  <div class="groupSignups req-minheight half-width">
+                  <div class="selectoptt">
+
+                    <select class="height_list" tabindex="6" id="userheight" name="userheight" ng-required="true" ng-model="userheight">
+                        <option value="">Select Height</option>
+                        <option value="147.32">4'10</option><option value="149.86">4'11</option>
+                        <option value="152.40">5'0</option><option value="155.4">5'1</option>
+                        <option value="157.48">5'2</option><option value="160.02">5'3</option>
+                        <option value="162.56">5'4</option><option value="165.10">5'5</option>
+                        <option value="167.64">5'6</option><option value="170.18">5'7</option>
+                        <option value="172.72">5'8</option><option value="175.26">5'9</option>
+                        <option value="177.80">5'10</option><option value="180.34">5'11</option>
+                        <option value="182.88">6'0</option><option value="185.42">6'1</option>
+                        <option value="187.96">6'2</option><option value="190.50">6'3</option>
+                        <option value="193.04">6'4</option><option value="195.58">6'5</option>
+                        <option value="198.12">6'6</option><option value="200.66">6'7</option>
+                        <option value="203.20">6'8</option><option value="205.74">6'9</option>
+                        <option value="208.28">6'10</option><option value="210.82">6'11</option>
+                        <option value="213.36">7'0</option>
+                    </select>                    
+                    <span ng-show="healthKarmaForm.userheight.$dirty && healthKarmaForm.userheight.$error.required" class="help-block">Height is required</span> 
+                    </div>
+                    
+                    <label class="labelheight">(ft/inch)</label>
+                    
+                    </div>
+                  <div class="groupSignups req-minheight midhalf-width">
+                   <div class="selectoptt">
+                    <input class="weight-icon" id="userWeight" name="userWeight" type="text" ng-model="userWeight" ng-pattern="/^\d{0,3}$/" maxlength="3" ng-required="true" tabindex="7" autocomplete="off">
+                    <span class="highlight"></span> <span class="bar"></span>
+                    <label>Weight</label>
+                    <span ng-show="healthKarmaForm.userWeight.$dirty && healthKarmaForm.userWeight.$error.required && !healthKarmaForm.userWeight.$error.pattern" class="help-block">Weight is required</span> <span ng-show="healthKarmaForm.userWeight.$error.pattern && healthKarmaForm.userWeight.$touched" class="help-block">Enter valid weight</span>
+                    </div>
+                     <label class="labelheight">kg</label>
+                     </div>
+                  
+                  <div class="clear"></div>
+                  <div class="hk_nextbtn">
+                    <input type="button" class="continue-step" tabindex="8" value="Continue" name="register" ng-click="getQuestionList(healthKarmaForm.$valid);" tabindex="7" ng-hide="qdatasuccess" analytics-on="click" analytics-category="HealthKarma" analytics-event="Click on Continue">
+                    <div ng-show="qdatasuccess" style="text-align: center">
+                      Please Wait <img src="/assets/images/load_wait.gif" style="margin-left: 3%">
+                    </div>
+
+                  </div>
+                  
+                  </div>
+                  
+                </form>
+              </div>
+              <!--panel 1 --> 
+              
+              <!--panel 2 -->
+              <div class="questionaire-panel" ng-show="showQuestion">
+              <!--progress bar -->
+                  <div class="progress skill-bar ">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%"></div>
+                    
+                  </div>
+                  <span class="skill"><i class="val">{{progress}}%</i>completed</span>
+                  
+                  <!--progress bar ends --> 
+              
+                <div class="main-questionarea">                   
+                  <!-- Form  - start -->
+                  <div class="listQuestion">
+                    <form action="" name="questionForm" id="questionForm">
+                      <!--question 01 -->
+                      <article class="cat-question" ng-show="quest.q{{$index+1}}" id="q{{$index+1}}_div" ng-repeat="items in questionList" ng-init="sectionIndex = $index">
+                        <h2 ng-bind="items.question"></h2>
+                        
+                        <div class="min-radio-height">
+                          <div ng-repeat="opt in items.options" ng-show="items.question_type == 0" class="list_of_options">  
+                           <div class="radio-btn">
+                            <input type="radio" name="quest_{{opt.option_id}}" id="quest_{{opt.option_id}}" value="{{opt.option_id}}" ng-model="answer[items.question_id]" ng-required="true" ng-click="clickRadio(sectionIndex+1);">
+                            <label  class="labelOptt" for="quest_{{opt.option_id}}" onclick>{{opt.option}}</label>
+                            </div>
+                          </div>                          
+                       
+                        
+                        
+                        
+                        
+                          <div ng-repeat="opt in items.options" ng-show="items.question_type == 1" class="list_of_checkbox">
+                            <div class="checkbox-btn">
+                              <input type="checkbox" name="quest_{{items.question_id}}_{{opt.option_id}}" id="quest_{{items.question_id}}_{{opt.option_id}}" ng-model="answer[items.question_id][opt.option_id]" ng-required="true">
+                              <label class="labelOptt" for="quest_{{items.question_id}}_{{opt.option_id}}" onclick>{{opt.option}}</label>
+                            </div>
+                          </div>
+                        
+                         </div>
+                        <div class="clear"></div>
+                        
+                        
+                          <!--next previous -->
+                        <div class="optionPreviousNext">
+                          <ul>
+                            <li ng-show="(sectionIndex+1) > 1">
+                              <input class="opt_Previous" type="button" name="prev_q{{sectionIndex+1}}" id="prev_q{{sectionIndex+1}}" value="" ng-click="showPrevious();">
+                            </li>
+                            <li>
+                              <input class="Opt_Next" type="button" style="opacity:0.2;" name="next_q{{$index+1}}" id="next_q{{$index+1}}" value="" ng-click="showNext();" disabled="disabled">
+                            </li>
+                           
+                          </ul>
+                        </div>
+                        <!--next previous -->
+                        
+                          <div class="clear"></div>
+                      </article>
+                      <div class="getscore" ng-show="totalQuestion == current">
+                          <!--email insert -->
+                          <div class="insert-email" ng-hide="datasuccess">
+                            <h6>Enter your email to get your lifestyle score on your email ID</h6>
+                            <input name="healthkarma_email" id="healthkarma_email"  type="email" class="email-icon emailFields" placeholder="Enter Email" ng-model="healthKarmaEmail" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="true" ng-enter="submit_feedback();"/>
+
+                            <input class="next-step" type="button" name="submit_final" value="" ng-click="submit_feedback();"  analytics-on="click" analytics-category="HealthKarma" analytics-event="Click on Submit Feedback button">
+
+                            <span ng-show="questionForm.healthkarma_email.$dirty && questionForm.healthkarma_email.$error.required && !questionForm.healthkarma_email.$error.pattern" class="help-block">Email is required</span> 
+                            <span ng-show="questionForm.healthkarma_email.$error.pattern &&  questionForm.healthkarma_email.$touched" class="help-block"> Enter valid Email</span>
+                            <div class="clear"></div>
+                          </div>
+                          <div ng-show="datasuccess" style="text-align: center">Please Wait <img src="/assets/images/load_wait.gif" style="margin-left: 3%">
+                          </div>
+                      </div>
+                    </form>
+                  </div>
+                  
+                  <!--Form - ends --> 
+                  <div class="clear"></div>
+                  
+                  
+                </div>
+              </div>
+              <!--panel 2 --> 
+              
+            </div>
+            
+            <!--individual details --> 
+            
+            <!--main questions area --> 
+            
+            <!--main questions area ends here --> 
+            
+          </div>
+          <!--individual detail panel ends--> 
+          
+        </div>
+        <!--enter details ends --> 
+        
+        <!--lifestyle score -->
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 karmamain" ng-show="showResult">
+          <div class="lifestylescore"> 
+            
+            <!--score left -->
+            <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+              <div class="panel-score">
+                <div class="circlegraph">
+                <div class="myscore">{{lifeStyleScore}}<span>/100</span></div>
+                  <div class="ko-progress-circle" data-progress="{{lifeStyleScore}}">
+                    <div class="ko-circle">
+                        <div class="full ko-progress-circle__slice">
+                            <div class="ko-progress-circle__fill" ng-class="{ 'red': (lifeStyleScore<60 && lifeStyleScore>0) ,'green': (lifeStyleScore>=60)}"></div>
+                        </div>
+                        <div class="ko-progress-circle__slice">
+                            <div class="ko-progress-circle__fill" ng-class="{ 'red': (lifeStyleScore<60 && lifeStyleScore>0) ,'green': (lifeStyleScore>=60)}"></div>
+                            <div class="ko-progress-circle__fill ko-progress-circle__bar" ng-class="{ 'red': (lifeStyleScore<60 && lifeStyleScore>0) ,'green': (lifeStyleScore>=60)}"></div>
+                        </div>
+                    </div>
+                    <div class="ko-progress-circle__overlay"></div>
+                  </div>
+                </div>
+                <!-- <div class="share-button">
+                <ul>
+                  <li>
+                    <a href="javascript:void(0);" ng-click="shareFacebook();">
+                      <img src="/assets/images/facebook_share.png" />
+                        Share on Facebook
+                    </a>
+                  </li>  
+                  <li ng-show="mobileDisplay">
+                    <a href="javascript:void(0);" socialshare socialshare-provider="whatsapp" socialshare-text="{{sharingtext}}" socialshare-url="{{sharingurl}}">
+                      <img src="/assets/images/whatsapp.png" />
+                      <span class="wtstext">Share on Whatsapp</span>
+                    </a>
+                  </li>
+                </ul>                         
+
+                </div> -->
+                <div class="peersinfo">
+                  <p>{{peerscore}}%</p>
+                  <span class="titlepeers">peers are healthier than you </span> </div>
+                <div class="downloadApp">
+                  <h5>To get Health Karma Score for your family</h5>
+                  <div class="googleplay">
+                    <p>Download<br />
+                      Now</p>
+                    <strong><a href="https://play.google.com/store/apps/details?id=com.healthians.main.healthians&hl=en" target="_blank"><img src="/assets/images/download-google-play.png" /></a></strong> </div>
+                </div>
+              </div>
+            </div>
+            <!--score left -->
+            
+            <div class="col-md-8 col-sm-8 col-xs-12 col-lg-8"> 
+              
+              <!--right score conclusion -->
+              <div class="result-suggestion">
+                <h4>{{huserName}}, here’s your lifestyle score</h4>
+                <p>You have scored {{resultData.lifeStyleScore}}/100 in your self-health assessment.</p>
+                <div class="probable-risks">
+                  <div class="title-probable">
+                    <p>Your Probable<br />
+                      Risks are</p>
+                  </div>
+                  <div class="risk-lists">
+                    <ul ng-show="resultData.risks.length > 0">
+                      <li ng-repeat="rc in resultData.risks">{{rc}}</li>
+                    </ul>
+                    <ul ng-show="resultData.risks.length == 0">
+                      <li>No Probable Risks</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <!--recommended -->
+                <div class="recommended-tests cat-question" style="min-height:auto; padding:10px 0px;">
+                  <h4 ng-show="resultData.recommendedTests.length > 0">Highly Recommended tests for you</h4>
+                  <div class="testrecommendation" >
+                  
+                    <ul ng-show="resultData.recommendedTests.length > 0">
+                      <li ng-repeat="rc in resultData.recommendedTests">
+                      <div class="checkbox-btn">
+                        <input type="checkbox" name="rec_{{rc.id}}" id="rec_{{rc.id}}" ng-model="answer[rc.id]">
+                         <label class="labelOptt" for="rec_{{rc.id}}" onclick>{{rc.name}}</label>
+                        </div>                  
+                      </li>
+                    </ul>
+
+                    <p ng-show="resultData.recommendedTests.length == 0" ng-bind="resultData.noRiskMessage"></p>
+                    
+                  </div>
+                  <div class="hk_booknow">
+                    <input type="button" class="continue-step" value="BOOK RECOMMENDED TESTS" name="hcc" ng-click="bookRecommendTest();" ng-if="resultData.recommendedTests.length > 0">
+                    <a href="/most-selling" class="continue-step" ng-if="resultData.recommendedTests.length == 0"> EXPLORE POPULAR PACKAGES </a>
+                    <div class="or">OR</div>
+                    <div class="health-advisor"><a href="javascript:void(0);" ng-click="callBackPhone();"> Talk to our Health Advisor</a></div>
+                  </div>
+                </div>
+                <!--recommended --> 
+                
+              </div>
+              <!--right score conclusion ends --> 
+              
+            </div>
+            
+            <div class="clear"></div>
+          </div>
+        </div>
+        <!--lifestyle ends --> 
+        
+      </div>
+      <div class="">
+        <div class="">
+          <div ng-hide="datasuccess"> </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!--health karma ends --> 
+
+
+<!--Call back Mobile MODAL -->
+<modal visible="callbackMobileModal">
+    <div ng-include="'template/callback_mobile_modal.html'"></div>
+</modal>
+<!--Call back Mobile MODAL -->
+<modal visible="callbackmsg">
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p class="signedUp">You will get a call back shortly.</p>
+    </div>
+</modal>
+
+<style type="text/css">
+  .homehealthkarma { display: none; }
+</style>
+
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

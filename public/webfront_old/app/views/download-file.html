@@ -1,0 +1,58 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<!--otp panel starts here -->
+<div class="otpsection">
+    <div class="otpMid">
+        <h1>User <span>Report</span></h1>
+        <div class="mobforOtp">
+            <div class="1" ng-show="sendOtp">
+                <input type="text" minlength="10" maxlength="10" autocomplete="off" tabindex="2" placeholder="Enter Mobile No." ng-model="sendOtpNo" class="form-control input-md" name="user_mobile">
+                <div class="clear"></div>
+                <span ng-show="sendOtpError" class="has-error">
+                  Please Enter Correct Number
+                  <div class="clear"></div>
+                </span>
+                <span ng-show="errorMsgFlag" class="has-error" ng-bind="errorMsg"></span>
+                <div class="btn_cta"><a ng-click="sendOtpFunction()">Send OTP</a></div>
+            </div>
+            <div class="2" ng-show="sendDetail">
+                <input type="text" minlength="10" maxlength="10" autocomplete="off" tabindex="2" placeholder="Enter Mobile No." ng-model="sendDetailNo" class="form-control input-md" name="user_mobile">
+                <div class="clear"></div>
+                <input type="text" autocomplete="off" tabindex="2" placeholder="OTP" class="form-control input-md" name="mobile_otp" ng-model="sendDetailOtp">
+                <div class="clear"></div>
+                <span ng-show="sendDetailError" class="has-error">
+                  Please Enter Correct OTP
+                  <div class="clear"></div>
+                </span>
+                <div class="btn_cta"><a ng-click="sendDetailFunction()">Submit</a></div>
+            </div>
+            <div class="3" ng-show="displayDetail">
+                <table width="100%" align="center" class="customerReportData" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>Order ID</td>
+                        <td>Customer Name</td>
+                        <td>Sample Collection Time</td>
+                        <td>Download Report</td>
+                    </tr>
+                    <tr ng-repeat="item in reportData">
+                        <td>{{item.order_id}}</td>
+                        <td>{{item.customer_name}}</td>
+                        <td>{{item.sample_collection_time}}</td>
+                        <td><a href="javascript:void(0);" class="download-btns" ng-click="reportPdf(item.report_id, item.order_id, item.customer_id, item.report_name);">Download</a></td>
+                    </tr>
+                    <tr ng-show="noreport">
+                        <td colspan="4">
+                            <div class="noreport">No Report Found</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--otp panel ends here -->
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here -->

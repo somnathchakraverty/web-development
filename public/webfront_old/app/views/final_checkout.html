@@ -1,0 +1,553 @@
+<!--header section starts here -->
+<style>
+.collapse.in {
+    display: initial !important;
+}
+@-webkit-keyframes blinker {
+  from { opacity: 1.0; }
+  to { opacity: 0.0; }
+}
+
+.slotAvailability {margin-left: 23px;font-size: 14px !important;-webkit-animation-name: blinker;-webkit-animation-iteration-count: infinite;-webkit-animation-timing-function: cubic-bezier(.5, 0, 1, 1);-webkit-animation-duration: 1.7s;margin-top: -5px;}
+
+.datepicker-dropdown{ margin-top:0px !important;}
+.hcash_section strong { font-size: 18px;font-family: GothamNarrow-Book;padding-bottom: 15px;display: block;}
+
+</style>
+<div ui-view="header"></div>
+<div class="ContentWrap">
+    <section class="checkOutwrapper">
+        <!--<slick class="slider single-item" current-index="index" responsive="breakpoints" slides-to-show=3 slides-to-scroll=3>
+          <div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"><h3>{{ i }}</h3></div>
+          <p>Current index: {{ index }}</p>
+        </slick> -->
+        <!-- Breadcrub-->
+        <div class="container">
+            <div class="bread" style="margin:0px 62px;">
+                <ol style="margin-bottom:0px;">
+                    <li><a href="/">Home</a></li>
+                    <li>»</li>
+                    <li><a href="/cart">Cart</a></li>
+                    <li>»</li>
+                    <li class="active">Checkout</li>
+                </ol>
+            </div>
+        </div>
+        <!-- package detail-->
+        <div class="container">
+            <div class="check-out01">
+                <div class="panel-group" id="accordion">
+                    <div class="panel0 panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title" ng-class="{ 'first-active': pickTabActive ,'second-default': !pickTabActive}">
+                                <span class="done" ng-show="!pickTabActive">
+                                    <img src="assets/images/first-done.png">
+                                </span>
+                                <a class="tabular_data_one" data-toggle="collapse" data-parent="#accordion" ng-class="{'disabled_tab': !pickTabActive}" ng-href="{{pickTabActive ? '#collapse1':''}}">
+                                    1. Pick Location & Time 
+                                    <span class="schedule" ng-show="!pickTabActive && chosenPlace && sampledate">
+                                        {{chosenPlace}} <br>
+                                        Collection Schedule : {{sampledate | moment:'MMM DD, YYYY'}} I {{sampletime.start_time}} - {{sampletime.end_time}}
+                                    </span>
+                                    <span class="schedule" ng-show="!pickTabActive && useAddressPresent && sampledate">
+                                        {{userDetail.address.address}} <br>
+                                        Collection Schedule : {{sampledate | moment:'MMM DD, YYYY'}} I {{sampletime.start_time}} - {{sampletime.end_time}}
+                                    </span>
+                                    <span class="edit_loc" ng-show="!pickTabActive" ng-click="editPickTab();">
+                                       <i class="glyphicon glyphicon-pencil"></i>  Edit
+                                    </span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" ng-class="{ 'panel-collapse collapse in': pickTabActive, 'panel-collapse collapse': !pickTabActive }" class="" aria-expanded="{{pickTabActive}}">
+                            <div class="panel-body">
+                                <form name="addAddressForm" id="addAddressForm" novalidate>
+                                    <div class="address-info">
+                                        <p class="user-info-filled">
+                                            <strong ng-bind="userDetail.name"></strong>
+                                            <br> {{userDetail.email}} | +91{{userDetail.mobile}}
+                                        </p>
+                                        
+                                        
+                                        <div class="section-address-checkout">
+                                       	 <div ng-show="loaderVarAddress" class="loader initial" style="font-size: 15px;">
+                                        </div>
+                                        <!-- When no address is present for User-->
+                                        <div ng-show="!useAddressPresent && !loaderVarAddress">
+                                            
+                                            <h1>Add Address</h1>
+                                            <ul>
+                                                <li class="loc_wid">
+                                                    <input type="text" autocomplete="off" id="pacinput" name="pacinput" ng-model="chosenPlace" placeholder="Locality" googleplace class="choose_wid" autofocus tabindex="1" required autocomplete="off" ng-readonly="sublocalityDropDownSelected" ng-focus="distanceError = false">
+                                                    <i class="glyphicon glyphicon-map-marker"></i>
+                                                    <span ng-show="((addAddressForm.pacinput.$dirty && addAddressForm.pacinput.$error.required) || (addAddressFormSubmitted && !chosenPlace))" class="error-message">Enter Sublocality</span>
+                                                    <span ng-show="distanceError" ng-bind="distanceErrorMsg" class="error-message"></span>
+                                                </li>
+                                                <div class="location-checked" ng-show="chosenPlace && sublocalityDropDownSelected"></div>
+                                                <span class="reset-loc" ng-show="sublocalityDropDownSelected" ng-click="resetSubLocality()" analytics-on analytics-event="Click on reset location" analytics-category="Checkout">
+                                                    Reset Location
+                                                </span>
+                                            </ul>
+                                            <div class="house-nm">
+                                                <ul>
+                                                    <li style="border:none;">
+                                                        <label>House No.</label>
+                                                        <input autocomplete="off" type="text" id="houseno" name="houseno" ng-model="houseno" placeholder="House No./Apartment/Building" ng-required="true">
+                                                        <span ng-show="((addAddressForm.houseno.$dirty && addAddressForm.houseno.$error.required) || (addAddressFormSubmitted && !houseno))" class="help-block">Enter House No.</span>
+                                                    </li>
+                                                    <li style="border:none;">
+                                                        <label>Landmark</label>
+                                                        <input autocomplete="off" type="text" ng-model="landmark" name="landmark" id="landmark" autocomplete="off" placeholder="Landmark" ng-required="true">
+                                                        <span ng-show="((addAddressForm.landmark.$dirty && addAddressForm.landmark.$error.required)||(addAddressFormSubmitted && !landmark))" class="help-block">Enter Landmark</span>
+                                                    </li>
+                                                    <li style="border:none;" ng-show="!postal_code && (chosenPlace && sublocalityDropDownSelected)">
+                                                        <label>Pincode</label>
+                                                        <input autocomplete="off" type="text" ng-model="postal_code_new" name="postal_code" id="postal_code" ng-required="true" placeholder="Pincode" minlength="6" maxlength="6" ng-pattern="/^[0-9]{6,6}$/">
+                                                        <span ng-show="((addAddressForm.postal_code.$dirty && addAddressForm.postal_code.$error.required)||(addAddressFormSubmitted && !postal_code_new))" class="help-block">Enter Pincode</span>
+                                                        <span ng-show="addAddressForm.postal_code.$error.pattern && !postal_code" class="help-block">Enter valid Pincode</span>
+                                                    </li>
+                                                    <div class="clear"></div>
+                                                    <li class="defaultaddress">
+                                                        <input type="checkbox" ng-model="defaultaddress" name="defaultaddress" id="defaultaddress"> Default Address
+                                                    </li>
+                                                </ul>
+                                                <p ng-show="chosenPlace && sublocalityDropDownSelected">
+                                                    <span ng-bind="chosenPlace"></span>
+                                                    <span ng-show="postal_code"> 
+                                                        | <input type="hidden" name="postal_code" id="postal_code" ng-hide="true">
+                                                        {{postal_code}}
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>                                        
+                                        <!-- When address is present for User-->
+                                        <div ng-if="useAddressPresent  && !loaderVarAddress">
+                                            <h1>
+                                                Select Address 
+                                                <a href="javascript:void(0);" class="add-adrs" ng-click="addNewAddress()" analytics-on analytics-event="Click on Add new Address" analytics-category="Checkout">  + Add New Address
+                                                </a>
+                                            </h1>
+                                            <span ng-show="((addAddressForm.useraddress.$dirty && addAddressForm.useraddress.$error.required)|| (addAddressFormSubmitted && !existingaddress))" class="help-block">Select one of the address</span>
+                                            <div class="clear"></div>
+                                            <slick class="slider single-item" responsive="breakpoints" slides-to-show=3 slides-to-scroll=1 infinite="false" draggable="false">
+                                                <div ng-repeat="adl in addressList">
+                                                    <div class="select-address">
+                                                        <section class=" " ng-class="{ 'defaultaddress-selected': (adl.default_status == 1), 'grey-brdr': (adl.default_status == 0) }">
+                                                            <div class="chk-viewaddress">
+                                                                <input type="radio" name="useraddress" id="useraddress{{$index}}" ng-click="selectListedAdd(adl)" ng-required="true" value="{{adl.address_id}}" ng-checked="true"  ng-if="adl.default_status == 1">
+                                                                <input type="radio" name="useraddress" id="useraddress{{$index}}" ng-click="selectListedAdd(adl)" ng-required="true" value="{{adl.address_id}}" ng-if="adl.default_status == 0">
+
+                                                                <h2> {{userDetail.name}}</h2>
+                                                                <p>
+                                                                    {{adl.address}} - {{adl.pincode}}
+                                                                    <br> {{userDetail.email}}
+                                                                    <br> +91{{userDetail.mobile}}
+                                                                </p>
+
+                                                                <div class="delete_default_address" ng-if="adl.default_status == 0">
+                                                                	<a href="javascript:void(0);" ng-click="setDefaultAddress(adl)" style="float:left;"><span class="glyphicon glyphicon-home"></span> Set as Default</a>
+                                                                    <a href="javascript:void(0);" ng-click="address_delete_confirmation(adl)" style="float:right;"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                                                                    
+                                                                </div>
+                                                                <!-- <div class="editaddress" ng-if="$parent.existingaddress == adl.address_id">
+                                                                    <a href="javascript:void(0)" ng-click="modifyExistingAddress(adl.address_id);">
+                                                                        <b class="glyphicon glyphicon-pencil" style="font-size:9px; padding-right:5px;"></b>
+                                                                        Edit address
+                                                                    </a>
+                                                                </div> -->
+                                                            </div>
+                                                            <!-- <div class="chk-editaddress" ng-show="$parent.existingaddress == adl.address_id && modifyAddressFlag[adl.address_id]">
+                                                                <input type="text" value="" placeholder="House Name" />
+                                                                <input type="text" value="" placeholder="Landmark" />
+                                                                <input type="text" value="" placeholder="Locality" />
+                                                                <input type="hidden" value="{{adl.address_id}}" name="address_id"/>
+                                                                <br/>
+                                                                <div class="save-address">
+                                                                    <a href="javascript:void(0);" ng-click="modifyExistingAddress(adl.address_id);">Cancel</a>
+                                                                    <a href="javascript:void(0);">Save</a>
+                                                                </div>
+                                                            </div>  -->
+                                                        </section>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                            </slick>
+                                        </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        <div class="address-info mt__25">
+                                            <ul>
+                                                <li>
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                    <input autocomplete="off" type="text" data-provide="datepicker" id="collectiondate" name="collectiondate" data-date-format="yyyy/mm/dd" data-date-autoclose="true" ng-model="sampledate" ng-required="true" placeholder="Collection Date" ng-change="getTimeSlots(sampledate);">
+                                                    
+                                                    <span ng-show="((addAddressForm.collectiondate.$dirty && addAddressForm.collectiondate.$error.required)|| (addAddressFormSubmitted && !sampledate))" class="error-message">Select collection date</span>
+                                                </li>
+                                                <li style="border-bottom:none;">
+                                                    <i class="glyphicon glyphicon-time" ng-hide="noTimeSlot"></i>
+                                                    <select class="collection_time" id="collectiontime" name="collectiontime" ng-model="sampletime" ng-required="true" ng-options="slot as slot.start_time + ' - ' + slot.end_time for slot in slots" ng-show="!noTimeSlot">
+                                                        <option value="">Collection Time</option>
+                                                    </select>
+                                                    <div ng-show="showLoader && !noTimeSlot" class="loader initial" style="font-size: 10px;margin-top:0px;">
+                                                    </div>
+                                                    <span ng-show="((addAddressForm.collectiontime.$dirty && addAddressForm.collectiontime.$error.required) || (addAddressFormSubmitted && !sampletime)) && !noTimeSlot" class="error-message">
+                                                        Select collection time
+                                                    </span>
+                                                    <span ng-show="noTimeSlot" class="error-message">
+                                                        No Slots Available
+                                                    </span>
+                                                </li>
+                                            </ul>
+
+                                            <a style="background:#fff; border:1px solid #00a0a8;color:#00a0a8;" href="javascript:void(0);" ng-click="viewExistingAddress();" ng-show="!useAddressPresent && noOfAdd > 0">View Saved Addresses </a>
+
+                                            <a href="javascript:void(0);" ng-click="bookSlot();" analytics-on analytics-event="Click on Continue" analytics-category="Checkout">Continue</a>
+                                            <span ng-show="slotFreezeError" class="error-message" ng-bind="slotFreezeErrorMsg" style="margin-top:-10px;margin-left:15px;"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title" ng-class="{ 'first-active': !pickTabActive ,'second-default': pickTabActive}">
+                                <a class="tabular_data_two" data-toggle="collapse" data-parent="#accordion" ng-class="{'disabled_tab': pickTabActive}" ng-href="{{pickTabActive ? '':'#collapse2'}}">
+                                    2. Make Payment
+                                    <span class="amout" style="float: right;">
+                                        <div class="more-info-payment">
+                                            <p>
+                                                <label>Healthians Price : </label>
+                                                <strike>
+                                                    <span class="fontrupee" style="margin-right:0px; padding:0px; font-size: 14px;font-weight: normal;">`</span> {{healthiansamount}}
+                                                </strike>
+                                            </p>
+                                            <p style="font-size:11px;" class="total-savings-border color-mobile">
+                                                <label>Total Saving:</label> {{(healthiansamount-discountamount)/healthiansamount*100 | number : 0}}%
+                                            </p>
+                                            <label>Total Payable : </label> 
+                                            <span>
+                                                <span class="fontrupee" style="padding:0px;">`</span> {{discountamount}}
+                                            </span>
+                                        </div>
+                                    </span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse2" ng-class="{ 'panel-collapse collapse in': !pickTabActive, 'panel-collapse collapse': pickTabActive }" class="">
+                            <div class="panel-body">
+                                <p class="slotticker" ng-show="bookingTimeTickerDisplay">
+                                    <span id="slotExpireMsg"></span>
+
+                                    <div class="col-sm-12 timerblock" style="text-align:center;">
+                                        <div class="lefttimetext">Please complete the booking within the given timeframe:</div>
+                                        <div class="lefttimer"><b><span id="bookingtimeticker"></span></b></div>
+                                    </div>
+
+                                    
+                                </p>
+                                <div class="clear"></div>
+                                <div class="name-panel" ng-repeat="item in cartData.customer_detail">
+                                    <p>
+                                        <strong>{{item.customer_name}}</strong>&nbsp;&nbsp; {{item.customer_age}} | {{item.customer_gender}}
+                                        <br>
+                                        <div class="pkg-row" ng-repeat="items in item.deals" ng-if="item.deals">
+                                            <div class="chk-packagenames">
+                                                <span ng-bind="items.name"></span>
+                                                {{items.parameterCount}} Tests
+                                            </div>
+                                            <div class="ryt-amount">
+                                            <div class="ryt-saved-amnt">
+                                                <font class="savingsheading">You Save</font>
+                                                <p>{{(items.actual_price-items.healthians_price)/items.actual_price*100 | number : 0}}% Off</p>
+                                            </div>
+                                            
+                                                <font class="chk-actualprice">
+                                                <font class="healthianspriceheading">Healthians Price</font>
+                                                <strike><span class="fontrupee" style="padding:0px;">`</span> {{items.actual_price}}</strike>
+                                                </font>
+                                                
+                                                <strong class="chk-healthiansprice">
+                                                <font class="mainprc">Limited Time Offer</font>
+                                                <span class="fontrupee" style="padding:0px;">`</span> {{items.healthians_price}}</strong>
+                                            </div>
+                                        </div>
+                                    </p>
+                                   
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="chkhard conveniencefeedv" ng-show="convenience_fee">
+                                    <font>Convenience Fees</font> &nbsp;<span class="glyphicon glyphicon-info-sign" title="Click to see How Convenience Fees is charged ?" ng-click="showConvenienceFeesDialog();" style="cursor:pointer; color:#ccc;"></span>
+                                    <span class="ryt-amount02">
+                                        <strong>+ &nbsp; <span class="fontrupee" style="padding:0px;">`</span> {{convenience_fee}}</strong>
+                                    </span>
+                                </div>
+
+                                <div class="clear"></div>
+                                <div class="coupon-appieddiv">
+                                    <div class="disableddiv" ng-show="isCouponRemoveDisabled"></div>
+                                    <font class="coupondisplay">Apply Coupon</font>
+                                
+                                    <input type="text" autocomplete="off" class="cpn" placeholder="Enter Coupon Code" ng-model="coupon" ng-disabled="onConfirm || isCouponDisabled" ng-change="invalidCoupon=false">
+
+                                    <input type="button" value="Apply" class="cpn-aplly" analytics-on="click" analytics-category="Make Payment" analytics-event="Applied Coupon" analytics-label="{{coupon}}" ng-disabled="isDisabled" ng-click="verifyCoupon(coupon);" ng-hide="onConfirm">
+                                    
+                                    <span class="red-remove" ng-show="onConfirm && !isCouponRemoveDisabled" ng-click="removeCoupon();" style="cursor:pointer;" analytics-on="click" analytics-category="Make Payment" analytics-event="Remove Coupon" analytics-label="{{coupon}}">X Remove</span>
+                                    
+                                    
+                                    <span class="ryt-amount02" ng-show="onConfirm">
+                                        <strong>- &nbsp; <span class="fontrupee" style="padding:0px;">`</span> {{couponAmount}}</strong>
+                                    </span>
+                                    
+                                    <div ng-show="onConfirm" class="codeapplied">
+                                        Applied Successfully
+                                    </div>
+                                    <!--<div class="clear"></div> -->
+                                    <span class="help-block couponerrormsg invalidCoupon" ng-show="invalidCoupon" ng-bind="couponErrorMsg"></span>
+                                    <div class="clear" style="padding-bottom: 11px;"></div>
+                                    <span class="invalidCoupon" style="padding-left: 0px;font-size: 12px;" ng-show="coupon_notice_div"> <b>Note </b>: {{coupon_notice_msg}}</span>
+                                    
+                                </div>
+                                
+                                <div class="clear"></div>
+                                <div class="chkhard hard-copy">
+                                    <div class="disableddivhardcopy" ng-show="isHardCopyDisabled"></div>
+                                    <input type="checkbox" ng-model="hardCopy" ng-click="hardCopyFunc(hardCopy)" ng-checked="hardCopy" style="margin-right:5px;" ng-disabled="isHardCopyDisabled"> Need a hard copy of report? &nbsp;<em><span class="fontrupee" style="padding:0px;">`</span> {{hardcopyPrice}}/- only</em>
+                                    <span class="ryt-amount02" ng-show="hardCopy">
+                                        <strong>+ &nbsp; <span class="fontrupee" style="padding:0px;">`</span> {{hardcopyPrice}}</strong>
+                                    </span>
+                                </div>
+                                <div class="clear"></div>
+                                <hr>
+                                <div class="chkhard subtotalfinal">
+                                    <strong>Sub Total</strong> 
+                                    <span class="ryt-amount02">
+                                        <strong class="subtotalryt"> <span class="fontrupee" style="padding:0px;">`</span> {{subTotal}}</strong>
+                                    </span>
+                                </div>
+                                <hr>
+                                <div class="clear"></div>
+
+                                <div class="chkhard walletcash">
+                                    <div class="ecashamnts">
+                                        <span><img src="assets/images/wallet_icon.png" width="20" /></span>
+                                        <span class="totalecash">
+                                            Total HCash : <strong><span class="fontrupee" style="padding:0px;">`</span> {{walletAmount}}</strong> 
+                                        </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                        
+                                    <div class="mainwalletdiv" ng-hide='disabledHcash'>    
+                                        <div class="walletamnt">
+                                            <input type="checkbox" name="ecashcheck" id="ecashcheck" ng-model="ecashcheck" ng-checked="ecashcheck" ng-click="showECash();" style="margin-right:5px;"> Do u want to use HCash ? <span class="glyphicon glyphicon-info-sign" title="Click to see HCash Terms & condition ?" ng-click="showHCashTC();" style="cursor:pointer; color:#ccc;"></span>                                            
+                                        </div>
+                                        <span class="ryt-amount02" ng-show="onConfirmECash">
+                                            <strong>- &nbsp; <span class="fontrupee" style="padding:0px;">`</span> {{ecashAmount}}</strong>
+                                        </span>
+                                        <div class="clear"></div>
+                                        <div class="not-applicable">* Not Applicable on Donation Amount </div>
+                                    </div>
+
+                                    <div class="mainwalletdiv" ng-show='disabledHcash'>    
+                                        <div class="not-applicable">* {{restrict_hcash_message}}</div>
+                                    </div>
+
+                                </div>
+                                <span class="help-block invalidCoupon" ng-show="invalidECash" ng-bind="eCashErrorMsg"></span>
+								
+                                <!--<hr style=" border:none;border-bottom:1px solid #e8e8e8;" /> -->
+
+                                <div class="clear"></div>
+                                <div class="chkhard hard-copy" ng-show="onlineDiscountApplied" style="padding-top: 15px;">
+                                    Online Discount
+                                    <span class="ryt-amount02" style="color: #3da0a7;">
+                                        <strong>- &nbsp; <span class="fontrupee" style="padding:0px;">`</span> {{online_discount_amount}}</strong>
+                                    </span>
+                                </div>
+
+
+                                <div class="clear"></div>
+                                <div class="chkhard donationcheck" ng-show="donationcheck">
+                                    <input type="checkbox" name="donation" id="donation" ng-model="donation" ng-checked="donation" ng-click="applyDonation();" style="margin-right:5px;">
+
+                                    Do you want to donate <em><span class="fontrupee" style="padding:0px;">`</span> {{donationFees}}/-</em> to <em class="ysf-donate" title="click to see information" ng-click="showYuvWeCan();">Yuvraj Singh Foundation</em> ? &nbsp;&nbsp;
+                                   <!-- <a href="#" class="whydonate">Why to donate</a> -->
+                                    
+                                    <span class="ryt-amount02" ng-show="donation">
+                                        <strong>+ &nbsp; <span class="fontrupee" style="padding:0px;">`</span> {{donationFees}}</strong>
+                                    </span>
+                                </div>
+                                <div class="clear"></div>
+
+								<div class="total_amount_book">
+                                    <label>Total Payable : </label> 
+                                    <span class="fl_right">
+                                        <span class="fontrupee" style="padding:0px;">`</span> {{discountamount}}
+                                    </span>
+                                </div>
+
+                                <div class="border-btm"></div>
+                                <div class="pay-body">
+                                    <div ng-show="discountamount>=0">
+                                        <h2>How would you like to pay?</h2>
+                                        <ul>
+                                            <li>
+                                                <div class="paybuttons">
+                                                    <input type="radio" id="radio1" name="radio" ng-model="payradio" value="paytm" ng-checked="true" tabindex="1" analytics-on="click" analytics-category="Make Payment" analytics-event="Selects Paytm" analytics-value="{{discountamount}}" ng-click="checkPaymentMode();"/>
+                                                    <label for="radio1"><span></span>Pay with PayTm</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="paybuttons">
+                                                    <input type="radio" id="radio2" name="radio" ng-model="payradio" value="mobikwik" tabindex="2" analytics-on="click" analytics-category="Make Payment" analytics-event="Selects MobiKwik" analytics-value="{{discountamount}}" ng-click="checkPaymentMode();"/>
+                                                    <label for="radio2"><span></span>Pay with MobiKwik</label>
+                                                    
+                                                    <div class="supercash_offer">Get 15% Supercash upto Rs. 200</div>
+                                                    
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="paybuttons">
+                                                    <input type="radio" id="radio3" name="radio" ng-model="payradio" value="payu" tabindex="3" analytics-on="click" analytics-category="Make Payment" analytics-event="Selects PayU" analytics-value="{{discountamount}}" ng-click="checkPaymentMode();"/>
+                                                    <label for="radio3"><span></span>Pay with Credit Card / Debit Card / Netbanking / PayU Wallet</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="paybuttons">
+                                                    <input type="radio" id="radio4" name="radio" ng-model="payradio" value="cash" tabindex="4" analytics-on="click" analytics-category="Make Payment" analytics-event="Selects COD" analytics-value="{{discountamount}}" ng-click="checkPaymentMode();"/>
+                                                    <label for="radio4"><span></span>Cash/Card on Sample Collection (Card Swiping Machine available)</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul class="pay-img">
+                                            <figure>
+                                                <img src="assets/images/pay.png">
+                                            </figure>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <p>
+                                        <input style="margin-right:9px; margin-left: 2px; float: left; width:19px;" type="checkbox" name="userterms" id="userterms" ng-checked="true" tabindex="5" ng-disabled="true">
+                                        <span>
+                                            I accept the 
+                                            <a href="/terms-condition" target="_blank">Terms & Conditions, Disclaimer and Privacy Policy.</a>
+                                        </span>
+                                    </p>
+                                    <a href="javascript:void(0);" class="complt" ng-click="createOrderId();" ng-hide="showBookingLoader" analytics-on="click" analytics-category="Make Payment" analytics-event="Clicks on Complete Order" analytics-value="{{discountamount}}">Complete Order</a>
+                                    <div class="loader initial pay-loader" ng-show="showBookingLoader" style="font-size: 15px;"></div>
+                                    <p ng-show="bookingTimeTickerExpire && showBookingLoader" class="slotAvailability">Checking Slot Availability ....</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <!-- Form For PayU -->
+        <form action="{{payuAction}}" method="post" name="payuForm" id="payuForm">
+            <input type="hidden" name="booking_id" value="" />
+            <input type="hidden" name="txnAmount" value="" />
+            <input type="hidden" name="custName" value="" />
+            <input type="hidden" name="custMobile" value="" />
+            <input type="hidden" name="custEmail" value="" />
+            <input type="hidden" name="stm_id" value="" />
+        </form>
+        <!-- Form For PayZapp -->
+        <form action="{{payzappAction}}" method="post" name="payzappForm" id="payzappForm">
+            <input type="hidden" name="booking_id" value="" />
+            <input type="hidden" name="txnAmount" value="" />
+            <input type="hidden" name="custName" value="" />
+            <input type="hidden" name="custMobile" value="" />
+            <input type="hidden" name="custEmail" value="" />
+            <input type="hidden" name="stm_id" value="" />
+        </form>
+        <!-- Form For PayTM -->
+        <form action="{{paytmAction}}" method="post" name="paytmForm" id="paytmForm">
+            <input type="hidden" name="booking_id" value="" />
+            <input type="hidden" name="txnAmount" value="" />
+            <input type="hidden" name="custName" value="" />
+            <input type="hidden" name="custMobile" value="" />
+            <input type="hidden" name="custEmail" value="" />
+            <input type="hidden" name="stm_id" value="" />
+            <input type="hidden" name="user_id" value="" />
+        </form>
+        <!-- Form For MobiKwik -->
+        <form action="{{mobikwikAction}}" method="post" name="mobikwikForm" id="mobikwikForm">
+            <input type="hidden" name="booking_id" value="" />
+            <input type="hidden" name="txnAmount" value="" />
+            <input type="hidden" name="custName" value="" />
+            <input type="hidden" name="custMobile" value="" />
+            <input type="hidden" name="custEmail" value="" />
+            <input type="hidden" name="stm_id" value="" />
+        </form>
+    </section>
+</div>
+<div class="clear"></div>
+
+<message-modal visible="address_msg_visible">
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p class="signedUp" ng-bind="address_message"></p>
+        <button type="button" class="success_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="closeMessageModal();">Ok</button>
+    </div>
+</message-modal>
+
+<!-- Delete Confirmation -->
+<message-modal visible="address_delete_visible">
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p style="font-size: 17px;"> Are you sure you want to delete this address ? </p>
+        <div style="margin:0px auto;text-align: center;">
+            <button type="button" class="confirm_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="deleteUserAddress(deleteaddress);">Yes</button>
+            <button type="button" class="confirm_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="closeMessageModal();">No</button>
+        </div>
+    </div>
+</message-modal>
+
+<message-modal visible="bookingCreationMsg">
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p class="signedUp" ng-bind="bookingCreationErrorMessage"></p>
+        <button type="button" class="success_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="closeMessageModal();">Ok</button>
+    </div>
+</message-modal>
+
+<!-- Delete Confirmation -->
+<message-modal visible="convenience_fees_visible">
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p style="font-size: 14px;">
+            <b style="font-size: 17px;">How Convenience fee is charged ?</b>
+            <br><br>
+            For orders between Rs.0 - Rs.499,<br> A Convenience fee of Rs.150 is charged.
+            <br><br>
+            For orders above Rs.499,<br> No Convenience fee is charged.
+        </p>
+        <div style="margin:0px auto;text-align: center;">
+        <button type="button" class="confirm_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="closeMessageModal();">Close</button>
+        </div>
+    </div>
+</message-modal>
+<!-- Delete Confirmation -->
+
+<message-modal visible="youwecan_visible">
+    <div class="ysf_section">
+    <img src="assets/images/you-we-can-logo.png" class="ysflogo" />
+        <div class="donationInfo" ng-bind-html="donationInfo"></div>
+        <p><a class="web-ysf" href="https://www.youwecan.org/" target="_blank">www.youwecan.org</a></p>
+        <div style="margin:0px auto;text-align: center;">
+        <!--<button type="button" class="confirm_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="closeMessageModal();">Close</button> -->
+        </div>
+    </div>
+</message-modal>
+
+<bigmessage-modal visible="hcash_message_visible">
+    <div class="hcash_section">
+        <div class="donationInfo" ng-bind-html="walletTC"></div>
+    </div>
+</bigmessage-modal>
+
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here -->

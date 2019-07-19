@@ -1,0 +1,64 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<section class="about-content">
+    <div class="mid_panel">
+        <!--share referal -->
+        <section class="share-referal">
+            <div class="notify">A referral message has already been sent to you.</div>
+            <div class="container">
+                <div class="row">
+                    <div class="refer-code-panel">
+                        <h5>Your referral code is</h5>
+                        <h2 ng-bind="referral_code"></h2>
+                        <div class="socialshare">
+                            <h6>How would you like to share it with your friends?</h6>
+                            <ul ng-if="referral_code">
+                                <li>
+                                    <a href="#" socialshare socialshare-provider="whatsapp" socialshare-text="{{sharingtext}}" socialshare-url="https://www.healthians.com">
+                                        <img src="/assets/images/share-whatspp-msg.png" />
+                                        <span class="wtstext">Whatsapp</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" socialshare socialshare-provider="sms" socialshare-trigger="click" socialshare-text="{{sharingtext}}">
+                                        <img src="/assets/images/share-message-msg.png" />
+                                        <span class="msgtext">SMS</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" socialshare socialshare-url="{{sharingtext}}" socialshare-provider="facebook-messenger" socialshare-text="{{sharingtext}}">
+                                        <img src="/assets/images/share-referal-fb.png" />
+                                        <span class="fbtext">Facebook</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="sharecodesection">
+                        <div class="sharedmsg">
+                            <p> 
+                                {{sharingtext}}
+                                <br />
+                                <br />
+                                <div class="copytoclip" copy-to-clipboard text-to-copy="sharingtext"><img src="/assets/images/copy-icon.png" />&nbsp;&nbsp;Copy</div>
+                            </p>
+                            <span id="cclip" style="display:none;color:#00a0a8;font-size: 11px;">Copied to clipboard</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="share-policy">
+                        <h6 style="text-align: left;padding-bottom: 10px;">Referral Policy:</h6>
+                        <div ng-bind-html="appTerm" style="text-align: left !important;font-size: 14px;letter-spacing: 0px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <!--share referal ends here -->
+    </div>
+    <div class="clear"></div>
+</section>
+<div ui-view="footer"></div>

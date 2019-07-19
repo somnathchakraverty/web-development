@@ -1,0 +1,258 @@
+<!--header section starts here -->
+
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<div class="cart_wrapper">  
+  <!--family wrapper starts here-->
+  <section class="family-panel">
+    <div class="family-wrapper">
+      <div class="family-mid">
+        <div class="midhead">
+          <div class="heading-cart">
+            <h1>Select Member</h1>
+            <p>Select tests for your family member & your loved ones</p>
+          </div>
+          <a href="javascript:void(0);" class="continue cta-right" ng-click="confirmAddToCart();" analytics-on analytics-event="Click on Add to Cart button" analytics-category="My Cart" analytics-label="{{userId}}"  ng-hide="load_wait">Add To Cart</a>
+          <div class="loader initial" ng-show="load_wait" style="font-size: 15px;"></div>
+        </div>
+        <div class="notificationbar">
+          <div class="add-family-member" ng-click="showAddMemberForm();">
+            <a href="javascript:void(0);" analytics-on analytics-event="Click on Add family member" analytics-category="My Cart" analytics-label="{{userId}}">
+              <span>Add a<br> Family Member</span>
+            </a> 
+          </div>
+          <div class="notification"><font class="totalMembers">Total Member : {{tempUser.length}}</font>
+            <!--Information for user -->
+            <p class="infor-user" ng-show="!familyCountError">
+              <b><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> To add selected test/package to other family members simply SELECT the checkbox and click "Add to Cart" button.</b>
+            </p>
+            <p class="error" ng-show="familyCountError" ng-bind="familyCountErrorMsg" style="font-size: 14px;" id="familyerrordiv"></p> 
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <!--INSTANT PROFILE EDIT -->
+        <div class="box-one" ng-show="addMemberDiv">
+          <form name="getcustomerForm" novalidate>
+            <div class="instant-prfl-edit">
+              <div class="groupSignups wgroup_item_1">
+                <input type="text" class="no-icon" id="customername" name="customername" ng-model="getcustomerFormModel.name" maxlength="35" ng-pattern="/^[A-z. ]+$/" ng-required="true">
+                <span class="highlight"></span> <span class="bar"></span>
+                <label>Full Name</label>
+                <div class="help-block1" ng-show="((getcustomerForm.customername.$dirty && getcustomerForm.customername.$error.required && !getcustomerForm.customername.$error.pattern) || (getcustomerFormSubmitted && !getcustomerFormModel.name))">Enter name</div>
+                <div ng-show="(getcustomerForm.customername.$error.pattern)" class="help-block1">Enter valid name</div>
+              </div>
+              <div class="relationInfo wgroup25">
+                <select id="selectrelation" name="selectrelation" ng-model="getcustomerFormModel.relation" ng-options="list.value | lowercase as list.value | lowercase for list in RelationShip" ng-required="true">
+                  <option value="">Relation</option>
+                </select>
+                <div ng-show="((getcustomerForm.selectrelation.$dirty && getcustomerForm.selectrelation.$error.required) || (getcustomerFormSubmitted && !getcustomerFormModel.relation))" class="help-block1">Select relation</div>
+              </div>
+              <div class="groupSignups wgroup25">
+                <input type="text" class="no-icon" id="customerphone" name="customerphone" ng-model="getcustomerFormModel.phone" maxlength="10" minlength="10" ng-pattern="/^\d{10}$/" autocomplete="off" ng-required="false">
+                <span class="highlight"></span> <span class="bar"></span>
+                <label>Mobile Number</label>
+                <div ng-show="(getcustomerForm.customerphone.$error.pattern && getcustomerForm.customerphone.$touched)" class="help-block1">Enter valid 10 digit mobile no.</div>
+              </div>
+              <div class="groupSignups wgroup_item_1">
+                <input type="text" class="no-icon" id="customerage" name="customerage" ng-model="getcustomerFormModel.age" maxlength="3" ng-pattern="/^[1-9]|[1-9][0-9]+\d{0,2}$/" ng-keyup="getDOB(getcustomerFormModel.age,getcustomerFormModel.name)" ng-required="true" autocomplete="off">
+                <span class="highlight"></span> <span class="bar"></span>
+                <label>Age (years)</label>
+                <div ng-show="((getcustomerForm.customerage.$dirty && getcustomerForm.customerage.$error.required && !getcustomerForm.customerage.$error.pattern) || (getcustomerFormSubmitted && !getcustomerFormModel.age))" class="help-block1">Enter age</div>
+                <div ng-show="getcustomerForm.customerage.$error.pattern" class="help-block1">Enter age between 5 to 120</div>
+              </div>
+              <div class="groupSignups wgroup25">
+                <input type="text" class="no-icon" data-provide="datepicker" id="usepdob" name="userdob" data-date-format="dd/mm/yyyy" data-date-autoclose="true" ng-model="getcustomerFormModel.userDOB" ng-required="true" ng-change="calculateAge(getcustomerFormModel.userDOB);" autocomplete="off">
+                <span class="highlight"></span> <span class="bar"></span>
+                <label>Date of Birth</label>
+              </div>
+              <div class="wgroup25">
+                <label>
+                  <input type="radio" id="male" name="customergender" value="M" ng-model="getcustomerFormModel.gender" ng-required="true">
+                  <span>&nbsp;&nbsp;</span>Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label>
+                  <input type="radio" id="female" name="customergender" value="F" ng-model="getcustomerFormModel.gender" ng-required="true">
+                  <span>&nbsp;&nbsp;</span>Female
+                </label>
+                <div class="help-block1" ng-show="((getcustomerForm.customergender.$dirty && getcustomerForm.customergender.$error.required) || (getcustomerFormSubmitted && !getcustomerFormModel.gender))">Select Gender</div>
+              </div>
+              
+              <span class="saveprofile">
+                <a href="javascript:void(0);" ng-click="addFamilyMember(getcustomerForm.$valid)" ng-disabled="getcustomerForm.$invalid" ng-hide="loaderVar">Save</a>
+                <a href="javascript:void(0);" ng-click="hideAddMemberForm();">Cancel</a>
+                <div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;"></div>
+              </span>
+              <span class="saveprofile">
+              
+              </span>
+              <div class="clear"></div>
+            </div>
+          </form>
+        </div>
+        <!--INSTANT PROFILE EDIT --> 
+        
+        <div class="clear"></div>
+        
+        <!--mid members panel -->
+        <div class="mid-member-row"> 
+          <!--DELETE CONFIRM MODAL -->
+          <div class="modal fade" id="delete-confirm-modal" role="dialog">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-body delete-confirm">
+                  <h2>Confirm</h2>
+                  <p>Are you sure you want to delete this family member?</p>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary yes" id="Yes">Yes</button>
+                    <button type="button" class="btn no">No</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--DELETE CONFIRM MODAL -->
+
+          <!-- Selected Package Details - Start -->
+          <div class="select_user_package">
+          
+            <div class="selectusertitle">
+              <div class="tmp_pkg_name" ng-bind="tmpPackage.display_name"></div>
+              <div class="main_savingprice">
+                {{(tmpPackage.actual_price-tmpPackage.healthian_price)/tmpPackage.actual_price*100 | number : 0}}% Off
+              </div>
+            </div>
+            
+            <div class="mid-packageselect">
+              <div class="incPanel">
+                <div class="includeBlock"> 
+                  Includes: {{tmpPackage.test_count}} Tests
+                </div>
+                <div class="crossedPrice">
+                  <span class="fontrupee" style="padding:0px;"> ` </span>
+                   {{tmpPackage.actual_price}}
+                </div>
+              </div>           
+            
+              <div class="clear"></div>
+
+              <div class="precaution-msg">
+                <div class="fastingtype">
+                  <img src="assets/images/icon_timer.png" />&nbsp;Report available in {{tmpPackage.time_of_report}} Hrs
+                </div>
+                <div class="healthians_mainprice">
+                  <span class="fontrupee" style="font-weight:normal; padding:0px; display:inline-block;">`</span>
+                  <span ng-bind="tmpPackage.healthian_price"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Selected Package Details - End -->
+
+          <!-- Family Member Listing -->
+          <section class="family-panel-view"> 
+            <div class="familyContainer" id="question-container-1" ng-repeat="items in tempUser" ng-init="userCheckBox[items.user_id]=false;">
+              <div class="my_Family" ng-hide="userEdit[items.user_id]">
+              
+                <div class="my-family-listed"> 
+                  <span>
+                    <div class="ripples" ng-hide="userCheckBox[items.user_id]"></div>
+                    <div style="margin-right:10px;">
+                      <!-- Family Member Checkbox -->
+                      <input id="{{items.user_id}}" type="checkbox" name="used_ids[]" value="{{items.user_id}}" class="input-pulse-animate button" ng-model="userCheckBox[items.user_id]" ng-click="selectUserCheckBox(items.name, items.contact_number, items.user_id)" title="Click to add test/package">
+                    </div>
+                  </span>
+                </div>
+                
+                <!-- Family Member Info Display -->
+                <div class="family-member-info-list"> 
+                <span class="fm-editinfo" ng-show="items.relationship !== 'self'"> 
+                    <a href="javascript:void(0)" ng-click="editUser(items.user_id.toString(),items.name,items.age,items.gender,items.relationship,items.contact_number,items.dob);" analytics-on analytics-event="Click on Edit" analytics-category="My Cart" analytics-label="{{items.user_id.toString()}}" title="Click to modify details"> 
+                      <b class="glyphicon glyphicon-pencil" style="font-size:11px; padding-right:2px;"></b>
+                    </a> 
+                  </span>
+                  <span class="fm-username" ng-bind="items.name"></span>
+                  <span class="fm-age" ng-bind="items.age"></span> ,
+                  <span class="fm-gender" ng-show="items.gender === 'M'">Male</span>
+                  <span class="fm-gender" ng-show="items.gender === 'F'">Female</span> 
+                  <span class="fm-for" ng-bind="items.relationship"></span> 
+                  <div class="fm-mob">
+                    <span ng-show="items.contact_number">+91-{{items.contact_number}}</span>
+                    <span ng-show="!items.contact_number">&nbsp;</span>
+                  </div> 
+                   
+                </div>
+              </div>
+              
+              <!--EDIT FAMILY EDIT CLICK -->
+              <div class="edit_myfamily" ng-show="userEdit[items.user_id]">
+                <form name="editCustomerForm[items.user_id]" novalidate>
+                  <div class="instant-prfl-edit">
+                    <div class="groupSignups">
+                      <input type="text" class="no-icon" id="customername{{items.user_id}}" name="customername" ng-model="editCustomerFormModel[items.user_id].name" maxlength="35" ng-pattern="/^[A-z. ]+$/" ng-required="true">
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label>Full Name</label>
+                      <div class="help-block1" ng-show="((editCustomerForm[items.user_id].customername.$dirty && editCustomerForm[items.user_id].customername.$error.required && !editCustomerForm[items.user_id].customername.$error.pattern) || (editCustomerFormSubmitted && !editCustomerFormModel[items.user_id].name))">Enter name</div>
+                      <div ng-show="editCustomerForm[items.user_id].customername.$error.pattern" class="help-block1">Enter valid name</div>
+                    </div>
+                    <div class="relationInfo halfage">
+                      <select id="selectrelation{{items.user_id}}" name="selectrelation" ng-model="editCustomerFormModel[items.user_id].relation" ng-options="list.value | lowercase as list.value | lowercase for list in RelationShip" ng-required="true">
+                        <option value="">Relation</option>
+                      </select>
+                      <div ng-show="((editCustomerForm[items.user_id].selectrelation.$dirty && editCustomerForm[items.user_id].selectrelation.$error.required) || (editCustomerFormSubmitted && !editCustomerFormModel[items.user_id].relation))" class="help-block1">Select relation</div>
+                    </div>
+                    <div class="groupSignups halfage">
+                      <input type="text" class="no-icon" id="customerage_{{items.user_id}}" name="customerage" ng-model="editCustomerFormModel[items.user_id].age" maxlength="3" ng-pattern="/^[1-9]|[1-9][0-9]+\d{0,2}$/" ng-keyup="getDOBEditUser(editCustomerFormModel[items.user_id].age, items.user_id)" ng-required="true" autocomplete="off">
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label>Age (years)</label>
+                      <div ng-show="((editCustomerForm[items.user_id].customerage.$dirty && editCustomerForm[items.user_id].customerage.$error.required && !editCustomerForm[items.user_id].customerage.$error.pattern) || (editCustomerFormSubmitted && !editCustomerFormModel[items.user_id].age))" class="help-block1">Enter age</div>
+                      <div ng-show="editCustomerForm[items.user_id].customerage.$error.pattern" class="help-block1">Enter age b/w 5 to 120</div>
+                    </div>
+                    <div class="groupSignups">
+                      <input type="text" class="no-icon" data-provide="datepicker" id="userdob_{{items.user_id}}" name="userdob" data-date-format="dd/mm/yyyy" data-date-autoclose="true" ng-model="editCustomerFormModel[items.user_id].userDOB" ng-required="true" ng-change="calculateAgeEditUser(editCustomerFormModel[items.user_id].userDOB, items.user_id);" autocomplete="off">
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label>Date of Birth</label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                      <input type="radio" id="male{{items.user_id}}" name="customergender" value="M" ng-model="editCustomerFormModel[items.user_id].gender" ng-required="true">
+                      <span>&nbsp;&nbsp;</span>Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <input type="radio" id="female{{items.user_id}}" name="customergender" value="F" ng-model="editCustomerFormModel[items.user_id].gender" ng-required="true">
+                      <span>&nbsp;&nbsp;</span>Female
+                      <div class="help-block1" ng-show="((editCustomerForm[items.user_id].customergender.$dirty && editCustomerForm[items.user_id].customergender.$error.required) || (editCustomerFormSubmitted && !editCustomerFormModel[items.user_id].gender))">Select Gender</div>
+                    </div>
+                    <div class="groupSignups">
+                      <input type="text" class="no-icon" id="customerphone{{items.user_id}}" name="customerphone" ng-model="editCustomerFormModel[items.user_id].phone" maxlength="10" minlength="10" ng-pattern="/^\d{10}$/"  autocomplete="off">
+                      <span class="highlight"></span> <span class="bar"></span>
+                      <label>Mobile Number</label>
+                      <!-- <div class="help-block1" ng-show="((editCustomerForm[items.user_id].customerphone.$dirty && editCustomerForm[items.user_id].customerphone.$error.required && !editCustomerForm[items.user_id].customerphone.$error.pattern) || (editCustomerFormSubmitted && !editCustomerFormModel[items.user_id].phone))">Enter mobile no.</div> -->
+                      
+                      <div ng-show="editCustomerForm[items.user_id].customerphone.$error.pattern" class="help-block1">Enter valid 10 digit mobile no.</div>
+                    </div>
+                    <span class="saveprofile"> 
+                      <a href="javascript:void(0)" ng-click="cancelEditUser(items.user_id.toString());">Cancel</a> 
+                      <a href="javascript:void(0)" ng-click="updateUserDetails(items.user_id.toString())" analytics-on analytics-event="Click on Submit on Editing details" analytics-category="My Cart" analytics-label="{{items.user_id.toString()}}">Update</a> 
+                    </span>
+                    <div class="clear"></div>
+                  </div>
+                </form>
+              </div>
+              <!--EDIT FAMILY EDIT CLICK ENDS -->
+            </div>
+          </section>
+          <div class="clear"></div>
+        </div>
+        <!--mid members panel -->
+        <div class="continue-checkout">
+          <a href="javascript:void(0);" ng-click="confirmAddToCart()" analytics-on analytics-event="Click on Add to Cart button" analytics-category="My Cart" analytics-label="{{userId}}" ng-hide="load_wait">Add to Cart</a>
+          <div class="loader initial" ng-show="load_wait" style="font-size: 15px;"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</div>
+<!--family wrapper ends here --> 
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here --> 

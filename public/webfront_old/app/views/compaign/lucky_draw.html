@@ -1,0 +1,216 @@
+<style>
+@font-face {
+	font-family: 'FontspringBold';
+	src: url('assets/style/fonts/Fontspring-DEMO-graviola-bolditalic_0.otf');
+}
+@font-face {
+	font-family: 'franklinnRegular';
+	src: url('assets/style/fonts/framd_0.ttf');
+}
+@font-face {
+	font-family: 'franklinnMedium1';
+	src: url('assets/style/fonts/framd_0.ttf');
+}
+
+.diwali-contest{ display:none !important;}
+
+</style>
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+
+<!--diwali campaign starts -->
+<div class="diwali-main-container">
+  <div class="row diwali-banner-section">
+    <div class="container"> 
+      <!-- -->
+      <div class="col-md-12 col-xs-12 rightforms">
+        <div class="col-md-7 col-xs-12 mob-mar">
+          <div class="left-diwali-offer-panel">
+            <div class="animated-gif-diwali"> <img src="assets/images/campaign/animated-gif-diwali.gif" width="293" /> </div>
+            <div class="book-health-checkup">
+              <h1>Buy 1 Get 1 Free<br />
+              Full body check up for 2 at<span class="worth"> Rs. 1999</span>  
+              <p><span>Includes 68 Tests</span> (VIT-D, CBC, TFT, Sugar, Lipid. LFT, KFT & Urine)</p>        
+                Stand a chance to win <span style="display:block;"><img src="assets/images/campaign/star_kwid.png">&nbsp;Renault Kwid&nbsp;<img src="assets/images/campaign/star_2kwid.png"></span>                
+               </h1>
+               
+              <!--<h2><img src="assets/images/campaign/star_kwid.png" />&nbsp;Renault KWID&nbsp;<img src="assets/images/campaign/star_2kwid.png" /></h2> -->
+               <div class="tnc" style="text-align:center; padding:0px;">T&C apply*</div>
+            </div>
+           
+          
+          <img class="kwidcar" src="assets/images/campaign/kwid_car.png">
+          
+          </div>
+        </div>
+        
+        
+        
+        <div class="col-md-5 col-xs-12 form-area-offr">
+        
+        <div class="campaign-form-section">
+               <form name="addLeadForm" novalidate>
+                    <div class="campaign-form-area">
+                    <h4 style="padding-bottom:20px; padding-top:10px;">Book a health checkup now</h4>
+                        <ul>
+                            <li>
+                                <input name="name" id="name" type="text" class="form-control text" placeholder="Name*" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadForm.name.$dirty && addLeadForm.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadForm.name.$error.pattern && visited) }" ng-focus="booknow" ng-pattern="/^[A-Za-z ]+$/">
+                                <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block">
+                                    <span ng-show="addLeadForm.name.$error.required">Name is required</span>
+                                    <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required">
+                                        Enter valid Name
+                                    </span>
+                                </div>
+                            </li>
+                          
+                            <li>
+                                <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" class="form-control text" placeholder="Email*" ng-model="customerEmail" ng-class="{ 'has-error': ((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$error.required) || (addLeadFormSubmitted && !customerEmail)) ||(addLeadForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="true">
+                                <div ng-show="((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$invalid) || (addLeadFormSubmitted && !addLeadForm.customeremail))" class="help-block">
+                                    <span ng-show="addLeadForm.customeremail.$error.required">Email is required</span>
+                                    <span ng-show="addLeadForm.customeremail.$error.pattern && !addLeadForm.customeremail.$error.required">Enter valid Email</span>
+                                </div>
+                            </li>
+                            <li>
+                                <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" class="form-control text" placeholder="Mobile*" ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadForm.customerno.$dirty && addLeadForm.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadForm.customerno.$error.pattern && visited) }" ng-required="true">
+                                <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block">
+                                    <span ng-show="addLeadForm.customerno.$error.required">Mobile No. is required</span>
+                                    <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required">
+                                        Enter valid Mobile
+                                    </span>
+                                </div>
+                            </li>
+                           
+                            <li>
+                                <select class="form-control text" id="city" name="city" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true" ng-class="{ 'has-error': ((addLeadForm.city.$dirty && addLeadForm.city.$error.required) || (addLeadFormSubmitted && !addLeadForm.city)) }">
+                                    <option value="">City</option>
+                                </select>
+                                <div ng-show="((addLeadForm.city.$dirty && addLeadForm.city.$invalid) || (addLeadFormSubmitted && !addLeadForm.city))" class="help-block">
+                                    <span ng-show="addLeadForm.city.$error.required">Please select city.</span>
+                                </div>
+                            </li>
+                            <li style="padding-bottom:0px;">
+                                <textarea class="form-control text" id="message" name="message" maxlength="500" ng-model="Message" placeholder="Any other detail"></textarea>
+                            </li>
+                            <li style="padding-top:10px; padding-bottom:15px;">
+                                <input type="button" name="send" style="display:block; width:100%; font-size:20px;" value="Get A Call Back Now" class="submitForm" ng-click="sendDetails()" analytics-on="click" analytics-category="Diwali-Campaign-2017" analytics-event="Click on Get A Call Back Now">
+                                <p style="display: none;font-size: 15px;padding: 2px 6px;line-height: 0px;font-weight: normal;padding: 25px 0px 10px 0px;color: #000000;text-align: center;" id="timeticker"></p>
+                            </li>
+                        </ul>
+                          <div class="offerends">Offer begins on <strong>10th Oct. 2017</strong> & ends on<strong> 25th Oct. 2017</strong></div>
+                    </div>
+                </form>
+                
+                
+            </div>
+        
+        </div>
+        
+        
+        
+        
+      </div>
+      <!-- --> 
+    </div>
+  </div>
+
+<div class="clear"></div>
+
+  <!--usp -->  
+  <div class="row usp-containers">
+    <div class="container">
+      <div class="col-md-3">
+      <div class="img">
+       <img src="assets/images/campaign/circle_01.png" />
+       </div>
+        <h4>Book a health checkup <br />
+          worth Rs. 1999 and above</h4>
+      </div>
+      <div class="col-md-3"> <img src="assets/images/campaign/circle_02.png" />
+        <h4>Complete your<br />
+          Payment</h4>
+      </div>
+      <div class="col-md-3"> <img src="assets/images/campaign/circle_03.png" />
+        <h4>Get automatically enrolled <br />
+          for
+          Lucky Draw</h4>
+      </div>
+      <div class="col-md-3"> <img src="assets/images/campaign/circle_04.png" />
+        <h4>1 Lucky winner<br />
+          wins Renault KWID</h4>
+      </div>
+    </div>
+  </div>
+  <!--usp -->
+  
+  <div class="clear"></div>
+  
+  <!--terms -->
+  <div class="row terms">
+    <div class="container">
+      <h3>Terms & Conditions</h3>
+      <div class="col-md-6 bdr-rights">
+        <p><span class="arrowterms">&#10003;</span>Book a health checkup worth Rs.1999 or above and stand a chance to win Renault Kwid - STD 799 cc.</p>
+        <p><span class="arrowterms">&#10003;</span>To participate in the ‘Health se milegi Wealth ki Chaabi’ offer, the minimum billing value of 1 booking should be Rs.1999/- or above.</p>
+        <p><span class="arrowterms">&#10003;</span>To participate, you can book a health test for yourself or your family and/or both.</p>
+        <p><span class="arrowterms">&#10003;</span>You are eligible for the offer only after the payment is received by Healthians.</p>
+        <p><span class="arrowterms">&#10003;</span>You will receive an SMS after the payment, to confirm your participation.</p>
+        <p><span class="arrowterms">&#10003;</span>Your participation stands cancelled, if you avail a refund.</p>
+        <p><span class="arrowterms">&#10003;</span>The offer opens on 10/10/2017 and closes on 25/10/2017. </p>
+        <p><span class="arrowterms">&#10003;</span>The winner will be decided by a lucky draw.</p>
+        <p><span class="arrowterms">&#10003;</span>You can make multiple bookings worth Rs.1999/- or above for yourself and your family. Multiple chits (equivalent to the number of bookings) with your name will be added to the lucky draw, increasing your chance to win Renault Kwid - STD 799cc. For example, if you made 3 bookings during this time period of Rs.1999/ or more, then 3 different chits of your name will be added to the lucky draw.</p>
+        <p><span class="arrowterms">&#10003;</span>The lucky draw will be held on 29/10/2017 at a public place.</p>
+        <p><span class="arrowterms">&#10003;</span>All eligible entries will be duly informed about the time & location of the lucky draw.</p>
+        <p><span class="arrowterms">&#10003;</span>The lucky draw will be streamed live on Facebook also.</p>
+        <p><span class="arrowterms">&#10003;</span>Healthians will pay the ex-showroom price for Renault Kwid - STD 799 cc; any additional costs (registration cost, insurance cost, road tax etc.) will be borne by the winner. </p>
+        <p><span class="arrowterms">&#10003;</span>All applicable taxes/duties/levies for the gift (prize) given by Expedient Healthcare Marketing Private Limited shall be borne by the Winner. </p>
+        <p><span class="arrowterms">&#10003;</span>By participating in ‘Health se milegi Wealth ki Chaabi’ offer, an entrant is indicating his/her agreement to be bound by these terms and conditions.</p>
+        <p><span class="arrowterms">&#10003;</span>By participating you agree that you are not assured of any prize but you shall have a fair chance of winning a Renault Kwid - STD 799 cc by the draw conducted on 29/10/17. </p>
+        <p><span class="arrowterms">&#10003;</span>All residents of India who have completed 18 years of age on the date of entry/participation are eligible to participate in the offer. </p>
+        <p><span class="arrowterms">&#10003;</span>By entering the offer, you hereby warrant that all information submitted by you in your entry is true, accurate and complete in every respect</p>
+        <p><span class="arrowterms">&#10003;</span>No responsibility can be accepted for entries not received for whatever reason.</p>
+      </div>
+      <div class="col-md-6 terms-right">
+        <p><span class="arrowterms">&#10003;</span>The prize shall be given to the winner on production of valid documents such as Photo and ID proof.</p>
+        <p><span class="arrowterms">&#10003;</span>The prize is as stated and no cash or other alternatives will be offered. The prize is not transferable.</p>
+        <p><span class="arrowterms">&#10003;</span>The winner will be notified through the contact number and email address provided by him/her at the time of booking of the health test.</p>
+        <p><span class="arrowterms">&#10003;</span>Healthians will notify the winner when and where the prize can be collected / is delivered.</p>
+        <p><span class="arrowterms">&#10003;</span>The promoter of the ‘Health se milegi Wealth ki Chaabi’ offer is Healthians; a brand owned by Expedient Healthcare Marketing Private Limited with registered office at A-26, 1st Floor, Omega Centre, Infocity, Sector 34, Gurugram, Haryana 122001.</p>
+        <p><span class="arrowterms">&#10003;</span>If the winner cannot be contacted or does not claim the prize within 14 days of notification, we reserve the right to withdraw the prize from the winner and pick a replacement winner.</p>
+        <p><span class="arrowterms">&#10003;</span>Healthians reserves the right to cancel or amend the offer and these terms and conditions without notice in the event of a catastrophe, war, civil or military disturbance, act of God or any actual or anticipated breach of any applicable law or regulation or any other event outside of the promoter’s control. Any changes to the offer will be notified to entrants as soon as possible by the promoter.</p>
+        <p><span class="arrowterms">&#10003;</span>Healthians shall have the right, at its sole discretion and at any time, to change or modify these terms and conditions, such change shall be effective immediately upon posting to this webpage.</p>
+        <p><span class="arrowterms">&#10003;</span>Healthians’ decision in respect of all matters to do with the offer will be final and no correspondence will be entered into.</p>
+        <p><span class="arrowterms">&#10003;</span>Employees of Healthians, sponsors of the prizes, associated agencies, participating operators and their immediate family members and relatives are not eligible to participate in this offer.</p>
+        <p><span class="arrowterms">&#10003;</span>The challenge and these terms and conditions will be governed by Indian law and any disputes will be subject to the exclusive jurisdiction of the courts of Gurugram.</p>
+        <p><span class="arrowterms">&#10003;</span>The winner agrees to the use of his/her name and image in any publicity material, as well as their entry. Any personal data relating to the winner or any other entrants will be used solely in accordance with current data protection legislation and will not be disclosed to a third party without the entrant’s prior consent.</p>
+      </div>
+      <div class="clear"></div>
+      
+    
+    </div>
+    
+  </div>
+  
+  <!--terms --> 
+  
+</div>
+<!--diwali campaign ends here --> 
+
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->
+
+<login-modal visible="compaignmsg">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p class="signedUp">Thank You for sharing your details with us. Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.</p>
+    </div>
+</login-modal>
+<style type="text/css">
+.zopim {
+    display: none !important;
+}
+</style>

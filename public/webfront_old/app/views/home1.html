@@ -1,0 +1,650 @@
+<style>
+/*tags-input .tags .input{ margin:0px 0px 0px 0px !important; min-height:54px !important; }*/
+</style>
+<!--video div panel -->
+<div ng-show="video" class="slidingDiv">
+    <a href="javascript:void(0)" class="show_hide close_vdo" ng-click="video = !video">&#10006;</a>
+</div>
+<!--video div panel ends here -->
+<!-- <tags-input ng-model="tags"></tags-input> -->
+<div class="clear"></div>
+<div class="MainWrapper">
+    <!--header section starts here -->
+    <header>
+        <div class="headerwbg">
+            <section class="headerleft">
+                <div class="logo">
+                    <a href="/"><img src="assets/images/healthians-logo.png" alt="Healthians" title="Healthians"></a>
+                </div>
+                <!--DETECT LOCATION -->
+                <div class="detectLocation">
+                    <nav>
+                        <ul class="locationHeader">
+                            <!-- <div class="detect_location">
+        
+          <select class="select-top selectcitytop"   id="searchcity" name="searchcity" ng-model="searchCity" ng-options="cities.city_name as cities.city_name for cities in cityList" ng-change="findCityDetail(searchCity);"><span class="arrow_thin"></span>
+         
+          </select>
+        </div> -->
+                            <li> <a href="javascript:void(0)" ng-bind="searchCity" ng-click="listCity();"><span class="arrow_thin"></span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="detect-drop-down" style="display:none;">
+                        <ul class="sub_menu" ng-repeat="city in cityList">
+                            <li class="arrow_top"></li>
+                            <li>
+                                <a href="" ng-bind="city.city_name" ng-click="selectCity(city.city_name);"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--DETECT LOCATION ENDS HERE -->
+                <div class="clear"></div>
+            </section>
+            <section class="headerRightMenus">
+                <div class="fl callus"> Book your Tests or Talk to a Doctor at
+                    <br> (+011)
+                    <span>3399-9933</span> </div>
+                <!--  <div class="logindv"><a href=""  class="defaultcolor" ng-click="signup = !signup">JOIN US</a> -->
+                <div ng-show="loggedin" style="display:none;"><a href="" class="defaultcolor">Hi  <span ng-bind="user"></span></a></div>
+                <div>
+                    <div class="loginOptions">
+                        <div class="LoginTypepanel" ng-show="signup||login1||forgotpwd||changepwd">
+                            <ul>
+                                <li><a href="" ng-click="signupShow();">Sign Up</a></li>
+                                <li><a href="" ng-click="loginShow();">Login</a></li>
+                                <!-- <li><a href="" ng-click="chnagePwdShow();">Change Password</a></li> -->
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="topcheckupslider" ng-show="signup">
+                            <span class="dropDownArrow"></span>
+                            <h2>Your destination to a healthier you!</h2>
+                            <a class="closenav" href="" ng-click="closealllogin();"><img src="assets/images/close_nav.png"></a>
+                            <form name="signupForm" novalidate>
+                                <table width="100%" cellspacing="10" cellpadding="5" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="mandatory">
+                                                <font style="color:red;">*</font> All fields are mandatory.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="username" id="username" type="text" placeholder="Enter your Name" data-ng-model="signupForm.userName" class="text-field" ng-class="{ 'has-error': ((signupForm.username.$dirty && signupForm.username.$error.required) || (signupFormSubmitted && !signupForm.userName)) }" autofocus required/>
+                                                <span ng-show="((signupForm.username.$dirty && signupForm.username.$error.required) || (signupFormSubmitted && !signupForm.userName))" class="help-block">Username is required</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="userphone" id="userphone" type="text" ng-blur="visited = true" placeholder="Enter Mobile Number" maxlength="10" data-ng-model="signupForm.userPhone" class="text-field" ng-class="{ 'has-error': ((signupForm.userphone.$dirty && signupForm.userphone.$error.required) || (signupFormSubmitted && !signupForm.userPhone))||(signupForm.userphone.$error.pattern && visited) }" ng-pattern="/^\d{10}$/" autofocus required/>
+                                                <span ng-show="((signupForm.userphone.$dirty && signupForm.userphone.$error.required) || (signupFormSubmitted && !signupForm.userPhone))||(signupForm.userphone.$error.pattern && visited)" class="help-block">Mobile No. is required</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="useremail" id="useremail" type="email" placeholder="Enter your Email ID" data-ng-model="signupForm.userEmail" class="text-field" ng-class="{ 'has-error': ((signupForm.useremail.$dirty && signupForm.useremail.$error.required) || (signupFormSubmitted && !signupForm.userEmail)) }" autofocus required/>
+                                                <span ng-show="((signupForm.useremail.$dirty && signupForm.useremail.$error.required) || (signupFormSubmitted && !signupForm.userEmail))" class="help-block">Email ID is required</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="userpwd" id="userpwd" type="password" placeholder="Enter Password" data-ng-model="signupForm.userPwd" class="text-field" ng-class="{ 'has-error': ((signupForm.userpwd.$dirty && signupForm.userpwd.$error.required) || (signupFormSubmitted && !signupForm.userPwd)) }" autofocus required/>
+                                                <span ng-show="((signupForm.userpwd.$dirty && signupForm.userpwd.$error.required) || (signupFormSubmitted && !signupForm.userPwd))" class="help-block">Password is required</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="userconfmpwd" id="userconfmpwd" type="password" placeholder="Enter Confirm Password" data-ng-model="signupForm.userConfmPwd" class="text-field" ng-class="{ 'has-error': ((signupForm.userconfmpwd.$dirty && signupForm.userconfmpwd.$error.required) || (signupFormSubmitted && !signupForm.userConfmPwd)) }" autofocus required/>
+                                                <span ng-show="((signupForm.userconfmpwd.$dirty && signupForm.userconfmpwd.$error.required) || (signupFormSubmitted && !signupForm.userConfmPwd))" class="help-block">Confirm Password is required</span>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="emailExits">
+                                            <td>
+                                                <div>Email allready exist.</div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="passwordnotmatched">
+                                            <td>
+                                                <div>Password not matched.</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="button" value="Register" class="submitbtn" id="s_sub" ng-click="sigup(signupForm.$valid)">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="joinus-Login" ng-show="login1">
+                            <span class="dropDownArrow"></span>
+                            <h2>Login!</h2>
+                            <a class="closenav" href="" ng-click="closealllogin();"><img src="assets/images/close_nav.png"></a>
+                            <form name="loginForm" novalidate>
+                                <table width="100%" cellspacing="3" cellpadding="3" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="mandatory">
+                                                <font style="color:red;">*</font> All fields are mandatory.</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color:#006600; font-size:15px; font-family:font-family: 'latoregular'; display:none;" id="login_msg">
+                                                <font style="color:red;">*</font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="useremail" id="useremail" type="text" placeholder="Enter Email ID" data-ng-model="loginForm.userEmail" class="text-field" ng-class="{ 'has-error': ((loginForm.useremail.$dirty && loginForm.useremail.$error.required) || (loginFormSubmitted && !loginForm.userEmail)) }" autofocus required/>
+                                                <span ng-show="((loginForm.useremail.$dirty && loginForm.useremail.$error.required) || (loginFormSubmitted && !loginForm.userEmail))" class="help-block">Email ID is required</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="userpwd" id="userpwd" type="password" placeholder="Enter Password" data-ng-model="loginForm.userPwd" class="text-field" ng-class="{ 'has-error': ((loginForm.userpwd.$dirty && loginForm.userpwd.$error.required) || (loginFormSubmitted && !loginForm.userPwd)) }" autofocus required/>
+                                                <span ng-show="((loginForm.userpwd.$dirty && loginForm.userpwd.$error.required) || (loginFormSubmitted && !loginForm.userPwd))" class="help-block">Password is required</span>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="loginfail">
+                                            <td>
+                                                <div>Password doesn't matched.</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="button" value="SIGN IN" class="submitbtn" id="login_btn" ng-click="login(loginForm.$valid)">
+                                                <a class="forgetpw" id="forget_link" href="" ng-click="forgotShow()">Forgot Password</a>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="joinus-Login" ng-show="forgotpwd">
+                            <span class="dropDownArrow"></span>
+                            <h2>Forgot password!</h2>
+                            <a class="closenav" href="" ng-click="closealllogin();"><img src="assets/images/close_nav.png"></a>
+                            <form name="forgotpwdForm" novalidate>
+                                <table width="100%" cellspacing="3" cellpadding="3" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td style="color:#414042; font-size:9.61px; font-family:font-family: 'latoregular';">
+                                                <font style="color:red;">*</font> All fields are mandatory.</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color:#006600; font-size:15px; font-family:font-family: 'latoregular'; display:none;" id="login_msg">
+                                                <font style="color:red;">*</font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="useremail" id="useremail" type="email" placeholder="Enter Email ID" data-ng-model="forgotpwdForm.userEmail" class="text-field" ng-class="{ 'has-error': ((forgotpwdForm.useremail.$dirty && forgotpwdForm.useremail.$error.required) || (forgotpwdFormSubmitted && !forgotpwdForm.userEmail)) }" autofocus required/>
+                                                <span ng-show="((forgotpwdForm.useremail.$dirty && forgotpwdForm.useremail.$error.required) || (forgotpwdFormSubmitted && !forgotpwdForm.userEmail))" class="help-block">Email ID is required</span>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="forgotdata">
+                                            <td>
+                                                <div>New password sent successfully to your Email ID</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="button" value="Submit" class="submitbtn" id="" ng-click="forgotPassword(forgotpwdForm.$valid)">
+                                                <a class="forgetpw" id="forget_link" href="#">Forgot Password</a>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="joinus-Login" ng-show="changepwd">
+                            <h2>Change password!</h2>
+                            <a class="closenav" href="" ng-click="closealllogin();"><img src="assets/images/close_nav.png"></a>
+                            <form name="changepwdForm" novalidate>
+                                <table width="100%" cellspacing="3" cellpadding="3" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input name="useroldpwd" id="useroldpwd" type="password" placeholder="Enter Old Password" data-ng-model="changepwdForm.userOldPwd" class="text-field" ng-class="{ 'has-error': ((changepwdForm.useroldpwd.$dirty && changepwdForm.useroldpwd.$error.required) || (changepwdFormSubmitted && !changepwdForm.userEmail)) }" autofocus required/>
+                                                <span ng-show="((changepwdForm.useroldpwd.$dirty && changepwdForm.useroldpwd.$error.required) || (changepwdFormSubmitted && !changepwdForm.userOldPwd))" class="error-message">Enter old password</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="useremail" id="useremail" type="password" placeholder="Enter New Password" data-ng-model="changepwdForm.userEmail" class="text-field" ng-class="{ 'has-error': ((changepwdForm.useremail.$dirty && changepwdForm.useremail.$error.required) || (changepwdFormSubmitted && !changepwdForm.userEmail)) }" autofocus required/>
+                                                <span ng-show="((changepwdForm.useremail.$dirty && changepwdForm.useremail.$error.required) || (changepwdFormSubmitted && !changepwdForm.userEmail))" class="error-message">Enter new password</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="usereconfrmmail" id="usereconfrmmail" type="password" placeholder="Enter Confirm Password" data-ng-model="changepwdForm.userConfmEmail" class="text-field" ng-class="{ 'has-error': ((changepwdForm.usereconfrmmail.$dirty && changepwdForm.usereconfrmmail.$error.required) || (changepwdFormSubmitted && !changepwdForm.userConfmEmail)) }" autofocus required/>
+                                                <span ng-show="((changepwdForm.usereconfrmmail.$dirty && changepwdForm.usereconfrmmail.$error.required) || (changepwdFormSubmitted && !changepwdForm.userConfmEmail))" class="error-message">Enter confirm password</span>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="confirmpwdmsg">
+                                            <td>
+                                                <div>NewPassword/ConfirmPassword mismatched!</div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="invalidmsg">
+                                            <td>
+                                                <div>Invalid Credentials!</div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="setpwdmsg">
+                                            <td>
+                                                <div>Password changed sucessfully!</div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="setpwdmsgerror">
+                                            <td>
+                                                <div>Some Error Occured!</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="button" value="Update" class="submitbtn" id="" ng-click="setPassword(changepwdForm.$valid)">
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="tglmenu"> <a href="javascript:void(0)" id="toggle"><span></span></a>
+                    <div id="menu">
+                        <span class="arrow_menu"></span>
+                        <div ng-show="!loggedin">
+                            <h3>Welcome User</h3></div>
+                        <div ng-show="loggedin">
+                            <h3><a href=""  class="defaultcolor">Welcome  <span ng-bind="user"></span></a></h3></div>
+                        <ul>
+                            <!-- <li><a href="#">Your Profile</a></li>
+                <li><a href="#about">Your Reports</a></li> -->
+                            <li ng-show="!loggedin"><a href="" ng-click="downloadreport();">Dowload Report</a></li>
+                            <li><a href="#contact">Support/Help</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                            <li ng-show="!loggedin"><a href="" ng-click="signupShow();">Sign Up</a></li>
+                            <li ng-show="!loggedin"><a href="" ng-click="loginShow();">Login</a></li>
+                            <li ng-show="loggedin"><a href="#dashboard">My Account</a></li>
+                            <li ng-show="loggedin"><a href="" ng-click="chnagePwdShow();">Change Password</a></li>
+                        </ul>
+                        <h4 ng-show="loggedin"><a href="#" ng-click="sigOut();">Sign Out</a></h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- <div class="logindv" ng-show="loggedin"><a href="" ng-click="sigOut();">SIGN OUT</a></div> -->
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <!--search box starts here-->
+        <section class="homesearchbox">
+            <div class="headingtext">Find your way to a <span>healthier</span> you.</div>
+            <div class="clear"></div>
+            <div class="searchWrap">
+                <div class="detect_location">
+                    <select class="homeselect" id="searchcity" name="searchcity" ng-model="searchCity" ng-options="cities.city_name as cities.city_name for cities in cityList" ng-change="findCityDetail(searchCity);">
+                        <!--  <option value=""> Select City</option> -->
+                    </select>
+                </div>
+                <div class="tags" ng-click="popularPackageList = 'True'">
+                    <!-- <div class="tags" style="height:50px;"> -->
+                    <tags-input ng-model="tags" add-from-autocomplete-only="true" display-property="text">
+                        <auto-complete source="loadTags($query)"></auto-complete>
+                    </tags-input>
+                </div>
+                <div class="rightBtn">
+                    <input type="button" class="actionBtn" ng-click="searchResult()" value="Search" name="" ng-disabled="nosearch">
+                </div>
+                <!--package panel -->
+                <div class="popularPkgsContainer" ng-show="popularPackageList">
+                    <div class="populartests">
+                        <h2>Popular Tests <span>(click to select multiple)</span></h2>
+                        <span class="closepackage" ng-click="popularPackageList = !popularPackageList"><a href="" class="closepackagebtn"><img src="assets/images/close_nav.png"></a></span>
+                        <div class="clear"></div>
+                        <ul>
+                            <!--        <li ng-repeat ="(key, value) in popularTest1" ng-click="checkSelection($event)"><a id="{{value.tcategory_id}}" href="" ng-bind="value.tcategory_name"></a></li> -->
+                            <li ng-repeat="(key, value) in popularTest1" ng-click="checkSelection($event)"><a id="{{value.tcategory_id}}" href="">{{value.tcategory_name | titleCase}}</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                        <h2>Popular Packages <span>(click to select multiple)</span></h2>
+                        <div class="clear"></div>
+                        <ul>
+                            <!--      <li ng-repeat ="(key, value) in popularPackages1" ng-click="checkSelection($event)"><a id="{{value.package_id}}" href="" ng-bind="value.package_name"></a></li> -->
+                            <li ng-repeat="(key, value) in popularPackages1" ng-click="checkSelection($event)"><a id="{{value.package_id}}" href="">{{value.package_name | titleCase }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--package panel -->
+            </div>
+            <div class="clear"></div>
+            <div class="how-it-works"><a href="#" class="show_hide" style="float:left;" ng-click="video = !video"><span class="circle"></span>How it works?</a></div>
+        </section>
+        <!--search box ends here -->
+        <div class="clear"></div>
+        <!-- <section class="how-it-works">
+            <a href="#" class="" style="float:left;" ng-click="video = !video"><span class="circle"></span>How it works?</a>
+          </section> -->
+        <div class="clear"></div>
+        <!--header section ends here -->
+        <div class="clear"></div>
+    </header>
+</div>
+<div class="clear"></div>
+<div class="clear"></div>
+<!--USP Panel starts here -->
+<section id="USPPanel">
+    <article class="uspMiddleSection">
+        <!--usp01 -->
+        <!--<figure class="lowestlabreport bounce shake-vertical-slow shake-constant"> -->
+        <div class="shake-vertical-slow shake-constant fl">
+            <figure class="lowestlabreport bounce">
+                <div class="legendIcon"><img src="assets/images/flipper-Icon01.png"></div>
+                <figcaption>Lowest lab&nbsp; charges</figcaption>
+            </figure>
+        </div>
+        <!--usp01 ends here -->
+        <!--usp02 -->
+        <div class="shake-vertical-slow shake-constant fl">
+            <figure class="freecollection bounce">
+                <div class="legendIcon"><img src="assets/images/flipper-Icon02.png"></div>
+                <figcaption>free sample collection</figcaption>
+            </figure>
+        </div>
+        <!--usp02 ends here -->
+        <!--usp03 -->
+        <div class="shake-vertical-slow shake-constant fl">
+            <figure class="callwithdoctor bounce">
+                <div class="legendIcon"><img src="assets/images/flipper-Icon03.png"></div>
+                <figcaption>free call with doctor</figcaption>
+            </figure>
+        </div>
+        <!--usp03 ends here -->
+        <!--usp04 -->
+        <div class="shake-vertical-slow shake-constant fl">
+            <figure class="reportstorage bounce">
+                <div class="legendIcon"><img src="assets/images/flipper-Icon04.png"></div>
+                <figcaption>online report storage</figcaption>
+            </figure>
+        </div>
+        <!--usp04 ends here -->
+        <div class="clear"></div>
+    </article>
+    <div class="clear"></div>
+</section>
+<!--USP Panel ends here -->
+<div class="clear"></div>
+<!--healthians work philosophy -->
+<section class="wellness-philosophy">
+    <div class="wellnessmid">
+        <div class="titlemsg animateblock top animated"><img src="assets/images/procedure-title.png" width="225" height="118" alt="" title=""> </div>
+        <div class="clear"></div>
+        <div class="animateblock centerleft fl"> <img src="assets/images/healthier.png" alt="happier">
+        </div>
+        <div class="animateblock centerleft fl"> <img src="assets/images/plusImage.png" alt="plus" class="plus"> </div>
+        <div class="animateblock centerleft fl"> <img src="assets/images/longer.png" alt="longer">
+        </div>
+        <div class="animateblock centerleft left fl"> <img src="assets/images/equalsImage.png" alt="" class="equals"> </div>
+        <div class="animateblock centerleft Marginleft fl"> <img src="assets/images/happier.png" alt="happier">
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+<!--healthians work philosophy-->
+<div class="clear"></div>
+<!--healthians plus section starts here -->
+<section id="healthiansPLUS">
+    <div class="Midpanel">
+        <!--right area -->
+        <div class="featuredPanel">
+            <div class="toparea">
+                <div class="LogoHPlus"><img src="assets/images/healthians_plus_logo.png"></div>
+                <div class="logoright">
+                    <h2>Use Healthians plus<br>
+            to stay healthy for years.</h2>
+                    <div class="clear"></div>
+                    <p>This software constantly tracks your vital health parameters through periodic tests and recommends preventive steps over the years.</p>
+                </div>
+                <div id="scrollToHere"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="Roundpanel">
+                <div class="clear"></div>
+                <div class="take_assesmentStyle"><a target="_blank" href="http://www.healthians.com/healthians-plus">Take Assessment</a> </div>
+            </div>
+        </div>
+        <!--right area ends here -->
+    </div>
+</section>
+<!--healthians plus section ends here -->
+<div class="clear"></div>
+<div class="clear"></div>
+<!--COUNTER BOX STARTS HERE -->
+<section class="labcounter">
+    <div class="networklab"><img src="assets/images/networklabsgrp.png"></div>
+    <div class="w1000">
+        <div class="cities">
+            <h3>NEW DELHI</h3>
+            <span class="counter" style="display: block;">17</span> </div>
+        <div class="cities">
+            <h3>GURGAON</h3>
+            <span class="counter" style="display: block;">13</span> </div>
+        <div class="cities">
+            <h3>NOIDA</h3>
+            <span class="counter" style="display: block;">10</span> </div>
+        <div class="cities">
+            <h3>GHAZIABAD</h3>
+            <span class="counter" style="display: block;">8</span> </div>
+        <div class="cities">
+            <h3>FARIDABAD</h3>
+            <span class="counter" style="display: block;">5</span> </div>
+    </div>
+    <div class="clear"></div>
+</section>
+<!--COUNTER BOX ENDS HERE -->
+<div class="clear"></div>
+<!--Client Testimonials starts here -->
+<section class="clientTestimonial">
+    <h1>They recommend Healthians</h1>
+    <div class="clear"></div>
+    <article class="commentarea testimonials">
+        <!--Feedback 1 -->
+        <div class="slide">
+            <div class="clientpic"><img src="assets/images/ClientPic.png">
+                <div class="clear"></div>
+                <span>Xxxxxx Xxxxxxxx<br>
+
+Age: 25 years</span>
+            </div>
+            <div class="textFeedback">
+                <p>I want to thank healthians.com and my friend who recommended me to go for self body checkups., as it helped me to take preventive measures against some body deficiencies and diseases.</p>
+                <p>The best part of Healthians.com is that people can pro actively book desired health checkups recommended by physicians or by self online and samples will be collected at the desired time and location of the customers.</p>
+                <p>I am very happy with the timely service provided.</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Feedback 1 ends here -->
+        <!--Feedback 2 -->
+        <div class="slide">
+            <div class="clientpic"><img src="assets/images/ClientPic.png">
+                <div class="clear"></div>
+                <span>Xxxxxx Xxxxxxxx<br>
+
+Age: 25 years</span>
+            </div>
+            <div class="textFeedback">
+                <p>I want to thank healthians.com and my friend who recommended me to go for self body checkups., as it helped me to take preventive measures against some body deficiencies and diseases.</p>
+                <p>The best part of Healthians.com is that people can pro actively book desired health checkups recommended by physicians or by self online and samples will be collected at the desired time and location of the customers.</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Feedback 2 ends here -->
+        <!--Feedback 3 -->
+        <div class="slide">
+            <div class="clientpic"><img src="assets/images/ClientPic.png">
+                <div class="clear"></div>
+                <span>Xxxxxx Xxxxxxxx<br>
+
+Age: 25 years</span>
+            </div>
+            <div class="textFeedback">
+                <p>The best part of Healthians.com is that people can pro actively book desired health checkups recommended by physicians or by self online and samples will be collected at the desired time and location of the customers.</p>
+                <p>I am very happy with the timely service provided.</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Feedback 3 ends here -->
+    </article>
+    <div class="clear"></div>
+</section>
+<!--Client Testimonials ends here -->
+<div class="clear"></div>
+<!--IN NEWS-->
+<section class="mediacoverage">
+    <h1>Look who’s talking about Healthians</h1>
+    <div class="midpanel">
+        <ul>
+            <li>
+                <a target="_blank" href="http://www.business-standard.com/article/companies/yuvraj-singh-invests-in-online-healthcare-marketplace-healthians-com-115062300843_1.html/">
+                    <img src="assets/images/business-standard.png"> </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://tech.economictimes.indiatimes.com/news/startups/healthians-funding-yuvraj-singh-youwecan-ventures/47781365"> <img src="assets/images/the-economics-times.png"> </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://www.thehindu.com/business/cricketer-yuvraj-singh-turns-investor-bets-big-on-startups/article7350867.ece"> <img src="assets/images/thehindu.png"> </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://www.vccircle.com/news/technology/2015/06/23/online-marketplace-preventive-health-check-healthians-raises-funding"> <img src="assets/images/vc-circle.png"> </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://yourstory.com/2015/06/yuvraj-singh-youwecan-ventures-healthians/"> <img src="assets/images/your-story.png"> </a>
+            </li>
+            <li class="middlerowLft mr72 ml150 mt22">
+                <a target="_blank" href="https://www.youtube.com/watch?v=oIKXEUskNoA"> <img src="assets/images/bloomberg.png"> </a>
+            </li>
+            <li class="mr72">
+                <a target="_blank" href="https://www.youtube.com/watch?v=2cTGRStBvZs"> <img src="assets/images/zee-news.png"> </a>
+            </li>
+            <li class="mr72">
+                <a target="_blank" href="https://www.youtube.com/watch?v=lkRTyiKiGf4"> <img src="assets/images/cnbc.png"> </a>
+            </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</section>
+<!--IN NEWS ENDS HERE -->
+<div class="clear"></div>
+<!--PHLEBO -->
+<section class="feedbackPhlebo">
+    <h1>Making Healthians Proud</h1>
+    <div class="clear"></div>
+    <article class="commentarea phlebofeedbacks">
+        <!--Feedback 1 -->
+        <div class="slide">
+            <div class="clientpic"><img src="assets/images/starpic01.png">
+                <div class="clear"></div>
+                <span>Prince<br>
+        <figure>DMLT</figure>
+        </span> </div>
+            <div class="textFeedback">
+                <p>Dear Prince, I am really appreciate your smooth work and now a "Big Fan" of Healthians for quick services and provided an employee like you.
+                    <br />
+                    <br />
+                    <br />
+                    <em>Regards,<br />
+          Manish Kumar Roy</em> </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Feedback 1 ends here -->
+        <!--Feedback 2 -->
+        <div class="slide">
+            <div class="clientpic"><img src="assets/images/starpic02.png">
+                <div class="clear"></div>
+                <span>Raj <br>
+        <figure>BSc. MLT</figure>
+        </span> </div>
+            <div class="textFeedback">
+                <p>Your sample collector Mr. Raj Tiwari came to collect blood samples from me and my wife. He wore a gloves before taking blood samples. He was very kind and patience.
+                    <br />
+                    <br /> Regards,
+                    <br /> Murli
+                    <br /> Kerala Ayurvedic Massage Therapist </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Feedback 2 ends here -->
+        <!--Feedback 3 -->
+        <div class="slide">
+            <div class="clientpic"><img src="assets/images/starpic03.png">
+                <div class="clear"></div>
+                <span>Dilip Pal<br>
+        <figure>DMLT</figure>
+        </span> </div>
+            <div class="textFeedback">
+                <p> I am pleased to inform you that Mr. DILIP PAL is sincere and punctual devoting to his duties as he has collected the sample of blood of mine sharp at 7.30 am promised he is having a good behavior and hope he will prove an asset to your company.
+                    <br />
+                    <br /> with best wishes
+                    <br /> Mushir Khan </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Feedback 3 ends here -->
+        <!--Feedback 4 -->
+        <div class="slide">
+            <div class="clientpic"><img src="assets/images/starpic04.png">
+                <div class="clear"></div>
+                <span>Parveen Duggal<br>
+
+    <figure>DMLT</figure></span>
+            </div>
+            <div class="textFeedback">
+                <p>
+                    This morning I was visited by Mr Parveen Duggal, technician for sample collection, he was extremely Nice, soft spoken, and well trained technician, he really knew his business. I am getting my KFT / LFT done past few month, but this was the best experience, better than Lal pathlabs, very higenic and painlessly done.
+                    <br /> Thank you Praveen!!! Thank you Healthians!
+                    <br />
+                    <br /> ‎Sanjay Singh
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Feedback 4 ends here -->
+        <!--Feedback 5 -->
+        <div class="slide">
+            <div class="clientpic"><img src="assets/images/starpic05.png">
+                <div class="clear"></div>
+                <span>Nihal <br>
+        <figure>DMLT</figure>
+        </span> </div>
+            <div class="textFeedback">
+                <p> The Blood sample had been taken by Mr. Nihal and his behavior found really satisfactory towards me.
+                    <br /> Thanks again for your effort.
+                    <br />
+                    <br /> Regards
+                    <br /> Ranjeet Singh </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Feedback 5 ends here -->
+    </article>
+    <div class="clear"></div>
+</section>
+<!--PHLEBO PANEL -->
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here -->

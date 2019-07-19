@@ -1,0 +1,572 @@
+<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<style type="text/css">
+.paybuttons input[type="radio"]:checked+label span {
+    background-color: #00a0a8;
+    font-weight: bold;
+    border: 1px solid #00a0a8;
+}
+</style>
+<div class="clear"></div>
+<!--sample collection feedback starts here -->
+<!--container starts here -->
+
+<div class="container">
+
+    <div class="general-feedback-panel">
+        <div class="interactive-feeds general_feedbck">
+            <div ng-hide="datasuccess">
+                <div class="general-feedback-info-area">
+                    <h6>Questionnaire</h6>
+                    <p>In our continuous effort to serve you better, we are seeking your help with our feedback questionnaires below:</p>
+                </div>
+                <div class="totalquestion">Question {{current}} of {{totalQuestion}}</div>
+                <div class="int-question-panel">
+                    <form action="" method="get">
+                        <!--question 1 -->
+                        <article class="step" ng-show="quest.q1" id="q1_div">
+                            <h2>How did you got to know about healthians ? </h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q1_select=='SMS'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="know_healthians_1" name="know_healthians" value="SMS" ng-model="reference_source" ng-required="true" ng-click="clickRadio(1,'SMS')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="know_healthians_1" onclick>SMS</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q1_select=='Reference'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="know_healthians_2" name="know_healthians" value="Reference" ng-model="reference_source" ng-required="true" ng-click="clickRadio(1,'Reference')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="know_healthians_2" onclick>Reference</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q1_select=='Existing Customer'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="know_healthians_3" name="know_healthians" value="Existing Customer" ng-model="reference_source" ng-required="true" ng-click="clickRadio(1,'Existing Customer')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="know_healthians_3" onclick>Existing Customer</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q1_select=='Facebook'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="know_healthians_4" name="know_healthians" value="Facebook" ng-model="reference_source" ng-required="true" ng-click="clickRadio(1,'Facebook')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="know_healthians_4" onclick>Facebook</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q4_select=='Google'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="know_healthians_5" name="know_healthians" value="Google" ng-model="reference_source" ng-required="true" ng-click="clickRadio(1,'Google')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="know_healthians_5" onclick>Google</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" style="display:none;" name="next_q1" id="next_q1" value="Next" ng-show="quest.q1_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 2 -->
+                        <article class="step" ng-show="quest.q2" id="q2_div">
+                            <h2>How was your Experience of placing your order with us ? </h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q2_select=='Poor'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="order_exp_1" name="order_exp" value="Poor" ng-model="booking_experience" ng-required="true" ng-click="clickRadio(2,'Poor')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="order_exp_1" onclick>Poor</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q2_select=='Average'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="order_exp_2" name="order_exp" value="n" ng-model="booking_experience" ng-required="true" ng-click="clickRadio(2,'Average')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="order_exp_2" onclick>Average</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q2_select=='Good'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="order_exp_3" name="order_exp" value="Good" ng-model="booking_experience" ng-required="true" ng-click="clickRadio(2,'Good')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="order_exp_3" onclick>Good</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q2_select=='Very Good'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="order_exp_4" name="order_exp" value="Very Good" ng-model="booking_experience" ng-required="true" ng-click="clickRadio(2,'Very Good')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="order_exp_4" onclick>Very Good</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q2_select=='Excellent'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="order_exp_5" name="order_exp" value="Excellent" ng-model="booking_experience" ng-required="true" ng-click="clickRadio(2,'Excellent')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="order_exp_5" onclick>Excellent</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q2" id="prev_q2" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input type="button" style="display:none;" name="next_q2" id="next_q2" value="Next" ng-show="quest.q2_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 3 -->
+                        <article class="step" ng-show="quest.q3" id="q3_div">
+                            <h2>How would you rate for sample collection process ? </h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q3_select=='Poor'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="sample_exp_1" name="sample_exp" value="Poor" ng-model="sample_collection_experience" ng-required="true" ng-click="clickRadio(3,'Poor')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="sample_exp_1" onclick>Poor</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q3_select=='Average'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="sample_exp_2" name="sample_exp" value="Average" ng-model="sample_collection_experience" ng-required="true" ng-click="clickRadio(3,'Average')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="sample_exp_2" onclick>Average</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q3_select=='Good'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="sample_exp_3" name="sample_exp" value="Good" ng-model="sample_collection_experience" ng-required="true" ng-click="clickRadio(3,'Good')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="sample_exp_3" onclick>Good</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q3_select=='Very Good'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="sample_exp_4" name="sample_exp" value="Very Good" ng-model="sample_collection_experience" ng-required="true" ng-click="clickRadio(3,'Very Good')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="sample_exp_4" onclick>Very Good</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q3_select=='Excellent'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="sample_exp_5" name="sample_exp" value="Excellent" ng-model="sample_collection_experience" ng-required="true" ng-click="clickRadio(3,'Excellent')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="sample_exp_5" onclick>Excellent</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q3" id="prev_q3" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input style="display:none;" type="button" value="Next" name="next_q3" id="next_q3" ng-show="quest.q3_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 4 -->
+                        <article class="step" ng-show="quest.q4" id="q4_div">
+                            <h2>Are you satisfied with Reports ?</h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q4_select=='y'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="report_exp_1" name="report_exp" value="y" ng-model="report_experience" ng-required="true" ng-click="clickRadio(4,'y')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="report_exp_1" onclick>Yes</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q4_select=='n'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="report_exp_2" name="report_exp" value="n" ng-model="report_experience" ng-required="true" ng-click="clickRadio(4,'n')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="report_exp_2" onclick>No</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q4" id="prev_q4" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input style="display:none;" type="button" value="Next" name="next_q4" id="next_q4" ng-show="quest.q4_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 5 -->
+                        <article class="step" ng-show="quest.q5" id="q5_div">
+                            <h2>How was your overall experience ? </h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q5_select=='Poor'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="overall_exp_1" name="overall_exp" value="Poor" ng-model="overall_experience" ng-required="true" ng-click="clickRadio(5,'Poor')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="overall_exp_1" onclick>Poor</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q5_select=='Average'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="overall_exp_2" name="overall_exp" value="Average" ng-model="overall_experience" ng-required="true" ng-click="clickRadio(5,'Average')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="overall_exp_2" onclick>Average</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q5_select=='Good'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="overall_exp_3" name="overall_exp" value="Good" ng-model="overall_experience" ng-required="true" ng-click="clickRadio(5,'Good')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="overall_exp_3" onclick>Good</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q5_select=='Very Good'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="overall_exp_4" name="overall_exp" value="Very Good" ng-model="overall_experience" ng-required="true" ng-click="clickRadio(5,'Very Good')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="overall_exp_4" onclick>Very Good</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q5_select=='Excellent'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="overall_exp_5" name="overall_exp" value="Excellent" ng-model="overall_experience" ng-required="true" ng-click="clickRadio(5,'Excellent')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="overall_exp_5" onclick>Excellent</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q5" id="prev_q5" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input style="display:none;" type="button" value="Next" name="next_q5" id="next_q5" ng-show="quest.q5_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 6 -->
+                        <article class="step" ng-show="quest.q6" id="q6_div">
+                            <h2>Previously where were you getting Test done ?</h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q6_select=='Dr. Lal'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="previous_testvendor_1" name="previous_testvendor" value="Dr. Lal" ng-model="previous_test_vendor" ng-required="true" ng-click="clickRadio(6,'Dr. Lal')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="previous_testvendor_1" onclick>Dr. Lal</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q6_select=='SRL'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="previous_testvendor_2" name="previous_testvendor" value="SRL" ng-model="previous_test_vendor" ng-required="true" ng-click="clickRadio(6,'SRL')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="previous_testvendor_2" onclick>SRL</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q6_select=='Thyrocare'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="previous_testvendor_3" name="discount_booking" value="Thyrocare" ng-model="previous_test_vendor" ng-required="true" ng-click="clickRadio(6,'Thyrocare')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="previous_testvendor_3" onclick>Thyrocare</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q6_select=='Healthians'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="previous_testvendor_4" name="discount_booking" value="Healthians" ng-model="previous_test_vendor" ng-required="true" ng-click="clickRadio(6,'Healthians')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="previous_testvendor_4" onclick>Healthians</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q6_select=='Others'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="previous_testvendor_5" name="discount_booking" value="nOthers" ng-model="previous_test_vendor" ng-required="true" ng-click="clickRadio(6,'Others')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="previous_testvendor_5" onclick>Others</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q6" id="prev_q6" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input style="display:none;" type="button" value="Next" name="next_q6" id="next_q6" ng-show="quest.q6_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 7 -->
+                        <article class="step" ng-show="quest.q7" id="q7_div">
+                            <h2>What did you liked the most in entire process ? </h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q7_select=='On-Time'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="best_process_feed_1" name="best_process_feed" value="On-Time" ng-model="best_process_feedback" ng-required="true" ng-click="clickRadio(7,'On-Time')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="best_process_feed_1" onclick>On-Time</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q7_select=='Everything'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="best_process_feed_2" name="best_process_feed" value="Everything" ng-model="best_process_feedback" ng-required="true" ng-click="clickRadio(7,'Everything')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="best_process_feed_2" onclick>Everything</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q7_select=='Sample Collection Process'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="best_process_feed_3" name="best_process_feed" value="Sample Collection Process" ng-model="best_process_feedback" ng-required="true" ng-click="clickRadio(7,'Sample Collection Process')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="best_process_feed_3" onclick>Sample Collection Process</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q7_select=='Cost'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="best_process_feed_4" name="best_process_feed" value="Cost" ng-model="best_process_feedback" ng-required="true" ng-click="clickRadio(7,'Cost')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="best_process_feed_4" onclick>Cost</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q7" id="prev_q7" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input style="display:none;" type="button" value="Next" name="next_q7" id="next_q7" ng-show="quest.q7_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 8 -->
+                        <article class="step" ng-show="quest.q8" id="q8_div">
+                            <h2>Test type ? </h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q8_select=='Preventive'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="test_ty_1" name="test_ty" value="Preventive" ng-model="test_type" ng-required="true" ng-click="clickRadio(8,'Preventive')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="test_ty_1" onclick>Preventive</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q8_select=='Chronic'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="test_ty_2" name="test_ty" value="Chronic" ng-model="test_type" ng-required="true" ng-click="clickRadio(8,'Chronic')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="test_ty_2" onclick>Chronic</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q8" id="prev_q8" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input style="display:none;" type="button" value="Next" name="next_q8" id="next_q8" ng-show="quest.q8_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 9 -->
+                        <article class="step" ng-show="quest.q9" id="q9_div">
+                            <h2>Would you like to refer any one for Healthians in future or you want to share any reference number for test ?</h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q9_select=='y'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="future_ref_1" name="future_ref" value="y" ng-model="future_reference" ng-required="true" ng-click="clickRadio(9,'y')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="future_ref_1" onclick>Yes</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q9_select=='n'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="future_ref_2" name="future_ref" value="n" ng-model="future_reference" ng-required="true" ng-click="clickRadio(9,'n')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="future_ref_2" onclick>No</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q9" id="prev_q9" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input style="display:none;" type="button" value="Next" name="next_q9" id="next_q9" ng-show="quest.q9_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 10 -->
+                        <article class="step" ng-show="quest.q10" id="q10_div">
+                            <h2>Any chronic disease ? </h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                   <div class="options-questionaire">
+                                                <input name="chronic_hist" id="chronic_hist" ng-model="chronic_history" type="text" class="form-control text ng-pristine ng-valid ng-touched">
+                                             
+          <button type="button" class="btn btn-default" style="padding:0px 7px; color:#fff;height: 34px !important; border-radius: 0px; background: #00a0a8;">
+      <span class="	glyphicon glyphicon-menu-right"></span> OK
+    </button>
+     
+                                            </div>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev" id="prev" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 11 -->
+                        <article class="step" ng-show="quest.q11" id="q11_div">
+                            <h2>Was this test prescribed by doctor ?</h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q11_select=='y'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="prescribed_1" name="prescribed" value="y" ng-model="is_prescribed_test" ng-required="true" ng-click="clickRadio(11,'y')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="prescribed_1" onclick>Yes</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="radius-selector" ng-class="{selectedaction: quest.q11_select=='n'}">
+                                                <div class="radio-btn">
+                                                    <input type="radio" id="prescribed_2" name="prescribed" value="n" ng-model="is_prescribed_test" ng-required="true" ng-click="clickRadio(11,'n')" />
+                                                    <label style="left:0px !important; top:2px !important; font-size:18px;line-height:25px;font-weight:normal;" for="prescribed_2" onclick>No</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev_q11" id="prev_q11" value="Back" ng-click="showPrevious();">
+                                        </li>
+                                        <li>
+                                            <input style="display:none;" type="button" value="Next" name="next_q11" id="next_q11" ng-show="quest.q11_select !== ''" ng-click="showNext();">
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                        <!--question 12 -->
+                        <article class="step" ng-show="quest.q12" id="q12_div">
+                            <h2>Remarks</h2>
+                            <div class="questionaire-one">
+                                <div class="ques-option">
+                                    <ul>
+                                        <li>
+                                            <div class="options-questionaire">
+                                                <textarea class="form-control ng-pristine ng-valid ng-valid-maxlength ng-touched" id="message" name="message" maxlength="500" ng-model="remarks" style="resize:none;height:65px;" placeholder="Enter your experience"></textarea>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="backnextbtn">
+                                    <ul>
+                                        <li>
+                                            <input type="button" name="prev" id="prev" value="Back" ng-click="showPrevious();">
+                                            <div class="submitgeneralfeedback">
+                                                <input type="button" name="send" value="Submit" class="btn btn-default submitted" ng-click="submit_feedback();">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </article>
+                    </form>
+                </div>
+            </div>
+            <!--thankyou msg -->
+            <div class="feedback-submit" ng-show="datasuccess">
+                <h5>Thank you for your feedback.</h5>
+                <p>We are working our best towards making your experience better.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

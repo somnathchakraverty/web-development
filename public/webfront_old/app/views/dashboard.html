@@ -1,0 +1,675 @@
+<div class="ContentWrap">
+    <div ui-view="header"></div>
+    <section class="dashboard">
+        <div class="profilenav">
+            <div class="midNav">
+                <ul>
+                	<li><a href="/dashboard" id="dashboard" class="selected">Dashboard</a></li>                    
+                    <li><a href="/mybooking" id="booking">My Booking</a></li>
+                    <li><a href="/myreport" id="report">My Report</a></li>
+                    <li><a href="/myaddress" id="report">My Address</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!-- <div ng-show="loaderVar" class="loader initial" style="font-size: 15px;margin-top:0px;"></div> -->
+        </div>
+        <div class="clear"></div>
+        <div class="profilePanel" ng-hide="loaderVar">
+            <div class="profilesectionLeft">
+                <div class="user-profile-left">
+                    <div class="leftpics">
+                        
+                        <div ng-if="stepsModel"> <img class="thumb" ng-src="{{stepsModel}}" /> </div>
+                        <div ng-if="!stepsModel"> <img class="thumb" src="assets/images/noimage.png"> </div>
+                        <div class="captions">
+                            <input type="file" id="uploadDoc" profilefile-model="myFile" class="qw" callback-fn="imageIsLoaded(doc)">
+                           <!--  <input id="upload" type='file' ng-model="Imageprofile" class="qw" onchange="angular.element(this).scope().imageUpload(this)" /> -->
+                            <span>Edit Photo</span></div>
+                    </div>
+                    <div class="infosections">
+                        <div class="personalInfobar">
+                          
+                            <h1><span ng-bind="username"></span> / <span ng-bind="profileData.user_detail.age"></span> / <span ng-bind="profileData.user_detail.gender"></span></h1>
+                            <i><a href="" ng-click="profileEdit();"><img src="assets/images/edit.png"></a></i>
+                            <div class="clear"></div>
+                           
+                            <div class="locate"><span ng-bind="city"></span>, <span ng-bind="country"></span></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="bodyInfosections">
+                            <div class="bodymeasure" ng-hide="editProfile">
+                                <div class="paramtr">
+                                    <span class="lefttitle">Blood Type</span>
+                                    <span class="infotitle" ng-bind="userBloodType"></span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="paramtr">
+                                    <span class="lefttitle">Weight (in Kgs)</span>
+                                    <span class="infotitle" style="padding-left:0px;" ng-bind="userWeight"></span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="paramtr">
+                                    <span class="lefttitle">Age</span>
+                                    <span class="infotitle" style="padding-left:0px;" ng-bind="userage"></span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="paramtr">
+                                    <span class="lefttitle">Gender</span>
+                                    <span class="infotitle" ng-if="usergender == 'F'">Female</span>
+                                    <span class="infotitle" ng-if="usergender == 'M'">Male</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="paramtr">
+                                    <span class="lefttitle">Height</span>
+                                    <span class="infotitle" ng-show="userHeight">{{userHeight/12 | num}}'{{userHeight%12}}"</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="paramtr">
+                                    <span class="lefttitle">
+                                    Waist <span style=" font-size:10px;">(in inches)</span>
+                                    </span>
+                                    <span class="infotitle" style="padding-left:0px;" ng-bind="userWaist"></span>
+                                </div>
+                                <div class="paramtr">
+                                    <span class="lefttitle">Company Name </span>
+                                    <span class="infotitle" style="padding-left:0px;" ng-bind="userCompanyName"></span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="paramtr hpl">
+                                    <span class="lefttitle">Health Insurance Company </span>
+                                    <span class="infotitle" style="padding-left:0px;" ng-bind="userInsuranceCompany"></span>
+                                </div>
+                                <div class="paramtr">
+                                    <span class="lefttitle">Email</span>
+                                   
+                                    <span class="infotitle" style="padding-left:0px;" ng-bind="userEmail"> </span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="paramtr">
+                                    <span class="lefttitle">Mobile</span>
+                                   
+                                    <span class="infotitle" style="padding-left:0px;">
+                                      <span>+{{country_code}} -</span><span ng-bind="userContact"></span>
+                                    </span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <!-- profile edit start -->
+                            <div class="bodymeasure editaction" ng-show="editProfile">
+                                <form name="profileUpdateForm" ng-submit="updateProfile(profileUpdateForm.$valid)" novalidate>
+                                    <div class="clear"></div>
+                                    <div class="paramtr"> <span class="lefttitle">Blood Type</span>
+                                        <span class="infotitle">
+                                          <select id="" name="" ng-model="userBloodType">
+                                            <option value="">Select Blood group</option>
+                                            <option value="O+">O +ve</option>
+                                            <option value="O-">O -ve</option>
+                                            <option value="A+">A +ve</option>
+                                            <option value="A-">A -ve</option>
+                                            <option value="B+">B +ve</option>
+                                            <option value="B-">B -ve</option>
+                                            <option value="AB+">AB +ve</option>
+                                            <option value="AB-">AB -ve</option>
+                                          </select>
+                                        </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="paramtr">
+                                        <span class="lefttitle pt3">
+                                            Weight <span style=" font-size:10px;">(in Kgs)</span>
+                                        </span>
+                                        <span class="infotitle">
+                                            <input id="userweight" name="userweight" type="text" ng-model="userWeight" ng-pattern="/^\d{0,3}$/" maxlength="3">
+                                            <span ng-show="profileUpdateForm.userweight.$error.pattern" class="help-block">Invalid Weight</span>
+                                        </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="paramtr">
+                                        <span class="lefttitle">Age </span>
+                                        <span class="infotitle">
+                                            <input id="userage" name="userage" type="text" ng-model="userage" maxlength="3" ng-pattern="/^\d{0,3}$/">
+                                            <span ng-show="profileUpdateForm.userage.$error.pattern" class="help-block">Invalid Age</span>
+                                        </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="paramtr pt10">
+                                        <span class="lefttitle">Gender</span>
+                                        <span class="infotitle">
+                                            <select id="" name="" ng-model="usergender" class="selgender">
+                                              <option value="">Select Gender</option>
+                                              <option value="F">Female</option>
+                                              <option value="M">Male</option>
+                                            </select>
+                                          </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="paramtr"> <span class="lefttitle">Height</span>
+                                        <span class="infotitle"> 
+                                        <select id="userheightfeet" name="userheightfeet" ng-model="userHeightFeet" ng-options="list.value as list.value for list in userHeightFeetList" ng-change="getHeight();" ng-required="true">
+                                        </select>
+                                        &nbsp;feet &nbsp;&nbsp;&nbsp;
+                                        <select id="userheightinch" name="userheightinch" ng-model="userHeightInch" ng-options="list.value as list.value for list in userHeightInchList" ng-change="getHeight();" ng-required="true">
+                                        </select>
+                                        &nbsp;Inches 
+                                      </span>
+                                    </div>
+                                    <div class="paramtr">
+                                        <span class="lefttitle" style="line-height:29px;">Waist 
+                                        <span style=" font-size:10px;">(in inches)</span>
+                                        </span>
+                                        <span class="infotitle">
+                                            <input id="userwaist" name="userwaist" type="text" maxlength="3" ng-model="userWaist" ng-pattern="/^\d{0,3}$/">
+                                            <span ng-show="profileUpdateForm.userwaist.$error.pattern" class="help-block">Invalid Waist</span>
+                                      </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="paramtr">
+                                        <span class="lefttitle pt2">Company Name</span>
+                                        <span class="infotitle">
+                                        <input id="usercompanyname" name="usercompanyname" type="text" ng-model="userCompanyName">
+                                      </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="paramtr">
+                                        <span class="lefttitle">Health Insurance Company</span>
+                                        <span class="infotitle">
+                                        <input id="userinsurancecompany" name="userinsurancecompany" type="text" ng-model="userInsuranceCompany">
+                                      </span>
+                                    </div>
+                                    <div class="paramtr">
+                                        <span class="lefttitle">Email</span>
+                                        <span class="infotitle mt11" ng-bind="userEmail"></span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="paramtr">
+                                        <span class="lefttitle">Mobile</span>
+                                        <span class="infotitle"><span>+91-</span>
+                                            <span ng-show="userContactDisabled" ng-bind="userContact">
+                                                
+                                            </span>
+                                            <span ng-hide="userContactDisabled">
+                                                <input id="usercontact" name="usercontact" type="text" ng-model="userContact" ng-required="true" ng-disabled="userContactDisabled" maxlength="10" minlength="10" ng-pattern="/^\d{10}$/">
+                                                <span ng-show="profileUpdateForm.usercontact.$error.required" class="help-block">
+                                                  Mobile No. is required
+                                                </span>
+                                                <span ng-show="profileUpdateForm.usercontact.$error.pattern" class="help-block">
+                                                  Only digit allowed
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="update_profile">
+                                        <input type="button" name="cancel_update_profile" value="Cancel" class="update_profile_btn" ng-click="cancelEdit();" style="margin: 15px 0px 0px 7px;">
+                                        <input type="submit" name="update_profile" value="Update" class="update_profile_btn" ng-disabled="profileUpdateForm.$invalid" style="width:100px;">
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- profile edit end -->
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <!--doctor comment area 
+                <div class="doc-comment-area" ng-if="docterCommentData">
+                    <h2>Doctor Comments </h2>
+                    <div class="clear"></div>
+                    <div class="commentarea">
+                        <ul>
+                            <li class="titles mr30">Last Consultation</li>
+                            <li class="titles">Comments</li>
+                        </ul>
+                        <div class="clear"></div>
+                        <ul>
+                            <div ng-repeat="comment in docterCommentData">
+                                <li class="dates" ng-bind="comment.updated_on | moment:'MMM DD, YYYY'"></li>
+                                <li class="doc-cmnt" ng-bind="comment.doctor_comment"></li>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="more" style="float:left;"><a href="" ng-click="docterComments();">View More</a></div>
+                    </div>
+                </div>
+                <!--doctor comment area -->
+                <div class="clear"></div>
+                <!--profile activity -->
+                
+                <!--profile activity -->
+                <div class="clear"></div>
+             
+               
+                <!--reports area -->
+            </div>
+            <!--right -->
+            <div class="hprightcontent">
+                <div class="prf_complete">
+                    <h3>Profile Completeness</h3>
+                    <div class="contentbx"><span ng-bind="profilecomplete"></span><span>%</span></div>
+                </div>
+                <div class="ur-vitals">
+                    <h3>Your Vitals</h3>
+                    <div class="contentbx">
+                        <ul>
+                            <li>
+                                <span class="toptitle">BMI SCORE</span>
+                                <span class="img" ng-if="bmi!=0">
+                                <img src="assets/images/bp-score.png">
+                              </span>
+                                <span class="img" ng-if="bmi==0">
+                                <img src="assets/images/added-circle.png">
+                              </span>
+                                <span class="btmtitle" ng-bind="bmi">35</span>
+                            </li>
+                            <li>
+                                <span class="toptitle">BMR Calculation</span>
+                                <span class="img" ng-if="bmr==0">
+                                <img src="assets/images/added-circle.png">
+                              </span>
+                                <span class="img" ng-if="bmr!=0">
+                                <img src="assets/images/bp-score.png">
+                              </span>
+                                <span class="btmtitle" ng-bind="bmr">75</span>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!--right -->
+        </div>
+    </section>
+    <div class="clear"></div>
+    <br><br><br>
+  
+    <!-- old report 
+    <div ng-show="oldreportFound">
+        <div class="clear" style="margin-bottom:0px;"></div>
+        <figure class="report-panel">
+            <h4>Old Report </h4>
+            <div class="myBookings">
+                <ul>
+                    <li><strong>Customer Name</strong></li>
+                    <li><strong>Report Date</strong></li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                </ul>
+                <ol ng-repeat="list in oldreportList">
+                    <li class="wid173" ng-bind="list.customer_name">
+                        <li ng-bind="list.report_date | moment:'MMM DD, YYYY'"></li>
+                        <li class="flexMob">
+                            <a href="javascript:void(0)" ng-click="getoldReport(list);" title="VIEW REPORT" class="tooltip">
+                                <img src="assets/images/pdf-icon.png">
+                            </a>
+                        </li>
+                        <li>&nbsp;</li>
+                </ol>
+            </div>
+        </figure>
+        <div class="clear" style="margin-bottom:40px;"></div>
+    </div>-->
+
+    <!--popup infos orderDetail-->
+    <div class="info-Popup" ng-show="orderDetail">
+        <div class="maskedOverlay"></div>
+        <div class="info-Popup">
+            <div class="popUpMid">
+                <h1>Order Detail 
+                  <a ng-click="closeBookingOrderDetail();" href="" class="closenav" style="float:right;">
+                    <img src="assets/images/close.png">
+                  </a>
+                </h1>
+            </div>
+            <div class="popsectionmid">
+                <table width="100%" border="0" cellspacing="" cellpadding="10">
+                    <tr bgcolor="#f7f7f7">
+                        <td class="t1title">Sample Collection Date : </td>
+                        <td class="t1info" ng-bind="order.sample_collection_date | moment:'dddd MMMM DD, YYYY'">
+                            Monday April 18, 2016
+                        </td>
+                    </tr>
+                    <tr bgcolor="#f7f7f7">
+                        <td class="t1title">Sample Collection Time : </td>
+                        <td class="t1title">
+                            <span ng-bind="order.slot_start_time">06:00</span> - <span ng-bind="order.slot_end_time">06:30 am</span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="clear" style="height:20px;"></div>
+                <div class="Order_Detail_title">
+                    <ul>
+                        <li class="title2">Order Summary</li>
+                        <!-- <li class="text3">LAB</li> -->
+                        <li class="text4">TEST / PACKAGE</li>
+                        <li class="text3">PRICE</li>
+                    </ul>
+                </div>
+                <div class="customer_Order_Detail">
+                    <ol ng-repeat="items in order.suborders">
+                        <li class="pInfo ptitle">{{items.customer_name | titleCase}}
+                            <br> {{items.customer_age}} years / {{items.customer_gender}}</li>
+                        <li class="fastingInfo" ng-if="items.fasting_required == 1">
+                            <div class="no-fasting-pop">Fasting required for {{items.fasting_time}} hours.</div>
+                        </li>
+                        <li class="fastingInfo" ng-if="items.fasting_required == 0">
+                            <div class="no-fasting-pop">No Fasting required</div>
+                        </li>
+                       
+                        <li class="odtb">
+                            <div class="itemOrders" ng-repeat="item in items.orders">
+                                <div class="pkgitemlist"> {{item.package_name}} </div>
+                                <div class="pkgitemprice"><span style="padding:0px 1px;" class="fontrupee">`</span>&nbsp;{{item.healthians_price}}</div>
+                            </div>
+                        </li>
+                    </ol>
+                    <table class="discount-coupon-hardcopy dash" border="0" cellspacing="0" cellpading="0" align="right">
+                        <tbody>
+                            <tr>
+                                <td class="ryt-tab" ng-show="hardcopy">Hardcopy Needed</td>
+                                <td ng-show="hardcopy" class="coupon-discounts ng-binding">
+                                    <span style="margin-right:5px; font-size:15px; color:rgba(255, 0, 0, 0.64);">+</span>
+                                    <span class="fontrupee">`</span>50
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                        <td class="title2">Payment Summary</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid #edeeee;">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr bgcolor="#f5f5f5" style="font-size:10px; color:#636466; text-align:center;">
+                                    <td style="padding:8px 0;" width="20%">PAYMENT DATE</td>
+                                    <td>MODE OF PAYMENT</td>
+                                    <td ng-if="order.coupon_code">COUPON APPLIED</td>
+                                    <td ng-if="order.coupon_code">DISCOUNT</td>
+                                    <td>AMOUNT TO BE PAID</td>
+                                    <td>AMOUNT PAID</td>
+                                </tr>
+                                <tr style="text-align:center; color:#414042; font-size:12px;">
+                                    <td ng-if="order.payment_date==null"></td>
+                                    <td ng-if="order.payment_date!=null">
+                                        <span ng-bind="order.payment_date | moment:'DD.MM.YYYY'"></span>
+                                    </td>
+                                    <td ng-if="order.order_type.toLowerCase() !='online'">Cash on Sample Collection</td>
+                                    <td ng-if="order.order_type.toLowerCase() =='online'">Online</td>
+                                    <td ng-if="order.coupon_code">
+                                        {{order.coupon_code}} - <span class="fontrupee">`</span>&nbsp;{{order.discounted_amount}}
+                                    </td>
+                                    <td style="color:red; padding:15px 0" ng-if="order.coupon_code">
+                                        {{order.discount_percent}}%
+                                    </td>
+                                    <td style="font-size:17px;">
+                                        <span class="fontrupee">`</span>{{order.total_amount | num}}
+                                    </td>
+                                    <td style="font-size:17px;" ng-if="order.amount_paid">
+                                        <span class="fontrupee">`</span>{{order.amount_paid}}
+                                    </td>
+                                    <td style="font-size:17px;" ng-if="!order.amount_paid">
+                                        <span class="fontrupee">`</span>&nbsp;0
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--popup infos -->
+    
+    <!--SHARE REPORT  reorderReport-->
+    <!--REORDER 
+    <div class="sharePanel">
+        <div class="maskedOverlay"></div>
+        <div class="shareDtlPopup">
+            <div class="popUpMid">
+                <h1>Report re-order 
+                  <a ng-click="closereportReorder();" href="" class="closenav" style="float:right;">
+                    <img src="assets/images/close.png">
+                  </a>
+                </h1>
+            </div>
+            <div class="panelBooking">
+                <div class="blockfield">
+                    <input name="" type="text" value="Gurgaon" ng-model="reorderCity" ng-disabled="true">
+                    <input name="" type="text" value="Locality" ng-model="reorderLocality" ng-disabled="true">
+                    <div class="clear"></div>
+                    <div class="date_icon">
+                        <input type="text" data-provide="datepicker" id="reorderdate" name="userdob" data-date-format="dd/mm/yyyy" data-date-autoclose="true" ng-model="userReorderDate" ng-class="{ 'has-error': ((getcustomerForm.userdob.$dirty && getcustomerForm.userdob.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.userDOB)) }" ng-required="true" placeholder="Choose Date" ng-change="getSlots(userReorderDate);" class="Collection Date dobtap chsdate" autocomplete="off">
+                        <div class="col-time" ng-show="!noTimeSlot">
+                            <select class="chstime" id="collectiontime" name="collectiontime" ng-model="userReorderTime" ng-required="true" ng-options="slot as slot.start_time + ' - ' + slot.end_time for slot in slots">
+                                <option value="">Choose Time</option>
+                            </select>
+                        </div>
+                        <div ng-show="noTimeSlot">No Slots available</div>
+                    </div>
+                    <div style="clear:both; padding-left:21px; font-size:11px; color:red;" ng-show="dateError">
+                        Select Date
+                    </div>
+                    <div style="clear:both; padding-left:21px; font-size:11px; color:red;" ng-show="slotError">
+                        Select Time-Slot
+                    </div>
+                    <input type="button" name="" value="Submit" class="submitbtn" style="margin-top:15px;" ng-click="reorderBooking();">
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--REORDER -->
+    <!-- Subscrptio start 
+    <div class="subscribePanel" ng-show="subscribe">
+        <div class="maskedOverlay"></div>
+        <div class="subscription-box">
+            <h4>Your Subscription
+              <div class="clo-btn">
+                <a href="" class="closenav" ng-click="closesubscription();">
+                  <img src="assets/images/close_nav.png">
+                </a>
+              </div>
+            </h4>
+            <form name="getsubscribeForm" novalidate>
+                <div class="subscriptio-row" style="padding-top:4px;">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                        <tr>
+                            <td valign="bottom" class="w155">Patient Name</td>
+                            <td width="28" valign="bottom">:</td>
+                            <td class="w388">
+                                <input type="text" name="" id="" ng-model="getsubscribeForm.name" class="scriptio-width" ng-disabled="true">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="bottom">Age</td>
+                            <td valign="top">:</td>
+                            <td>
+                                <input type="text" name="" value="" id="" ng-model="getsubscribeForm.age" class="ageInputs" ng-disabled="true">
+                                <label class="center-text">Gender </label>
+                                <select ng-model="getsubscribeForm.gender" ng-disabled="true">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="bottom">Address</td>
+                            <td valign="top">:</td>
+                            <td>
+                                <input type="text" name="" value="" id="" ng-model="getsubscribeForm.address" class="scriptio-width" ng-disabled="true">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="subscriptio-row">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                        <tr>
+                            <td class="w159"><strong>REPEAT BOOKING EVERY</strong></td>
+                            <td width="49">:</td>
+                            <td class="w357">
+                                <select name="day" id="day" size="1" ng-model="repeatDate">
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select name="month" id="month" size="1" ng-model="userBooking.repeat">
+                                    <option value="month">Month(s)</option>
+                                    <option value="week">Week(s)</option>
+                                    <option value="day">Day(s)</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="subscriptio-row">
+                    <table width="100%" border="0" cellspacing="1" cellpadding="5">
+                        <tr>
+                            <td width="155" valign="top">
+                                <strong>PREFERRED DAY(S)</strong>
+                                <span>(Click to select multiple days<br/>as per your flexibility)</span>
+                                <span>
+                                <input type="checkbox" name="" value="" ng-model="days" ng-click="checkAllDays(days);" id="date-11">
+                                <label for="date-11">No Preference</label>
+                              </span>
+                            </td>
+                            <td width="28" valign="top">:</td>
+                            <td width="388" valign="top">
+                                <ul class="date-list">
+                                    <li>
+                                        <input type="checkbox" name="" value="" ng-model="checkDay.monday" ng-checked="days" ng-disabled="dayFlag" ng-true-value="'1'" id="date-1">
+                                        <label for="date-1">Monday</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="" value="" ng-model="checkDay.tuesday" ng-checked="days" ng-disabled="dayFlag" ng-true-value="'2'" id="date-2">
+                                        <label for="date-2">Tuesday</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="" value="" ng-model="checkDay.wednesday" ng-checked="days" ng-disabled="dayFlag" ng-true-value="'3'" id="date-3">
+                                        <label for="date-3">Wednesday</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="" value="" ng-model="checkDay.thursday" ng-checked="days" ng-disabled="dayFlag" ng-true-value="'4'" id="date-4">
+                                        <label for="date-4">Thursday</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="" value="" ng-model="checkDay.friday" ng-checked="days" ng-disabled="dayFlag" ng-true-value="'5'" id="date-5">
+                                        <label for="date-5">Friday</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="" value="" ng-model="checkDay.saturday" ng-checked="days" ng-disabled="dayFlag" ng-true-value="'6'" id="date-6">
+                                        <label for="date-6">Saturday</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="" value="" ng-model="checkDay.sunday" ng-checked="days" ng-disabled="dayFlag" ng-true-value="'7'" id="date-7">
+                                        <label for="date-7">Sunday</label>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="subscriptio-row" style="border:none;">
+                    <table width="100%" border="0" cellspacing="1" cellpadding="5">
+                        <tr>
+                            <td width="155" valign="top">
+                                <strong>PREFERRED TIME SLOT</strong>
+                                <span>(Click to select multiple slots<br/>as per your flexibility)</span>
+                                <span>
+                                <input type="checkbox" name="" value="" ng-model="all" ng-click="checkAllSlot(all);" id="slot_all">
+                                <label for="slot_all">No Preference</label>
+                              </span>
+                            </td>
+                            <td valign="top" width="28">:</td>
+                            <td width="388">
+                                <ul class="time-list">
+                                    <li ng-repeat="list in preferslots track by $index">
+                                        <input type="checkbox" name="" value="" ng-model="checkSlot[$index]" id="{{$index}}" ng-checked="all" ng-disabled="slotFlag" ng-click="toggleSelection(list,checkSlot[$index])" />
+                                        <label for="{{$index}}">{{list.time}} - {{list.end_time_text}}</label>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>START AFTER</strong></td>
+                            <td>:</td>
+                            <td>
+                                <input type="text" data-provide="datepicker" id="subscribestart" name="subscribestart" data-date-format="yyyy-mm-dd" data-date-autoclose="true" ng-model="userStartDate" placeholder="Select Date" class="Collection Date dobtap" autocomplete="off">
+                            </td>
+                        </tr>
+                        <tr ng-show="subscriptionerror">
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <div class='has-error max-order-alert'>Please fill all details.</div>
+                            </td>
+                        </tr>
+                        <tr ng-show="errorallreadysubscribe">
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <div class='has-error max-order-alert'>Order already subscribed.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <input type="submit" name="" value="CONFIRM" id="" class="confirm-btn" ng-click="subscribeReport();">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- Subscrptio end -->
+    <!-- Subscrptio start subscribeThanks
+    <div class="subscribePanel" ng-show="subscribeThanks">
+        <div class="maskedOverlay"></div>
+        <div class="subscription-box">
+            <h4> Subscription
+              <div class="clo-btn">
+                <a class="closenav" href="" ng-click="closesubscription();">
+                  <img src="assets/images/close_nav.png">
+                </a>
+              </div>
+            </h4>
+            <div class="toppadd">
+                <p class="subscribeUp">Thank You for subscribing with us and showing the trust in Healthians.com</p>
+                <p class="subs-msg">You have opted for {{report.package_name}} starting {{userStartDate | moment:'MMM DD, YYYY'}} for every {{repeatDate}} {{userBooking.repeat}} at
+                    <span ng-if="selection == 'any'">any time</span>
+                    <span class="subs-msg" ng-if="selection.length > 1">your choosen slots :
+                    <ul class="subs-msg">
+                      <span ng-repeat="list in selectionSlots">
+                        <li>{{list.time}} - {{list.end_time_text}}</li>
+                      </span>
+                    </ul>
+                    </span>
+                </p>
+                <p class="subs-msg">The details of your subscription are emailed to your mentioned Id.</p>
+                <p class="subs-msg">Rest assured, you will receive the best of our care and service.</p>
+                <p class="subs-msg"><strong>Celebrate your health with us. Healthians.com.</strong></p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- Subscrptio end -->
+    <!--dashboard ends here -->
+    <div ui-view="footer"></div>
+</div>

@@ -1,0 +1,70 @@
+<div style="margin:0px auto;">
+    <form name="$parent.signupForm" class="material" novalidate>
+        <div class="groupset">
+            <ul>
+                <li>
+                    <i class="glyphicon glyphicon-user"></i>
+                    <input name="username" id="username" type="text" placeholder="Full Name" data-ng-model="signupForm.userName" class="text-field" ng-class="{ 'has-error': ((signupForm.username.$dirty && signupForm.username.$error.required) || (signupFormSubmitted && !signupForm.userName)) }" ng-pattern="/^[A-z. ]+$/" tabindex="1" autofocus required/>
+                    <span ng-show="((signupForm.username.$dirty && signupForm.username.$error.required) || (signupFormSubmitted && !signupForm.userName))" class="help-block">Username is required</span>
+                    <span ng-show="signupForm.username.$error.pattern" class="help-block">Enter valid name</span>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-envelope"></i>
+                    <input name="useremail" id="useremail" type="email" ng-blur="visited = true" placeholder="Email" data-ng-model="signupForm.userEmail" class="text-field" ng-class="{ 'has-error': ((signupForm.useremail.$dirty && signupForm.useremail.$error.required) || (signupFormSubmitted && !signupForm.userEmail)) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{3,5}$/" required tabindex="3" />
+                    <div ng-show="((signupForm.useremail.$dirty && signupForm.useremail.$invalid) || (signupFormSubmitted && !signupForm.userEmail))" class="help-block">
+                        <span ng-show="signupForm.useremail.$error.required"> Email is required</span>
+                        <span ng-show="signupForm.useremail.$error.pattern && visited && !signupForm.useremail.$error.required"> Enter valid Email</span>
+                    </div>
+                </li>
+                <li>
+                    <i class="glyphicon glyphicon-phone"></i>
+                    <input name="userphone" id="userphone" type="text" ng-blur="visited = true" placeholder="Mobile No." maxlength="10" data-ng-model="signupForm.userPhone" class="text-field" ng-class="{ 'has-error': ((signupForm.userphone.$dirty && signupForm.userphone.$error.required) || (signupFormSubmitted && !signupForm.userPhone))||(signupForm.userphone.$error.pattern && visited) }" ng-pattern="/^\d{10}$/" tabindex="2" autofocus required/>
+                    <span ng-show="((signupForm.userphone.$dirty && signupForm.userphone.$error.required) || (signupFormSubmitted && !signupForm.userPhone))||(signupForm.userphone.$error.pattern && visited)" class="help-block">Mobile No. is required</span>
+                </li>
+                <li><i class="glyphicon glyphicon-option-horizontal"></i>
+                    <input name="userpwd" id="userpwd" type="password" placeholder="Password" data-ng-model="signupForm.userPwd" class="text-field" ng-class="{ 'has-error': ((signupForm.userpwd.$dirty && signupForm.userpwd.$error.required) || (signupFormSubmitted && !signupForm.userPwd)) }" autofocus required tabindex="4" />
+                    <span ng-show="((signupForm.userpwd.$dirty && signupForm.userpwd.$error.required) || (signupFormSubmitted && !signupForm.userPwd))" class="help-block">Password is required</span>
+                </li>
+                <li><i class="glyphicon glyphicon-option-horizontal"></i>
+                    <input name="userconfmpwd" id="userconfmpwd" type="password" placeholder="Confirm Password" data-ng-model="signupForm.userConfmPwd" class="text-field" ng-class="{ 'has-error': ((signupForm.userconfmpwd.$dirty && signupForm.userconfmpwd.$error.required) || (signupFormSubmitted && !signupForm.userConfmPwd)) }" tabindex="5" ng-enter="sigup(signupForm.$valid);" autofocus required/>
+                    <span ng-show="((signupForm.userconfmpwd.$dirty && signupForm.userconfmpwd.$error.required) || (signupFormSubmitted && !signupForm.userConfmPwd))" class="help-block">Confirm Password is required</span>
+                </li>
+            </ul>
+            <div class="smlab">
+                <div class="remember">
+                    <input type="checkbox" name="userterms" id="userterms" ng-model="signupForm.terms" data-ng-checked="true" ng-click="termCheck();" ng-class="{ 'has-error': ((signupForm.userterms.$dirty && signupForm.userterms.$error.required) || (signupFormSubmitted && !signupForm.terms)) }" tabindex="6" ng-enter="sigup(signupForm.$valid);" ng-init="signupForm.terms=true"/>
+                    <span style="font-size:11px; line-height:23px;">I accept the <a href="/terms-condition" target="_blank" style="color:#2cb8b3;">Terms & Conditions, Disclaimer and Privacy Policy.</a></span>
+                </div>
+                <span ng-show="((signupForm.userterms.$dirty && signupForm.userterms.$error.required) || (signupFormSubmitted && !signupForm.terms))" class="help-block" style="clear:both; padding-left:21px; font-size:11px; color:red;">* Please accept terms & conditions by selecting the checkbox.
+                        </span>
+            </div>
+            <div class="signup">
+                <a href="" ng-click="sigup(signupForm.$valid);" tabindex="7">Sign Up</a>
+            </div>
+            <div>
+                <div class="loginfailed" ng-show="emailExits">Email already exist</div>
+                <div class="loginfailed" ng-show="phoneExits">Phone number already exist</div>
+                <div class="loginfailed" ng-show="passwordnotmatched">Password/Confirm password mismatched.</div>
+            </div>
+            <div class="already">
+                <span>Already have an account with us?</span>
+                <span class="loginbtn"><a href="" ng-click="showLoginForm();" tabindex="8">Login</a></span>
+            </div>
+            <div class="clear"></div>
+            <!--signUp social platforms -->
+            <div class="signUp-social">
+                <div class="option_acnt"><span><em>or</em></span></div>
+                <div class="fb-login">
+                    <button type="button" class="btn fb-btn" data-ng-click="FBLogin()" tabindex="9">Login with Facebook</button>
+                </div>
+                <div class="gp-login">
+                    <button type="button" class="btn gp-btn" data-ng-click="GPlusLogin()" tabindex="10">Login with Google Plus</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="smlab"></div>
+        </div>
+        <span ng-show="social_login_error" class="help-block" style="clear:both;font-size:9px;color:#F00;padding-top:0px;">{{social_login_error_msg}} </span>
+        <!--signUp social platforms -->
+    </form>
+</div>

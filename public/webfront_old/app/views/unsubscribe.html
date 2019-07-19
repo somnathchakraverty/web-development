@@ -1,0 +1,62 @@
+<!--header section starts here -->
+<style type="text/css">
+footer{ margin:20px 0px 0px 0px;}
+</style>
+
+<div>
+    <div id="topdiv">
+        <header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-lg-3 col-xs-6">
+                            <div class="inside_logo">
+                                <a href="/"><img src="https://cdn1.healthians.com/assets/images/logo_healthians.png" alt="Healthians - India's largest health & blood test service at home"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-xs-6 talign">
+                            <div class="call_ivr mbview" style="display:block !important; float:right; margin-top:20px; margin-right:0px; background:#00a0a8;">
+                                <a href="tel:{{companyphone.hyperlink_no}}" ng-show="mobileview">
+                                <i class="glyphicon glyphicon-earphone"></i>
+                                <span ng-bind="companyphone.display_no">999-888-000-5</span>
+                            </a>
+                               <a href="javascript:void(0);" ng-hide="mobileview">
+                                <i class="glyphicon glyphicon-earphone"></i>
+                                <span ng-bind="companyphone.display_no">999-888-000-5</span>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </header>
+    </div>
+</div>
+<!--header section ends here -->
+<div class="clear"></div>
+<!-- unsubscribe-->
+<div class="unsubscribe">
+    <div class="mid-area">
+        <div class="col-lg-8 col-xs-12">
+            <h1 ng-bind="api_message"></h1>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="mid-area">
+    <div class="col-lg-8 col-xs-12">
+        <p>Please note that you may continue to receive emails for a short time while our system updates your request.<br><br>
+            <em>Nevertheless,<br>We will miss you</em>
+        </p>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<figure class="unsubs-thumb"><img src="assets/images/unsubscribe.png"></figure>
+
+<div class="clear"></div>
+
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here -->

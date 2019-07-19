@@ -1,0 +1,107 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="ContentWrap">
+    <section class="checkOutwrapper">
+        <div class="checkoutMid">
+            <ul class="order-summary-list">
+                <li><a href=""><span class="active">1</span> <font class="active">Pick Location & Time</font></a></li>
+                <li><a href=""><span>2</span> <font>Order Summary</font></a></li>
+                <li><a href=""><span>3</span> <font>Confirm Address</font></a></li>
+                <li><a href=""><span>4</span> <font>Make Payment</font></a></li>
+            </ul>
+            <div class="clear"></div>
+            <div class="countertimer" ng-hide="true">Time left to complete this transaction : <span id="counter"></span>
+            </div>
+            <div class="pick-location-box">
+
+
+                <div class="msg-distance" ng-show="distanceError" ng-bind="distanceErrorMsg"></div>
+
+                <div class="locBillPanel">
+                    <div class="location-add">
+                        <input id="customerlocation" name="customerlocation" placeholder="Enter Locality" ng-model="getcustomerForm.location" type="text" ng-disabled="flag" ng-class="{ 'has-error': ((getcustomerForm.customerlocation.$dirty && getcustomerForm.customerlocation.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.location)) }" ng-keyup="customLocalitySearch()" ng-required="true" autocomplete="off" analytics-on="click" analytics-category="Timeslot Selection" analytics-event="Clicked Enter Locality">
+                        <div ng-show="addNewAddress" class="addNewLocatio">
+                            <a href="" analytics-on="click" analytics-category="Timeslot Selection" analytics-event="Clicked Add Location" analytics-label="{{getcustomerForm.location}}" ng-click="addNewLocation(getcustomerForm.location)">Add location</a>
+                        </div>
+                        <span style="line-height=26px;" ng-show="((getcustomerForm.customerlocation.$dirty && getcustomerForm.customerlocation.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.location))" class="error-message">Select location
+                        </span>
+                        <!--add from test suggestion -->
+                        <div class="locationsuggest" ng-show="hideSuggestedLocation">
+                            <ul>
+                                <!-- <h4>SUGGESTED SEARCHES</h4> -->
+                                <div class="clear"></div>
+                                <li ng-repeat="row in localityList" ng-click="checkSelection1(row);" class="suggestpackage"><a href="" id="{{row.loc_id}}" value="{{row.loc_id}}">{{row.location_name}}</a>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <!--add from test suggestion ends here -->
+                    </div>
+                    <div class="scnd-feild" ng-hide="newlocation">
+                        <input type="text" id="pac-input" placeholder="Locality" ng-model="chosenPlace" googleplace/>
+                    </div>
+                    <!-- <div><input id="pac-input"  ng-model="chosenPlace" googleplace/></div> -->
+                    <div class="flt-lft" ng-hide="newlocation">
+                        <div class="cdatetime">
+                            <div class="col-date flt-lft">
+                                <input type="text" data-provide="datepicker" id="collectiondate" name="collectiondate" data-date-format="yyyy/mm/dd" data-date-autoclose="true" ng-model="getcustomerForm.sampledate" ng-class="{ 'has-error': ((getcustomerForm.collectiondate.$dirty && getcustomerForm.collectiondate.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.sampledate)) }" ng-required="true" placeholder="Collection Date" ng-change="getTimeSlots(getcustomerForm.sampledate);" class="Collection Date" ng-disabled="flag">
+                                <span style="line-height:26px;" ng-show="((getcustomerForm.collectiondate.$dirty && getcustomerForm.collectiondate.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.sampledate))" class="error-message">Select collection date</span>
+                            </div>
+                            <div class="timeofcoll">
+                                <div class="col-time flt-lft" ng-hide="collectiontimeflag" ng-show="!noTimeSlot">
+                                    <select class="selectLocation" id="collectiontime" name="collectiontime" ng-model="getcustomerForm.sampletime" ng-class="{ 'has-error': ((getcustomerForm.collectiontime.$dirty && getcustomerForm.collectiontime.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.sampletime)) }" ng-required="true" ng-options="slot as slot.start_time + ' - ' + slot.end_time for slot in slots" ng-change="checkTime(getcustomerForm.sampletime.start_time);" ng-disabled="flag">
+                                        <option value="">Collection Time</option>
+                                    </select>
+                                    <div ng-show="showLoader && !noTimeSlot" class="loader initial" style="font-size: 10px;margin-top:0px;">
+                                    </div>
+                                    <span ng-show="((getcustomerForm.collectiontime.$dirty && getcustomerForm.collectiontime.$error.required) || (getcustomerFormSubmitted && !getcustomerForm.sampletime))" class="error-message">Select collection time
+                                    </span>
+                                </div>
+                                <div class="col-time" ng-show="noTimeSlot">No Slots Available</div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <!-- 
+                        <div class="precaustion" ng-show="firstPageList.custom_package.fasting !=0">* Requires 12 hours fasting (till morning)
+                        </div>-->
+                        <div class="clear"></div>
+                        <!-- This comment for button-->
+                        <!-- 
+                        <div class="confirmationBox">
+                            <div class="savetestbtn" ng-hide="alertDiv || noTimeSlot || samepkg">
+                                <a href="" ng-click="getcustomerdetails(getcustomerForm.$valid)">Confirm</a>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="clear"></div>
+                    <div class="text-dis" ng-hide="newlocation">{{chosenPlace}}</div>
+                </div>
+                <div class="newLocationadded" ng-show="newlocation">It seems your locality is out of our coverage area.
+                    <br /> Our team will Contact you shortly to enable this service for you.
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+
+            <div ng-init="loaderVar=false" class="paymentBtn" ng-show="getcustomerForm.location != undefined && getcustomerForm.sampledate != undefined && getcustomerForm.sampletime != undefined && !distanceError && chosenPlace">
+                <!-- <a ui-sref="order-summary" class="btn btn-primary">Continue</a> -->
+                <a class="btn btn-primary" analytics-on="click" analytics-category="Timeslot Selection" analytics-event="Clicked Continue Button on Pick Timeslot Screen" ng-click="continue();">
+                    <div>
+                        <div ng-show="hideContinue">continue</div>
+                        <div ng-show="loaderVar" class="loader initial loaderstyle1"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="goBackEdit">
+            <a href="" ng-click="editbooking();">Go back to Edit Package/Person</a>
+        </div>
+    </section>
+</div>
+<!--header section starts here -->
+<div class="noview-mobile" ui-view="footer"></div>
+<!--header section ends here -->
+

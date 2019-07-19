@@ -1,0 +1,120 @@
+<!--header section starts here -->
+
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<div class="cart_wrapper">  
+  <!--family wrapper starts here-->
+  <section class="family-panel">
+    <div class="family-wrapper">
+      <div class="family-mid">
+        <div class="midhead">
+          <div class="heading-cart">
+            <h1>My Cart</h1>
+            <p>Cart details your loved ones</p>
+          </div>
+          <a href="javascript:void(0);" class="continue cta-right mbviewremove" ng-click="checkout();"  analytics-on analytics-event="Click on Checkout Button" analytics-category="My Cart" analytics-label="{{userId}}" ng-show="total_cart_amount > 0">Checkout</a> 
+
+          <a href="/orderbook" class="continue cta-right mbwhitebtn" analytics-on analytics-event="Click on Add more Health Test button" analytics-category="My Cart" analytics-label="{{userId}}" ng-show="total_cart_amount > 0"> + Add more Health Test</a>
+
+        </div>
+        <div class="member-right-bar" ng-show="total_cart_amount > 0">
+          <div class="memberbar">Total Member : {{total_member}}</div>
+          <div class="cart-payment-amnt">
+            <font>Order Amount</font>
+            <div class="cartpayprice">
+            <div class="slashedrate">
+                  		<span class="fontrupee" style="padding:0px;"> `</span> {{healthiansamount}}                  
+                     </div>
+            <strong><span class="fontrupee" style="padding:0px;">`</span> {{total_cart_amount}}</strong></div> 
+          </div>
+          <div class="clear"></div>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <!--mid members panel -->
+        <div class="mid-member-row">
+
+
+		<!--Empty Cart -->
+        <div class="emptycart" ng-show="total_cart_amount == 0">
+          <div class="imagearea">
+            <img src="assets/images/empty_cart.png" />
+            <h4>Empty Health Cart</h4>
+            <p>Looks like you haven't selected any test yet.</p>
+            <p class="book-a-test"><a href="/orderbook" analytics-on analytics-event="Click on Book a Test Now button" analytics-category="My Cart" analytics-label="{{userId}}">Book a Test Now</a></p>
+          </div>
+        </div>
+		<!--Empty Cart -->
+        
+        
+          <!-- Family Member Listing -->
+          <section class="family-panel-view" ng-show="total_cart_amount > 0"> 
+            <div class="familyContainer" id="question-container-1" ng-repeat="items in cartData.customer_detail">
+              <div class="my_Family">        
+                <!-- Family Member Info Display -->
+                <div class="family-member-info"> 
+                  <span class="fm-username">
+                    <p ng-bind="items.customer_name"></p> <span>({{items.relation}})</span>
+                  </span>
+                  
+                  <span class="fm-gender" ng-show="items.customer_gender === 'M'">Male, </span>
+                  <span class="fm-gender" ng-show="items.customer_gender === 'F'">Female, </span>
+                  <span class="fm-age" ng-bind="items.customer_age"></span> 
+                </div>
+
+                <div class="memberwise-package">
+                  <div class="package_SList repeat-item" ng-repeat="pkg in items.deals">
+                    <div class="close_div"> <a class="icon-remove" href="javascript:void(0)" ng-click="package_delete_confirmation(items.customer_id, pkg.id, pkg.name, pkg.healthians_price);" title="Click to remove test/package">&times;</a> </div>
+                    
+                    
+                    <div class="cart_package">                    
+                      <div class="cart_Product">
+                        <h2 ng-bind="pkg.name"></h2>
+                        <div class="clear"></div>
+                        <span class="parameter_Count">Parameter ({{pkg.parameterCount}})</span>
+                      </div>
+                      <div class="cart_price">                    
+                        <div class="crossedPrice">
+                      		<span class="fontrupee" style="padding:0px;"> `</span> {{pkg.actual_price}}                  
+                        </div>                         
+                        <div class="actualPrice">
+                        	<span class="fontrupee" style="padding:0px;"> `</span> {{pkg.healthians_price}}
+                        </div>                    
+                      </div>                 
+                    
+                    </div>                     
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="clear"></div>
+        </div>
+        <!--mid members panel -->
+        <div class="continue-checkout" ng-show="total_cart_amount > 0">
+          <a href="javascript:void(0);" ng-click="checkout()" analytics-on analytics-event="Click on Checkout Button" analytics-category="My Cart" analytics-label="{{userId}}">Checkout</a>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</div>
+
+<!-- Delete Confirmation -->
+<message-modal visible="package_delete_visible">
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p style="font-size: 17px;"> Are you sure, you want to delete this item ? </p>
+        <div style="margin:0px auto;text-align: center;">
+            <button type="button" class="confirm_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="removeItemFromCart(deletePkg);">Yes</button>
+            <button type="button" class="confirm_modal_btn" data-dismiss="modal" aria-hidden="true" ng-click="closeMessageModal();">No</button>
+        </div>
+    </div>
+</message-modal>
+
+<!--family wrapper ends here --> 
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here --> 

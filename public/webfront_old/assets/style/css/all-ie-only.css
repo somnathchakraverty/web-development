@@ -1,0 +1,65 @@
+
+/**************IE9******************/
+body{ display:none !important;}
+.milestone ul li{margin:0 160px 0 0px \9;}
+tags-input .tags{ height:40px \9 !important;}
+.groupset i{ top:26px \9 !important;}
+tags-input .tags .input{height:41px \9 !important; line-height:42px \9 !important;  } 
+.groupset input{ padding-bottom:12px \9;}
+.searchbox .tags{ height:auto \9;}
+.panelBooking .personalInfo .fieldsType input[type="text"]{ padding-bottom:12px \9 !important;}
+.panelBooking .personalInfo .age-gender .age_T input[type="text"]{ padding-bottom:12px \9 !important;}
+.col-date input[type="text"]{ padding-bottom:12px \9 !important;}
+option{ font-family:Arial, Helvetica, sans-serif \9 !important;}
+.confirm-address-box ul li input[type="text"]{height:42px \9 !important;  } 
+.map-head .email-link li{ margin:0px 40px 0px 0px \9 !important;}
+.milestone ul li{ margin:0px 170px 0px 0px \9 !important;}
+.subscribe input[type="text"]{ padding:10px 8px 9px 8px \9 !important;}
+.popular-pkg-wrap-main{margin:-4px 0 0 148px \9 !important;}
+.test-listcontainer a.accordion-toggle{ padding-left:0px \9;}
+
+/**************IE9******************/
+
+
+/**************ie10***************/
+@media screen and (min-width:0) {
+
+.milestone ul li{margin:0 160px 0 0px;}
+tags-input .tags{ height:40px !important;}
+.groupset i{ top:26px !important;}
+tags-input .tags .input{height:41px !important; line-height:42px 
+.!important;  } 
+.groupset input{ padding-bottom:12px;}
+.searchbox .tags{ height:auto;}
+.panelBooking .personalInfo .fieldsType input[type="text"]{ padding-bottom:12px !important;}
+.panelBooking .personalInfo .age-gender .age_T input[type="text"]{ padding-bottom:12px !important;}
+.col-date input[type="text"]{ padding-bottom:12px !important;}
+option{ font-family:Arial, Helvetica, sans-serif !important;}
+.confirm-address-box ul li input[type="text"]{height:42px !important;  } 
+.map-head .email-link li{ margin:0px 40px 0px 0px !important;}
+.milestone ul li{ margin:0px 170px 0px 0px !important;}
+.subscribe input[type="text"]{ padding:10px 8px 9px 8px !important;}
+.popular-pkg-wrap-main{margin:-4px 0 0 148px !important;}
+.test-listcontainer a.accordion-toggle{ padding-left:0px;}   
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+body{ background:#f00 !important;}
+ .milestone ul li{margin:0 160px 0 0px;}
+.chat-header{ display:none !important;}
+tags-input .tags{ height:40px !important;}
+.groupset i{ top:26px !important;}
+tags-input .tags .input{height:41px !important; line-height:42px !important;  } 
+.groupset input{ padding-bottom:12px;}
+.searchbox .tags{ height:auto;}
+.panelBooking .personalInfo .fieldsType input[type="text"]{ padding-bottom:12px !important;}
+.panelBooking .personalInfo .age-gender .age_T input[type="text"]{ padding-bottom:12px !important;}
+.col-date input[type="text"]{ padding-bottom:12px !important;}
+option{ font-family:Arial, Helvetica, sans-serif !important;}
+.confirm-address-box ul li input[type="text"]{height:42px !important;  } 
+.map-head .email-link li{ margin:0px 40px 0px 0px !important;}
+.milestone ul li{ margin:0px 170px 0px 0px !important;}
+.subscribe input[type="text"]{ padding:10px 8px 9px 8px !important;}
+.popular-pkg-wrap-main{margin:-4px 0 0 148px !important;}
+.test-listcontainer a.accordion-toggle{ padding-left:0px;}  
+}

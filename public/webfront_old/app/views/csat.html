@@ -1,0 +1,78 @@
+<link type="text/css" rel="stylesheet" href="assets/style/css/font-awesome.min.css">
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+<!--Customer Satisfaction Survey -->
+<div class="csat_main">
+    <div class="csat_midpanel">
+        <div class="csat_left"><img src="assets/images/bg_csat.jpg" /></div>
+        <div class="csat_right">
+            <div class="mainsurvey">
+            <div ng-hide="feedback_success">
+                <h1>Customer Satisfaction Survey</h1>
+                
+                    <form name="addCSATForm" id="addCSATForm" novalidate>
+                        <div class="ratingcsat">
+                            <h3>Rate our Customer care executive ?</h3>
+                            <div class="step-option-rating csat_top">
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rating" ng-model="rating_info" ng-required="true" value="5" class="ng-pristine ng-untouched ng-invalid ng-invalid-required" required="required">
+                                    <label class="full" for="star5" title="Excellent - 5 stars"></label>
+                                    <input type="radio" id="star4" name="rating" ng-model="rating_info" ng-required="true" value="4" class="ng-pristine ng-untouched ng-invalid ng-invalid-required" required="required">
+                                    <label class="full" for="star4" title="Good - 4 stars"></label>
+                                    <input type="radio" id="star3" name="rating" ng-model="rating_info" ng-required="true" value="3" class="ng-pristine ng-untouched ng-invalid ng-invalid-required" required="required">
+                                    <label class="full" for="star3" title="Average - 3 stars"></label>
+                                    <input type="radio" id="star2" name="rating" ng-model="rating_info" ng-required="true" value="2" class="ng-pristine ng-untouched ng-invalid ng-invalid-required" required="required">
+                                    <label class="full" for="star2" title="Bad - 2 stars"></label>
+                                    <input type="radio" id="star1" name="rating" ng-model="rating_info" ng-required="true" value="1" class="ng-pristine ng-untouched ng-invalid ng-invalid-required" required="required">
+                                    <label class="full" for="star1" title="Worst - 1 star"></label>
+                                </fieldset>
+                                <div ng-show="((addCSATForm.rating.$dirty && addCSATForm.rating.$invalid) || (addFeedbackFormSubmitted && !addCSATForm.rating_info))" class="csat-csat-help-block">
+                                    <span ng-show="addCSATForm.rating.$error.required">Rating is required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="ratingcsat">
+                            <h4>How was the experience ?</h4>
+                            <select class="form-select minimal" id="reason" name="reason" ng-model="reason" ng-required="true" required="required">
+                                <option value="" selected="selected">Select</option>
+                                <option value="{{list.id}}" ng-repeat="list in reasons_list">{{list.value}}</option>
+                            </select>
+                            <div ng-show="((addCSATForm.reason.$dirty && addCSATForm.reason.$invalid) || (addFeedbackFormSubmitted && !addCSATForm.reason))" class="csat-csat-help-block">
+                                <span ng-show="addCSATForm.reason.$error.required">Experience is required</span>
+                            </div>
+                        </div>
+                        <div class="ratingcsat">
+                            <h4>Additional Remarks</h4>
+                            <textarea id="remarks" name="remarks" maxlength="500" ng-model="remarks" placeholder="Remarks"></textarea>
+                        </div>
+                        <div class="ratingsubmit">
+                            <input type="button" class="login_btns" value="Submit" name="login" ng-click="save_survey();" tabindex="4">
+                        </div>
+                    </form>
+                </div>
+                <div class="nps-feedback-panel" ng-show="feedback_success">
+                    <div class="csat_survey">
+                        <div  class="csat_success">
+                            <div class="csat_thankyou">
+                                <img src="https://www.healthians.com/assets/images/booking02.png" />
+                                <h4>Thank you for your feedback</h4>
+                                <p>We are working our best to make your experience better</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--Customer Satisfaction Survey Ends -->
+
+
+<!--thankyou msg -->
+
+<!--footer section starts here -->
+<div ui-view="footer"></div>

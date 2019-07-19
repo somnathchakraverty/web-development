@@ -1,0 +1,63 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        
+    <url>
+        <loc>https://www.healthians.com/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://www.healthians.com/about-us</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://www.healthians.com/career</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+
+    <url>
+        <loc>https://www.healthians.com/contact-us</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://www.healthians.com/deals</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://www.healthians.com/feedback</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://www.healthians.com/healthians-investors</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://www.healthians.com/healthians-media</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://www.healthians.com/labs</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://www.healthians.com/refund-policy</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>

@@ -1,0 +1,139 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<style type="text/css">
+.paybuttons input[type="radio"]:checked+label span {
+    background-color: #00a0a8;
+    font-weight: bold;
+    border: 1px solid #00a0a8;
+}
+</style>
+<div class="clear"></div>
+<!--general feedback starts here -->
+<div class="container">
+    <div class="general-feedback-panel">
+        <div class="general-feedback-info-area">
+            <h6>Sample Collection Feedback</h6>
+            <p>Please fill the questionaire on our sample collection process so we will able to give you better services </p>
+        </div>
+        <div class="generalfeeds">
+            <section ng-hide="datasuccess">
+                <form name="phelboForm" class="material" novalidate>
+                    <div class="mid-generalfeedback">
+                        <ul>
+                            <li style="padding-bottom:15px;">
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Did sample collector reach on time ?</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons">
+                                            <input type="radio" id="blood_collection_1" name="blood_collection" value="y" ng-model="on_time_blood_collection" ng-required="true">
+                                            <label for="blood_collection_1"><span></span>Yes</label>
+                                        </div>
+                                        <div class="paybuttons">
+                                            <input type="radio" id="blood_collection_2" name="blood_collection" ng-model="on_time_blood_collection" tabindex="1" value="n" ng-required="true">
+                                            <label for="blood_collection_2"><span></span>No</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((phelboForm.blood_collection.$dirty && phelboForm.blood_collection.$invalid) || (!phelboForm.blood_collection))" class="help-block">
+                                            <span ng-show="phelboForm.blood_collection.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li style="padding-bottom:15px;">
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Have you given any add-on on sample to phlebo ?</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons">
+                                            <input type="radio" id="add_on_1" name="add_on" value="y" ng-model="add_on_status" ng-required="true">
+                                            <label for="add_on_1"><span></span>Yes</label>
+                                        </div>
+                                        <div class="paybuttons">
+                                            <input type="radio" id="add_on_2" name="add_on" ng-model="add_on_status" value="n" ng-required="true">
+                                            <label for="add_on_2"><span></span>No</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((phelboForm.add_on.$dirty && phelboForm.add_on.$invalid) || (!phelboForm.add_on))" class="help-block">
+                                            <span ng-show="phelboForm.add_on.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li style="padding-bottom:15px;">
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Are you satisfied with sample collection process ?</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons">
+                                            <input type="radio" id="sample_satisfied_1" name="sample_satisfied" value="y" ng-model="sample_collection_experience" ng-required="true">
+                                            <label for="sample_satisfied_1"><span></span>Yes</label>
+                                        </div>
+                                        <div class="paybuttons">
+                                            <input type="radio" id="sample_satisfied_2" name="sample_satisfied" ng-model="sample_collection_experience" value="n" ng-required="true">
+                                            <label for="sample_satisfied_2"><span></span>No</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((phelboForm.sample_satisfied.$dirty && phelboForm.sample_satisfied.$invalid) || (!phelboForm.sample_satisfied))" class="help-block">
+                                            <span ng-show="phelboForm.sample_satisfied.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li style="padding-bottom:15px;">
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Was discount offered on next booking ?</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons">
+                                            <input type="radio" id="discount_booking_1" name="discount_booking" value="y" ng-model="future_discount_status" ng-required="true">
+                                            <label for="discount_booking_1"><span></span>Yes</label>
+                                        </div>
+                                        <div class="paybuttons">
+                                            <input type="radio" id="discount_booking_2" name="discount_booking" value="n" ng-model="future_discount_status" ng-required="true">
+                                            <label for="discount_booking_2"><span></span>No</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((phelboForm.discount_booking.$dirty && phelboForm.discount_booking.$invalid) || (!phelboForm.discount_booking))" class="help-block">
+                                            <span ng-show="phelboForm.discount_booking.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li style="padding-bottom:15px;">
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Did Phlebo provide personal contact number or
+                                        <br /> Toll free number <strong>(011-33999933)</strong> ?</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons">
+                                            <input type="radio" id="contact_info_1" name="contact_info" value="Personal" ng-model="tollfree_contact_info" ng-required="true">
+                                            <label for="contact_info_1"><span></span>Personal</label>
+                                        </div>
+                                        <div class="paybuttons">
+                                            <input type="radio" id="contact_info_2" name="contact_info" value="TollFree" ng-model="tollfree_contact_info" ng-required="true">
+                                            <label for="contact_info_2"><span></span>TollFree</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((phelboForm.contact_info.$dirty && phelboForm.contact_info.$invalid) || (!phelboForm.contact_info))" class="help-block">
+                                            <span ng-show="phelboForm.contact_info.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="submitgeneralfeedback">
+                            <input type="button" name="send" value="Submit" class="btn btn-default submitted" ng-click="submit_feedback();">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </section>
+            <section ng-show="datasuccess">
+              <div>
+                Thank you for giving feedback.
+              </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!--general feedback ends here -->
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

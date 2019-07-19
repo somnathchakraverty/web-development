@@ -1,0 +1,27 @@
+<div class="ContentWrap">
+    <!--header section starts here -->
+    <div ui-view="header"></div>
+    <!--header section ends here -->
+    <div class="clear"></div>
+    <!--checkOut panel starts here -->
+    <div class="summeryContainer">
+        <div class="summeryMid">
+            <!--order message starts here -->
+            <div class="failed-msg">
+                <div class="failedAction"><img src="assets/images/oops-msg.png"></div>
+                <h2>Your booking & service payment could not be processed.</h2>
+                <a href="javascript:void(0);" ng-click="tryAgain();"><h5>Please try again</h5></a>
+                <div class="clear"></div>
+            </div>
+            <div class="contactnos">If the problem persists, please call : <strong ng-bind="companyphone.display_no"></strong></div>
+            <!--order message ends here -->
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!--checkOut panel ends here -->
+    <!--search panel starts here -->
+    <div class="clear"></div>
+    <!--header section starts here -->
+    <div ui-view="footer"></div>
+    <!--header section ends here -->
+</div>

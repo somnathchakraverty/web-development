@@ -1,0 +1,46 @@
+<div style="margin:0px auto;" ng-controller="homeControllerLogin">
+    <div class="login-popup-order">
+        <div class="h-login-dialog">
+            <div class="closepop" aria-hidden="true" id="closeotpmodal" ng-click="closeOTPModal()"></div>
+            <!--usp box -->
+            <div class="usps-box">
+                <ul>
+                    <li> <i>&nbsp;</i> <span><strong>Customized</strong>Real Time Packages</span> </li>
+                    <li> <i>&nbsp;</i> <span><strong>Cost Effective</strong>Honest Price Guaranteed</span> </li>
+                    <li> <i>&nbsp;</i> <span><strong>Convenient</strong>Free Home Sample Collection</span> </li>
+                    <li> <i>&nbsp;</i> <span><strong>Carefree</strong>Accurate Results on Time</span> </li>
+                    <li> <i>&nbsp;</i> <span><strong>Complete</strong>Pro-active Wellness Support</span> </li>
+                </ul>
+            </div>
+            <!--usp box -->
+            <!--login register box -->
+            <div class="log-register-box">
+                <div class="col-md-12 form-signup-panel">
+                    <div class="otp-pop">
+                        <form name="signupOTP" id="signupOTP" class="material" novalidate>
+                            <h1>OTP has been sent to your mobile number</h1>
+                            <input name="userotp" id="userotp" type="text"  placeholder="Enter OTP" maxlength="4" ng-model="userOTP" class="otp-filed" autofocus required/>
+                            <span ng-show="((signupOTP.userotp.$dirty && signupOTP.userotp.$error.required) || (signupOTPFormSubmitted && !signupOTP.userotp))" class="error-otp" style="padding:10px 50px;">
+                                Enter OTP
+                            </span>
+
+                            <ul class="btn-otp">
+                                <li>
+                                    <input type="button" value="Resend OTP ?" ng-click="resendSignupOTP();">
+                                </li>
+                                <li>
+                                    <input type="button" value="Submit"  ng-click="submitSignupOTP();">
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <!--SIGNUP PANEL ENDS -->
+                <div class="clear"></div>
+            </div>
+            <!--login register box ends -->
+            <div class="claer"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

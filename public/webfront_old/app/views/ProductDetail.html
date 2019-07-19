@@ -1,0 +1,591 @@
+<div ui-view="header"></div>
+<!-- This div is used to indicate the original position of the scrollable fixed div. -->
+<div class="scroller_anchor"></div>
+<!-- This div will be displayed as fixed bar at the top of the page, when user scrolls -->
+<div class="scroller_icfleads">
+    <!--fixed lead capture -->
+    <div class="seo_leadcapture" id="seo_leadcapture">
+        <div class="container">
+            <div class="col-lg-8 col-md-8 col-xs-12">
+                <div class="seoleads-left">
+                    <form name="addLeadForm" novalidate>
+                        <div class="lcf_fields">
+                            <input name="customerno" id="customerno_ad" type="text" maxlength="10" ng-model="customerNo" tabindex="1" placeholder="Mobile Number" ng-pattern="/^\d{10}$/" autocomplete="off" ng-required="true" ng-enter="sendLeadDetails();" class="name_cust" />
+                            <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block" style="text-align: left;color:red;"> <span ng-show="addLeadForm.customerno.$error.required">Mobile No. is required</span> <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required && addLeadForm.customerno.$touched"> Enter valid Mobile </span> </div>
+                        </div>
+                        <div class="lcf_fields">
+                            <input name="name" id="name_ad" type="text" ng-model="customerName" ng-pattern="/^[A-Za-z ]+$/" tabindex="2" placeholder="Enter Name" autocomplete="off" required="true" ng-enter="sendLeadDetails()" class="name_cust" />
+                            <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block" style="text-align: left;color:red !important;"> <span ng-show="addLeadForm.name.$error.required">Name is required</span> <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required"> Enter valid Name </span> </div>
+                        </div>
+                        <div class="gcapcha-seotop" id="seo_top"></div>
+                        <div class="lcf_usp_mobile">
+                            <div class="lcf_uspservices">
+                                <ul>
+                                    <li>Free Sample Pickup</li>
+                                    <li>NABL Labs</li>
+                                    <li>Free Health Counseling</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lcf_fields">
+                            <input type="button" class="get_callback_btn" name="send" tabindex="3" value="Get A Call Back Now" ng-click="sendLeadDetails()" analytics-on="click" analytics-category="SEO Page - Lead Form" analytics-event="Get Free call now">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 lcf_uspweb_hidden">
+                <div class="lcf_uspservices">
+                    <ul>
+                        <li>Free Sample Pickup</li>
+                        <li>NABL Accredited Labs</li>
+                        <li>Free Health Counseling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--fixed lead capture ends -->
+</div>
+<div class="clear">
+    <div class="clear">
+        <!--header section ends here -->
+        <!-- loader -->
+        <div class="clear"></div>
+        <div class="container prod-detail">
+            <div class="bread">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>»</li>
+                    <li> <a href="/{{deal_type}}" ng-bind="deal_type"></a> </li>
+                    <li>»</li>
+                    <li class="active" ng-bind="pkgDetail.package_name"></li>
+                </ol>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="container test-detail" ng-show="loading">
+            <loading></loading>
+        </div>
+        <!-- package detail-->
+        <div class="container promotion-box" ng-show="!loading">
+            <div class="col-lg-12">
+                <div class="seo-detail-panel">
+                    <section class="main-head">
+                        <div class="profile-detail">
+                            <h1 ng-bind-html="pkgDetail.package_name"></h1>
+                            <p>Get tested for {{pkgDetail.package_name}}, know your health better</p>
+                        </div>
+                        <div class="amount-save" ng-show="pkgDetail.healthians_price > 0"> <span>Healthians Price : <span class="fontrupee">`</span>
+                            <p class="market_price"> {{pkgDetail.actual_price}}</p>
+                            </span>
+                            <div class="clear"></div>
+                            <span class="our_price"> Limited Time Offer : <span class="fontrupee" style="padding:0px;">`</span> <strong>{{pkgDetail.healthians_price}}</strong> </span>
+                            <div class="clear"></div>
+                            <span class="saved_price"> SAVE {{(pkgDetail.actual_price-pkgDetail.healthians_price)/pkgDetail.actual_price*100 | number : 0}}% </span> </div>
+                    </section>
+                    <div class="clear"></div>                    
+                    
+                    <div class="profile-info">
+                        <h2 ng-if="pkgDetail.description">Why test for {{pkgDetail.package_name}}?</h2>
+                        <p ng-bind-html="pkgDetail.description"></p>
+
+                        <div class="age_Group" ng-if="pkgDetail.age_group.length>0 || pkgDetail.gender">
+                            <h2>Recommended for </h2>
+                            <ul class="recomendation">
+                                <li ng-show="pkgDetail.age_group.length>0"> Age Group &nbsp;&nbsp;:&nbsp;&nbsp; <span ng-repeat="age in pkgDetail.age_group"> <strong ng-bind="age"></strong> </span> </li>
+                                <li ng-show="pkgDetail.gender"> Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp; <span ng-bind="pkgDetail.gender"></span> </li>
+                            </ul>
+                        </div>                        
+                        
+                        <div class="clear"></div>
+                        <div class="mid-book" ng-show="pkgDetail.healthians_price > 0">
+                            <div class="col-lg-7 col-xs-12">
+                            
+                                <table width="100%" class="parameterinfos" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td><figure> <img src="assets/images/para-icon.png"> </figure>
+                                      <p>Parameters Included: <strong ng-bind="pkgDetail.parameter_included"></strong> </p></td>
+                                    <td><figure> <img src="assets/images/clock.png"> </figure>
+                                      <p>Reporting Time: <strong ng-bind="pkgDetail.reporting_time+' Hours'"></strong> </p></td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2"><figure> <img src="assets/images/meal.png"> </figure>
+                                      <p>Fasting Time: <span ng-if="pkgDetail.fasting_time <= 0">Not required</span> <strong ng-if="pkgDetail.fasting_time > 0" ng-bind="pkgDetail.fasting_time+' Hours'"></strong> 
+                                       </p>
+                                    </td>
+                                  </tr>
+                                  <tr ng-if="pkgDetail.other_info">
+                                    <td colspan="2"><figure> <img src="assets/images/other-icon.png"> </figure>
+                                      <p>Other Info: <strong ng-bind-html="pkgDetail.other_info"></strong></p>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                        <a ng-if="pkgDetail.precautions" href="#more_precautions">View more precautions</a>
+                                    </td>
+                                  </tr>
+                                </table>
+                                 
+                                <div class="clear"></div>    
+                              
+                            </div>
+                            <!--<div class="col-lg-7 col-xs-12">
+                               
+                            </div> -->
+                            <div class="col-lg-5 col-xs-12">
+                            
+                                <div class="float_right">
+                            
+                                    <a href="javascript:void(0);" class="new-book book-now" ng-click="pkgSearch(pkgDetail);" analytics-on="click" analytics-category="{{deal_type.toUpperCase()}}" analytics-event="Clicked on Book Now" analytics-label="Top right book - {{pkgDetail.package_name}}">Book Now</a>
+                                
+                                    <a href="javascript:void(0);" class="callback_customer" ng-click="callToBook(pkgDetail.package_name);" analytics-category="{{deal_type.toUpperCase()}}" analytics-event="Click on Get a Call Back" analytics-label="{{pkgDetail.package_name}}">
+                                        Get a Call Back
+                                    </a> 
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            <div class="webadvtmobile"><img src="/assets/images/deal-page-advt.jpg" /></div>
+                            
+                            
+                        </div>
+                        <h2 ng-if="pkgDetail.risks.length > 0">Risks Associated:</h2>
+                        <section class="risk-area"> <strong ng-repeat="(key, value) in pkgDetail.risks track by $index" ng-bind="value.risk_description"></strong> </section>
+                        <div class="clear"></div>
+                        <div class="other-test" ng-if="deal_type !=='parameter'">
+                            <h2>Test Details (Parameters included : {{pkgDetail.parameter_included}})</h2>
+                        </div>
+                        <div class="mid-box" ng-if="deal_type !=='parameter'">
+                            <h3> <span>Profile/Parameter</span> No. of Parameters </h3>
+                            <div class="accordion-toggles" ng-repeat="(key, value) in pkgDetail.tests track by $index">
+                                <h4 data-toggle="{{value.tests.length > 0 && 'collapse' || 'nothing' }}" data-target="#{{value.id}}" analytics-on="click" analytics-category="{{deal_type.toUpperCase()}}" analytics-event="Clicked on accordian" analytics-label="{{value.name}}"> <span ng-if="value.tests.length >= 0" ng-bind="value.name"></span> <span ng-if="!value.tests" > <a target="_blank" href="/parameter/{{value.link_rewrite}}">{{value.name}}</a> </span> {{value.tests.length > 0 ? value.tests.length : 1}} <strong ng-if="value.tests.length > 0" class="caret"></strong> </h4>
+                                <div id="{{value.id}}" class="collapse">
+                                    <table class="Stable">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameters </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="(key1, value1) in value.tests track by $index">
+                                                <td><a href="/{{value1.deal_type}}/{{value1.link_rewrite}}" target="_blank" ng-bind="value1.name"></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="/{{value.deal_type}}/{{value.link_rewrite}}" target="_blank" style="color:#39beb9; font-weight:normal; text-decoration:underline;">View more details</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="btn-txt" id="more_precautions">
+                            <div ng-show="pkgDetail.precautions.length > 0">
+                                <h2>
+                                    Precautions : {{pkgDetail.package_name}}
+                                </h2>
+                                <ol>
+                                    <li class="numbering" ng-repeat="pre in pkgDetail.precautions" ng-bind="pre"></li>
+                                </ol>
+                            </div>
+                            
+                            <div class="bottom_cta_btn">
+                                <a style="float:none;" ng-show="deal_type !=='parameter' && pkgDetail.healthians_price > 0" href="javascript:void(0);" class="new-book book-now mb-view-remove" ng-click="pkgSearch(pkgDetail);" analytics-on="click" analytics-category="{{deal_type.toUpperCase()}}" analytics-event="Clicked on Book Now" analytics-label="Bottom book - {{pkgDetail.package_name}}">Book Now</a> 
+                            
+                                <a href="javascript:void(0);" class="callback_customer mb-view-remove" ng-click="callToBook(pkgDetail.package_name);" analytics-category="{{deal_type.toUpperCase()}}" analytics-event="Click on Get a Call Back" analytics-label="{{pkgDetail.package_name}}">
+                                    Get a Call Back
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <!--recommended package -->
+                <div class="also-inc">You may also consider</div>
+                <!--<div class="aloader" ng-show="also_consider_loading">
+                    <img style="margin-left: 36%" src="https://cdn1.healthians.com/assets/images/bx_loader.gif">
+                </div> -->
+                <div ng-show="packageList.length > 0 && !also_consider_loading">
+                    <div class="ryt-pack recommendedpackages" ng-repeat="value in packageList |limitTo:4">
+                        <h3> <span ng-bind="value.package_name" style="text-transform: capitalize;"></span> </h3>
+                        <h4> Parameters covered : <span ng-bind="value.testCount"></span> </h4>
+                        <p> <strong>Includes :</strong>
+                            <ul style="height:96px; overflow:hidden;">
+                                <li> <span ng-bind="value.test_includes[0]"></span><span ng-if="value.test_includes[1]"></span></li>
+                                <li> <span ng-bind="value.test_includes[1]"></span> <span ng-if="value.test_includes[2]"></span></li>
+                                <li> <span ng-bind="value.test_includes[2]"></span></li>
+                                <li class="parCount" ng-if="value.test_includes.length > 3">
+                                    <a style="background:none; margin:0px; padding:0px; color:#000; text-align:left; font-size:12px;" href="{{value.type}}/{{value.link_rewrite}}"> 
+                                        <strong>+&nbsp;<span ng-bind="value.test_includes.length - 3"></span> More</strong> 
+                                    </a>
+                                </li>
+                            </ul>
+                        </p>
+                        <figcaption>
+                            <div class="healthPrice">
+                                <font>Healthians Price</font> <span class="fontrupee" style="padding:0px;font-weight:normal;">`</span> <strike> <span ng-bind="value.actual_price"></span> </strike> </div>
+                            <div class="limitedTime">
+                                <font>Limited Time Offer</font> <span class="fontrupee" style="color:#00a0a8;">`</span><span ng-bind="value.healthian_price" style="color:#00a0a8;"></span> </div>
+                            <span class="right-sv-btn">Save {{(value.actual_price-value.healthian_price)/value.actual_price*100 | number : 0}}%</span> </figcaption>
+                        <a href="javascript:void(0);" target="_blank" ng-href="{{value.type}}/{{value.link_rewrite}}" analytics-on="click" analytics-category="{{deal_type.toUpperCase()}}" analytics-event="Clicked on you may also consider panel | View details" analytics-label="{{value.type}} | {{value.link_rewrite}}" analytics-value="{{value.healthian_price}}">View Detail</a> </div>
+                </div>
+                <!--recommended package -->
+            </div>
+           
+        </div>
+        <div class="clear"></div>
+        <div class="container">
+            <p class="test-content" ng-bind-html="meta_footer"></p>
+        </div>
+
+
+        
+        <!-- Desktop callback Form - Start -->
+        <div style="display: none; width:100%; height:100%; position:fixed; background:#000000; opacity: .8; filter:alpha(opacity=0.8); z-index:99998 !important; top:0px;" id="callToBook_bg">
+        </div>
+        <div class="webexitpanel_form" id="callToBookPopup">
+            <div class="exit-mid-dialog">
+                <div class="closepop" id="closeCallToBookmodal"></div>
+                <!--left call back section -->
+                <div class="webexit-form" ng-hide="exitCallToBookError">
+                    <div class="exit-form-title">
+                        <div class="exit-title">Free call back from our Health Advisor</div>
+                        <!-- <h4>INSTANTLY!!</h4> -->
+                    </div>
+                    <div class="form-exit-popup">
+                        <form name="addCallToBookLeadForm" novalidate>
+                            <div class="input-small-width web_minheight">
+                                <input name="customerno123" id="customerno123" type="text" maxlength="10" ng-model="customerctbNo" class="mob-icon" tabindex="2" placeholder="Mobile Number *" autocomplete="off" ng-required="true" ng-enter="sendCallToBookDetails();" ng-change="changeCallToBookDetailsPopupButtonColor();" />
+                                <div ng-show="((addCallToBookLeadForm.customerno123.$dirty && addCallToBookLeadForm.customerno123.$invalid) || (addLeadFormSubmitted && !addCallToBookLeadForm.customerno123))" class="help-block" style="text-align: left;padding-left:0px; color:#fff !important;">
+                                    <span style="color:#fff !important;" ng-show="addCallToBookLeadForm.customerno123.$error.required">Mobile No. is required</span>
+                                </div>
+                                <span class="help-block" ng-show="ctb_mobile_valid_error" ng-bind="ctb_mobile_valid_msg" style="text-align: left; color:#fff !important;"></span>
+                            </div>
+                            <div class="input-small-width web_minheight">
+                                <input name="name123" id="name123" type="text" ng-model="customerctbName" class="user-icon" ng-pattern="/^[A-Za-z ]+$/" tabindex="1" placeholder="Your Name" autocomplete="off" required="false" ng-enter="sendCallToBookDetails()" />
+                                <span ng-show="addCallToBookLeadForm.name1213.$error.pattern && !addCallToBookLeadForm.name123.$error.required" class="help-block" style="text-align: left;color:#fff !important;padding-left: 42px;">
+                                Enter valid Name
+                            </span>
+                            </div>
+                            <div id="seo_ctb_web"></div>
+                            <div class="exit-pop-field">
+                                <input type="button" id="callToBooksubmitbtn" name="send" value="Get A Call Back Now" style="background:#b7b7b7; border:1px solid #cecece;background-image:linear-gradient(to bottom, #b7b7b7 0%, #cecece 100%);" ng-click="sendCallToBookDetails()" analytics-on="click" analytics-category="risk_habit" analytics-event="Click on Popup Get A Call Back Now" class="submit-button" tabindex="3">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--left call back section ends -->
+                
+                <!--thankyou message -->
+                <div class="exit-thanks" ng-show="exitCallToBookError">
+                    <!--<div class="closepop" id="closemodal2"></div> -->
+                    <h5>Thank You for sharing your details with us.</h5>
+                        <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.            </p>
+                </div>
+                <!--thankyou message -->
+            </div>
+        </div>
+        <!-- Desktop callback Form - End -->
+
+
+        <!--mobile callback popup -->
+        <div class="overlay-visible" ng-show="mobileCallToBookPopupDiv" id="mobileCallToBook_bg"></div>
+        <div class="sticky-exit-form" ng-show="mobileCallToBookPopupDiv">
+            <div class="mobile-sticky-mid">
+                <div ng-click="closeMobileCallToBookPopup();"><div class="closepop-close-mobile">&nbsp;</div></div>
+                <div ng-hide="callToBookMobileError">
+                    <div class="exit-form-title" style="margin-top:0px;">
+                        <h3>Free call back from our Health Advisor</h3>
+                        <!-- <h4>INSTANTLY!!</h4> -->
+                    </div>
+                    <div class="mobileform-exit-popup">
+                        <form name="addMobileCTBPopupLeadForm" novalidate>
+                            <div class="input-small-width mob_minheight">
+                                <input name="ctbcustomerno" id="ctbcustomerno" type="text" maxlength="10" ng-model="ctbcustomerNo" class="mob-icon" tabindex="2" placeholder="Mobile Number *" autocomplete="off" ng-required="true" ng-enter="changeMobileCallToBookPopupButtonColor();" ng-change="changeMobileCallToBookPopupButtonColor();"/>
+                                <div ng-show="((addMobileCTBPopupLeadForm.ctbcustomerno.$dirty && addMobileCTBPopupLeadForm.ctbcustomerno.$invalid) || (addLeadFormSubmitted && !addMobileCTBPopupLeadForm.ctbcustomerno))" class="help-block" style="text-align: left;color:#fff !important;">
+                                    <span style="color:#fff !important;" ng-show="addMobileCTBPopupLeadForm.ctbcustomerno.$error.required">Mobile No. is required</span>
+                                </div>
+                                <span class="help-block" style="text-align: left;color:#fff !important;" ng-show="ctb_mob_valid_error" ng-bind="ctb_mob_valid_msg"></span>
+                            </div>
+                            <div class="input-small-width mob_minheight">
+                                <input name="ctbname" id="ctbname" type="text" ng-model="ctbcustomerName" class="user-icon" ng-pattern="/^[A-Za-z ]+$/" tabindex="1" placeholder="Your Name" autocomplete="off" required="false" ng-enter="changeMobileCallToBookPopupButtonColor()" />
+                                <span ng-show="addMobileCTBPopupLeadForm.ctbname.$error.pattern && !addMobileCTBPopupLeadForm.ctbname.$error.required" class="help-block" style="text-align: left;color:#fff !important;">
+                                    Enter valid Name
+                                </span>
+                            </div>
+                     <!--        <div class="input-small-width mob_minheight"><div id="seo_ctb_mob"></div></div> -->
+                            <div class="exit-pop-field">
+                                <input type="button" id="ctbmobilepopupsubmitbtn" name="msend" value="Get A Call Back Now" style="background:#b7b7b7; border:1px solid #cecece;background-image:linear-gradient(to bottom, #b7b7b7 0%, #cecece 100%);" ng-click="sendMobileCTBPopupDetails();" analytics-on="click" analytics-category="risk_habit" analytics-event="Click on Mobile Popup Get A Call Back Now" class="submit-button" tabindex="3">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="exit-thanks-mobile" ng-show="callToBookMobileError">
+                    <h5>Thank You for sharing your details with us.</h5>
+                        <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--mobile callback popup -->
+
+        <!--home health karma cta-->
+
+        <div class="homehealthkarma" ng-show="!$root.loggedin">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-md-12 col-xs-12">
+                        <div class="col-md-6 col-xs-7">
+                            <p class="tag_text">Today’s lifestyle is a disease in itself!</p>
+                    <p class="tag_text2">Know the impact of your lifestyle on your health with our unique AI tool</p>
+                        </div>
+                        <div class="col-md-6 col-xs-5">
+                            <p><a href="/healthkarma" class="know_scorehk" analytics-on="click" analytics-category="Home Page" analytics-event="Click on Know Your Score">Know Your Score</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--home health karma cta-->
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 btm-head">
+                        <div class="btn-head-title">SUBSCRIBE <span>for Healthy Updates</span></div>
+                        <div class="subscribe">
+                            <form name="addAddressForm">
+                                <input ng-blur="visited = true" name="customeremail" type="text" class="input-width" placeholder="Enter your email ID" ng-model="addAddressForm.customerEmail" ng-class="{ 'has-error': ((addAddressForm.customeremail.$dirty && addAddressForm.customeremail.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerEmail)) ||(addAddressForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{3,5}$/" ng-required="true">
+                                <input class="submit" ng-click="subscriber(addAddressForm.customerEmail)" type="submit" value="Submit" />
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-sm-4 btm-head lr-border">
+                        <div class="btn-head-title">STAY <span>socially connected</span></div>
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com/Healthians?ref=hl">
+                                    <img src="assets/images/fb.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/healthians">
+                                    <img src="assets/images/tw.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/company/healthians-com?trk=company_name">
+                                    <img src="assets/images/in.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/+Healthians/posts">
+                                    <img src="assets/images/yt.png">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 btm-head">
+                        <div class="btn-head-title">Awards & Recognitions</div>
+                        <img src="assets/images/btm-logo.png">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2"> <img src="assets/images/healthians-btmlogo.png"> </div>
+                    <div class="col-sm-10">
+                        <ul class="btm-link">
+                            <li>
+                                <a href="/about-us" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="About us">About us</a>
+                            </li>
+                            <li>
+                                <a href="/healthians-media" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Media">Media</a>
+                            </li>
+                            <li>
+                                <a href="/career" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Careers">Careers</a>
+                            </li>
+                            <li>
+                                <a href="/healthians-investors" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Investors">Investors</a>
+                            </li>
+                            <li> <a href="/labs" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Labs"> Our Labs </a> </li>
+                            <li> <a href="/deals" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Deals"> Our Deals </a> </li>
+                            <li> <a href="http://blog.healthians.com/" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Blog" target="_blank">Blog</a> </li>
+                            <li> <a href="/contact-us" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Contact us">Contact us</a> </li>
+                            <li> <a href="/refund-policy" analytics-on="click" analytics-category="Footer" analytics-event="Clicked Footer Link" analytics-label="Money back policy"> Money back policy </a> </li>
+                            <li> <a href="/feedback" analytics-on="click" analytics-category="Footer" analytics-event="Clicked feedback" analytics-label="Money back policy"> Feedback/Complaints </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btm-txt">
+                    <ul ng-repeat="list in packageList">
+                        <li><a target="_blank" href="/{{list.type}}/{{list.link_rewrite}}">{{list.package_name}}</a></li>
+                        <li ng-show="!$last">|</li>
+                    </ul>
+                </div>
+                <div class="copy">2018 @ Healthians.com | Legal</div>
+            </div>
+            <a href="javascript:void(0);" class="scrollup">Scroll</a>
+        </footer>
+    </div>
+</div>
+
+
+    <div itemscope itemtype="https://schema.org/Product" style="display:none;">
+        <meta itemprop="brand" content="Healthians">
+        <meta itemprop="name" content="{{pkgDetail.package_name}}">
+        <img itemprop="image" src="assets/images/logo160_90.png" alt='Healthians' />
+        <meta itemprop="description" content="{{pkgDetail.description}}">
+        <meta itemprop="productID" content="{{pkgDetail.deal_type}}_{{pkgDetail.id}}">
+
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="INR">
+            <meta itemprop="price" content="{{pkgDetail.healthians_price}}">
+            <link itemprop="availability" href="https://schema.org/InStock" />
+            <link itemprop="condition" href="https://schema.org/NewCondition">         
+        </div>        
+    </div>
+
+
+        <!--Web Coupon -->
+       <!--  <section class="discount-code">
+            <div class="box-content active">
+                <div id="couponclose">x</div>
+                <a href="/deals"><img src="assets/images/couponweb.jpg" alt="" copy-to-clipboard text-to-copy="'SUMMER20'"></a> </div>
+            <div class="clear"></div>
+            <a class="box-toggle fl active" href="#">
+                <div class="coupon-handle"> <strong>Get 20% Discount</strong> <span class="glyphicon glyphicon-chevron-down" style="font-size:11px; margin-left:10px;"></span> </div>
+            </a>
+            <div class="clear"></div>
+        </section> -->
+        <!--Web Coupon Ends -->
+        <login-modal visible="compaignmsg">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div style="margin:0px auto; background:#fff; padding:30px 0px;">
+                <div class="lead-pg-popup web-thankyou">
+                    <section>
+                        <h6>Thank You for sharing your details with us.</h6>
+                        <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </login-modal>
+        <!--back to top -->
+        <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 250) {
+                    $('.scrollup').fadeIn();
+                } else {
+                    $('.scrollup').fadeOut();
+                }
+            });
+
+            $('.scrollup').click(function() {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 600);
+                return false;
+            });
+
+        });
+
+
+        $("a.box-toggle").on('click', function() {
+            $("div.box-content").removeClass('removed');
+            $('div.box-content').slideToggle(250).toggleClass('active');
+            $(".coupon-handle span").toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
+        });
+
+        $("#couponclose").click(function() {
+            $("div.box-content").addClass('removed');
+            $("div.box-content").hide(0);
+            $(".coupon-handle span").toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+        });
+        var previousScroll = 0;
+        $(window).scroll(function() {
+            var currentScroll = $(this).scrollTop();
+            if (currentScroll > previousScroll) {
+                //down
+                if ($(this).scrollTop() > 50 && $(this).scrollTop() < 100) {
+                    $('div.box-content').fadeOut();
+                }
+            } else {
+                //up scroll
+            }
+            previousScroll = currentScroll;
+        });
+        </script>
+        <!--lead form sticky -->
+        <script>
+        $(window).scrollTop(80);
+        // This function will be executed when the user scrolls the page.
+        $(window).scroll(function(e) {
+            // Get the position of the location where the scroller_icfleads starts.
+            var scroller_anchor = $(".scroller_anchor").offset().top;
+            //var scroller_anchor = 84;
+            //console.log("$(this).scrollTop(), scroller_anchor", $(this).scrollTop(), scroller_anchor);
+            // Check if the user has scrolled and the current position is after the scroller_icfleads's start location and if its not already fixed at the top
+            if ($(this).scrollTop() >= scroller_anchor && $('.scroller_icfleads').css('position') != 'fixed') {
+                // Change the CSS of the scroller_icfleads to hilight it and fix it at the top of the screen.
+                $('.scroller_icfleads').css({
+                    'background': '#efeded',
+                    'border': '',
+                    'position': 'fixed',
+                    'top': '0px',
+
+                });
+                $('#seo_leadcapture').css({
+                    'margin-top': '0px'
+                });
+                
+                $('.seo_leadcapture').animate({ 'margin-top': '0px' }, 1700);
+
+                // Changing the height of the scroller_icfleads anchor to that of scroller_icfleads so that there is no change in the overall height of the page.
+                $('.scroller_anchor').css('height', '84px');
+                $('.seo_leadcapture').animate({ 'margin-top': '0px' }, 1700);
+            } else if ($(this).scrollTop() <= scroller_anchor && $('.scroller_icfleads').css('position') != 'relative') { 
+                // If the user has scrolled back to the location above the scroller_icfleads anchor place it back into the content.
+
+                // Change the height of the scroller_icfleads anchor to 0 and now we will be adding the scroller_icfleads back to the content.
+                $('.scroller_anchor').css('height', '0px');
+
+                // Change the CSS and put it back to its original position.
+                $('.scroller_icfleads').css({
+                    'background': '#fff',
+                    'border': '',
+                    'position': 'relative',
+                    'width': '100%'
+
+                });
+
+                $('#seo_leadcapture').css({
+                    'margin-top': '0px'
+                });
+
+                $('.seo_leadcapture').animate({ 'margin-top': '0px' }, 1100);
+            }
+        });
+        </script>
+        <script>
+        $(function() {
+            $('.seo_leadcapture').animate({ 'margin-top': '78px' }, 1000);
+        });
+        // var widgetId7;
+        // var onloadCallback = function() {
+        //     if($('#seo_top').length) {
+        //         widgetId7 = grecaptcha.render('seo_top', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+        //     }
+        // }
+        </script>
+        <!--lead form sticky  -->

@@ -1,0 +1,106 @@
+<!--header section starts here -->
+
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="clear"></div>
+
+<!--schedule lab visit starts here -->
+
+<div class="container">
+  <div class="visitlab">
+    <h2>Schedule a Lab Visit</h2>
+    <div class="clear"></div>
+    <div class="lab-visit">
+      <section>
+        <figure>&nbsp;</figure>
+        <div class="form-visit-lab"  ng-hide="labVisitSuccess">
+          <form name="addLeadForm" novalidate>
+            <div class="">
+            <h6>Please fill the form below</h6>
+            <p>We will schedule your visit</p>
+            <div class="error_msg_visit" ng-show="labVisitError">Something wrong. Please try again.</div>
+            
+              <ul>
+                <li>
+                  <input name="name" id="name" type="text" class="form-control text" placeholder="Name*" ng-required="true" ng-model="addLeadForm.customerName" ng-class="{ 'has-error': ((addLeadForm.name.$dirty && addLeadForm.name.$error.required) || (addLeadFormSubmitted && !addLeadForm.customerName)) ||(addLeadForm.name.$error.pattern && visited) }" ng-focus="booknow" ng-pattern="/^[A-Za-z ]+$/">
+                  <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block">
+                      <span ng-show="addLeadForm.name.$error.required">Name is required</span>
+                      <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required">
+                          Enter valid Name
+                      </span>
+                  </div>
+                </li>
+                <li>
+                  <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" class="form-control text" placeholder="Email*" ng-model="addLeadForm.customerEmail" ng-class="{ 'has-error': ((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$error.required) || (addLeadFormSubmitted && !addLeadForm.customerEmail)) ||(addLeadForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="true">
+                  <div ng-show="((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$invalid) || (addLeadFormSubmitted && !addLeadForm.customeremail))" class="help-block">
+                      <span ng-show="addLeadForm.customeremail.$error.required">Email is required</span>
+                      <span ng-show="addLeadForm.customeremail.$error.pattern && !addLeadForm.customeremail.$error.required">Enter valid Email</span>
+                  </div>
+                </li>
+                <li>
+                  <input id="customerno" minlength="10" maxlength="10" name="customerno" type="form-control text" class="form-control text" placeholder="Mobile*" ng-model="addLeadForm.customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadForm.customerno.$dirty && addLeadForm.customerno.$error.required) || (addLeadFormSubmitted && !addLeadForm.customerNo)) ||(addLeadForm.customerno.$error.pattern && visited) }" ng-required="true">
+                  <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block">
+                      <span ng-show="addLeadForm.customerno.$error.required">Mobile No. is required</span>
+                      <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required">
+                          Enter valid Mobile
+                      </span>
+                  </div>
+                </li>
+                <li>
+
+                  <textarea class="form-control text" id="message" name="message" maxlength="500" ng-model="addLeadForm.Message" style="resize:none;height:80px;" placeholder="Message"></textarea>
+
+                </li>
+                <li>
+                    <div id="lab_visit_labpage" class="gcaptcha-visit"></div>
+                </li>
+                <li style="padding-top:10px; padding-bottom:15px;">
+                  <input type="button" name="send" value="Submit" class="btn btn-default upload-complete" ng-click="sendDetails()" analytics-on="click" analytics-category="Landing" analytics-event="Click on Submit">
+                </li>
+              </ul>
+
+             
+              
+            </div>
+          </form>
+        </div>
+         <div class="success-time-msg" style="text-align:center;" ng-show="labVisitSuccess">            
+                <h2>Thank You!!!</h2>
+                <p>Our team will contact you shortly.
+                </p> 
+              </div>  
+      </section>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var widgetIdLAB;
+  var onloadCallback = function() {
+    setTimeout(function(){
+      if(typeof grecaptcha !== 'undefined') {
+        if($('#lab_visit_labpage').length) {
+          if(widgetIdLAB == 0) {
+          }
+          else {
+            widgetIdLAB = grecaptcha.render('lab_visit_labpage', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+          }
+        }
+      }
+      else {
+        setTimeout(function(){
+          onloadCallback();
+        }, 500);
+      }
+    }, 500);
+  }
+  setTimeout(function(){
+    onloadCallback();
+  }, 2000);
+</script>
+
+<!--schedule lab visit ends here --> 
+
+<!--footer section starts here -->
+<div ui-view="footer"></div>
+<!--footer section ends here -->

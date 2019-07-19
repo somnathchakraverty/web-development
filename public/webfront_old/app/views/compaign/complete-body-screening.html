@@ -1,0 +1,425 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+<style type="text/css">
+  .help-block {
+    text-align: left;
+    color: #fff !important;
+}
+</style>
+<!--Top Header -->
+<div class="healthcheck_top_header">
+    <div class="fluid-container">
+        <a name="myAnchor" id="myAnchor">
+            <div class="top_logo"> <a href=""><img src="../../../assets/images/healthians_logo.png"></a>
+            </div>
+        </a>
+        <div class="topcall_us">
+            <a class="call_us" href="">
+                <p>Talk our Health advisors</p>
+                <span>999 888 000 5</span></a>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--Top Header Ends -->
+<div class="clear"></div>
+<!-- Page Header -->
+<header class="healthcheck_page_header">
+    <div class="midwrapper">
+        <div class="header_caption">
+            <h4>A Happy Family Begins with</h4>
+            <h3>A Healthy Family.</h3>
+        </div>
+        <div class="formBlocks">
+            <div class="formcontainer" id="getaQuote">
+                <h1>Complete Body Screening <br>
+          <span>Starting @ <span class="fontrupee">`</span>949</span></h1>
+                <div class="clear"></div>
+                <div class="mainFormBlock">
+                    <form name="addLeadForm" novalidate>
+                        <ul>
+                            <li>
+                                <div class="form-field">
+                                  <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" placeholder="Contact No. * " ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadForm.customerno.$dirty && addLeadForm.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadForm.customerno.$error.pattern && visited) }" ng-required="true" autocomplete="false">
+                                  <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block">
+                                      <span ng-show="addLeadForm.customerno.$error.required">Contact No. is required</span>
+                                      <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required && addLeadForm.customerno.$touched">
+                                          Enter valid Contact no.
+                                      </span>
+                                  </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="form-field">
+                                    <input name="name" id="name" type="text" placeholder="Full Name * " ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadForm.name.$dirty && addLeadForm.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadForm.name.$error.pattern && visited) }" ng-focus="booknow" ng-pattern="/^[A-Za-z ]+$/" autocomplete="false">
+                                    
+                                    <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block">
+                                        <span ng-show="addLeadForm.name.$error.required">Name is required</span>
+                                        <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required">
+                                            Enter valid Name
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-field">
+                                    <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" placeholder="Email ID * " ng-model="customerEmail" ng-class="{ 'has-error': ((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$error.required) || (addLeadFormSubmitted && !customerEmail)) ||(addLeadForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="true" autocomplete="false">
+                                    <div ng-show="((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$invalid) || (addLeadFormSubmitted && !addLeadForm.customeremail))" class="help-block">
+                                        <span ng-show="addLeadForm.customeremail.$error.required">Email ID is required</span>
+                                        <span ng-show="addLeadForm.customeremail.$error.pattern && !addLeadForm.customeremail.$error.required  && addLeadForm.customeremail.$touched">Enter valid Email ID</span>
+                                    </div>
+
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div class="form-field">
+
+                                  <select id="city" name="city" class="form-select minimal" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true">
+                                    <option value="">City</option>
+                                  </select>
+                                  <div ng-show="((addLeadForm.city.$dirty && addLeadForm.city.$invalid) || (addLeadFormSubmitted && !addLeadForm.city))" class="help-block">
+                                      <span ng-show="addLeadForm.city.$error.required">Please select city.</span>
+                                  </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="capt_landing"></div>
+                            </li>
+                            <li>
+                                <div class="form-ctabtn">
+                                    <input name="send" type="button" class="ctabutton" value="Get Free Call" ng-click="sendDetails();" analytics-on="click" analytics-category="campaign-complete-body-screening" analytics-event="Click on Get A Call Back Now">
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</header>
+<!--Cities -->
+<div class="expandedcities">
+    <p>Agra | Ambala | Amritsar | Bahadurgarh | Bengaluru | Chandigarh | Dehradun | Delhi | Faridabad | Ghaziabad | Greater Noida | Gurgaon | Haridwar | Jaipur | Jalandhar | Kanpur | Karnal | Kurukshetra | Lucknow | Ludhiana | Meerut | Mohali | Noida | Panchkula | Panipat | Rohtak | Shuklaganj | Sonipat | Unnao</p>
+</div>
+<!--Cities -->
+<!-- Page Header -->
+<div class="clear"></div>
+<!--Product Panel -->
+<div class="healthcheck_productpanel">
+    <div class="container">
+        <div class="producttitle">
+            <h2>Our Health Checkup Packages</h2>
+        </div>
+        <div class="clear"></div>
+        <!--Product Thumbnail -->
+        <div class="proThumb">
+            <div class="productThumb">
+                <h4>Full Body Checkup with Thyroid and CBC</h4>
+                <div class="testBrief">
+                    <p class="testInclude">Tests Included : 74</p>
+                    <p class="fastingTime">Fasting Time: 10 Hours &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Reporting Time: 24 Hours</p>
+                </div>
+                <div class="testParameter">
+                    <ul>
+                        <li>Lipid Profile (9)</li>
+                        <li>Liver Function Test (12)</li>
+                        <li>Complete Hemogram (24)</li>
+                        <li>Thyroid Profile-Total (3)</li>
+                        <li>Kidney Function Test (11)</li>
+                        
+                        <li>Blood Glucose Fasting (1)</li>
+                        <li>Urine Routine & Microscopy (14)</li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="pricingsection">
+                    <div class="leftPrice"> <span class="mrpTest">Price: <span class="fontrupee">`</span>2700</span>
+                        <div class="mainPrice"><span class="fontrupee">`</span>1199</div>
+                    </div>
+                    <div class="rightBook"><a href="#myAnchor" rel="" id="anchor1" class="anchorLink">Get a call</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        <div class="proThumb">
+            <div class="productThumb">
+                <h4>Basic Screening Package</h4>
+                <div class="testBrief">
+                    <p class="testInclude">Tests Included : 60</p>
+                    <p class="fastingTime">Fasting Time: 10 Hours &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Reporting Time: 24 Hours</p>
+                </div>
+                <div class="testParameter">
+                    <ul>
+                        <li>Lipid Profile (9)</li>
+                        <li>Liver Function Test (12)</li>
+                        <li>Complete Hemogram (24)</li>
+                        <li>Thyroid Profile-Total (3)</li>
+                        <li>Kidney Function Test (11)</li>
+                        <li>Blood Glucose Fasting (1)</li>                        
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="pricingsection">
+                    <div class="leftPrice"> <span class="mrpTest">Price: <span class="fontrupee">`</span>3430</span>
+                        <div class="mainPrice"><span class="fontrupee">`</span>949</div>
+                    </div>
+                    <div class="rightBook"><a href="#myAnchor" rel="" id="anchor1" class="anchorLink">Get a call</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="proThumb">
+            <div class="productThumb">
+                <h4>Basic Screening Package Plus Vitamin B12</h4>
+                <div class="testBrief">
+                    <p class="testInclude">Tests Included : 75</p>
+                    <p class="fastingTime">Fasting Time: 10 Hours &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Reporting Time: 24 Hours</p>
+                </div>
+                <div class="testParameter">
+                    <ul>
+                        <li>Lipid Profile (9)</li>
+                        <li>Liver Function Test (12)</li>
+                        <li>Complete Hemogram (24)</li>
+                        <li>Thyroid Profile-Total (3)</li>
+                        <li>Vitamin B12 Cyanocobalamin (1)</li>
+                       
+                        <li>Urine Routine & Microscopy (14)</li>
+                        <li>Blood Glucose Fasting (1)</li> <li>Kidney Function Test (11)</li>
+                                               
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="pricingsection">
+                    <div class="leftPrice"> <span class="mrpTest">Price: <span class="fontrupee">`</span>4630</span>
+                        <div class="mainPrice"><span class="fontrupee">`</span>1199</div>
+                    </div>
+                    <div class="rightBook"><a href="#myAnchor" rel="" id="anchor1" class="anchorLink">Get a call</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="proThumb">
+            <div class="productThumb">
+                <h4>OnePlusOne Extended package with Vitamin-D</h4>
+                <div class="testBrief">
+                    <p class="testInclude">Tests Included : 75</p>
+                    <p class="fastingTime">Fasting Time: 10 Hours &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Reporting Time: 24 Hours</p>
+                </div>
+                <div class="testParameter">
+                    <ul>
+                        <li>Lipid Profile (9)</li>
+                        <li>Liver Function Test (12)</li>
+                        <li>Complete Hemogram (24)</li> 
+                        <li>Thyroid Profile-Total (3)</li>                          
+                        <li>Kidney Function Test (11)</li>                       
+                        
+                        
+                        <li>Blood Glucose Fasting (1)</li>
+                        <li>Urine Routine & Microscopy (14)</li>
+                        <li>Vitamin D Total-25 Hydroxy (1)</li>
+                                             
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="pricingsection">
+                    <div class="leftPrice"> <span class="mrpTest">Price: <span class="fontrupee">`</span>3999</span>
+                        <div class="mainPrice"><span class="fontrupee">`</span>1999</div>
+                    </div>
+                    <div class="rightBook"><a href="#myAnchor" rel="" id="anchor1" class="anchorLink">Get a call</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="proThumb">
+            <div class="productThumb">
+                <h4>One Plus One Full Body Checkup</h4>
+                <div class="testBrief">
+                    <p class="testInclude">Tests Included : 60</p>
+                    <p class="fastingTime">Fasting Time: 10 Hours &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Reporting Time: 24 Hours</p>
+                </div>
+                <div class="testParameter">
+                    <ul>
+                        <li>Lipid Profile (9)</li>
+                        <li>Liver Function Test (12)</li>
+                        <li>Complete Hemogram (24)</li>                        
+                        <li>Kidney Function Test (11)</li> 
+                        <li>Thyroid Profile-Total (3)</li>                      
+                        <li>Blood Glucose Fasting (1)</li>
+                                             
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="pricingsection">
+                    <div class="leftPrice"> <span class="mrpTest">Price: <span class="fontrupee">`</span>3430</span>
+                        <div class="mainPrice"><span class="fontrupee">`</span>1299</div>
+                    </div>
+                    <div class="rightBook"><a href="#myAnchor" rel="" id="anchor1" class="anchorLink">Get a call</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="proThumb">
+            <div class="productThumb">
+                <h4>Healthians One Plus One</h4>
+                <div class="testBrief">
+                    <p class="testInclude">Tests Included : 57</p>
+                    <p class="fastingTime">Fasting Time: 10 Hours &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Reporting Time: 24 Hours</p>
+                </div>
+                <div class="testParameter">
+                    <ul>
+                        <li>Lipid Profile (9)</li>
+                        <li>Liver Function Test (12)</li>
+                        <li>Complete Hemogram (24)</li>                        
+                        <li>Kidney Function Test (11)</li> 
+                        <li>Blood Glucose Fasting (1)</li>                      
+                    
+                                             
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="pricingsection">
+                    <div class="leftPrice"> <span class="mrpTest">Price: <span class="fontrupee">`</span>2880</span>
+                        <div class="mainPrice"><span class="fontrupee">`</span>999</div>
+                    </div>
+                    <div class="rightBook"><a href="#myAnchor" rel="" id="anchor1" class="anchorLink">Get a call</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        
+        
+        <!--Product Thumbnail -->
+    </div>
+</div>
+<!--Product Panel Ends -->
+<div class="clear"></div>
+<div ui-view="footer"></div>
+<!-- footer -->
+<login-modal visible="compaignmsg">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div style="margin:0px auto; background:#fff; padding:30px 0px;">
+        <div class="lead-pg-popup">
+            <section>
+             <h6>Thank You for sharing your details with us. </h6>   
+            <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+            </p>
+               
+            </section>
+        </div>
+    </div>
+</login-modal>
+
+<style type="text/css">
+.zopim {
+    display: none !important;
+}
+</style>
+<script>
+$('a').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $(this).attr('href') ).offset().top
+    }, 500);
+	$("#customerno").focus();
+    return false;
+});
+
+
+ // var widgetId5;
+ //    var onloadCallback = function() {
+ //        setTimeout(function(){
+ //            if(typeof grecaptcha !== 'undefined') {
+ //                if($('#capt_landing').length) {
+ //                    widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+ //                }
+ //            }
+ //            else {
+ //                setTimeout(function(){
+ //                    if($('#capt_landing').length) {
+ //                        widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+ //                    }
+ //                }, 500);
+ //            }
+ //        }, 500);
+ //    }
+
+</script>
+

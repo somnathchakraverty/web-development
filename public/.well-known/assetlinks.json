@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.healthians.main.healthians",
+    "sha256_cert_fingerprints":
+    ["A9:F6:3B:7D:54:D4:67:66:78:B8:43:20:C1:E5:44:2C:0F:1B:15:BB:09:2B:F9:D5:03:2F:75:CD:14:A3:91:9C"]
+  }
+}]

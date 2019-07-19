@@ -1,0 +1,258 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<style type="text/css">
+.paybuttons input[type="radio"]:checked+label span {
+    background-color: #00a0a8;
+    font-weight: bold;
+    border: 1px solid #00a0a8;
+}
+</style>
+<div class="clear"></div>
+<!--sample collection feedback starts here -->
+
+
+
+<!--container starts here -->
+
+<!--container ends here -->
+
+<div class="container">
+    <div class="general-feedback-panel">
+        <div class="general-feedback-info-area">
+            <h6>Questionnaire</h6>
+            <p>Please fill the questionnaire on our sample collection process so we will able to give you better services </p>
+        </div>
+        <div class="generalfeeds">
+            <section>
+                <form name="generalForm" class="material" novalidate>
+                    <div class="mid-generalfeedback" ng-hide="datasuccess">
+                        <ul>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">How did you got to know about Healthians?</div>
+                                    <div class="options-questionaire">
+                                        <select class="form-control text" name="know_healthians" id="know_healthians" ng-model="reference_source" ng-required="true">
+                                            <option value="">Select</option>
+                                            <option value="SMS">SMS</option>
+                                            <option value="Reference">Reference</option>
+                                            <option value="Existing Customer">Existing Customer</option>
+                                            <option value="Facebook">Facebook</option>
+                                            <option value="Google">Google</option>
+                                        </select>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.know_healthians.$dirty && generalForm.know_healthians.$invalid) || (!generalForm.know_healthians))" class="help-block">
+                                            <span ng-show="generalForm.know_healthians.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">How was your experience of placing your order with us?</div>
+                                    <div class="options-questionaire">
+                                        <select class="form-control text" name="order_exp" id="order_exp" ng-model="booking_experience" ng-required="true">
+                                            <option value="">Select</option>
+                                            <option value="Poor">Poor</option>
+                                            <option value="Average">Average</option>
+                                            <option value="Good">Good</option>
+                                            <option value="Very good">Very good</option>
+                                            <option value="Excellent">Excellent</option>
+                                        </select>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.order_exp.$dirty && generalForm.order_exp.$invalid) || (!generalForm.order_exp))" class="help-block">
+                                            <span ng-show="generalForm.order_exp.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">How would you rate for sample collection process?</div>
+                                    <div class="options-questionaire">
+                                        <select class="form-control text" name="sample_exp" id="sample_exp" ng-model="sample_collection_experience" ng-required="true">
+                                            <option value="">Select</option>
+                                            <option value="Poor">Poor</option>
+                                            <option value="Average">Average</option>
+                                            <option value="Good">Good</option>
+                                            <option value="Very good">Very good</option>
+                                            <option value="Excellent">Excellent</option>
+                                        </select>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.sample_exp.$dirty && generalForm.sample_exp.$invalid) || (!generalForm.sample_exp))" class="help-block">
+                                            <span ng-show="generalForm.sample_exp.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Are you satisfied with Reports?</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons" style="margin-top:5px;">
+                                            <input type="radio" id="report_exp_1" name="report_exp" value="y" ng-model="report_experience" ng-required="true">
+                                            <label for="report_exp_1"><span></span>Yes</label>
+                                        </div>
+                                        <div class="paybuttons" style="margin-top:5px;">
+                                            <input type="radio" id="report_exp_2" name="report_exp" value="n" ng-model="report_experience" ng-required="true">
+                                            <label for="report_exp_2"><span></span>No</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.report_exp.$dirty && generalForm.report_exp.$invalid) || (!generalForm.report_exp))" class="help-block">
+                                            <span ng-show="generalForm.report_exp.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">How was your overall Experience?</div>
+                                    <div class="options-questionaire">
+                                        <select class="form-control text" name="overall_exp" id="overall_exp" ng-model="overall_experience" ng-required="true">
+                                            <option class="form-control text" value="">Select</option>
+                                            <option value="Poor">Poor</option>
+                                            <option value="Average">Average</option>
+                                            <option value="Good">Good</option>
+                                            <option value="Very good">Very good</option>
+                                            <option value="Excellent">Excellent</option>
+                                        </select>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.overall_exp.$dirty && generalForm.overall_exp.$invalid) || (!generalForm.overall_exp))" class="help-block">
+                                            <span ng-show="generalForm.overall_exp.$error.required">This field is required</span>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Previously where were you getting Test done?</div>
+                                    <div class="options-questionaire">
+                                        <select class="form-control text" name="previous_testvendor" id="previous_testvendor" ng-model="previous_test_vendor" ng-required="true">
+                                            <option value="">Select</option>
+                                            <option value="Dr lal">Dr lal</option>
+                                            <option value="SRL">SRL</option>
+                                            <option value="Thyrocare">Thyrocare</option>
+                                            <option value="Healthians">Healthians</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                        <div class="clear"></div>
+                                        <div ng-show="previous_test_vendor === 'Others'">
+                                            <div class="clear"></div>
+                                            <input style="margin-top:10px; margin-bottom:10px;" name="vendor_others" id="vendor_others" ng-model="previous_test_vendor_others" type="text" class="form-control text" ng-required="true" placeholder="Please mention here">
+                                            <div class="clear"></div>
+                                            <div ng-show="((generalForm.vendor_others.$dirty && generalForm.vendor_others.$invalid) || (!generalForm.vendor_others))" class="help-block">
+                                                <span ng-show="generalForm.vendor_others.$error.required">This field is required</span>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.previous_testvendor.$dirty && generalForm.previous_testvendor.$invalid) || (!generalForm.previous_testvendor))" class="help-block">
+                                            <span ng-show="generalForm.previous_testvendor.$error.required">This field is required</span>
+                                        </div>                                    
+                                    </div>                                    
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">What did you liked the most in entire process?</div>
+                                    <div class="options-questionaire">
+                                        <select class="form-control text" name="best_process_feed" id="best_process_feed" ng-model="best_process_feedback" ng-required="true">
+                                            <option value="">Select</option>
+                                            <option value="On-Time">On-Time</option>
+                                            <option value="Everything">Everything</option>
+                                            <option value="Sample Collection Process">Sample Collection Process</option>
+                                            <option value="Cost">Cost</option>
+                                        </select>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.best_process_feed.$dirty && generalForm.best_process_feed.$invalid) || (!generalForm.best_process_feed))" class="help-block">
+                                            <span ng-show="generalForm.best_process_feed.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Would you like to refer any one for Healthians in future or you want to share any reference number for test?</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons" style="margin-top:14px;">
+                                            <input type="radio" id="future_reference_1" name="future_ref" ng-model="future_reference" value="y"  ng-required="true">
+                                            <label for="future_reference_1"><span></span>Yes</label>
+                                        </div>
+                                        <div class="paybuttons" style="margin-top:14px;">
+                                            <input type="radio" id="future_reference_2" name="future_ref" ng-model="future_reference" value="n" ng-required="true">
+                                            <label for="future_reference_2"><span></span>No</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.future_ref.$dirty && generalForm.future_ref.$invalid) || (!generalForm.future_ref))" class="help-block">
+                                            <span ng-show="generalForm.future_ref.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Test Type</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons"  style="margin-top:4px;">
+                                            <input type="radio" id="test_ty_1" name="test_ty" ng-model="test_type" value="Preventive" ng-required="true">
+                                            <label for="test_ty_1"><span></span>Preventive</label>
+                                        </div>
+                                        <div class="paybuttons"  style="margin-top:4px;">
+                                            <input type="radio" id="test_ty_2" name="test_ty" ng-model="test_type"  value="Chronic" / ng-required="true">
+                                            <label for="test_ty_2"><span></span>Chronic</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.test_ty.$dirty && generalForm.test_ty.$invalid) || (!generalForm.test_ty))" class="help-block">
+                                            <span ng-show="generalForm.test_ty.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Any chronic disease?</div>
+                                    <div class="options-questionaire">
+                                        <input name="chronic_hist" id="chronic_hist" ng-model="chronic_history" type="text" class="form-control text">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Was this test prescribed by doctor?</div>
+                                    <div class="options-questionaire">
+                                        <div class="paybuttons"  style="margin-top:4px;">
+                                            <input type="radio" id="prescribed_1" name="prescribed" ng-model="is_prescribed_test" value="y" ng-required="true">
+                                            <label for="prescribed_1"><span></span>Yes</label>
+                                        </div>
+                                        <div class="paybuttons"  style="margin-top:4px;">
+                                            <input type="radio" id="prescribed_2" name="prescribed" ng-model="is_prescribed_test"  value="n" ng-required="true">
+                                            <label for="prescribed_2"><span></span>No</label>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div ng-show="((generalForm.prescribed.$dirty && generalForm.prescribed.$invalid) || (!generalForm.prescribed))" class="help-block">
+                                            <span ng-show="generalForm.prescribed.$error.required">This field is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="phlebo_feedbacks">
+                                    <div class="title-questionaire">Remarks</div>
+                                    <div class="options-questionaire">
+                                        <textarea class="form-control" id="message" name="message" maxlength="500" ng-model="remarks" style="resize:none;height:65px;" placeholder="Enter your experience"></textarea>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="submitgeneralfeedback">
+                            <input type="button" name="send" value="Submit" class="btn btn-default submitted" ng-click="submit_feedback();">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div ng-show="datasuccess">
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+<!--sample collection feedback starts here -->

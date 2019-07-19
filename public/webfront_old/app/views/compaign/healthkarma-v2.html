@@ -1,0 +1,1713 @@
+<style>
+@font-face{font-family: "HelveticaRegular"; src: url("/assets/style/fonts/HelveticaRegular.ttf"); font-weight: normal; font-style: normal;}
+@font-face{font-family: "HelveticaLight"; src: url("/assets/style/fonts/HelveticaLight.otf"); font-weight: normal; font-style: normal;}
+@font-face{font-family: 'HelveticaBold';src: url('/assets/style/fonts/HelveticaBold.ttf');font-weight: normal; font-style: normal;}
+
+.mt__15 [type="radio"]:not(:checked)+label,[type="radio"]:checked+label { padding: 0px; height: auto;}
+
+.ko-progress-circle {margin: 20px auto; width: 140px;height: 140px; background-color: #ececec; border-radius: 50%;}
+.ko-progress-circle .ko-progress-circle__slice, .ko-progress-circle .ko-progress-circle__fill {
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1s;
+  border-radius: 50%;
+}
+.ko-progress-circle .ko-progress-circle__slice {
+  clip: rect(0px, 140px, 140px, 60px);
+}
+.ko-progress-circle .ko-progress-circle__slice .ko-progress-circle__fill {
+  clip: rect(0px, 60px, 140px, 0px);
+  /*background-color: #1291D4;*/
+}
+
+.red {
+  background-color: #f45b43 !important;
+}
+
+.green {
+  background-color: #8fbb06 !important;
+}
+
+.ko-progress-circle .ko-progress-circle__overlay {
+  width: 125px;
+  height: 125px;
+  position: absolute;
+  margin-left: 7.5px;
+  margin-top: 7.5px;
+  background-color: #fbfbfb;
+  border-radius: 50%;
+}
+.ko-progress-circle[data-progress='0'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='0'] .ko-progress-circle__fill {
+  transform: rotate(0deg);
+}
+.ko-progress-circle[data-progress='0'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(0deg);
+}
+.ko-progress-circle[data-progress='1'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='1'] .ko-progress-circle__fill {
+  transform: rotate(1.8deg);
+}
+.ko-progress-circle[data-progress='1'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(3.6deg);
+}
+.ko-progress-circle[data-progress='2'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='2'] .ko-progress-circle__fill {
+  transform: rotate(3.6deg);
+}
+.ko-progress-circle[data-progress='2'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(7.2deg);
+}
+.ko-progress-circle[data-progress='3'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='3'] .ko-progress-circle__fill {
+  transform: rotate(5.4deg);
+}
+.ko-progress-circle[data-progress='3'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(10.8deg);
+}
+.ko-progress-circle[data-progress='4'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='4'] .ko-progress-circle__fill {
+  transform: rotate(7.2deg);
+}
+.ko-progress-circle[data-progress='4'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(14.4deg);
+}
+.ko-progress-circle[data-progress='5'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='5'] .ko-progress-circle__fill {
+  transform: rotate(9deg);
+}
+.ko-progress-circle[data-progress='5'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(18deg);
+}
+.ko-progress-circle[data-progress='6'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='6'] .ko-progress-circle__fill {
+  transform: rotate(10.8deg);
+}
+.ko-progress-circle[data-progress='6'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(21.6deg);
+}
+.ko-progress-circle[data-progress='7'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='7'] .ko-progress-circle__fill {
+  transform: rotate(12.6deg);
+}
+.ko-progress-circle[data-progress='7'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(25.2deg);
+}
+.ko-progress-circle[data-progress='8'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='8'] .ko-progress-circle__fill {
+  transform: rotate(14.4deg);
+}
+.ko-progress-circle[data-progress='8'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(28.8deg);
+}
+.ko-progress-circle[data-progress='9'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='9'] .ko-progress-circle__fill {
+  transform: rotate(16.2deg);
+}
+.ko-progress-circle[data-progress='9'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(32.4deg);
+}
+.ko-progress-circle[data-progress='10'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='10'] .ko-progress-circle__fill {
+  transform: rotate(18deg);
+}
+.ko-progress-circle[data-progress='10'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(36deg);
+}
+.ko-progress-circle[data-progress='11'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='11'] .ko-progress-circle__fill {
+  transform: rotate(19.8deg);
+}
+.ko-progress-circle[data-progress='11'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(39.6deg);
+}
+.ko-progress-circle[data-progress='12'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='12'] .ko-progress-circle__fill {
+  transform: rotate(21.6deg);
+}
+.ko-progress-circle[data-progress='12'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(43.2deg);
+}
+.ko-progress-circle[data-progress='13'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='13'] .ko-progress-circle__fill {
+  transform: rotate(23.4deg);
+}
+.ko-progress-circle[data-progress='13'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(46.8deg);
+}
+.ko-progress-circle[data-progress='14'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='14'] .ko-progress-circle__fill {
+  transform: rotate(25.2deg);
+}
+.ko-progress-circle[data-progress='14'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(50.4deg);
+}
+.ko-progress-circle[data-progress='15'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='15'] .ko-progress-circle__fill {
+  transform: rotate(27deg);
+}
+.ko-progress-circle[data-progress='15'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(54deg);
+}
+.ko-progress-circle[data-progress='16'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='16'] .ko-progress-circle__fill {
+  transform: rotate(28.8deg);
+}
+.ko-progress-circle[data-progress='16'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(57.6deg);
+}
+.ko-progress-circle[data-progress='17'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='17'] .ko-progress-circle__fill {
+  transform: rotate(30.6deg);
+}
+.ko-progress-circle[data-progress='17'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(61.2deg);
+}
+.ko-progress-circle[data-progress='18'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='18'] .ko-progress-circle__fill {
+  transform: rotate(32.4deg);
+}
+.ko-progress-circle[data-progress='18'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(64.8deg);
+}
+.ko-progress-circle[data-progress='19'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='19'] .ko-progress-circle__fill {
+  transform: rotate(34.2deg);
+}
+.ko-progress-circle[data-progress='19'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(68.4deg);
+}
+.ko-progress-circle[data-progress='20'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='20'] .ko-progress-circle__fill {
+  transform: rotate(36deg);
+}
+.ko-progress-circle[data-progress='20'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(72deg);
+}
+.ko-progress-circle[data-progress='21'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='21'] .ko-progress-circle__fill {
+  transform: rotate(37.8deg);
+}
+.ko-progress-circle[data-progress='21'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(75.6deg);
+}
+.ko-progress-circle[data-progress='22'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='22'] .ko-progress-circle__fill {
+  transform: rotate(39.6deg);
+}
+.ko-progress-circle[data-progress='22'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(79.2deg);
+}
+.ko-progress-circle[data-progress='23'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='23'] .ko-progress-circle__fill {
+  transform: rotate(41.4deg);
+}
+.ko-progress-circle[data-progress='23'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(82.8deg);
+}
+.ko-progress-circle[data-progress='24'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='24'] .ko-progress-circle__fill {
+  transform: rotate(43.2deg);
+}
+.ko-progress-circle[data-progress='24'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(86.4deg);
+}
+.ko-progress-circle[data-progress='25'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='25'] .ko-progress-circle__fill {
+  transform: rotate(45deg);
+}
+.ko-progress-circle[data-progress='25'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(90deg);
+}
+.ko-progress-circle[data-progress='26'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='26'] .ko-progress-circle__fill {
+  transform: rotate(46.8deg);
+}
+.ko-progress-circle[data-progress='26'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(93.6deg);
+}
+.ko-progress-circle[data-progress='27'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='27'] .ko-progress-circle__fill {
+  transform: rotate(48.6deg);
+}
+.ko-progress-circle[data-progress='27'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(97.2deg);
+}
+.ko-progress-circle[data-progress='28'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='28'] .ko-progress-circle__fill {
+  transform: rotate(50.4deg);
+}
+.ko-progress-circle[data-progress='28'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(100.8deg);
+}
+.ko-progress-circle[data-progress='29'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='29'] .ko-progress-circle__fill {
+  transform: rotate(52.2deg);
+}
+.ko-progress-circle[data-progress='29'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(104.4deg);
+}
+.ko-progress-circle[data-progress='30'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='30'] .ko-progress-circle__fill {
+  transform: rotate(54deg);
+}
+.ko-progress-circle[data-progress='30'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(108deg);
+}
+.ko-progress-circle[data-progress='31'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='31'] .ko-progress-circle__fill {
+  transform: rotate(55.8deg);
+}
+.ko-progress-circle[data-progress='31'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(111.6deg);
+}
+.ko-progress-circle[data-progress='32'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='32'] .ko-progress-circle__fill {
+  transform: rotate(57.6deg);
+}
+.ko-progress-circle[data-progress='32'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(115.2deg);
+}
+.ko-progress-circle[data-progress='33'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='33'] .ko-progress-circle__fill {
+  transform: rotate(59.4deg);
+}
+.ko-progress-circle[data-progress='33'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(118.8deg);
+}
+.ko-progress-circle[data-progress='34'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='34'] .ko-progress-circle__fill {
+  transform: rotate(61.2deg);
+}
+.ko-progress-circle[data-progress='34'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(122.4deg);
+}
+.ko-progress-circle[data-progress='35'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='35'] .ko-progress-circle__fill {
+  transform: rotate(63deg);
+}
+.ko-progress-circle[data-progress='35'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(126deg);
+}
+.ko-progress-circle[data-progress='36'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='36'] .ko-progress-circle__fill {
+  transform: rotate(64.8deg);
+}
+.ko-progress-circle[data-progress='36'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(129.6deg);
+}
+.ko-progress-circle[data-progress='37'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='37'] .ko-progress-circle__fill {
+  transform: rotate(66.6deg);
+}
+.ko-progress-circle[data-progress='37'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(133.2deg);
+}
+.ko-progress-circle[data-progress='38'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='38'] .ko-progress-circle__fill {
+  transform: rotate(68.4deg);
+}
+.ko-progress-circle[data-progress='38'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(136.8deg);
+}
+.ko-progress-circle[data-progress='39'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='39'] .ko-progress-circle__fill {
+  transform: rotate(70.2deg);
+}
+.ko-progress-circle[data-progress='39'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(140.4deg);
+}
+.ko-progress-circle[data-progress='40'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='40'] .ko-progress-circle__fill {
+  transform: rotate(72deg);
+}
+.ko-progress-circle[data-progress='40'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(144deg);
+}
+.ko-progress-circle[data-progress='41'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='41'] .ko-progress-circle__fill {
+  transform: rotate(73.8deg);
+}
+.ko-progress-circle[data-progress='41'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(147.6deg);
+}
+.ko-progress-circle[data-progress='42'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='42'] .ko-progress-circle__fill {
+  transform: rotate(75.6deg);
+}
+.ko-progress-circle[data-progress='42'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(151.2deg);
+}
+.ko-progress-circle[data-progress='43'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='43'] .ko-progress-circle__fill {
+  transform: rotate(77.4deg);
+}
+.ko-progress-circle[data-progress='43'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(154.8deg);
+}
+.ko-progress-circle[data-progress='44'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='44'] .ko-progress-circle__fill {
+  transform: rotate(79.2deg);
+}
+.ko-progress-circle[data-progress='44'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(158.4deg);
+}
+.ko-progress-circle[data-progress='45'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='45'] .ko-progress-circle__fill {
+  transform: rotate(81deg);
+}
+.ko-progress-circle[data-progress='45'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(162deg);
+}
+.ko-progress-circle[data-progress='46'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='46'] .ko-progress-circle__fill {
+  transform: rotate(82.8deg);
+}
+.ko-progress-circle[data-progress='46'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(165.6deg);
+}
+.ko-progress-circle[data-progress='47'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='47'] .ko-progress-circle__fill {
+  transform: rotate(84.6deg);
+}
+.ko-progress-circle[data-progress='47'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(169.2deg);
+}
+.ko-progress-circle[data-progress='48'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='48'] .ko-progress-circle__fill {
+  transform: rotate(86.4deg);
+}
+.ko-progress-circle[data-progress='48'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(172.8deg);
+}
+.ko-progress-circle[data-progress='49'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='49'] .ko-progress-circle__fill {
+  transform: rotate(88.2deg);
+}
+.ko-progress-circle[data-progress='49'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(176.4deg);
+}
+.ko-progress-circle[data-progress='50'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='50'] .ko-progress-circle__fill {
+  transform: rotate(90deg);
+}
+.ko-progress-circle[data-progress='50'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(180deg);
+}
+.ko-progress-circle[data-progress='51'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='51'] .ko-progress-circle__fill {
+  transform: rotate(91.8deg);
+}
+.ko-progress-circle[data-progress='51'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(183.6deg);
+}
+.ko-progress-circle[data-progress='52'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='52'] .ko-progress-circle__fill {
+  transform: rotate(93.6deg);
+}
+.ko-progress-circle[data-progress='52'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(187.2deg);
+}
+.ko-progress-circle[data-progress='53'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='53'] .ko-progress-circle__fill {
+  transform: rotate(95.4deg);
+}
+.ko-progress-circle[data-progress='53'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(190.8deg);
+}
+.ko-progress-circle[data-progress='54'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='54'] .ko-progress-circle__fill {
+  transform: rotate(97.2deg);
+}
+.ko-progress-circle[data-progress='54'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(194.4deg);
+}
+.ko-progress-circle[data-progress='55'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='55'] .ko-progress-circle__fill {
+  transform: rotate(99deg);
+}
+.ko-progress-circle[data-progress='55'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(198deg);
+}
+.ko-progress-circle[data-progress='56'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='56'] .ko-progress-circle__fill {
+  transform: rotate(100.8deg);
+}
+.ko-progress-circle[data-progress='56'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(201.6deg);
+}
+.ko-progress-circle[data-progress='57'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='57'] .ko-progress-circle__fill {
+  transform: rotate(102.6deg);
+}
+.ko-progress-circle[data-progress='57'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(205.2deg);
+}
+.ko-progress-circle[data-progress='58'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='58'] .ko-progress-circle__fill {
+  transform: rotate(104.4deg);
+}
+.ko-progress-circle[data-progress='58'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(208.8deg);
+}
+.ko-progress-circle[data-progress='59'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='59'] .ko-progress-circle__fill {
+  transform: rotate(106.2deg);
+}
+.ko-progress-circle[data-progress='59'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(212.4deg);
+}
+.ko-progress-circle[data-progress='60'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='60'] .ko-progress-circle__fill {
+  transform: rotate(108deg);
+}
+.ko-progress-circle[data-progress='60'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(216deg);
+}
+.ko-progress-circle[data-progress='61'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='61'] .ko-progress-circle__fill {
+  transform: rotate(109.8deg);
+}
+.ko-progress-circle[data-progress='61'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(219.6deg);
+}
+.ko-progress-circle[data-progress='62'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='62'] .ko-progress-circle__fill {
+  transform: rotate(111.6deg);
+}
+.ko-progress-circle[data-progress='62'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(223.2deg);
+}
+.ko-progress-circle[data-progress='63'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='63'] .ko-progress-circle__fill {
+  transform: rotate(113.4deg);
+}
+.ko-progress-circle[data-progress='63'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(226.8deg);
+}
+.ko-progress-circle[data-progress='64'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='64'] .ko-progress-circle__fill {
+  transform: rotate(115.2deg);
+}
+.ko-progress-circle[data-progress='64'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(230.4deg);
+}
+.ko-progress-circle[data-progress='65'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='65'] .ko-progress-circle__fill {
+  transform: rotate(117deg);
+}
+.ko-progress-circle[data-progress='65'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(234deg);
+}
+.ko-progress-circle[data-progress='66'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='66'] .ko-progress-circle__fill {
+  transform: rotate(118.8deg);
+}
+.ko-progress-circle[data-progress='66'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(237.6deg);
+}
+.ko-progress-circle[data-progress='67'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='67'] .ko-progress-circle__fill {
+  transform: rotate(120.6deg);
+}
+.ko-progress-circle[data-progress='67'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(241.2deg);
+}
+.ko-progress-circle[data-progress='68'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='68'] .ko-progress-circle__fill {
+  transform: rotate(122.4deg);
+}
+.ko-progress-circle[data-progress='68'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(244.8deg);
+}
+.ko-progress-circle[data-progress='69'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='69'] .ko-progress-circle__fill {
+  transform: rotate(124.2deg);
+}
+.ko-progress-circle[data-progress='69'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(248.4deg);
+}
+.ko-progress-circle[data-progress='70'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='70'] .ko-progress-circle__fill {
+  transform: rotate(126deg);
+}
+.ko-progress-circle[data-progress='70'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(252deg);
+}
+.ko-progress-circle[data-progress='71'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='71'] .ko-progress-circle__fill {
+  transform: rotate(127.8deg);
+}
+.ko-progress-circle[data-progress='71'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(255.6deg);
+}
+.ko-progress-circle[data-progress='72'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='72'] .ko-progress-circle__fill {
+  transform: rotate(129.6deg);
+}
+.ko-progress-circle[data-progress='72'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(259.2deg);
+}
+.ko-progress-circle[data-progress='73'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='73'] .ko-progress-circle__fill {
+  transform: rotate(131.4deg);
+}
+.ko-progress-circle[data-progress='73'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(262.8deg);
+}
+.ko-progress-circle[data-progress='74'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='74'] .ko-progress-circle__fill {
+  transform: rotate(133.2deg);
+}
+.ko-progress-circle[data-progress='74'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(266.4deg);
+}
+.ko-progress-circle[data-progress='75'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='75'] .ko-progress-circle__fill {
+  transform: rotate(135deg);
+}
+.ko-progress-circle[data-progress='75'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(270deg);
+}
+.ko-progress-circle[data-progress='76'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='76'] .ko-progress-circle__fill {
+  transform: rotate(136.8deg);
+}
+.ko-progress-circle[data-progress='76'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(273.6deg);
+}
+.ko-progress-circle[data-progress='77'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='77'] .ko-progress-circle__fill {
+  transform: rotate(138.6deg);
+}
+.ko-progress-circle[data-progress='77'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(277.2deg);
+}
+.ko-progress-circle[data-progress='78'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='78'] .ko-progress-circle__fill {
+  transform: rotate(140.4deg);
+}
+.ko-progress-circle[data-progress='78'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(280.8deg);
+}
+.ko-progress-circle[data-progress='79'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='79'] .ko-progress-circle__fill {
+  transform: rotate(142.2deg);
+}
+.ko-progress-circle[data-progress='79'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(284.4deg);
+}
+.ko-progress-circle[data-progress='80'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='80'] .ko-progress-circle__fill {
+  transform: rotate(144deg);
+}
+.ko-progress-circle[data-progress='80'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(288deg);
+}
+.ko-progress-circle[data-progress='81'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='81'] .ko-progress-circle__fill {
+  transform: rotate(145.8deg);
+}
+.ko-progress-circle[data-progress='81'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(291.6deg);
+}
+.ko-progress-circle[data-progress='82'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='82'] .ko-progress-circle__fill {
+  transform: rotate(147.6deg);
+}
+.ko-progress-circle[data-progress='82'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(295.2deg);
+}
+.ko-progress-circle[data-progress='83'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='83'] .ko-progress-circle__fill {
+  transform: rotate(149.4deg);
+}
+.ko-progress-circle[data-progress='83'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(298.8deg);
+}
+.ko-progress-circle[data-progress='84'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='84'] .ko-progress-circle__fill {
+  transform: rotate(151.2deg);
+}
+.ko-progress-circle[data-progress='84'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(302.4deg);
+}
+.ko-progress-circle[data-progress='85'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='85'] .ko-progress-circle__fill {
+  transform: rotate(153deg);
+}
+.ko-progress-circle[data-progress='85'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(306deg);
+}
+.ko-progress-circle[data-progress='86'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='86'] .ko-progress-circle__fill {
+  transform: rotate(154.8deg);
+}
+.ko-progress-circle[data-progress='86'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(309.6deg);
+}
+.ko-progress-circle[data-progress='87'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='87'] .ko-progress-circle__fill {
+  transform: rotate(156.6deg);
+}
+.ko-progress-circle[data-progress='87'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(313.2deg);
+}
+.ko-progress-circle[data-progress='88'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='88'] .ko-progress-circle__fill {
+  transform: rotate(158.4deg);
+}
+.ko-progress-circle[data-progress='88'] .ko-progress-circle__fill.ko-progress-circle__bar {
+  transform: rotate(316.8deg);
+}
+.ko-progress-circle[data-progress='89'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='89'] .ko-progress-circle__fill {transform: rotate(160.2deg);}
+.ko-progress-circle[data-progress='89'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(320.4deg);}
+.ko-progress-circle[data-progress='90'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='90'] .ko-progress-circle__fill {transform: rotate(162deg);}
+.ko-progress-circle[data-progress='90'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(324deg);}
+.ko-progress-circle[data-progress='91'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='91'] .ko-progress-circle__fill {transform: rotate(163.8deg);}
+.ko-progress-circle[data-progress='91'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(327.6deg);}
+.ko-progress-circle[data-progress='92'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='92'] .ko-progress-circle__fill {transform: rotate(165.6deg);}
+.ko-progress-circle[data-progress='92'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(331.2deg);}
+.ko-progress-circle[data-progress='93'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='93'] .ko-progress-circle__fill {transform: rotate(167.4deg);}
+.ko-progress-circle[data-progress='93'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(334.8deg);}
+.ko-progress-circle[data-progress='94'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='94'] .ko-progress-circle__fill { transform: rotate(169.2deg);}
+.ko-progress-circle[data-progress='94'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(338.4deg);}
+.ko-progress-circle[data-progress='95'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='95'] .ko-progress-circle__fill { transform: rotate(171deg);}
+.ko-progress-circle[data-progress='95'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(342deg);}
+.ko-progress-circle[data-progress='96'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='96'] .ko-progress-circle__fill {transform: rotate(172.8deg);}
+.ko-progress-circle[data-progress='96'] .ko-progress-circle__fill.ko-progress-circle__bar {transform: rotate(345.6deg);}
+.ko-progress-circle[data-progress='97'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='97'] .ko-progress-circle__fill { transform: rotate(174.6deg);}
+.ko-progress-circle[data-progress='97'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(349.2deg);}
+.ko-progress-circle[data-progress='98'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='98'] .ko-progress-circle__fill {transform: rotate(176.4deg);}
+.ko-progress-circle[data-progress='98'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(352.8deg);}
+.ko-progress-circle[data-progress='99'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='99'] .ko-progress-circle__fill { transform: rotate(178.2deg);}
+.ko-progress-circle[data-progress='99'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(356.4deg);}
+.ko-progress-circle[data-progress='100'] .ko-progress-circle__slice.full, .ko-progress-circle[data-progress='100'] .ko-progress-circle__fill { transform: rotate(180deg);}
+.ko-progress-circle[data-progress='100'] .ko-progress-circle__fill.ko-progress-circle__bar { transform: rotate(360deg);}
+
+
+.slider {
+  position: relative;
+  text-align: left;
+  border: 1px solid gray;
+  height: 0.6em;
+}
+
+.slider .handle {
+  position: absolute;
+  z-index: 2;
+  width: 1.2em;
+  height: 1.2em;
+  background-color: gray;
+}
+
+.handle {
+  top: -0.3em;
+  margin-left: -0.6em;
+}
+
+.slider .range {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  font-size: .7em;
+  background-color: red;
+  top: 0;
+  height: 100%;
+}
+.rzslider {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 4px;
+  margin: 20px 0 15px 0;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.rzslider.with-legend {
+  margin-bottom: 40px;
+}
+
+.rzslider[disabled] {
+  cursor: not-allowed;
+}
+
+.rzslider[disabled] .rz-pointer {
+  cursor: not-allowed;
+  background-color: #d8e0f3;
+}
+
+.rzslider[disabled] .rz-draggable {
+  cursor: not-allowed;
+}
+
+.rzslider[disabled] .rz-selection {
+  background: #8b91a2;
+}
+
+.rzslider[disabled] .rz-tick {
+  cursor: not-allowed;
+}
+
+.rzslider[disabled] .rz-tick.rz-selected {
+  background: #8b91a2;
+}
+
+.rzslider span {
+  position: absolute;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.rzslider .rz-base {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.rzslider .rz-bar-wrapper {
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 32px;
+  padding-top: 16px;
+  margin-top: -16px;
+  box-sizing: border-box;
+}
+
+.rzslider .rz-draggable {
+  cursor: move;
+}
+
+.rzslider .rz-bar {
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 4px;
+  background: #d8e0f3;
+  border-radius: 2px;
+}
+
+.rzslider .rz-bar-wrapper.rz-transparent .rz-bar {background: transparent;}
+.rzslider .rz-bar-wrapper.rz-left-out-selection .rz-bar {background: #df002d;}
+.rzslider .rz-bar-wrapper.rz-right-out-selection .rz-bar {background: #03a688;}
+
+.rzslider .rz-selection {z-index: 2;background: #0db9f0;border-radius: 2px;}
+.rzslider .rz-restricted {z-index: 3; background: #ff0000;border-radius: 2px;}
+.rzslider .rz-pointer {top: -11px;z-index: 3; box-shadow:0px 0px 13px 0px rgba(0,160,168,0.7);width: 24px;height: 24px;cursor: pointer;background-color: #17a0a7;border-radius: 50px;}
+
+.rzslider .rz-pointer:after {position: absolute; top:5px;left:5px;width: 14px;height:14px;background: #ffffff;border-radius:50%;content: '';}
+.rzslider .rz-pointer:hover:after {  background-color: #ffffff; }
+.rzslider .rz-pointer.rz-active {  z-index: 4; }
+.rzslider .rz-pointer.rz-active:after { background-color: #451aff; }
+.rzslider .rz-bubble { bottom: 16px; font-size:15px; padding: 1px 3px; color: #55637d; cursor: default; background: #17a0a7; border-radius: 5px; padding:0px 14px; color: #fff; font-size: 14px; position: relative; display: inline-block; top: -50px; }
+	
+	
+.rzslider .rz-bubble:after { top: 100%;left: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-color: rgba(23, 160, 167, 0);
+border-top-color: #17a0a7; border-width: 7px; margin-left: -9px;}
+
+.rzslider .rz-bubble.rz-limit { color: #55637d; 																		display:none;}
+.rzslider .rz-ticks { position: absolute;  top: -3px;  left: 0;  z-index: 1;  width: 100%;  height: 0;  margin: 0; list-style: none; box-sizing: border-box;}
+.rzslider .rz-ticks-values-under .rz-tick-value {  top: auto;  bottom: -32px;}
+.rzslider .rz-tick {position: absolute;  top: 0;  left: 0;  width: 10px;  height: 10px;  margin-left: 11px;  text-align: center;  cursor: pointer;  background: #d8e0f3;  border-radius: 50%;}
+.rzslider .rz-tick.rz-selected { background: #0db9f0;}
+.rzslider .rz-tick-value { position: absolute;top: -30px;transform: translate(-50%, 0);}
+.rzslider .rz-tick-legend {position: absolute;top: 24px;max-width: 50px;white-space: normal;transform: translate(-50%, 0);}
+.rzslider.rz-vertical {position: relative; width: 4px; height: 100%; padding: 0; margin: 0 20px; vertical-align: baseline;}
+.rzslider.rz-vertical .rz-base {width: 100%;height: 100%;padding: 0;}
+.rzslider.rz-vertical .rz-bar-wrapper {top: auto;left: 0;width: 32px;height: 100%;padding: 0 0 0 16px; margin: 0 0 0 -16px;}
+.rzslider.rz-vertical .rz-bar {bottom: 0;left: auto; width: 4px;height: 100%;}
+.rzslider.rz-vertical .rz-pointer {top: auto;bottom: 0;left: -14px !important;}
+
+.rzslider.rz-vertical .rz-bubble {bottom: 0; left: 16px !important; margin-left: 3px;}
+.rzslider.rz-vertical .rz-ticks {top: 0;left: -3px;z-index: 1;width: 0;height: 100%;}
+.rzslider.rz-vertical .rz-tick { margin-top: 11px;margin-left: auto;vertical-align: middle;}
+.rzslider.rz-vertical .rz-tick-value {top: auto;left: 24px;transform: translate(0, -28%);}
+.rzslider.rz-vertical .rz-tick-legend {top: auto;right: 24px;  max-width: none;  white-space: nowrap;  transform: translate(0, -28%);}
+.rzslider.rz-vertical .rz-ticks-values-under .rz-tick-value {right: 24px; bottom: auto; left: auto;}
+</style>
+
+<!--Header Section Starts-->
+<div ui-view="header"></div>
+<!--Header Section Starts-->
+<div class="clear"></div>
+<!--HEALTH KARMA PART I STARTS -->
+
+
+<!--Health Karma Wrapper -->
+<div class="hk_container" ng-hide="showResult">
+    <div class="hkarma_wrapper">
+        <!--Intro Title Starts -->
+        <div class="hk_intro">
+            <h4>Introduction to</h4>
+            <h1>HEALTH KARMA<span> | A lifestyle based comprehensive health risk assessment</span></h1>
+        </div>
+        <div class="clear"></div>
+        <!--Intro Title Ends -->
+        <!--Steps Progress -->
+        
+        <div class="wizard_main">
+          <div class="row bs-wizard" style="border-bottom:0;">
+            <div class="col-xs-4 bs-wizard-step" >
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+              <div class="text-center bs-wizard-stepnum">Details</div>
+              <a href="#" class="bs-wizard-dot" ng-class="{ 'wiz_selected': (!showResult && !showQuestion)}"></a> </div>
+              
+              
+            <div class="col-xs-4 bs-wizard-step">      
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+              <div class="text-center bs-wizard-stepnum">Questionnaire</div>
+              <a href="#" class="bs-wizard-dot"  ng-class="{ 'wiz_selected': (!showResult && showQuestion)}"></a> </div>
+              
+            <div class="col-xs-4 bs-wizard-step" >      
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+              <div class="text-center bs-wizard-stepnum">Result</div>
+              <a href="#" class="bs-wizard-dot" ng-class="{ 'wiz_selected': (showResult)}"></a> </div>
+          </div>
+        </div>
+		<!--Steps Process Ends -->
+        
+        
+        <div class="clear"></div>
+        
+        <!--Details Block Area -->
+        <div class="hk_formDetailBlock" ng-hide="showQuestion">
+            <!--Enter Details Part I -->
+            <div class="enterhkDetail">
+                <h1>Please enter your details</h1>
+                <div class="hk_detailpanels">
+                    <!--BASIC QUESTION AREA START -->
+                    <div class="hk_detailpanels containers" id="hk_detailpanels_f">
+                        <div class="hk_scrollForm">
+                            <form name="healthKarmaForm"  id="healthKarmaForm" class="material" novalidate>
+                                <div class="hk_scrollForm-header"></div>
+                                <div class="hk_scrollForm-main" id="hk_scrollForm_main">
+                                    <!--FIRST NAME -->
+                                    <div class="individual-questions active" id="qq1" data-qid="1">
+                                        <article>
+                                            <div class="question_name">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="16px" viewBox="0 0 20.357 15.02" enable-background="new 0 0 20.357 15.02" xml:space="preserve">
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.296" y1="7.52" x2="19.024" y2="7.52" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.718" y1="13.825" x2="19.024" y2="7.521" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.756" y1="1.252" x2="19.024" y2="7.52" />
+                                                </svg>
+                                                <figcaption>Hi, what is your <span>first name</span>? </figcaption>
+                                                <div class="hk_groupset">
+                                                    <div class="cursorBlink">
+                                                        <input type="text" name="huserName" id="huserName" ng-model="huserName"  ng-pattern="/^[A-Za-z ]+$/" tabindex="1" required autocomplete="off">
+                                                    </div>
+                                                    <span ng-show="(healthKarmaForm.huserName.$dirty && healthKarmaForm.huserName.$error.required && !healthKarmaForm.huserName.$error.pattern)" class="validation-block">First name is required</span>
+                                                    <span ng-show="healthKarmaForm.huserName.$error.pattern && healthKarmaForm.huserName.$touched" class="validation-block">Enter valid first name</span>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!--FIRST NAME -->
+                                    <!--LAST NAME -->
+                                    <div class="individual-questions" id="qq2" data-qid="2">
+                                        <article>
+                                            <div class="question_name">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="16px" viewBox="0 0 20.357 15.02" enable-background="new 0 0 20.357 15.02" xml:space="preserve">
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.296" y1="7.52" x2="19.024" y2="7.52" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.718" y1="13.825" x2="19.024" y2="7.521" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.756" y1="1.252" x2="19.024" y2="7.52" />
+                                                </svg>
+                                                <figcaption>What is your <span>last name</span>? </figcaption>
+                                                <div class="hk_groupset">
+                                                    <div class="cursorBlink">
+                                                        <input type="text" name="huserLastName" id="huserLastName" ng-model="huserLastName"  ng-pattern="/^[A-Za-z ]+$/" tabindex="2" required autocomplete="off">
+                                                    </div>
+                                                    <span ng-show="(healthKarmaForm.huserLastName.$dirty && healthKarmaForm.huserLastName.$error.required && !healthKarmaForm.huserLastName.$error.pattern)" class="validation-block">Last name is required</span>
+                                                    <span ng-show="healthKarmaForm.huserLastName.$error.pattern && healthKarmaForm.huserLastName.$touched" class="validation-block">Enter valid last name</span>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!--LAST NAME -->
+                                    <!--EMAIL ID -->
+                                    <div class="individual-questions" id="qq3" data-qid="3">
+                                        <article>
+                                            <div class="question_name">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="16px" viewBox="0 0 20.357 15.02" enable-background="new 0 0 20.357 15.02" xml:space="preserve">
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.296" y1="7.52" x2="19.024" y2="7.52" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.718" y1="13.825" x2="19.024" y2="7.521" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.756" y1="1.252" x2="19.024" y2="7.52" />
+                                                </svg>
+                                                <figcaption>Which <span>email id</span> should we use?
+                                                    <p>(We promise not to spam you)</p>
+                                                </figcaption>
+                                                <div class="hk_groupset">
+                                                    <div class="cursorBlink">
+                                                        <input name="healthkarma_email" id="healthkarma_email"  type="email" ng-model="healthKarmaEmail" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="true" autocomplete="off" tabindex="3">
+                                                    </div>
+                                                    <span ng-show="healthKarmaForm.healthkarma_email.$dirty && healthKarmaForm.healthkarma_email.$error.required && !healthKarmaForm.healthkarma_email.$error.pattern" class="validation-block">Email is required</span> 
+                            
+                                                    <span ng-show="healthKarmaForm.healthkarma_email.$error.pattern &&  healthKarmaForm.healthkarma_email.$touched && !healthKarmaForm.healthkarma_email.$error.required" class="validation-block"> Enter valid Email</span>
+
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!--EMAIL ID -->
+
+                                    <!-- Mobile -->
+                                    <div class="individual-questions"  id="qq4" data-qid="4">
+                                        <article>
+                                            <div class="question_name">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="16px" viewBox="0 0 20.357 15.02" enable-background="new 0 0 20.357 15.02" xml:space="preserve">
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.296" y1="7.52" x2="19.024" y2="7.52" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.718" y1="13.825" x2="19.024" y2="7.521" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.756" y1="1.252" x2="19.024" y2="7.52" />
+                                                </svg>
+                                                <figcaption>Can we get your <span>phone number</span>?
+                                                    <p>(Dont worry we wont spam you)</p>
+                                                </figcaption>
+                                                <div class="hk_groupset">
+                                                    <div class="cursorBlink">
+                                                        <input type="text" name="huserphone" id="huserphone" autocomplete="off" maxlength="10" data-ng-model="huserphone" ng-pattern="/^\d{10}$/" required="true" tabindex="4" ng-disabled="!showMobile">
+                                                    </div>
+                                                    <span ng-show="healthKarmaForm.huserphone.$dirty && healthKarmaForm.huserphone.$error.required && !healthKarmaForm.huserphone.$error.pattern" class="validation-block">Mobile No. is required</span> 
+                                                    <span ng-show="healthKarmaForm.huserphone.$error.pattern &&  healthKarmaForm.huserphone.$touched && !healthKarmaForm.huserphone.$error.required" class="validation-block"> Enter valid Mobile</span>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                    <!--HEIGHT -->
+                                    <div class="individual-questions" id="qq5" data-qid="5">
+                                        <article>
+                                            <div class="question_name">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="16px" viewBox="0 0 20.357 15.02" enable-background="new 0 0 20.357 15.02" xml:space="preserve">
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.296" y1="7.52" x2="19.024" y2="7.52" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.718" y1="13.825" x2="19.024" y2="7.521" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.756" y1="1.252" x2="19.024" y2="7.52" />
+                                                </svg>
+                                                <figcaption>What is your <span>height</span>?</figcaption>
+                                                <div class="hk_groupset">
+                                                    <div class="cursorBlink">
+                                                        <select id="userheight" name="userheight" ng-required="true" ng-model="userheight" onchange="clickSelect();" tabindex="5">
+                                                            <option value="">Select Height</option>
+                                                            <option value="147.32">4'10</option><option value="149.86">4'11</option>
+                                                            <option value="152.40">5'0</option><option value="155.4">5'1</option>
+                                                            <option value="157.48">5'2</option><option value="160.02">5'3</option>
+                                                            <option value="162.56">5'4</option><option value="165.10">5'5</option>
+                                                            <option value="167.64">5'6</option><option value="170.18">5'7</option>
+                                                            <option value="172.72">5'8</option><option value="175.26">5'9</option>
+                                                            <option value="177.80">5'10</option><option value="180.34">5'11</option>
+                                                            <option value="182.88">6'0</option><option value="185.42">6'1</option>
+                                                            <option value="187.96">6'2</option><option value="190.50">6'3</option>
+                                                            <option value="193.04">6'4</option><option value="195.58">6'5</option>
+                                                            <option value="198.12">6'6</option><option value="200.66">6'7</option>
+                                                            <option value="203.20">6'8</option><option value="205.74">6'9</option>
+                                                            <option value="208.28">6'10</option><option value="210.82">6'11</option>
+                                                            <option value="213.36">7'0</option>
+                                                        </select>
+                                                    </div>
+                                                    <span ng-show="healthKarmaForm.userheight.$dirty && healthKarmaForm.userheight.$error.required" class="validation-block">Height is required</span>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!--HEIGHT -->
+                                    <!--WEIGHT -->
+                                    <div class="individual-questions" id="qq6" data-qid="6">
+                                        <article>
+                                            <div class="question_name">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="16px" viewBox="0 0 20.357 15.02" enable-background="new 0 0 20.357 15.02" xml:space="preserve">
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.296" y1="7.52" x2="19.024" y2="7.52" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.718" y1="13.825" x2="19.024" y2="7.521" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.756" y1="1.252" x2="19.024" y2="7.52" />
+                                                </svg>
+
+                                                <figcaption>Can you tell us your <span>weight</span>?
+                                                    <p>(Shh! Its a secret, dont worry)</p>
+                                                </figcaption>
+                                                <div class="hk_groupset">
+                                                    <div class="cursorBlink" id="userWeight">
+                                                        <rzslider rz-slider-model="weightSlider.value" rz-slider-options="weightSlider.options"></rzslider>
+                                                    </div>
+                                                    <span ng-show="weight_error" class="validation-block">Weight should be greater than zero.</span>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!--WEIGHT -->
+                                    <!--GENDER -->
+                                    <div class="individual-questions" id="qq7" data-qid="7">
+                                        <article>
+                                            <div class="question_name">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="16px" viewBox="0 0 20.357 15.02" enable-background="new 0 0 20.357 15.02" xml:space="preserve">
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.296" y1="7.52" x2="19.024" y2="7.52" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.718" y1="13.825" x2="19.024" y2="7.521" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.756" y1="1.252" x2="19.024" y2="7.52" />
+                                                </svg>
+                                                <figcaption>Please choose your<span> gender</span>.</figcaption>
+                                                <div class="hk_groupset">
+                                                    <div class="cursorBlink">
+                                                        <div class="hkradio-selector">
+                                                            <ul>
+                                                                <li>
+                                                                    <input id="male_img" type="radio" name="husergender" value="m" ng-model="husergender" required/>
+                                                                    <label class="genderblock male_img" for="male_img" onclick="clickSelect();" ng-class="{ 'selected_male': (husergender == 'm')}"></label>
+                                                                </li>
+                                                                <li>
+                                                                    <input id="female_img" type="radio" name="husergender" value="f" ng-model="husergender" required/>
+                                                                    <label class="genderblock female_img" for="female_img" onclick="clickSelect();" ng-class="{ 'selected_female': (husergender == 'f')}"></label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <span ng-show="(healthKarmaForm.husergender.$dirty && healthKarmaForm.husergender.$error.required)" class="validation-block">Select Gender</span> 
+                                                    </div>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!--GENDER -->
+                                    <!--AGE -->
+                                    <div class="individual-questions"  id="qq8" data-qid="8">
+                                        <article>
+                                            <div class="question_name">
+                                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="16px" viewBox="0 0 20.357 15.02" enable-background="new 0 0 20.357 15.02" xml:space="preserve">
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1.296" y1="7.52" x2="19.024" y2="7.52" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.718" y1="13.825" x2="19.024" y2="7.521" />
+                                                    <line fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="12.756" y1="1.252" x2="19.024" y2="7.52" />
+                                                </svg>
+                                                <figcaption>Please tell us your<span> age</span>.</figcaption>
+                                                <div class="hk_groupset">
+                                                    <div class="cursorBlink" id="userAge">
+                                                        <rzslider rz-slider-model="ageSlider.value" rz-slider-options="ageSlider.options"></rzslider>
+                                                    </div>
+                                                    <span ng-show="age_error" class="validation-block">Invalid Age</span>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!--AGE -->
+
+                                    <div class="individual-questions-blank">
+                                        <article>
+                                        </article>
+                                    </div>
+
+                                    <div class="movenextstep" ng-hide="qdatasuccess" style="display:none;" id="continue_last">
+                                        <input type="button" class="continue-step-question-two" value="Continue" name="register" ng-click="getNewQuestionList(healthKarmaForm.$valid);" analytics-on="click" analytics-category="HealthKarmaV2" analytics-event="Click on Continue button">
+                                    </div>
+                                    
+                                    <div ng-show="qdatasuccess" class="qdatasuccess" style="text-align: center">
+                                          Please Wait <img src="/assets/images/load_wait.gif" style="margin-left:1%">
+                                        </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--BASIC QUESTION AREA END -->
+                    <div class="clear"></div>
+                    <!--NAVIGATION -->
+                    <div class="navigator_steps">
+                        <ul>
+                            <li id="f1_previous">
+                              <input class="hk_arrow_prevform" type="button" name="prev_form" id="prev_form" value="">
+                            </li>
+							              <li id="f1_next">
+                              <input class="hk_arrow_nextform" type="button"  name="next_form" id="next_form" value="">
+                            </li>
+                                      
+                           
+                        </ul>
+                    </div>
+                    <!--NAVIGATION -->
+                </div>
+            </div>
+            <!--Enter Details Part I -->
+            <div class="clear"></div>
+        </div>
+        <!--Details Block Area Ends -->
+        <!--HEALTH KARMA PART I ENDS -->
+
+
+
+</div>
+
+
+
+
+        <!--HEALTH KARMA PART II -->
+        <div class="hk_formDetailBlock_p2" ng-show="showQuestion">
+            <section class="questionaireBlock">
+                <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="question_indicators">
+                        <li ng-class="{ 'active': (quest.q{{$index+1}})}" ng-click="clickIndicator($index+1);" ng-repeat="i in questionList"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="">
+                        <!--food -->
+                        <div class="item questionListImage img_{{items.question_id}}" ng-repeat="items in questionList" id="q{{$index+1}}_div" ng-init="sectionIndex = $index" ng-show="quest.q{{$index+1}}">
+                            <article class="question_list">
+                                <div class="carouselCaption questionListCap">
+                                    <h1>Answer the following questions</h1>
+                                    
+                                    <div class="main-question">
+                                        <h3 ng-bind="items.question"></h3> 
+                                        <h4 ng-if="items.question_type == 1"> (You can select multiple choice) </h4>
+                                        <div class="cursorBlink">
+                                            <div ng-class="{ 'hkradio-selector': (items.question_sub_type == 0), 'hkbox-select': (items.question_sub_type == 1 && items.question_type == 0), 'hkbox-check': (items.question_sub_type == 1 && items.question_type == 1)}">
+                                                <ul>
+                                                	<div class="display_break_q{{items.question_id}}" ng-repeat="opt in items.options">
+                                                        <li ng-if="items.question_sub_type == 0">
+                                                            <input id="quest_{{opt.option_id}}" type="radio" name="quest_{{opt.option_id}}" value="{{opt.option_id}}" ng-model="answer[items.question_id]" ng-click="clickNewRadio(sectionIndex+1);" ng-required="true"/>
+                                                            <label style="padding-left:0px !important;" class="{{opt.class}}" for="quest_{{opt.option_id}}" ng-class="{ 'active_quest_{{opt.option_id}}': (answer[items.question_id] == {{opt.option_id}})}">
+                                                                <font>{{opt.option}}</font>
+                                                            </label>
+                                                        </li>
+
+                                                        <li ng-if="(items.question_sub_type == 1) && (items.question_type == 0)" class="{{opt.class}}">
+                                                            <input id="quest_{{opt.option_id}}" type="radio" name="quest_{{opt.option_id}}" value="{{opt.option_id}}" ng-model="answer[items.question_id]" ng-click="clickNewRadio(sectionIndex+1);" ng-required="true" />
+
+                                                            <label  for="quest_{{opt.option_id}}">
+                                                                <center>{{opt.option}}</center>
+                                                            </label>
+                                                        </li>
+
+                                                        <div ng-if="(items.question_sub_type == 1) && (items.question_type == 1)" class="{{opt.class}} checkbox-btn">
+                                                           
+                                                            <label class="checkbox-inline" for="quest_{{opt.option_id}}" ng-click="clickLastCheckbox(items.question_id,opt.option_id);" ng-class="{ 'active_quest_checkbox': (answer[items.question_id][opt.option_id])}">
+                                                               <input name="quest_{{items.question_id}}_{{opt.option_id}}" type="checkbox" id="quest_{{items.question_id}}_{{opt.option_id}}" ng-model="answer[items.question_id][opt.option_id]" ng-required="true"/><center>{{opt.option}}</center>
+                                                            </label>
+                                                          </div>
+                                                       </div>
+                                                </ul>
+                                               
+
+                                            </div>
+                                        </div>
+                                 
+                                    </div>
+                                </div>
+
+                                <!--NAVIGATION -->
+                                <div class="hk_nextprev">
+                                    <ul>
+                                      <li class="" ng-show="(sectionIndex+1) > 1">
+                                        <input class="hk_arrowprev" type="button" name="prev_q{{sectionIndex+1}}" id="prev_q{{sectionIndex+1}}" value="" ng-click="showNewPrevious();">
+                                      </li>
+
+                                      <li class="">
+                                        <input class="hk_arrownext" type="button" style="opacity:0.2;" name="next_q{{$index+1}}" id="next_q{{$index+1}}" value="" ng-click="showNewNext();" disabled="disabled">
+                                      </li>
+                                    </ul>
+                                   
+                                </div>                                
+                            </article>
+                            <img ng-src="{{items.background_image}}" alt="" style="width:100%;"> 
+                        </div>
+                        
+                    </div>
+                   
+                </div>
+                <div class="datasuccess_hk" ng-show="datasuccess">
+                  Please Wait <img src="/assets/images/load_wait.gif" style="margin-left:1%">
+                </div>
+            </section>
+            
+             
+            
+            
+        </div>
+        <!--HEALTH KARMA PART II ENDS -->
+    </div>
+</div>
+<!--Health Karma Wrapper -->
+
+<!--HEALTH KARMA PART III -->
+<div class="hk_container" ng-show="showResult">
+ <!--Intro Title Starts -->
+        <div class="hk_intro">
+            <h4>Introduction to</h4>
+            <h1>HEALTH KARMA<span> | A lifestyle based comprehensive health risk assessment</span></h1>
+        </div>
+        <div class="clear"></div>
+        <!--Intro Title Ends -->
+        <!--Steps Progress -->
+        
+       <div class="wizard_main">
+          <div class="row bs-wizard" style="border-bottom:0;">
+            <div class="col-xs-4 bs-wizard-step" >
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+              <div class="text-center bs-wizard-stepnum">Details</div>
+              <a href="#" class="bs-wizard-dot" ng-class="{ 'wiz_selected': (!showResult && !showQuestion)}"></a> </div>
+              
+              
+            <div class="col-xs-4 bs-wizard-step">      
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+              <div class="text-center bs-wizard-stepnum">Questionnaire</div>
+              <a href="#" class="bs-wizard-dot"  ng-class="{ 'wiz_selected': (!showResult && showQuestion)}"></a> </div>
+              
+            <div class="col-xs-4 bs-wizard-step" >      
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+              <div class="text-center bs-wizard-stepnum">Result</div>
+              <a href="#" class="bs-wizard-dot" ng-class="{ 'wiz_selected': (showResult)}"></a> </div>
+          </div>
+        </div>
+       
+        <div class="clear"></div>
+        <!--Steps Process Ends -->
+    <div class="hk_formDetailBlock_p3">
+        <div class="finalstatistic">
+            <div class="col-md-12">
+                <div class="col-md-7">
+                    <div class="blockScore">
+                        <div class="scoreleft">
+                            <div class="circle_animated">
+                                <div class="myscorenew">{{lifeStyleScore}}<span>/100</span></div>
+         				                  <div class="ko-progress-circle" data-progress="{{lifeStyleScore}}">
+                                    <div class="ko-circle">
+                                        <div class="full ko-progress-circle__slice">
+                                            <div class="ko-progress-circle__fill" ng-class="{ 'red': (lifeStyleScore<60 && lifeStyleScore>0) ,'green': (lifeStyleScore>=60)}"></div>
+                                        </div>
+                                        <div class="ko-progress-circle__slice">
+                                            <div class="ko-progress-circle__fill" ng-class="{ 'red': (lifeStyleScore<60 && lifeStyleScore>0) ,'green': (lifeStyleScore>=60)}"></div>
+                                            <div class="ko-progress-circle__fill ko-progress-circle__bar" ng-class="{ 'red': (lifeStyleScore<60 && lifeStyleScore>0) ,'green': (lifeStyleScore>=60)}"></div>
+                                        </div>
+                                    </div>
+                                    <div class="ko-progress-circle__overlay"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scorerightcontent">
+                            <h2>Lifestyle Score</h2>
+                            <p><strong>{{huserName.toUpperCase()}}</strong>, you have scored <strong>{{resultData.lifeStyleScore}}/100</strong> in your self health assessment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-12">
+                        <div class="blockpeers">
+                            <h2>{{peerscore}}%</h2>
+                            <p>Peers are healthier than you</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="probable-risks">
+                        <div class="riskslist">
+                            <h2>YOUR PROBABLE RISKS ARE</h2>
+                            <ul ng-show="resultData.risks.length > 0">
+                              <li ng-repeat="rc in resultData.risks">{{rc}}</li>
+                            </ul>
+                            <ul ng-show="resultData.risks.length == 0">
+                              <li>No Probable Risks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 pull-right">
+                    <div class="col-md-12">
+                        <div class="test_recommendation">
+                            <div class="riskslist">
+                                <h2 ng-show="resultData.recommendedTests.length > 0">TESTS RECOMMENDED FOR YOU</h2>
+                                <ul ng-show="resultData.recommendedTests.length > 0">
+                                  <li ng-repeat="rc in resultData.recommendedTests">
+                                    <div class="checkbox-btn">
+                                      <input type="checkbox" name="rec_{{rc.id}}" id="rec_{{rc.id}}" ng-model="answerRecomm[rc.id]">
+                                      <label class="labelOptt" for="rec_{{rc.id}}" onclick>{{rc.name}}</label>
+                                    </div>
+                                  </li>
+                                </ul>
+                                <input type="button" class="nodisplaymob" value="Book a test" name="hcc" ng-click="bookRecommendTestNew();" ng-if="resultData.recommendedTests.length > 0" analytics-on="click" analytics-category="HealthKarmaV2" analytics-event="Click on Book a test button">
+
+                                <p ng-show="resultData.recommendedTests.length == 0" ng-bind="resultData.noRiskMessage"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="hk_booknow_panel">
+                    <input type="button" class="book-healthkarmatests" value="Book a test" name="hcc" ng-click="bookRecommendTestNew();" ng-if="resultData.recommendedTests.length > 0" analytics-on="click" analytics-category="HealthKarmaV2" analytics-event="Click on Book a test button">
+
+                    <div class="or_opt">OR</div>
+
+                    <div class="health-advisor-call">
+                      <a href="javascript:void(0);" ng-click="callBackPhone();" analytics-on="click" analytics-category="HealthKarmaV2" analytics-event="Click on Talk to our Health Advisor button"> Talk to our Health Advisor</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 download_App" style="text-align:center;">
+                <div class="googleplay"><a href="https://play.google.com/store/apps/details?id=com.healthians.main.healthians&hl=en_IN" target="_blank" analytics-on="click" analytics-category="HealthKarmaV2" analytics-event="Click on App Download button"><img src="/assets/images/google_play.png"></a></div>
+
+                <div class="gplaycontent">To get the Health Karma Score for your family, <span><a href="https://play.google.com/store/apps/details?id=com.healthians.main.healthians&hl=en" target="_blank"  analytics-on="click" analytics-category="HealthKarmaV2" analytics-event="Click on App Download Link"> download </a></span>  &nbsp;the app now !</div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!--HEALTH KARMA PART III -->
+<!--Footer Section Starts-->
+<div class="clear"></div>
+<div ui-view="footer"></div>
+<!--Footer Section Ends-->
+<!--MAIN JS HEALTH KARMA -->
+
+<script src="/assets/js/jquery.scrollTo.min.js"></script>
+<script>
+    var $this = $(this);
+    var container = $(".hk_scrollForm-main");
+
+    var isMobile = {
+        Android: function() {
+                return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+
+    $(document).ready(function() {
+
+      $("#FirstName").focus();
+
+      //if user cursor click on disable question then active that question
+    	$(".individual-questions").on("click", function(){
+        if (isMobile.any()) {
+
+          var questionid = $(this).attr("data-qid");
+
+          if(questionid != 8) {
+            $('#next_form').show();
+            $("#continue_last").hide();
+            //reinitState($(this));
+          }
+
+          if(questionid == 8) {
+            //reinitState($(this));
+            $('#next_form').hide();
+            $("#continue_last").show();
+          }
+
+          if(!$(this).next().hasClass("active")) {
+            var nextQuestion = $(this).closest('.individual-questions').next();
+
+            if(nextQuestion.length > 0) {
+                $('#hk_scrollForm_main').animate({
+                    scrollTop: 159 * (parseInt(questionid)-1)
+                }, "slow");
+
+                $("#hk_detailpanels_f").scrollTo($(this), 10, {
+                    offset: { left: 100, top: 0 },
+                    queue: false
+                });
+            }
+            $.scrollTo($('.hk_formDetailBlock'), 1000);
+            reinitState($(this));
+          }
+          
+          //scroll using next button
+        }
+        else {
+          var qid = $(this).attr("data-qid");
+
+          if(qid == 8) {
+            $('#next_form').hide();
+            $("#continue_last").show();
+          }
+
+          if(!$(this).next().hasClass("active")) {
+            var nextQuestion = $(this).closest('.individual-questions').next();
+            var questionid = nextQuestion.attr("data-qid");
+
+            if(nextQuestion.length > 0) {
+                $('#hk_scrollForm_main').animate({
+                    scrollTop: nextQuestion.offset().top
+                }, "slow");
+
+                $("#hk_detailpanels_f").scrollTo($(this), 10, {
+                    offset: { left: 100, top: 0 },
+                    queue: false
+                });
+            }
+          
+            reinitState($(this));
+          }
+        }
+    	});
+
+      $('#f1_next').dblclick(false);
+
+      // For user info form next button      
+      $("#f1_next").on("click", function(){
+        
+        $('#next_form').prop('disabled',true);
+
+        setTimeout(function(){
+           // enable click after 1 second
+           $('#next_form').prop('disabled',false);
+        },300);
+
+        $(".hk_scrollForm-main").find(".individual-questions").each(function() {
+          if($(this).hasClass("active")) {
+            var cur_element = $(this); 
+
+            var qid = cur_element.attr("id");
+            var questionid = cur_element.attr("data-qid");
+
+            if(questionid == 7) {
+              $('#next_form').hide();
+              $("#continue_last").show();
+            }
+            else {
+              $('#next_form').show();
+              $("#continue_last").hide();
+            }
+
+            var nextQuestion = cur_element.closest('.individual-questions').next();
+            if(nextQuestion.length > 0) {
+              if(qid !== 'qq8') {
+                //if phone number div is hide
+                if(nextQuestion.hasClass("ng-hide")) {
+                  return false;
+                }
+                $(container).find(".individual-questions").removeClass("active");
+                //cur_element.removeClass("active");
+                nextQuestion.addClass("active");
+                
+                $(".hk_scrollForm-main").find(".individual-questions input").each(function() {
+                  $(this).blur();
+                });
+
+                // for mobile view
+                if (isMobile.any()) {
+                  $.scrollTo($('.hk_formDetailBlock'), 1000);
+                  $('#hk_scrollForm_main').animate({
+                    scrollTop: 159 * parseInt(questionid)
+                  }, "slow");
+
+                  $("#hk_detailpanels_f").scrollTo(cur_element, 220, {
+                      offset: { left: 100, top: 159 * parseInt(questionid) },
+                      queue: false
+                  });
+
+                }
+                else {
+                  // for desktop view
+                  $('#hk_scrollForm_main').animate({
+                    scrollTop: cur_element.offset().top
+                  }, "slow");
+            
+                  $("#hk_detailpanels_f").scrollTo(cur_element, 150, {
+                      offset: { left: 100, top: 165 },
+                      queue: false
+                  });
+                                  
+                }
+                
+              }
+            }
+            return false;
+          }    
+        });
+      });
+
+      $('#f1_previous').dblclick(false);
+
+      $("*").dblclick(function(e){
+        e.preventDefault();
+      });
+
+
+      // For user info form previous button      
+      $("#f1_previous").on("click", function(e){
+        $('#next_form').show();
+        $("#continue_last").hide();
+        $('#prev_form').prop('disabled',true);
+
+        setTimeout(function(){
+           // enable click after 1 second
+           $('#prev_form').prop('disabled',false);
+        },300);
+
+        $(".hk_scrollForm-main").find(".individual-questions").each(function() {
+          if($(this).hasClass("active")) {
+            var cur_element = $(this); 
+            // console.log("fdsfds",cur_element);
+            var qid = cur_element.attr("id");
+            var questionid = cur_element.attr("data-qid");
+            var nextQuestion = cur_element.closest('.individual-questions').prev();
+            if(nextQuestion.length > 0) {
+              if(qid !== 'qq1') {
+
+                $(container).find(".individual-questions").removeClass("active");
+
+                //cur_element.removeClass("active");
+                nextQuestion.addClass("active");
+                
+                $(".hk_scrollForm-main").find(".individual-questions input").each(function() {
+                  $(this).blur();
+                });
+
+                // for mobile view
+                if (isMobile.any()) {
+                  $.scrollTo($('.hk_formDetailBlock'), 1000);
+                  var sc=($("#hk_scrollForm_main").scrollTop())-162;
+
+                  $('#hk_scrollForm_main').animate({
+                      scrollTop: sc
+                  }, "slow");
+
+                  $("#hk_detailpanels_f").scrollTo(cur_element, 150, {
+                      offset: { left: 100, top: -((162 * parseInt(questionid)) - 162) },
+                      queue: false
+                  });
+                }
+                else {
+                  // for desktop view
+
+                  $('#hk_scrollForm_main').animate({
+                      scrollTop: cur_element.offset().top
+                  }, "slow");
+
+                  $("#hk_detailpanels_f").scrollTo(cur_element, 150, {
+                      offset: { left: 100, top: -157 },
+                      queue: false
+                  });
+                }
+              }
+            }
+            return false;
+          }    
+        });
+      });
+
+      // For user info form if user press "enter" key
+      $(container).find(".individual-questions input").focus(function(e) {
+        if (isMobile.any()) {
+          var a = $(this).closest('.individual-questions');
+          var questionid = a.attr("data-qid");
+          $.scrollTo($('.hk_formDetailBlock'), 1000);
+
+          if(!a.hasClass("active")) {
+            $('#hk_scrollForm_main').animate({
+              scrollTop: 155 * parseInt(questionid-1)
+            }, "slow");
+
+            $("#hk_detailpanels_f").scrollTo(a, 220, {
+                offset: { left: 100, top: 155 * parseInt(questionid-1) },
+                queue: false
+            });
+            $.scrollTo($('.hk_formDetailBlock'), 1000);
+            reinitState(a);
+          }
+        }
+      });
+
+      // For user info form if user press "enter" key
+	    $(container).find(".individual-questions input").keypress(function(e) {
+        if (isMobile.any()) {
+          var keycode1 = (e.keyCode ? e.keyCode : e.which);
+
+          if (keycode1 == 0 || keycode1 == 13 || keycode1 == 9) {
+              e.preventDefault();
+              e.stopPropagation();
+          }
+        }
+        else {
+	        if (e.which == 13) {
+            if ($(this).hasClass("required") && $(this).val() == "") {
+
+            } else {
+            	moveNext(this);
+        	  }
+	        }
+        }
+	    });
+
+      // For user info form if user press "tab" key
+      $(container).find(".individual-questions input").keydown(function(e) {
+        if (isMobile.any()) {
+          var keycode1 = (e.keyCode ? e.keyCode : e.which);
+
+          if (keycode1 == 0 || keycode1 == 9 || keycode1 == 13) {
+              e.preventDefault();
+              e.stopPropagation();
+          } 
+        }
+        else {
+          if (e.which == 9) {
+            var a = $(this).parent().parent().parent().parent().parent().next();
+            var questionid = a.attr("data-qid");
+ 
+            if(questionid !== undefined) {
+                if(parseInt(questionid) > 5) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                else {
+                  $(container).find(".individual-questions").removeClass("active");
+
+                  $(container).find(".individual-questions input").each(function() {
+                      $(this).blur();
+                  });
+                  
+                  $(a).addClass("active");
+
+                  if (isMobile.any()) {
+                    // for mobile view
+                    $('#hk_scrollForm_main').animate({
+                      scrollTop: $(this).offset().top
+                    }, "slow");
+
+                    $("#hk_detailpanels_f").scrollTo($(this), 45, {
+                        offset: { left: 100, top: 65 },
+                        queue: false
+                    });
+                  }
+                  else {
+                    // for desktop view
+                    $('#hk_scrollForm_main').animate({
+                      scrollTop: $(this).offset().top
+                    }, "slow");
+
+                    $("#hk_detailpanels_f").scrollTo($(this), 45, {
+                        offset: { left: 100, top: 70 },
+                        queue: false
+                    });
+                  } 
+                } 
+            }
+            else {
+              e.preventDefault();
+              e.stopPropagation();
+            }        
+          }
+        }
+      });
+
+
+	    /*$("#hk_detailpanels_f").on("scroll", function() {
+	        $(container).find(".individual-questions").each(function() {
+	            var etop = $(this).offset().top;
+	            var diff = etop - $(window).scrollTop();
+
+	            if (diff > 100 && diff < 300) {
+	                reinitState(this);
+	            }
+	        });
+	    });*/
+    });
+
+    function reinitState(e) {
+        $(container).find(".individual-questions").removeClass("active");
+
+        $(container).find(".individual-questions input").each(function() {
+            $(this).blur();
+        });
+
+        $(e).addClass("active");
+        $(e).find('input').focus();
+    }
+
+    function rescroll(e) {
+        $(this).scrollTo($(e), 200, {
+            offset: { left: 100, top: -200 },
+            queue: false
+        });
+    }
+
+    // function reinit(e) {
+    //     reinitState(e);
+    //     rescroll(e);
+    // }
+
+    function moveNext(e) {
+        $(e).parent().parent().parent().parent().parent().next().click();
+    }
+
+    // function movePrev(e) {
+    //     $(e).parent().parent().prev().click();
+    // }
+
+    function clickSelect() {
+      if (isMobile.any()) {
+
+      }
+      else {
+        $("#f1_next").click();
+      }
+      
+    }
+
+</script>
+
+<!--Call back Mobile MODAL -->
+<message-modal visible="callbackMobileModal">
+    <div ng-include="'template/callback_mobile_modal.html'"></div>
+</message-modal>
+<!--Call back Mobile MODAL -->
+<message-modal visible="callbackmsg">
+    <div style="margin:0px auto; padding:30px 0px;">
+        <p class="signedUp">You will get a call back shortly.</p>
+    </div>
+</message-modal>
+<style>
+.scrollup{ display:none !important;}
+@media all and (min-width: 20px) and (max-width: 768px) {
+.scrollup{ display:none !important;}	
+}
+.zopim {
+    display: none !important;
+}
+
+</style>

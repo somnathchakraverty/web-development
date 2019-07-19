@@ -1,0 +1,142 @@
+<!-- header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="ContentWrap">
+    <!--summary starts here -->
+    <div class="summeryContainer">
+        <div class="summeryMid help-block" ng-show="payment_api_error">
+            {{payment_api_error}} 
+        </div>
+        <div class="summeryMid" ng-show="payment_data">
+            <!--order message starts here -->
+            <div class="order-msg">
+                <div class="orderAction">
+                    <img src="assets/images/book-status.png">
+                </div>
+                <h2>
+                  Thank you for your subscription
+                </h2>
+                <h5> 
+                  Your Subscription ID is <span ng-bind="payment_data.user_subscribe_id"></span>
+                </h5>
+                <p>
+                    We have sent you an email confirmation at : <span ng-bind="payment_data.email_address"></span>
+                </p>
+                <p style="font-size:15px;">
+                    In case of any questions, please call us at : <strong ng-bind="companyphone.display_no"></strong>
+                </p>
+                <div class="clear"></div>
+            </div>
+            <!--order message ends here -->
+            <div class="clear"></div>
+            <!--booking summary section -->
+            <div class="pkg-summary">
+                <h2 style="width:100%;">Subscription Summary</h2>
+                <div class="clear"></div>
+                <!--consumer description -->
+                <div class="user-infos">
+                    <h1 class="booking-value"> 
+                      <span class="value">
+                        Subscription ID : {{payment_data.user_subscribe_id}}
+                      </span>
+                    </h1>
+                    <div class="clear"></div>
+                    <div class="user-detail">
+                        <p ng-if="stateParms.amt">
+                            <span class="titleuser">Transaction Amount : </span>
+                            <span class="detailuser"><span class="fontrupee" style="padding:0px 2px;">`</span>{{total_received_amount}}</span>
+                        </p>
+                        <p ng-if="stateParms.merTxnId">
+                            <span class="titleuser">Transaction ID : </span>
+                            <span class="detailuser">{{stateParms.merTxnId}}</span>
+                        </p>
+                        <p ng-if="payment_data.customer_name">
+                            <span class="titleuser">Billing Name : </span>
+                            <span class="detailuser" ng-bind="payment_data.customer_name"></span>
+                        </p>
+                        <p ng-if="payment_data.contact_number">
+                            <span class="titleuser">Registered Mobile No. : </span>
+                            <span class="detailuser">(+91) {{payment_data.contact_number}}</span>
+                        </p>
+                        <p ng-if="payment_data.email_address">
+                            <span class="titleuser">Email ID : </span>
+                            <span class="detailuser">{{payment_data.email_address}}</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- Customer Details -->
+                <div class="user-infos" ng-repeat="sub in payment_data.customer_details">
+                    <div class="clear"></div>
+                    <div class="user-detail">
+                        <p>
+                            <span class="titleuser">Customer Subscription ID : </span>
+                            <span class="detailuser" ng-bind="sub.customer_subscribe_id"></span>
+                        </p>
+                        <p>
+                            <span class="titleuser">Customer Name : </span>
+                            <span class="detailuser" ng-bind="sub.customer_name"></span>
+                        </p>
+                        <p>
+                            <span class="titleuser">Subscription Name : </span>
+                            <span class="detailuser">{{sub.name}} <em style="color: rgb(133,133,133); font-size:11px;">(Covered {{sub.total_parameters}} Parameter)</em><br />
+                              <em style="font-weight:normal; font-style:italic;">Below subscription includes all tests {{sub.count}} times</em>
+                            </span>
+                        </p>
+                        <p>
+                          <span class="titleuser">&nbsp;</span>
+                          <span class="detailuser subscriptionuserbox">
+                             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid rgb(234,234,234); margin:10px 0px 0px 0px;">
+                                <tbody>
+                                  <tr>
+                                    <th width="100%" align="left" bgcolor="#efeeee" style="font-weight:normal;padding:9px 20px;"><strong>Subscription Included</strong></th>
+                                  </tr>
+                                  <tr ng-repeat="inc in sub.deal_detail">
+                                    <td align="left" style="padding:7px 20px;" ng-if="inc.total_param>1">{{inc.name}}&nbsp;<em class="parametercounts">{{inc.total_param}} Tests</em></td>
+                                    <td align="left" style="padding:7px 20px;" ng-if="inc.total_param===1">{{inc.name}}&nbsp;<em class="parametercounts">{{inc.total_param}} Test</em></td>
+                                  </tr>
+                                  <div ng-if="sub.service_booking_details.customer_details">
+                                    <tr ng-if="sub.service_booking_details.customer_details.length > 0">
+                                        <th width="90%" align="left" bgcolor="#f9f9f9" style="font-weight:normal;padding:9px 20px;"><strong>Service Included</strong></th>
+                                    </tr>
+                                    <tr ng-if="sub.service_booking_details.customer_details.length > 0" ng-repeat="serv in sub.service_booking_details.customer_details[0].service">
+                                        <td align="left" style="padding:7px 20px;">{{serv.service_name}} 
+                                        <em class="parametercounts" ng-repeat='mserv in serv.microservice'>{{mserv.microservice_name}}</em>
+                                        </td>
+                                    </tr>
+                                        <!-- <table width="80%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid rgb(234,234,234); margin:10px 0px 0px 0px;" >
+                                            <tbody>
+                                              <tr>
+                                                <th width="100%" align="left" bgcolor="#f9f9f9" style="font-weight:normal;padding:9px 20px;"><strong>Service Included</strong></th>
+                                              </tr>
+                                                                                     
+                                            </tbody>
+                                        </table>    -->                            
+                                            
+                                       
+                            
+                                  </div>                                    
+                                </tbody>
+                              </table>                               
+                            </span>
+
+                        </p>
+
+
+
+                        <p>
+                            <span class="titleuser">&nbsp;</span>
+                            <span class="detailuser">&nbsp;</span>
+                        </p>
+                    </div>
+                </div>
+                <!--consumer description ends here -->
+                <div class="clear"></div>
+              
+            </div>
+            <!--summary starts here -->
+        </div>
+    </div>
+</div>
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here

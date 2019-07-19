@@ -1,0 +1,333 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+
+footer {
+    background: #fff !important;
+}
+
+.help-block {
+    text-align: left;
+    color: #fff !important;
+}
+</style>
+<!--header section starts here -->
+<header class="campaign-header-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="midpanel">
+                    <!--logo starts -->
+                    <div class="logo-panel">
+                        <div class="main-logo"><img src="assets/images/campaign/healthians-logo-campaign.png" /></div>
+                    </div>
+                    <!--logo ends -->
+                    <div class="clear"></div>
+                    <div class="content-panel">
+                        <div class="col-sm-12">
+                            <div class="col-sm-7">
+                                <div class="package-info">
+                                    <h1><span>India’s Largest</span> <strong>Health Check-up</strong> @ home service</h1>
+                                    <p style="font-style:italic; padding-top:5px;"><em><span>Question? Call us at</span> 999 888 000 5</em></p>
+                                    <img src="assets/images/campaign/bg-family.png" />
+                                    <div class="infonew">
+                                        <h4>Health Check-up packages for your family</h4>
+                                        <p><span>Step 1: </span><span style="color:#00a0a8;">FREE</span> Sample Collection from home. </p>
+                                        <p><span>Step 2:</span> Medical report from <span style="color:#00a0a8;">NABL Certified Labs.</span> </p>
+                                        <p><span>Step 3:  </span><span style="color:#00a0a8;">FREE</span> Health Counselling. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 text-right">
+                                <div class="form-campaign-new">
+                                    <h2>Talk to our <br /> Health Advisor!</h2>
+                                    <p>Fill out the form below and get a call back from our health advisor </p>
+                                    <form name="addLeadForm" novalidate>
+                                        <div class="field-form">
+                                            <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" placeholder="Enter your Mobile No." ng-model="customerNo" ng-pattern="/^\d{10}$/" ng-class="{ 'has-error': ((addLeadForm.customerno.$dirty && addLeadForm.customerno.$error.required) || (addLeadFormSubmitted && !customerNo)) ||(addLeadForm.customerno.$error.pattern && visited) }" ng-required="true" autocomplete="false">
+                                            <div ng-show="((addLeadForm.customerno.$dirty && addLeadForm.customerno.$invalid) || (addLeadFormSubmitted && !addLeadForm.customerno))" class="help-block">
+                                                <span ng-show="addLeadForm.customerno.$error.required">Mobile No. is required</span>
+                                                <span ng-show="addLeadForm.customerno.$error.pattern && !addLeadForm.customerno.$error.required && addLeadForm.customerno.$touched">
+                                                    Enter valid Mobile
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="field-form">
+                                            <input name="name" id="name" type="text" placeholder="Enter your Name" ng-required="true" ng-model="customerName" ng-class="{ 'has-error': ((addLeadForm.name.$dirty && addLeadForm.name.$error.required) || (addLeadFormSubmitted && !customerName)) ||(addLeadForm.name.$error.pattern && visited) }" ng-focus="booknow" ng-pattern="/^[A-Za-z ]+$/">
+                                            <div ng-show="((addLeadForm.name.$dirty && addLeadForm.name.$invalid) || (addLeadFormSubmitted && !addLeadForm.name))" class="help-block">
+                                                <span ng-show="addLeadForm.name.$error.required">Name is required</span>
+                                                <span ng-show="addLeadForm.name.$error.pattern && !addLeadForm.name.$error.required">
+                                                    Enter valid Name
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="field-form">
+                                            <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" placeholder="Email ID" ng-model="customerEmail" ng-class="{ 'has-error': ((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$error.required) || (addLeadFormSubmitted && !customerEmail)) ||(addLeadForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/" ng-required="true" autocomplete="false">
+                                            <div ng-show="((addLeadForm.customeremail.$dirty && addLeadForm.customeremail.$invalid) || (addLeadFormSubmitted && !addLeadForm.customeremail))" class="help-block">
+                                                <span ng-show="addLeadForm.customeremail.$error.required">Email is required</span>
+                                                <span ng-show="addLeadForm.customeremail.$error.pattern && !addLeadForm.customeremail.$error.required  && addLeadForm.customeremail.$touched">Enter valid Email</span>
+                                            </div>
+                                        </div>
+                                        <div class="field-form">
+                                            <select class="form-select minimal" id="city" name="city" ng-model="City" ng-options="cities.city_id as cities.city_name for cities in cityList" ng-required="true" ng-class="{ 'has-error': ((addLeadForm.city.$dirty && addLeadForm.city.$error.required) || (addLeadFormSubmitted && !addLeadForm.city)) }">
+                                                <option value="">City</option>
+                                            </select>
+                                            <div ng-show="((addLeadForm.city.$dirty && addLeadForm.city.$invalid) || (addLeadFormSubmitted && !addLeadForm.city))" class="help-block">
+                                                <span ng-show="addLeadForm.city.$error.required">Please select city.</span>
+                                            </div>
+                                        </div>
+                                        <div class="field-form">
+                                            <div id="capt_landing"></div>
+                                        </div>  
+                                        <div class="field-button">
+                                            <input name="send" value="Get Free Call Now" type="button" ng-click="sendDetails()"  analytics-on="click" analytics-category="New Landing Yuvraaj" analytics-event="New Landing Family"/>
+                                            <p style="display: none;font-size: 15px;padding: 2px 6px;line-height: 0px;font-weight: normal;padding: 25px 0px 10px 0px;color: #000000;text-align: center;" id="timeticker"></p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</header>
+<!--header section ends here -->
+<div class="our-achievment-new">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="text-align:center;">
+                <h1>
+          <img src="assets/images/campaign/star1.png" />
+          <img src="assets/images/campaign/star1.png" />&nbsp;&nbsp;Our Achievements&nbsp;&nbsp;
+          <img src="assets/images/campaign/star1.png" />
+          <img src="assets/images/campaign/star1.png" />
+        </h1>
+                <div class="bigstar">
+                    <p>National PPTCT Programme </p>
+                </div>
+                <div class="bigstar">
+                    <p>Innovative Health care Start-Up </p>
+                </div>
+                <div class="bigstar">
+                    <p>Health & Social care Enterprise </p>
+                </div>
+                <div class="bigstar">
+                    <p>Healthcare Innovator Programme </p>
+                </div>
+                <div class="bigstar">
+                    <p>State Level consultation Memento </p>
+                </div>
+                <div class="bigstar">
+                    <p>Enterprise leadership </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<!--most popular -->
+<div class="most-selling our-achievment-new">
+    <div class="container">
+        <h1 class="fs36">- Most Popular -</h1>
+        <div class="row">
+            <div class="col-sm-12" style="text-align:center;">
+                <div class="col-sm-4">
+                    <ul>
+                        <h2>Basic Screening Package</h2>
+                        <p>Parameters covered : <span>53</span></p>
+                        <section>
+                            <strong>Includes:</strong>
+                            <li>Blood Glucose Fasting</li>
+                            <li>Complete Hemogram</li>
+                            <li>Kidney Function Test</li>
+                            <li>
+                                <strong>+ 4 More</strong></li>
+                        </section>
+                        <aside>
+                            <img src="assets/images/nn-fast.png"> &nbsp;
+                            <span style="margin-left: 0px;"> Fasting required : 10 Hrs</span>
+                            <strong><span class="glyphicon glyphicon-time"></span> &nbsp;Report available in 24 Hrs</strong>
+                        </aside>
+                        <div class="taleft">
+                            <div class="healthians_price">
+                                <font>Healthians Price</font>
+                                <span class="fontrupee" style="font-size:14px; font-weight:normal; padding:0px;">`</span>
+                                <strong style="margin-right:10px;">2550</strong>
+                            </div>
+                            <div class="limited-offer">
+                                <font style="color:#00a0a8;">Limited Time Offer</font>
+                                <span class="fontrupee" style="padding:0px;color:#00959c;">`</span>
+                                <span style="color:#00a0a8;">949</span>
+                            </div>
+                            <span class="sv-btn">63% Off</span>
+                        </div>
+                        <div class="clear"></div>
+                        <!--<a href="https://www.healthians.com/package/basic-screening-package" target="_blank">View Detail</a> -->
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <ul>
+                        <h2>One Plus One Full Body Checkup 1299</h2>
+                        <p>Parameters covered : <span>53</span></p>
+                        <section>
+                            <strong>Includes:</strong>
+                            <li>Blood Glucose Fasting</li>
+                            <li>Complete Hemogram</li>
+                            <li>Kidney Function Test</li>
+                            <li>
+                                <strong>+ 4 More</strong></li>
+                        </section>
+                        <aside>
+                            <img src="assets/images/nn-fast.png"> &nbsp;
+                            <span style="margin-left: 0px;"> Fasting required : 10 Hrs</span>
+                            <strong><span class="glyphicon glyphicon-time"></span> &nbsp;Report available in 24 Hrs</strong>
+                        </aside>
+                        <div class="taleft">
+                            <div class="healthians_price">
+                                <font>Healthians Price</font>
+                                <span class="fontrupee" style="font-size:14px; font-weight:normal; padding:0px;">`</span>
+                                <strong style="margin-right:10px;">2550</strong>
+                            </div>
+                            <div class="limited-offer">
+                                <font style="color:#00a0a8;">Limited Time Offer</font>
+                                <span class="fontrupee" style="padding:0px;color:#00959c;">`</span>
+                                <span style="color:#00a0a8;">1299</span>
+                            </div>
+                            <span class="sv-btn">49% Off</span>
+                        </div>
+                        <div class="clear"></div>
+                        <!--<a href="https://www.healthians.com/package/one-plus-one-full-body-checkup-1299" target="_blank">View Detail</a> -->
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <ul>
+                        <h2>Healthians Full Body Checkup With Iron Studies</h2>
+                        <p>Parameters covered : <span>74</span></p>
+                        <section>
+                            <strong>Includes:</strong>
+                            <li>Blood Glucose Fasting</li>
+                            <li>Complete Hemogram</li>
+                            <li>HbA1c</li>
+                            <li>
+                                <strong>+ 9 More</strong></li>
+                        </section>
+                        <aside>
+                            <img src="assets/images/nn-fast.png"> &nbsp;
+                            <span style="margin-left: 0px;"> Fasting required : 10 Hrs</span>
+                            <strong><span class="glyphicon glyphicon-time"></span> &nbsp;Report available in 24 Hrs</strong>
+                        </aside>
+                        <div class="taleft">
+                            <div class="healthians_price">
+                                <font>Healthians Price</font>
+                                <span class="fontrupee" style="font-size:14px; font-weight:normal; padding:0px;">`</span>
+                                <strong style="margin-right:10px;">7200</strong>
+                            </div>
+                            <div class="limited-offer">
+                                <font style="color:#00a0a8;">Limited Time Offer</font>
+                                <span class="fontrupee" style="padding:0px;color:#00959c;">`</span>
+                                <span style="color:#00a0a8;">2199</span>
+                            </div>
+                            <span class="sv-btn">69% Off</span>
+                        </div>
+                        <div class="clear"></div>
+                        <!--<a href="https://www.healthians.com/package/healthians-full-body-checkup-with-iron-studies" target="_blank">View Detail</a> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--most popular -->
+<div class="clear"></div>
+<div class="our-trust">
+    <div class="container-fluid">
+        <h1>- Trusted by Employee of -</h1>
+        <ul>            
+            <li><img src="assets/images/campaign/logo2.jpg" /></li>
+            <li><img src="assets/images/campaign/logo3.jpg" /></li>
+            <li><img src="assets/images/campaign/logo4.jpg" /></li>
+            <li><img src="assets/images/campaign/logo5.jpg" /></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="in-media">
+    <div class="container-fluid">
+        <h1>- In the media -</h1>
+        <div class="col-sm-12" style="text-align:center;">
+            <div class="media-mid middle-media">
+                <a>
+                    <div class="media-spritesc05"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc02"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc01"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc06"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc03"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc04"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc07"></div>
+                </a>
+                <a>
+                    <div class="media-spritesc08"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- footer -->
+<login-modal visible="compaignmsg">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div style="margin:0px auto; background:#fff; padding:30px 0px;">
+        <div class="lead-pg-popup web2-thankyou">
+            <section>
+                <h6>Thank You for sharing your details with us. </h6>
+                <p>Our Customer Care Executive will get in contact with you and would help you choose the most suitable health package.
+                </p>
+            </section>
+        </div>
+    </div>
+</login-modal>
+<style type="text/css">
+.zopim {
+    display: none !important;
+}
+</style>
+<script type="text/javascript">
+    // var onloadCallback = function() {
+    //     setTimeout(function(){
+    //         if(typeof grecaptcha !== 'undefined') {
+    //             if($('#capt_landing').length) {
+    //                 widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+    //             }
+    //         }
+    //         else {
+    //             setTimeout(function(){
+    //                 if($('#capt_landing').length) {
+    //                     widgetId5 = grecaptcha.render('capt_landing', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+    //                 }
+    //             }, 500);
+    //         }
+    //     }, 500);
+    // }
+
+</script>

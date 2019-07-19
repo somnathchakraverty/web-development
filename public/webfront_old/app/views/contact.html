@@ -1,0 +1,132 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<!--BANNER PANEL -->
+<section class="inner-banner"><img src="assets/images/contact-us.jpg" alt="">
+    <div class="caption">
+        <h1>Need to Connect?</h1>
+        <span style="display: block;">Call Us at 999-888-000-5</span>
+    </div>
+</section>
+<!--BANNER PANEL ENDS HERE -->
+<div class="clear"></div>
+<!--career CONTENT SECTION -->
+<figure class="contact-content">
+    <!--map area-->
+    <section class="map-area">
+        <div class="mid_panel">
+            <section class="map-head">
+                <h1>Expedient Healthcare Marketing Pvt. Ltd.</h1>
+                <div class="address" ng-bind="companyaddress"></div>
+                <div class="contact-no">
+                    <span><img src="assets/images/call-icon.png"> </span>
+                    <p ng-bind="companyphone.display_no"></strong>
+                    </p>
+                </div>
+                <ul class="email-link">
+                    <li>
+                        <strong>Customer Support</strong>
+                        <a href="mailto:{{companyemail.cs}}" ng-bind="companyemail.cs">cs@healthians.com</a>
+                    </li>
+                    <li>
+                        <strong>Become Partner</strong>
+                        <a href="mailto:{{companyemail.cs}}" ng-bind="companyemail.partners">partners@healthians.com</a>
+                    </li>
+                    <li>
+                        <strong>Marketing/PR</strong>
+                        <a href="mailto:{{companyemail.marketing}}" ng-bind="companyemail.marketing">marketing@healthians.com</a>
+                    </li>
+                    <li>
+                        <strong>For Corporate Health Camp</strong>
+                        <a href="mailto:camp@healthians.com">camp@healthians.com</a>
+                    </li>
+                    <li>
+                        <strong>Career</strong>
+                        <a href="mailto:{{companyemail.careers}}" ng-bind="companyemail.careers">careers@healthians.com</a>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </section>
+            <!--form area-->
+            <section class="enquiry-panel">
+                <div class="enquiry-form">
+                    <h3>For any query fill the form below. For career, related requests use <a style="text-decoration:underline;" href="/career">career page</a>. 
+                    </h3>
+                    <form name="addAddressForm" novalidate>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <input name="name" ng-required="true" ng-model="addAddressForm.Name" type="text" placeholder="Name" class="input-width" ng-class="{ 'has-error': ((addAddressForm.name.$dirty && addAddressForm.name.$error.required) || (signupFormSubmitted && !addAddressForm.name)) }">
+                                </td>
+                                <td>
+                                    <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" class="input-width" placeholder="Email address" ng-model="addAddressForm.customerEmail" ng-class="{ 'has-error': ((addAddressForm.customeremail.$dirty && addAddressForm.customeremail.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerEmail)) ||(addAddressForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{3,5}$/" ng-required="true">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="customerno" minlength="10" maxlength="10" name="customerno" type="text" class="input-width" placeholder="Phone Number" ng-model="addAddressForm.No" ng-class="{ 'has-error': ((addAddressForm.customerno.$dirty && addAddressForm.customerno.$error.required) || (addAddressFormSubmitted && !addAddressForm.no)) }" ng-required="true">
+                                </td>
+                                <td>
+                                    <input id="customercomp" name="customercomp" type="text" class="input-width" placeholder="Company" ng-model="addAddressForm.customerComp" ng-class="{ 'has-error': ((addAddressForm.customercomp.$dirty && addAddressForm.customercomp.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerComp)) }" ng-required="true">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <textarea cols="" rows="" ng-model="message" name="message" id="message" placeholder="Message" class="input-textarea"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="contact_capt"></div>
+                                </td>
+                                <td style="float:left;">
+                                 <input ng-click="verifyAddress()" type="button" name="" value="Submit" id="" class="submit">
+                                </td>
+                            </tr>
+                           
+                        </table>
+                    </form>
+                </div>
+                <div class="enquiry-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3508.575256734355!2d77.0122453!3d28.4320705!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d181ccbe1ee61%3A0xbf7d68c08e35a5d!2sOmega+Centre!5e0!3m2!1sen!2sin!4v1460014936749" width="100%" height="395" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="clear"></div>
+            </section>
+            <!--form area-->
+            <div class="clear"></div>
+        </div>
+    </section>
+    <!--map area-->
+    <div class="clear"></div>
+</figure>
+
+<script type="text/javascript">
+    var widgetIdContact;
+    var onloadCallback = function() {
+        console.log("ddssdds");
+        setTimeout(function(){
+            if(typeof grecaptcha !== 'undefined') {
+                if(widgetIdContact == 0) {
+
+                }
+                else {
+                    if($('#contact_capt').length) {
+                        widgetIdContact = grecaptcha.render('contact_capt', {'sitekey' : '6LcqInUUAAAAAJYyfRX0gLFeuzieL4Sq7Q8rKGJy'});
+                    }
+                }                
+            }
+            else {
+                setTimeout(function(){
+                    onloadCallback();
+                }, 500);
+            }
+        }, 500);
+    }
+
+    onloadCallback();
+</script>
+
+<!--career CONTENT SECTION -->
+<!--header section starts here -->
+<div ui-view="footer"></div>
+<!--header section ends here -->

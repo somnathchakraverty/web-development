@@ -1,0 +1,99 @@
+<!--header section starts here -->
+<div ui-view="header"></div>
+<!--header section ends here -->
+<div class="ContentWrap">
+    <!--NEW CHECKOUT CONTAINER STARTS HERE -->
+    <section class="checkOutwrapper">
+        <div class="checkoutMid">
+            <ul class="order-summary-list">
+                <li><a href=""><span class="active">1</span> <font class="active">Pick Location & Time</font></a></li>
+                <li><a href=""><span class="active">2</span> <font class="active">Order Summary</font></a></li>
+                <li><a href=""><span class="active">3</span> <font class="active">Confirm Address</font></a></li>
+                <li><a href=""><span>4</span> <font>Make Payment</font></a></li>
+            </ul>
+            <div class="clear"></div>
+            <div class="countertimer">Time left to complete this transaction : <span id="counter"></span></div>
+            <div class="confirm-address-box">
+                <div ng-if="!displayAdd && islogin">
+                    <ul>
+                        <li>
+                            ADDRESS:
+                            <br />
+                            <select class="wdth200" style="padding:5px 10px; width:280px; borer-radius:5px;" id="customerlocation" name="customerlocation" ng-change="selectListedAdd(address)" ng-model="address" ng-required="true" ng-options="address as address.address for address in addressList">
+                                <option value=""> Select address </option>
+                            </select>
+                        </li>
+                        <div class="add-new-address more" style="margin:0px;"><a href="" analytics-on="click" analytics-category="Confirm Address" analytics-event="Clicked Add New Address" ng-click="newAddress();">Add New Address</a></div>
+                        <br />
+                    </ul>
+                </div>
+                <form name="addAddressForm" novalidate>
+                    <div ng-if="displayAdd">
+                        <ul>
+                            <li>
+                                <input name="firstname" id="firstname" ng-required="true" ng-model="addAddressForm.firstName" type="text" placeholder="First Name" class="fst-name" ng-class="{ 'has-error': ((addAddressForm.firstname.$dirty && addAddressForm.firstname.$error.required) || (signupFormSubmitted && !addAddressForm.firstName)) }">
+                                <span ng-show="((addAddressForm.firstname.$dirty && addAddressForm.firstname.$error.required) || (signupFormSubmitted && !addAddressForm.firstName))" class="error-message">Enter First Name</span>
+                                <!--    <input ng-blur="visited = true" id="firstname" name="firstname" placeholder="First Name" ng-model="addAddressForm.customeremail" type="text"  ng-required="true"> -->
+                                <input name="lastname" id="lastname" ng-required="true" type="text" ng-model="addAddressForm.lastName" placeholder="Last Name" class="lst-name">
+                                <!-- <span ng-show="((addAddressForm.lastname.$dirty && addAddressForm.lastname.$error.required) || (signupFormSubmitted && !addAddressForm.lastName))" class="error-message r-align">Enter Last Name</span> -->
+                            </li>
+                            <li>
+                                <input ng-blur="visited = true" id="customeremail" name="customeremail" type="text" class="wdth200" placeholder="Email address" ng-model="addAddressForm.customerEmail" ng-class="{ 'has-error': ((addAddressForm.customeremail.$dirty && addAddressForm.customeremail.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerEmail)) ||(addAddressForm.customeremail.$error.pattern && visited) }" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z]+\.[A-Za-z.]{3,5}$/" ng-required="true" ng-readonly="islogin">
+                                <span ng-show="((addAddressForm.customeremail.$dirty && addAddressForm.customeremail.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerEmail)) ||(addAddressForm.customeremail.$error.pattern && visited)" class="error-message">Enter valid email</span></li>
+                            <li>
+                                <input id="customerhno" name="customerhno" type="text" class="wdth200" placeholder="House No./Apartment/Building" ng-model="addAddressForm.customerHno" ng-class="{ 'has-error': ((addAddressForm.customerhno.$dirty && addAddressForm.customerhno.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerHno)) }" ng-required="true">
+                                <span ng-show="((addAddressForm.customerhno.$dirty && addAddressForm.customerhno.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerHno))" class="error-message">Enter House No.</span>
+                                <!-- <input name="" type="text" class="wdth200" placeholder="House No."> -->
+                            </li>
+                            <li>
+                                <input type="text" ng-model="addAddressForm.landMark" name="landmark" id="landmark" placeholder="Landmark" ng-class="{ 'has-error': ((addAddressForm.landmark.$dirty && addAddressForm.landmark.$error.required) || (addAddressFormSubmitted && !addAddressForm.landMark)) }" ng-required="true" autocomplete="off">
+                                <span ng-show="((addAddressForm.landmark.$dirty && addAddressForm.landmark.$error.required) || (addAddressFormSubmitted && !addAddressForm.landMark))" class="error-message">Enter Landmark</span>
+                            </li>
+                            <li>
+                                <input id="customeraddress" name="customeraddress" type="text" class="wdth200" placeholder="Address" ng-model="addAddressForm.customerAddress" ng-class="{ 'has-error': ((addAddressForm.customeraddress.$dirty && addAddressForm.customeraddress.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerAddress)) }" ng-required="true">
+                                <span ng-show="((addAddressForm.customeraddress.$dirty && addAddressForm.customeraddress.$error.required) || (addAddressFormSubmitted && !addAddressForm.customerAddress))" class="error-message">Enter Address</span>
+                                <!-- <input name="" type="text" class="wdth200" placeholder="Sublocality/Street Name"> -->
+                            </li>
+                            <li>
+                                <input name="" type="text" class="wdth200" placeholder="Locality" ng-model="localityObj.location_name" ng-disabled="true">
+                            </li>
+                            <li>
+                                <input name="" type="text" class="wdth200" placeholder="City" ng-model="city.city_name" ng-disabled="true" tabindex="8">
+                            </li>
+                            <li>
+                                <input id="customerpin" minlength="6" maxlength="6" name="customerpin" type="text" class="wdth200" placeholder="Pincode" ng-model="addAddressForm.Pin" ng-class="{ 'has-error': ((addAddressForm.customerpin.$dirty && addAddressForm.customerpin.$error.required) || (addAddressFormSubmitted && !addAddressForm.Pin)) }" ng-required="true" ng-enter="verifyAddress(addAddressForm.$valid);" ng-if="!button">
+
+                                <input id="customerpin" minlength="6" maxlength="6" name="customerpin" type="text" class="wdth200" placeholder="Pincode" ng-model="addAddressForm.Pin" ng-class="{ 'has-error': ((addAddressForm.customerpin.$dirty && addAddressForm.customerpin.$error.required) || (addAddressFormSubmitted && !addAddressForm.Pin)) }" ng-required="true" ng-enter="createOrderId();" ng-if="button">
+
+                                <span ng-show="((addAddressForm.customerpin.$dirty && addAddressForm.customerpin.$error.required) || (addAddressFormSubmitted && !addAddressForm.Pin && !addAddressForm.customerEmail))" class="error-message">Enter Pin code</span></li>
+                            <!-- <div class="clear"></div> -->
+                        </ul>
+                    </div>
+                </form>
+                <div class="clear"></div>
+            </div>
+            <div class="paymentBtn" ng-init="loaderVar=false" ng-show="!button">
+                <a class="btn btn-primary" ng-click="verifyAddress(addAddressForm.$valid);">
+                    <div>
+                        <div ng-show="hideContinue">Continue</div>
+                        <div ng-show="!hideContinue" class="loader initial loaderstyle1"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="paymentBtn" ng-init="loaderVar=false" ng-show="button">
+                <a class="btn btn-primary" ng-click="createOrderId();">
+                    <div>
+                        <div ng-show="hideContinue">Continue</div>
+                        <div ng-show="!hideContinue" class="loader initial loaderstyle1"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </section>
+    <!--NEW CHECKOUT CONTAINER ENDS HERE -->
+</div>
+<!--header section starts here -->
+<div class="noview-mobile" ui-view="footer"></div>
+<!--header section ends here -->

@@ -1,0 +1,256 @@
+<!--YUVI HEADER SECTION STARTS HERE -->
+
+<header id="header">
+  <div class="container midsection">
+    <div class="header-logo"><a href="/"><img src="/assets/images/logo.png"></a></div>
+    <div class="call-us-now"><a href="tel:{{companyphone.hyperlink_no}}"><i class="glyphicon glyphicon-earphone"></i><span ng-bind="companyphone.display_no"></span></a> </div>
+  </div>
+</header>
+<!--YUVI HEADER SECTION STARTS HERE -->
+<div class="clear"></div>
+
+<!-- FORM SECTION STARTS HERE-->
+<div class="mid-campaign-panel">
+  <div class="container main-wrap">
+    <div class="row" style="margin-bottom:0px;">
+      <div class="col-md-7 col-xs-12">
+        <div class="middle-sec-cont">
+          <div class="yuvraj_pic">
+            <div class="main-product-usp">
+              <div class="title-price"> <span><img src="/assets/images/money-back.png" /></span>
+               <span><img src="/assets/images/accuracy.png" /></span> </div>
+            </div>
+            <div class="boardright">
+              <h1>{{static_package_name}}</h1>
+              <div class="clear"></div>
+              <div class="price_Bar">
+                <div class="real_price">Market Price <span class="fontrupee" style="padding:0px; color: #9f9f9f;">`</span> {{static_actual_price}}</div>
+                <div class="market_price">Our Price <span class="fontrupee" style="padding:0px;">`</span> {{static_healthians_price}}</div>
+              </div>
+              <div class="savings">Save<br />
+                {{static_discount}}%</div>
+            </div>
+            <img src="/assets/images/yuvraj_package.png"> </div>
+        </div>
+      </div>
+      <div ng-include="'template/instantAddToCart.html'"></div>
+    </div>
+  </div>
+</div>
+<!-- FORM SECTION ENDS HERE-->
+<div class="clear"></div>
+
+<!--INCLUDED PACKAGES STARTS HERE -->
+<section class="container-fluid parameter-included">
+  <div class="container">
+    <h2>Tests Included ({{test_count}})</h2>
+    <ul ng-repeat="profile in pdetails.test_details">
+               <h3 ng-bind="profile.name"></h3>
+               <li ng ng-repeat="test in profile.tests" ng-bind="test.name+'&nbsp;&nbsp;'"></li>
+             </ul>
+             
+             
+  
+  </div>
+</section>
+<div class="clear"></div>
+<!--INCLUDED PACKAGES ENDS HERE --> 
+
+<!--VIDEO AND DOCTOR PANEL -->
+<section class="container-fluid video-doc-section">
+  <div class="container" style="width:100%;">
+    <div class="col-md-8 col-xs-12 videopanel">
+      <h3>100% Accuracy at each step : As per WHO Guidelines</h3>
+      <iframe width="100%" height="450" src="https://www.youtube.com/embed/1Opzqod3ayo?rel=0" frameborder="0" allowfullscreen=""></iframe>
+    </div>
+    <div class="col-md-4 col-xs-12 doctor">
+      <h3>Trusted & Recommended by</h3>
+      <div class="doctorGrid">
+        <ul>
+          <li>
+            <div class="doc-avatar"><img src="/assets/images/dr-manjula.png" /></div>
+            <div class="doc-info">
+              <h4>Dr. Manjula S. Narang</h4>
+              <p>She is MBBS from Medical College, Rohtak. She subsequently did her DNB training from Rajiv Gandhi Cancer Institue, Delhi. She is also trained in Medical Labs Quality Management System from Bureau of Indian standards and has many articles in national and international journals.</p>
+            </div>
+          </li>
+          <li style="padding-bottom:0px;">
+            <div class="doc-avatar"><img src="/assets/images/dr-walia.png" /></div>
+            <div class="doc-info">
+              <h4>Dr. Walia Murshida Huda</h4>
+              <p>MBBS, MBA (Health Care Administration) , Fellowship in Critical Care Medicine </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</section>
+<!--VIDEO AND DOCTOR PANEL ENDS HERE -->
+<div class="clear"></div>
+
+<!--FAQ -->
+<section class="container-fluid faq-panel">
+  <h2>Frequently Asked Questions</h2>
+  <div class="container">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default" style="margin-bottom: 12px;">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> <i class="more-less glyphicon glyphicon-plus"></i> 1. Why is your cost so low? </a> </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body"> Our cost benefits come from the fact that we have eliminated any intermediaries in the complete process of sample collection to delivering of reports. Additionally, the huge volumes of sample that we provide our labs, give us cost bargaining advantages; the benefits of which are directly passed on to our customers. Hence, we offer all diagnostic packages at the lowest market rate. </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> <i class="more-less glyphicon glyphicon-plus"></i> 2. What happens after I book the order? </a> </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body"> After you book a test, you will receive a confirmation call from our team. At the time slot of your choice and convenience our trained phlebotomist will come to your house to collect the blood sample. This sample is then sent to our labs for testing. You will receive an online report (on the email provided by you) within the stipulated time as per the tests. (This time varies as per the tests but is either 24/ 48 hours). </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> <i class="more-less glyphicon glyphicon-plus"></i> 3. How do you ensure quality? </a> </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            <ul>
+              <li><span class="glyphicon glyphicon-menu-right"></span>50% of our labs are NABL and the rest of the labs are in the process of getting NABL certification.</li>
+              <li><span class="glyphicon glyphicon-menu-right"></span>But we have the best quality process in the country as we stringently follow international quality norms, far above the NABL norms.</li>
+              <li><span class="glyphicon glyphicon-menu-right"></span>NABL audits the labs only once a year, whereas we do a weekly 300 check-points audit.</li>
+              <li><span class="glyphicon glyphicon-menu-right"></span>We provide daily electronic tracking of every order from the time it is picked up till the time the reports are delivered.</li>
+              <li><span class="glyphicon glyphicon-menu-right"></span>NABL audits reports are maintained on paper which labs easily manipulate, whereas we maintain digital records to ensure no manipulation can be done</li>
+              <li><span class="glyphicon glyphicon-menu-right"></span>Most NABL certified labs are actually certified only on 3-4 tests but our labs are certified for all test and procedures.</li>
+              <li><span class="glyphicon glyphicon-menu-right"></span>We give money back guarantee (on the accuracy of our lab results) as our proof for accuracy and reliability.</li>
+              <li><span class="glyphicon glyphicon-menu-right"></span>We are the only labs in India which gives you exact details of where, when and how the blood sample was tested.</li>
+              <li><span class="glyphicon glyphicon-menu-right"></span>We are the only labs where temperature control is maintained from the moment the sample is picked till it is tested. Special temperature maintenance packs and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temperature monitoring devices are given to all labs and phlebotomists.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+          <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour"> <i class="more-less glyphicon glyphicon-plus"></i> 4. What if I don't like your services? </a> </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+          <div class="panel-body">We have served over 1,20,000 customers in NCR alone. We do not just promise accuracy and 100% satisfaction but guarantee it. Yet, if you are not satisfied with our services, we assure 100% money back guarantee.</div>
+        </div>
+      </div>
+    </div>
+    <!-- panel-group --> 
+    
+  </div>
+  <script>
+function toggleIcon(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find(".more-less")
+        .toggleClass('glyphicon-plus glyphicon-minus');
+}
+$('.panel-group').on('hidden.bs.collapse', toggleIcon);
+$('.panel-group').on('shown.bs.collapse', toggleIcon);</script> 
+</section>
+<!--FAQ ENDS -->
+
+
+
+
+
+
+<!--STILL NOT SURE -->
+<section class="container-fluid not-sure">
+  <div class="container" style="width:100%;">
+    
+    <div class="phoneicon"><span class="glyphicon glyphicon-earphone"></span></div>
+    <h3>Still not sure?</h3>
+    <p>Give us a missed call at 0124-3826755</p>
+  </div>
+  <div class="clear"></div>
+</section>
+<!--STILL NOT SURE ENDS HERE -->
+
+
+
+
+
+
+
+
+<section class="container-fluid testimonial">
+  <div class="container">
+    <div class="col-md-12 videopanel">
+      <h2>What brings Mr. Brajesh back to Healthians every-time!</h2>
+      <iframe width="100%" height="450" src="https://www.youtube.com/embed/42H3GM6RDlk?rel=0" frameborder="0" allowfullscreen=""></iframe>
+    </div>
+    
+  </div>
+  <div class="clear"></div>
+</section>
+
+
+<div class="clear"></div>
+<div class="footer-copy">2018 @ Healthians.com | <a href="https://www.healthians.com/terms-condition" target="_blank">Legal</a></div>
+	<!--Web Coupon -->
+    <!-- <section class="discount-code" >
+    <div class="box-content active">
+        <div id="couponclose">x</div>
+        <a href="/deals"><img src="assets/images/couponweb.jpg" alt="" copy-to-clipboard text-to-copy="'SUMMER20'"></a>
+    </div>
+    <div class="clear"></div>     
+    <a class="box-toggle fl active" href="#">
+        <div class="coupon-handle">
+            <strong>Get 20% Discount</strong>
+            <span class="glyphicon glyphicon-chevron-down" style="font-size:11px; margin-left:10px;"></span>
+        </div>
+    </a>  
+    <div class="clear"></div>
+</section> -->
+    <!--Web Coupon Ends -->
+    
+    <script>
+        
+		$("a.box-toggle").on('click', function () {
+		$("div.box-content").removeClass('removed');
+		$('div.box-content').slideToggle(250).toggleClass('active');
+		$(".coupon-handle span").toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
+});  
+  	
+$("#couponclose").click(function(){
+		$("div.box-content").addClass('removed');
+		$("div.box-content").hide(0);
+        $(".coupon-handle span").toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+});
+var previousScroll = 0;
+$(window).scroll(function() {
+    var currentScroll = $(this).scrollTop();
+    if(currentScroll > previousScroll) {
+        //down
+        if ($(this).scrollTop()>50 && $(this).scrollTop() <100) {
+            console.log("fade");
+            $('div.box-content').fadeOut(); 
+        }
+    }
+    else {
+        //up scroll
+    }
+    previousScroll = currentScroll;
+});
+        </script>
+        
+<style type="text/css">
+footer{ padding-top:0px !important;}
+.panel-group .panel { border-radius: 0; font-family: 'Roboto', sans-serif; box-shadow: none;  border-color: #EEEEEE;}
+.panel-default > .panel-heading {padding: 0; border-radius: 0;color: #00a0a8; background-color: #ccc; border-color: #EEEEEE;}
+.panel-title {font-size: 14px;font-family: 'Roboto', sans-serif;}
+.panel-title > a { display: block; font-size:16px;font-family: 'Roboto', sans-serif; background:#fff; border:1px solid #EEEEEE; padding: 15px; text-decoration: none; }
+.more-less {float: right;color: #212121;  }
+.panel-group .panel+.panel{ margin:0px 0px 12px 0px;}
+.panel-default > .panel-heading + .panel-collapse > .panel-body { border-top-color: #EEEEEE; padding:20px 30px !important;}
+</style>

@@ -1,0 +1,734 @@
+/* PART I HEALTH KARMA STARTS */
+.healthkarma_main{ padding:30px 0px; background:#fcfcfc; }
+.healthkarma_main h3{color:#666766; font-size:25px; margin-bottom:16px; font-weight:600; /*text-transform: capitalize;*/}
+.healthkarma_main h2{text-align:center;color:#1a9ca6;font-size:32px;text-transform:capitalize;margin:0px;
+padding: 0px 0px 15px 0px;font-weight:600;}
+.hltkarma_group{ background:#fff; box-shadow:0 6px 10px rgba(148, 148, 148, 0.3);border-radius:8px; padding:45px 35px; min-height:480px; margin-bottom:50px;}
+.continuewrap{margin:30px 0px;}
+.continuewrap a{padding: 10px 60px 10px 40px; position:relative;}
+.continuewrap a img{ position:absolute; right:10px; }
+.hk_usersignup{margin-bottom:50px; padding-right:20px;}
+.hk_usersignup input{font-size: 16px;margin: 0;width: 100%;padding: 20px 10px 20px 43px;display: block;border: none;border-top-color: currentcolor;border-right-color: currentcolor;border-bottom-color: currentcolor;border-bottom-style: none;border-bottom-width: medium;border-left-color: currentcolor;border-bottom: 1px solid #717171;border-bottom-color: rgb(113, 113, 113);height: 52px;border-radius: 0;line-height: 22px;}
+.hk_usersignup select{font-size: 16px;margin: 0;color:#767676;float: left;width:100%;padding:5px 10px 10px 43px;display: block;border: none;border-bottom-color: currentcolor;border-bottom-style: none;border-bottom-width: medium;border-bottom: 1px solid #717171;height: 52px;border-radius: 0;line-height: 45px;color:#767676;}
+
+.hk-user-icon {background: url(../../img/user.jpg) left center no-repeat; background-size:26px;}
+.hk-user-age{background: url(../../img/user-age.jpg) left center no-repeat; background-size:26px;}
+.hk-user-mob{background: url(../../img/ic_phone.png) left center no-repeat; background-size:24px;}
+.hk-user-height{background: url(../../img/height-icon.jpg) left center no-repeat; background-size:26px;}
+.hk-user-height-select{background: url(../../img/height-icon.jpg) left center no-repeat; background-size:20px;}
+.hk-user-weight{background: url(../../img/weight-icon.jpg) left no-repeat; background-size:23px;}
+.hk-user-email{background: url(../../img/ic_email.png) left no-repeat; background-size:26px;}
+
+
+.hk_uspbottom{ background:#f8f8f8; padding:30px 0px;}
+.hk_uspbottom h2{    text-align: center; color: #1a9ca6; font-size:28px; text-transform: capitalize;
+    margin: 0px; padding: 0px 0px 15px 0px;  font-weight: 600;}
+.heightlabel{ font-style:italic; }
+.hk_booknwmain a{ padding:9px 24px; margin-left:0px; }
+.cursorBlink{ margin:28px 0px 0px 0px;}
+
+.hkaboutpage-content{ padding:0px 30px; }
+.hkaboutpage-content p{ font-size:17px; padding:5px 2px; }
+
+.hk_gendermyfamily{margin: 15px 0px 0px 0px;}
+.hk_genderOptions{display: block;clear: both;}
+.hk_genderOptions .genderopts{display: block; position: relative; height: auto; padding:0px;}
+.hk_genderOptions .genderopts ul{list-style: none; margin: 0; padding: 0;}
+.hk_genderOptions .genderopts ul li{display: block; position: relative; padding-right:30px;float: left;}
+.hk_genderOptions .genderopts ul li input[type=radio]{ position:absolute; visibility:hidden;}
+.hk_genderOptions .genderopts ul li input[type="radio"]:checked, [type="radio"]:not(:checked) {position:absolute;left:-9999px;}
+/*.hk_genderOptions .genderopts ul li input[type="radio"]:checked + label,[type="radio"]:not(:checked) + label{position: relative; padding-left: 28px; cursor: pointer; line-height: 20px; display: inline-block; color: #666;}*/
+.hk_genderOptions .genderopts ul li input[type="radio"]:checked + label:before,.hk_genderOptions .genderopts ul li input[type="radio"]:not(:checked) + label:before { content: ''; position: absolute; left: 0; top: 0; width: 18px; height: 18px; border: 1px solid #959595;
+ border-radius: 100%; background: #fff;}
+.hk_genderOptions .genderopts ul li input[type="radio"]:checked + label:after,.hk_genderOptions .genderopts ul li input[type="radio"]:not(:checked) + label:after { content: '';  width: 12px;
+height: 12px; background: #FF9800; position: absolute; top: 3px; left: 3px; border-radius: 100%; -webkit-transition: all 0.2s ease;
+transition: all 0.2s ease;}
+.hk_genderOptions .genderopts ul li input[type="radio"]:not(:checked) + label:after { opacity: 0; -webkit-transform: scale(0);transform: scale(0);}
+.hk_genderOptions .genderopts ul li input[type="radio"]:checked + label:after { opacity:1; -webkit-transform: scale(1);transform: scale(1);}
+.hk_genderOptions .genderopts ul li label{display:block;position:relative;top:0px;padding:0px 0px 0px 30px;z-index:9;cursor:pointer;-webkit-transition: all 0.25s linear; 
+  float:left;font-weight:normal;}
+.hk_genderOptions .genderopts ul li[type="radio"]:not(:checked)+label, .hk_genderOptions .genderopts ul li[type="radio"]:checked+label{height:30px !important;}
+
+.score-value{float: right; width: 292px; min-height: 208px; margin-right: 0; background: url(../../img/bg-graph.png) center top no-repeat;}
+.score-value h5{ font-size: 71px;color: #00A0A8; font-weight: 800; text-align: center;padding: 77px 0 0 0;}
+.score-value span{font-size: 17px !important; color: #b4b4b4 !important; font-weight: 400; display: block;
+text-align: center; padding: 5px 65px;}
+.hk_intro {padding:15px 0px;}
+.hk_intro h4 {margin: 7px 0px;font-size: 25px;}
+.hk_intro h1 {font-size: 42px;margin: 0px;color: #17a0a7;}
+.hk_intro h1 span {font-size: 24px;	font-weight: normal;color: #000;letter-spacing:-0.2px;}
+.circle_animated{margin:10px 0px 20px 0px; height:135px;}
+.datasuccess_hk{ text-align: center; margin-top: -80px; position: absolute; left: 0; right: 0;}
+.qdatasuccess{text-align: center; margin-top:0; position: absolute; bottom: 55px; left: 0; right: 0;}
+
+
+
+/* HK NEXT PREVIOUS STARTS PART I*/
+.hk_nextprev{display: block; position: absolute; z-index: 999; left: 0;right: 0; bottom:60px;}
+.hk_nextprev ul{ margin:0px; padding:0px; list-style:none;}
+.hk_nextprev ul li{ list-style:none; position:relative;}
+.hk_nextprev ul li .hk_arrownext{ width:72px; height:72px; border-radius:50%; background:url(/img/healthkarma/hk_arrowprev.svg) no-repeat center center #17a0a7; border:3px solid #17a0a7;  background-size: auto; cursor: pointer; display: inline-block; position:absolute; right:4%; margin-top:-46px;}
+.hk_nextprev ul li .hk_arrownext:hover{ opacity:0.8;}
+.hk_nextprev ul li .hk_arrowprev{ width:72px; height:72px; border-radius:50%; background:url(/img/healthkarma/hk_arrownext.svg) no-repeat center center #fff; border:3px solid #17a0a7;  background-size: auto; cursor: pointer; display: inline-block;position:absolute; left:4%;  -ms-transform: rotate(180deg); -webkit-transform: rotate(180deg);  transform: rotate(180deg); margin-top:-46px;}
+.hk_nextprev ul li .hk_arrowprev:hover{ opacity:0.8;}
+/* HK NEXT PREVIOUS ENDS PART I*/
+
+/*CUSTOM RADIO OPTION WITH IMAGE*/
+.hkradio-selector input{ margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none;}
+.hkradio-selector ul{ margin:5px 0 0 39px; padding:0px; list-style:none;}
+.hkradio-selector ul li{ display:inline-block; vertical-align:top;}
+.hkradio-selector ul li font{ display:block; font-size:15px; margin-top:78px;}
+
+/*gender*/
+.hkradio-selector{margin:0;padding:0; -webkit-appearance:none;  -moz-appearance:none; appearance:none;}
+.hkradio-selector input:active +.genderblock{opacity: .9;}
+.hkradio-selector input:checked +.genderblock{-webkit-filter: none;-moz-filter: none;filter: none;}
+.genderblock{cursor:pointer;display:inline-block; width:72px;height:75px;margin: 0px 0px 0px 0px;}
+
+.male_img{background:url('/img/healthkarma/sprite_male_female.png'); background-position:0px 0px; margin:0px;} 
+.male_img:hover{ background-position:0px 75px;}
+.male_img input[type="radio"]:checked + label{ background-color:none !important; border:none !important; }
+.selected_male{background-position:0px 74px;}
+
+.female_img{background:url('/img/healthkarma/sprite_male_female.png');background-position:70px 0px;} 
+.female_img:hover{ background-position:70px 76px;}
+.female_img::checked + label{ background-position:-6px -72px;}
+.selected_female{background-position:70px 76px;}
+
+
+/*age block*/
+.hkradio-selector{margin:0;padding:0; -webkit-appearance:none;  -moz-appearance:none; appearance:none;}
+.hkradio-selector input:active +.ageblock{opacity: .9;}
+.hkradio-selector input:checked +.ageblock{-webkit-filter: none;-moz-filter: none;filter: none;}
+.ageblock{cursor:pointer;background-repeat:no-repeat;background-size:auto; display:inline-block; width:44px;height:72px;}
+/*age block*/
+
+/* PART II HEALTH KARMA STARTS */
+.hk_formDetailBlock .interactive_Slider{padding:0px;margin:0px;}
+.hk_formDetailBlock_p2{ background: #fff;  position:relative; padding:0px;margin-bottom:70px; margin-top:85px;}
+.individual-questions-blank{ display:none;}
+.questionaireBlock img{background-size:cover;}
+.questionaireBlock .question_indicators{width:65px !important; margin:0px; padding:0px; top:50px !important; left:45px !important; position:absolute;}
+.questionaireBlock .question_indicators li{ display:block !important; float:none !important;}
+.questionaireBlock .slide{ min-height:568px;overflow:hidden;box-shadow:0 0 4px rgba(0, 0, 0, 0.18), 0 2px 2px rgba(0, 0, 0, 0.12); border-radius:15px;}
+.questionaireBlock .slide .question_indicators li:last-child{ margin-right:10px !important;}
+.questionaireBlock .question_indicators .active{ margin-left:-5px; background:#00a0a8 !important;  box-shadow:0 0 9px 0 rgba(0,0,0,.08); border:none; width:24px !important; height:24px !important; margin-bottom:15px !important;border-radius:50% !important; cursor:pointer;}
+.question_indicators li{ background: rgba(134,224,224,0.5) !important; border-radius:50% !important; display:block; box-shadow:0 0 9px 0 rgba(0,0,0,.08);
+border: none; width:15px !important; height:15px !important; padding:0px !important;   margin-bottom: 15px !important; border-radius:50%; display:block; box-shadow:0 0 9px 0 rgba(0,0,0,.08);}
+	
+.questionaireBlock{ padding:0px; margin:0px;}
+.questionaireBlock .question_list{padding:0px;}
+.questionaireBlock .question_list h1{font-size: 32px;font-family:'Ubuntu', sans-serif; font-weight:500; margin:20px 0px 30px 0px;}
+.questionaireBlock .question_list .carouselCaption{ position: absolute;z-index: 10;padding-top: 20px;padding-left:20px; bottom: 0px; padding-bottom: 205px; right: 0; color:#000; left:7%; text-shadow:none; top: 0; text-align:left; margin:0px 2%;}
+.questionaireBlock .question_list .main-question{}
+.questionaireBlock .question_list .main-question h3{font-size:32px; font-weight:600; max-width:70%;letter-spacing:0px; color:#00a0a8; margin:0px 0px 25px 0px;}
+.questionaireBlock .question_list .main-question h4{ margin-top:-15px; margin-bottom:30px; color:#464646;}
+.questionaireBlock .question_list .main-question ul{ margin:15px 0 0 0px; padding:0px; list-style:none;}
+.questionaireBlock .question_list .main-question ul li{ display:inline-block; vertical-align:top; width:148px; margin-right:15px; margin-bottom:0px;}
+.questionaireBlock .question_list .main-question ul li font{ display:block;text-align:center; font-weight:normal; font-size:15px; margin-top:76px; position:relative; line-height: 18px; width:115px; margin-left:-18px; }
+.questionaireBlock .question_list .main-question ul li font:hover{ color:#00a0a8;}
+.questionaireBlock .question_list .main-question ul li.selectedradioOption{ background:#00a0a8; color:#fff;}
+
+.hkbox-select input[type="radio"] label{ padding:0px 22px !important;}
+.hkbox-select input[type="radio"]:checked + label{background-color:#39beb9; padding-left:0px !important;  margin:0px !important; line-height:19px; color:#fff;border-radius: 6px; padding:6px 15px !important;}
+.validation-block{ color:#f00; font-size:14px;}
+
+.hkbox-check{ margin:0px; padding:0px;}
+.hkbox-check input[type=checkbox]{ opacity:1;}
+.hkbox-check input[type=checkbox] + label {color: #000;padding:15px 30px; font-family:'Lato', sans-serif; /*background:#ccc;*/} 
+.hkbox-check input[type=checkbox]:checked + label {color: #ff0;font-style: normal; background:#f00;} 
+
+.movenextstep{ margin:0px; display: inherit;  text-align:left; margin-top: 10px;}
+.movenextstep .continue-step-question-two{background: #00a0a8; border: none; padding: 13px 20px 13px 20px; color: #fff; border:1px solid #00a0a8; font-size: 16px;box-shadow: -2px 4px 6px -1px rgba(0,0,0,.18)!important; background-position: 90% center; background-repeat: no-repeat; text-transform: uppercase; border-radius: 4px; transition: all 0.5s;}
+.active_quest_checkbox{background-color: #39beb9; color:#fff !important;}
+.hkbox-check input:checked +.checkbox-inline{ background-color: #39beb9; color:#fff !important; }
+.hkbox-check input[type=checkbox]:checked + label {background-color: #39beb9; color:#fff !important;}
+.hkbox-check input:checked + label {background-color: #39beb9; color:#fff !important;}
+.family-history-disease input[type="checkbox"]:checked  + label {background-color: #39beb9; color:#fff !important;}
+.family-history-disease input:checked ~ .checkmark { background-color: #39beb9; color:#fff !important;}
+.family-history-disease label input[type="checkbox"]:checked{ background-color: #39beb9; color:#fff !important;}
+
+/*questionaire break*/
+.display_break_q16{float:left; margin-bottom:30px;}
+.display_break_q16:nth-child(4){ float:left;display:block; clear:both;}
+
+.display_break_q14{float:left; margin-bottom:40px;}
+.display_break_q14:nth-child(5){ float:left;display:block; clear:both;}
+
+.display_break_q19{float:left; margin-bottom:15px;}
+.display_break_q19:nth-child(4){ float:left;display:block; clear:both;}
+
+.display_break_q20{float:left; margin-bottom:40px;}
+.display_break_q20:nth-child(4){ float:left;display:block; clear:both;}
+
+.display_break_q12{float:left; margin-bottom:40px;}
+.display_break_q12:nth-child(3){ float:left;display:block; /*clear:both;*/}
+
+.display_break_q13{float:left; margin-bottom:40px;}
+.display_break_q13:nth-child(5){ float:left;display:block; clear:both;}
+
+.display_break_q6{float:left; margin-bottom:10px;}
+.display_break_q6:nth-child(4){ float:left;display:block; clear:both;}
+.display_break_q6 .sleeping-info label{vertical-align: middle; margin: 0px !important;border-radius: 6px; padding:6px 10px !important;display: flex;
+    align-items: center; font-size:15px; justify-content: center;}
+
+.display_break_q4 .digestive-problem label{vertical-align: middle; margin: 0px !important;border-radius: 6px; padding:6px 10px !important;display: flex;
+    align-items: center; font-size:15px; justify-content: center;}
+
+.display_break_q1 .muscle-joint-pain label{vertical-align: middle; margin: 0px !important;border-radius: 6px; padding:6px 10px !important;display: flex;
+    align-items: center; font-size:15px; justify-content: center;} 
+
+.display_break_q10 .fall-sick label{vertical-align: middle; margin: 0px !important;border-radius: 6px; padding:6px 10px !important;display: flex;
+    align-items: center; font-size:15px; justify-content: center;} 
+
+.display_break_q11 .frequent_urinary label{vertical-align: middle; margin: 0px !important;border-radius: 6px; padding:6px 10px !important;display: flex;
+    align-items: center; font-size:15px; justify-content: center;}
+
+.display_break_q22 .family-history-disease label{vertical-align: middle; margin: 0px !important;border-radius: 6px; padding:6px 10px !important;display: flex;
+    align-items: center; font-size:15px; justify-content: center;}
+.family-history-disease input[type=checkbox]{margin: 0; padding: 0;-webkit-appearance: none; -moz-appearance: none;
+    appearance: none; display: none; font-family: 'Lato', sans-serif;}
+
+.display_break_q4{float:left; margin-bottom:10px;}
+.display_break_q4:nth-child(4){ float:left;display:block; clear:both;}
+
+.display_break_q1{float:left; margin-bottom:10px;}
+.display_break_q1:nth-child(4){ float:left;display:block; clear:both;}
+
+.display_break_q10{float:left; margin-bottom:10px;}
+.display_break_q10:nth-child(4){ float:left;display:block; clear:both;}
+
+.display_break_q11{float:left; margin-bottom:10px;}
+.display_break_q11:nth-child(3){ float:left;display:block; clear:both;}
+
+.display_break_q22{float:left; margin-bottom:10px;}
+.display_break_q22:nth-child(5){ float:left;display:block; clear:both;}
+/*questionaire break*/
+
+/*vegetarian radio block*/
+.hkradio-selector input{ margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none;}
+.hkradio-selector input:active +.foodsblock{opacity: .9;}
+.hkradio-selector input:checked +.foodsblock{-webkit-filter: none;-moz-filter: none;filter: none; color:#00a0a8;}
+.foodsblock{cursor:pointer;display:inline-block; width:72px;height:75px;}
+
+.display_vegetarian{ float:left; margin-bottom:40px;}
+.hkradio-selector input:checked +.vegetab{ background-position:0px 74px; }
+.vegetab{background: url('/img/healthkarma/sprite_vegetarian.png'); background-position:0px 0px; margin:0px;} 
+.vegetab:hover{ background-position:0px 74px;}
+
+.hkradio-selector input:checked +.glutten_img{ background-position:-70px -75px; }
+.glutten_img input:checked + label{font-family: 'Lato', sans-serif;background-color:none;margin:0px !important;left:0px;color:#00a0a8 !important; top:0px; padding-left:0px !important;}
+.glutten_img input:checked + label font{color:#00a0a8 !important;}
+.glutten_img{background: url('/img/healthkarma/sprite_vegetarian.png'); background-position:-70px 0px; margin:0px;} 
+.glutten_img:hover{ background-position:-70px -75px;}
+
+.hkradio-selector input:checked +.dairy_img{ background-position:-142px -75px; }
+.dairy_img{background: url('/img/healthkarma/sprite_vegetarian.png'); background-position:-142px 0px; margin:0px; } 
+.dairy_img:hover{ background-position:-142px -75px;}
+
+.hkradio-selector input:checked +.bone_img{background-position:-212px -75px; }
+.bone_img{background: url('/img/healthkarma/sprite_vegetarian.png'); background-position:-212px 0px; margin:0px;} 
+.bone_img:hover{ background-position:-212px -75px;}
+.hkradio-selector input:checked +.foodsblock .bone_img::checked{ background-position:-212px -75px;}
+
+.hkradio-selector input:checked +.chick_img{  background-position:-286px -72px; }
+.chick_img{background: url('/img/healthkarma/sprite_vegetarian.png'); background-position:-286px 0px; margin:0px;} 
+.chick_img:hover{ background-position:-286px -72px;}
+/*vegetarian radio block*/
+
+
+/*exercise radio block*/
+.exerciseblock input[type="radio"]:checked + label{background-color:none;margin:0px !important;left:0px;color:#00a0a8 !important;top:0px;padding-left:0px !important;}
+.exerciseblock input[type="radio"]:checked + label font{color:#00a0a8 !important;}
+
+.hkradio-selector input[type="radio"]{visibility:hidden !important;}
+.hkradio-selector input{ margin:0;padding:0; -webkit-appearance:none; visibility:hidden; -moz-appearance:none;appearance:none;}
+.hkradio-selector input:active +.exerciseblock{opacity: .9;}
+.hkradio-selector input:checked +.exerciseblock{-webkit-filter: none;-moz-filter: none;filter: none; color:#00a0a8;}
+.exerciseblock{cursor:pointer;display:inline-block; width:72px;height:75px;}
+
+.hkradio-selector input:checked +.no_physicalactivity{  background-position:0px -75px; }
+.no_physicalactivity{background: url('/img/healthkarma/sprite_exercise.png'); background-position:0px 0px; margin:0px;} 
+.no_physicalactivity:hover{ background-position:0px -75px;}
+
+.hkradio-selector input:checked +.twoless_week{  background-position:216px -75px; }
+.twoless_week{background: url('/img/healthkarma/sprite_exercise.png');  background-position:216px 0px;  margin:0px;} 
+.twoless_week:hover{ background-position:216px -75px;}
+
+.hkradio-selector input:checked +.threefourtime_week{ background-position:79px -75px;}
+.threefourtime_week{background: url('/img/healthkarma/sprite_exercise.png');  background-position:79px 0px; margin:0px;} 
+.threefourtime_week:hover{ background-position:79px -75px;}
+
+.hkradio-selector input:checked +.fivemore_week{   background-position:149px -75px; }
+.fivemore_week{background: url('/img/healthkarma/sprite_exercise.png'); background-position:149px 0px; margin:0px;} 
+.fivemore_week:hover{ background-position:149px -75px;}
+/*exercise radio block*/
+
+
+/*junk food block*/
+.junkfoodblock input[type="radio"]:checked + label{background-color:none;margin:0px !important;left:0px;color:#00a0a8 !important;top:0px;padding-left:0px !important;}
+.junkfoodblock input[type="radio"]:checked + label font{color:#00a0a8 !important;}
+
+.hkradio-selector input{ margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none;}
+.hkradio-selector input:active +.junkfoodblock{opacity: .9;}
+.hkradio-selector input:checked +.junkfoodblock{-webkit-filter: none;-moz-filter: none;filter: none;color:#00a0a8;}
+.junkfoodblock{cursor:pointer;display:inline-block; width:72px;height:75px;}
+
+.hkradio-selector input:checked +.sometimesjunk{ background-position:0px -75px; }
+.sometimesjunk{background: url('/img/healthkarma/sprite_junkfood.png'); background-position:0px 0px; margin:0px;} 
+.sometimesjunk:hover{ background-position:0px -75px;}
+.sometimesjunk::checked + label{ background-position:-0px -75px;}
+
+.hkradio-selector input:checked +.two_threetimes_week{ background-position:239px -78px; }
+.two_threetimes_week{background: url('/img/healthkarma/sprite_junkfood.png'); background-position:239px 0px; margin:0px;} 
+.two_threetimes_week:hover{ background-position:239px -78px;}
+
+.hkradio-selector input:checked +.occasional_weeks{ background-position:73px -80px; }
+.occasional_weeks{background: url('/img/healthkarma/sprite_junkfood.png'); background-position:73px 0px; margin:0px;} 
+.occasional_weeks:hover{ background-position:73px -80px;}
+
+.hkradio-selector input:checked +.everyweekend{ background-position:154px -79px; }
+.everyweekend{background: url('/img/healthkarma/sprite_junkfood.png'); background-position:154px 0px; margin:0px;} 
+.everyweekend:hover{ background-position:154px -79px;}
+
+
+.hkradio-selector input:checked +.almostevery_day{ background-position:-70px -75px; }
+.almostevery_day{background: url('/img/healthkarma/sprite_junkfood.png'); background-position:-69px 0px; margin:0px;} 
+.almostevery_day:hover{ background-position:-70px -75px;}
+/*junk food block*/
+
+/*sun radio block*/
+.sunimpact input[type="radio"]:checked + label{background-color:none;margin:0px !important;left:0px;color:#00a0a8 !important;top:0px;padding-left:0px !important;}
+.sunimpact input[type="radio"]:checked + label font{color:#00a0a8 !important;}
+
+.suncloud_opt1.active_quest_93{ background-position:6px 75px; color:#00a0a8;}
+.suncloud_opt2.active_quest_94{ background-position:-70px -223px; color:#00a0a8;}
+.suncloud_opt3.active_quest_95{ background-position:-173px 85px; color:#00a0a8;}
+
+.display_break_q4 [type="radio"]:checked + label{color:#00a0a8;}
+
+.hkradio-selector-sun input{ margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none;}
+.hkradio-selector-sun input:active +.sunimpact{opacity: .9;}
+.hkradio-selector-sun input:checked +.sunimpact{-webkit-filter: none;-moz-filter: none;filter: none;color:#00a0a8;}
+.sunimpact{cursor:pointer;background-repeat:no-repeat; display:inline-block; width:95px;height:70px;}
+
+.hkradio-selector input:checked +.suncloud_opt1{ background-position:6px 75px; }
+.suncloud_opt1{background: url('/img/healthkarma/sprite_suncloud.png'); background-position:6px 0px; margin:0px;} 
+.suncloud_opt1:hover{ background-position:6px 75px;}
+
+.hkradio-selector input:checked +.suncloud_opt2{ background-position:-70px -223px;}
+.suncloud_opt2{background: url('/img/healthkarma/sprite_suncloud.png'); background-position:-70px 0px; margin:0px;} 
+.suncloud_opt2:hover{ background-position:-70px -223px;}
+
+.hkradio-selector input:checked +.suncloud_opt3{ background-position:-173px 85px;}
+.suncloud_opt3{background: url('/img/healthkarma/sprite_suncloud.png'); background-position:-173px 0px; margin:0px;} 
+.suncloud_opt3:hover{ background-position:-173px 85px;}
+/*sun radio block*/
+
+/*smoke radio block*/
+.smokeimpact input[type="radio"]:checked + label{background-color:none;margin:0px !important;left:0px;color:#00a0a8 !important;top:0px;padding-left:0px !important;}
+.smokeimpact input[type="radio"]:checked + label font{color:#00a0a8 !important;}
+.smoke_opt1.active_quest_53{ background-position:0px 75px;color:#00a0a8;}
+.smoke_opt2.active_quest_54{ background-position:-72px 75px;color:#00a0a8;}
+.smoke_opt3.active_quest_55{ background-position:-145px 77px;color:#00a0a8;}
+.smoke_opt4.active_quest_56{ background-position:-212px 75px;color:#00a0a8;}
+
+.hkradio-selector-smoke input{ margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none;}
+.hkradio-selector-smoke input:active +.smokeimpact{opacity: .9;}
+.hkradio-selector-smoke input:checked +.smokeimpact{-webkit-filter: none;-moz-filter: none;filter: none;color:#00a0a8 !important;}
+.smokeimpact{cursor:pointer;background-repeat:no-repeat; display:inline-block; width:76px;height:77px;}
+
+.hkradio-selector input:checked +.smoke_opt1{ background-position:0px 75px;}
+.smoke_opt1{background: url('/img/healthkarma/sprite_smoke.png'); background-position:0px 0px; margin:0px;} 
+.smoke_opt1:hover{ background-position:0px 75px;}
+
+.hkradio-selector input:checked +.smoke_opt2{ background-position:-72px 75px;}
+.smoke_opt2{background: url('/img/healthkarma/sprite_smoke.png');background-position:-72px 0px;} 
+.smoke_opt2:hover{ background-position:-72px 75px;}
+
+.hkradio-selector input:checked +.smoke_opt3{ background-position:-145px 77px;}
+.smoke_opt3{background: url('/img/healthkarma/sprite_smoke.png');background-position:-145px 0px;} 
+.smoke_opt3:hover{ background-position:-145px 77px;}
+
+.hkradio-selector input:checked +.smoke_opt4{ background-position:-212px 75px;}
+.smoke_opt4{background: url('/img/healthkarma/sprite_smoke.png');background-position:-212px 0px;} 
+.smoke_opt4:hover{ background-position:-212px 75px;}
+
+.simpleclicked{ display:block;}
+.simpleclicked ul{ margin:0px; padding:0px;}
+.simpleclicked ul li{ display:inline-block; border:1px solid #ccc; border-radius:5px; padding:9px 12px; text-align:center; color:#333; width:170px !important; height:60px; font-size:13px; margin-right:10px;}
+.simpleclicked ul li{ display:inline-block; vertical-align:top}
+/*smoke radio block*/
+
+/*drinks radio block*/
+.hkradio-selector-smoke input{ margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none;}
+.hkradio-selector-smoke input:active +.drinks_impact{opacity: .9;}
+.hkradio-selector-smoke input:checked +.drinks_impact{-webkit-filter: none;-moz-filter: none;filter: none;color:#00a0a8;}
+.drinks_impact{cursor:pointer;background-repeat:no-repeat; display:inline-block; width:74px;height:72px;}
+.drinks_impact input[type="radio"]:checked + label{background-color:none;margin:0px !important;left:0px;color:#00a0a8 !important;top:0px;padding-left:0px !important;}
+.drinks_impact input[type="radio"]:checked label font{color:#00a0a8 !important;}
+
+.hkradio-selector input:checked +.nodrink_opt1{ background-position:0px 75px;color:#00a0a8;}
+.nodrink_opt1{background: url('/img/healthkarma/sprite_drinks.png'); background-position:0px 0px; margin:0px;} 
+.nodrink_opt1:hover{ background-position:0px 75px;}
+.nodrink_opt1::checked + label{ background-position:0px 75px;}
+
+.hkradio-selector input:checked +.onethree_week{  background-position:-89px 75px;color:#00a0a8;}
+.onethree_week{background: url('/img/healthkarma/sprite_drinks.png'); background-position:-90px 0px; margin:0px;} 
+.onethree_week:hover{ background-position:-89px 75px;}
+.onethree_week::checked + label{ background-position:-68px 75px;}
+
+.hkradio-selector input:checked +.fiveeight_week{ background-position:-193px 74px;color:#00a0a8;}
+.fiveeight_week{background: url('/img/healthkarma/sprite_drinks.png'); background-position:-193px 0px; margin:0px;} 
+.fiveeight_week:hover{ background-position:-193px 74px;}
+.fiveeight_week::checked + label{ background-position:-151px 74px;}
+
+.hkradio-selector input:checked +.tenplus_week{ background-position:-292px 75px;color:#00a0a8;}
+.tenplus_week{background: url('/img/healthkarma/sprite_drinks.png'); background-position:-292px 0px; margin:0px; width:115px;} 
+.tenplus_week:hover{ background-position:-292px 75px;}
+.tenplus_week::checked + label{ background-position:-292px 75px;}
+/*drinks radio block*/
+
+/*Health Karma Sprite style*/
+.sleeping-info{ border:1px solid #ccc; border-radius:6px; padding:0px;width:240px !important; text-align:center; vertical-align:top;}
+.sleeping-info label{color:#585858;display: block;font-weight: normal; font-size: 16px; padding: 8px 10px;line-height: 20px; vertical-align:middle;     display: flex;
+justify-content: center; align-items: center; min-height:78px;}
+.family-history-disease input[type="radio"]:checked + label{background-color:#39beb9;padding:0px !IMPORTANT; margin:0px !important;left:0px; color:#fff;  border-radius: 6px; top:0px;}
+.sleeping-info input[type=radio]{margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none; display:none;}
+.digestive-problem{ border:1px solid #ccc; border-radius:6px; padding:0px;width:205px !important; text-align:center; vertical-align:top;}
+.digestive-problem label{color:#585858;display: block;font-weight: normal; font-size: 16px; padding: 8px 10px;line-height: 20px; vertical-align:middle;     display: flex;
+justify-content: center; align-items: center; min-height: 65px;}
+.digestive-problem input[type=radio]{margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none; display:none;}
+
+.muscle-joint-pain{ border:1px solid #ccc; border-radius:6px; padding:0px; width:205px !important; text-align:center; vertical-align:top;}
+.muscle-joint-pain label{color:#585858;display: block;font-weight: normal; font-size: 16px; padding: 8px 10px;line-height: 20px; vertical-align:middle; display: flex;
+justify-content: center; align-items: center; min-height:71px;}
+.muscle-joint-pain input[type=radio]{margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none; display:none;}
+
+.fall-sick{ border:1px solid #ccc; border-radius:6px; padding:0px; width:205px !important; text-align:center; vertical-align:top;}
+.fall-sick label{color:#585858;display: block;font-weight: normal; font-size: 16px; padding:0px;line-height: 20px; vertical-align:middle;     display: flex;
+justify-content: center; align-items: center; min-height:75px;}
+.fall-sick input[type=radio]{margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none; display:none;}
+
+.frequent_urinary{ border:1px solid #ccc; border-radius:6px; padding:0px; width:240px !important; text-align:center; vertical-align:top;}
+.frequent_urinary label{color:#585858;display: block;font-weight: normal; font-size: 16px; padding: 8px 10px;line-height: 20px; vertical-align:middle;display: flex;justify-content: center; align-items: center; min-height: 65px;}
+.frequent_urinary input[type=radio]{margin:0;padding:0; -webkit-appearance:none; -moz-appearance:none;appearance:none; display:none;}
+
+.family-history-disease{ border:1px solid #ccc; border-radius:6px; padding:0px; margin-right:15px; font-family: 'Lato', sans-serif; width:205px !important; text-align:center; vertical-align:top;}
+.family-history-disease label{color:#585858;display: block;font-weight: normal; font-size: 16px; padding: 8px 10px;line-height: 20px; vertical-align:middle;display: flex;justify-content:center; align-items:center; min-height:65px;}
+
+.family-history-disease label input[type="checkbox"]:checked{ background-color:#39beb9; padding:0px !IMPORTANT;margin: 0px !important;left: 0px; color: #fff;border-radius: 6px; top:0px;}
+.checkbox-inline input[type="checkbox"]:checked{background-color:#39beb9; padding:0px !IMPORTANT;margin: 0px !important;left: 0px; color: #fff;border-radius: 6px; top:0px;}
+
+/*Health Karma sprite style ends*/
+.hk_formDetailBlock_p3{width:100%; display: block; margin:86px 15px 60px 0px;}
+.finalstatistic{ display:block;}
+.finalstatistic .blockScore{-webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.08);box-shadow:0 0 9px 0 rgba(0,0,0,.08);background:#fff;border-radius:13px;padding:14px;min-height: 130px;margin-bottom:30px; margin-right:20px;} 
+.finalstatistic .blockScore .scoreleft{ background:url('/img/healthkarma/line-bar.png') no-repeat left center;display:inline-block; width:35%; margin-right:1%; vertical-align:top;}
+.finalstatistic .blockScore .scorerightcontent{display:inline-block;width:56%;vertical-align:top;}
+.finalstatistic .blockScore .scorerightcontent h2{color:#00a0a8; font-size:32px;}
+.finalstatistic .blockScore .scorerightcontent h2 strong{}
+.finalstatistic .blockScore .scorerightcontent p{font-size:22px; color:#313131;}
+
+.circle_animated{ margin:10px 0px 20px 0px; height:135px;}
+
+.finalstatistic .col-md-12 .col-md-6{ margin:0px; padding:0px;}
+	  
+.blockpeers{ -webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.08);box-shadow:0 0 9px 0 rgba(0,0,0,.08); min-height:192px; background:#fff; border-radius:13px; padding:44px 14px;} 
+.blockpeers h2{ font-size:80px; margin:0px; padding:0px; text-align:center; color:#00a0a8;}
+.blockpeers p{ color:#333;text-align:center; font-size:18px;}
+	 
+.probable-risks{-webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.08);box-shadow:0 0 9px 0 rgba(0,0,0,.08); background:#fff; margin-right:30px; border-radius:13px; padding:30px 46px;min-height: 130px; margin-bottom: 20px;}
+.probable-risks .riskslist{ margin:5px 0px;}
+.probable-risks .riskslist h2{ font-size:24px;color:#00a0a8; margin:0px 0px 15px 0px;}
+.probable-risks .riskslist ul{ margin:5px 0px 0px 25px; padding:0px; list-style-type: disc;}
+.probable-risks .riskslist ul li{ font-size:21px; padding-bottom:8px; color:#313131;list-style:disc;}
+
+.test_recommendation{-webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.08);box-shadow:0 0 9px 0 rgba(0,0,0,.08); background:#fff; border-radius:13px; margin-right:11px; padding:30px 46px;min-height:130px;margin-bottom:20px;}
+.test_recommendation h2{font-size:24px;color:#00a0a8;margin:0px 0px 15px 0px;}
+.test_recommendation .riskslist ul{ margin:0px 0px 0px 25px; padding:0px; list-style-type: disc;}
+.test_recommendation .riskslist ul li{ padding-bottom:5px; list-style:none;}
+.test_recommendation .riskslist ul li .checkbox-btn input[type=checkbox]{ vertical-align:top; margin-left:-20px;}
+.test_recommendation .riskslist ul li label{line-height:22px;font-size:21px; color:#313131; padding-left:12px;}
+	  
+.hk_booknow_panel{margin: 30px 0px 0px; text-align:center;}
+
+.health-advisor-call{border: 1px solid #eaeaea;background: #fff; text-align:center;font-size:26px;box-shadow: -2px 4px 6px -1px rgba(0,0,0,.18)!important; 
+padding:20px 60px 20px 60px; border:1px solid #17a0a7; border-radius:12px; display: inline-block; font-weight: 400; }
+.health-advisor-call:hover{ color:#36b9bf;}
+.googleplay{ display:inline-block; vertical-align:top;}
+.or_opt{border-radius: 50%;width: 65px;height: 65px; margin: 0 30px;color: #979797; border: 1px solid #979797;display: inline-block;text-align: center;line-height: 65px;font-weight: 700;
+ font-size: 20px;}
+.gplaycontent{ display:inline-block; text-align:left; max-width:360px; font-size:20px; padding-left:20px; margin-top:16px; color:#5d5d5d; } 
+.gplaycontent span{font-style:italic;}
+.gplaycontent span a{ color:#00a0a8; text-decoration:underline;}
+.book-healthkarmatests{ background:#17a0a7;border: none; box-shadow: -2px 4px 6px -1px rgba(0,0,0,.18)!important; padding:20px 150px 20px 150px; color: #fff; font-weight: 500;border-radius:12px;transition: all .5s; font-size:26px; font-family: 'HelveticaBold';}
+.book-healthkarmatests:hover{ background:#36b9bf;}
+.download_App{ text-align:center; margin:30px 0px !important;}
+.col-md-12{ margin:0px; padding:0px ;}
+.col-md-7{ margin:0px; padding:0px ;}
+.col-md-5{ margin:0px; padding:0px ;}
+.myscorenew{font-size: 46px;font-family: 'HelveticaBold'; color: #6e6e6e; position: absolute;  z-index: 999; left: 90px; letter-spacing: -1px; top:73px;}
+.myscorenew span{font-family: 'Lato', sans-serif; font-size:18px;}
+.nodisplaymob{background: #17a0a7; border: none;  box-shadow: -2px 4px 6px -1px rgba(0,0,0,.18)!important;  padding: 12px 35px 12px 35px; color: #fff; font-weight: 500;  border-radius: 12px;
+transition: all .5s; font-size:18px; font-family: 'HelveticaBold'; margin-top: 12px;}
+/* PART III */
+
+/*New Health karma*/
+.health-karma header{z-index: 1;position: relative;}
+.health-karma .meet-us{background-color: #fafafa;margin-top: 0px;}
+.health-karma-area{padding: 40px 0px; float: left; width: 100%;}
+.progress-bar{padding:40px 25px 30px 25px; background-color: #ffffff; box-shadow: 0 6px 10px rgba(148, 148, 148, 0.3); border-radius: 4px; display: block; width: 100%; margin-bottom: 30px; text-align: left; position: relative;}
+.progress-bar .progress-line{height: 8px; width: 100%; background-color: #1baf14;}
+.health-usear{display: inline-block; vertical-align: top; text-align: left; float: left;}
+.health-usear h4{color: #000000; font-size: 25px; font-weight: 400; padding: 0px; margin: 0px;font-family: 'Ubuntu', sans-serif;}
+.health-usear h5{font-family: 'Ubuntu', sans-serif; font-weight: 700; color: #1c9ca6; font-size: 40px; margin: 10px 0px 0px 0px; padding: 0px;}
+.health-usear h5 span{display: block;height: 10px;background-color: #088088;border-radius: 6px;margin-top: 20px;}
+.score-img{display: inline-block; vertical-align: top; text-align: right; float: right;}
+.progress-bar p{padding-top:0px;display: inline-block;font-size:18px;color: #000000;text-align: left;vertical-align: top; margin-bottom: 30px;}
+.progress-bar p:last-child{margin-bottom: 0px !important;}
+.progress-bar p i {font-size:32px;color: #e50027;padding-right: 15px;display: inline-block;vertical-align: middle;}
+.paragraph-area{display: inline-block;}
+.health-karma .meet-us h3{font-size: 25px; color: #666766; margin: 10px 0px 30px 0px; padding: 0px; font-weight: 600;}
+.center-bnt{width: 100%; text-align: center; margin-bottom: 40px;}
+.center-bnt a{ height: 44px; padding: 0px 20px; line-height: 42px;}
+.questionaireBlock .question_indicators li { cursor: pointer;}
+.smallvalue{ font-size:18px; }
+.new-member-form {padding:13px;}
+.reminds {width:129px !important; }
+.subscribe-section { display: none;}
+.hide_question { display: none; }
+.datasuccess_hk { display: none; }
+.about-icon-content { padding: 20px 0px;}
+.mar-top-min { margin-top:0px !important; }
+.hb-circle p, .hb-circle-red p {color:#f37d26 !important;font-size:28px;font-weight:700;text-align:center;line-height:110px;padding: 0px;margin: 0px;   width: 70px;height: 70px;margin:15px auto 0px;display: inline-block;}
+.head_karma{text-align: center;color: #1a9ca6;font-size: 36px;text-transform: capitalize; margin: 0px;padding: 0px 0px 20px 0px;font-family: 'Open Sans', sans-serif;font-weight: 600;}
+/*New Health karma ends*/
+
+
+@media (max-width: 768px) and (min-width: 20px) {
+/*Responsive CSS*/
+.wizard_main{top: 112px;}
+.validation-block{ font-size:13px; position:relative; top:-9px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum{ font-size:14px; margin-bottom:0px;}
+.bs-wizard > .bs-wizard-step > .progress{ height:1px; margin:18px 0 12px 0px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot{width: 20px; height:20px; top:23px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after{width:10px; height:10px; top:5px; left: 5px;}
+.individual-questions-blank{ display:block;}
+#return-to-top{ display:none; }
+.hk_formDetailBlock{ height:435px;}
+.hk_scrollForm .hk_scrollForm-main{padding-bottom: 50px; height:306px;}
+.hkarma_wrapper .hk_intro{ padding:0px; display:none;}
+.hkarma_wrapper .hk_intro h1 span{ display:block;}
+.hk_formDetailBlock .enterhkDetail article{ margin:0px; padding:0px;}
+.hk_formDetailBlock .enterhkDetail article .question_name figcaption{ font-size:19px; padding-left:0px; margin-bottom:5px; line-height:21px;}
+.hk_formDetailBlock .enterhkDetail article{ padding:10px 0px 20px 0px;}
+.hk_formDetailBlock .enterhkDetail{padding: 20px; margin: 0px 0px 0px 0px;height:550px;}
+.steps_navigator{ padding:10px 10px 75px 10px;}
+.hk_formDetailBlock .enterhkDetail article .question_name figcaption{ display:inline-block; vertical-align:top;}
+.hk_formDetailBlock .enterhkDetail article .question_name .hk_groupset select{ font-size:20px;}
+.hk_formDetailBlock .enterhkDetail article .question_name svg{display:none;}
+.hk_formDetailBlock .enterhkDetail h1{font-size:16px; letter-spacing: 0; margin:0px 0px 20px 0px;}
+.hk_formDetailBlock{ margin:64px auto 60px auto; width:96%;}
+.hk_formDetailBlock_p2{margin:64px auto 60px auto; width:96%;}
+.hk_formDetailBlock_p3{margin:66px auto 60px auto; width:96%;}
+.hk_formDetailBlock .enterhkDetail article .question_name .hk_groupset input[type=email]{ font-size:23px;}
+.hk_formDetailBlock .enterhkDetail article .question_name .hk_groupset .cursorBlink{ margin-top:15px;}
+.hk_formDetailBlock .enterhkDetail article .question_name .hk_groupset input[type=text]{font-size:23px;}
+.steps_navigator .progressbar li:before{ width:24px; height:24px; margin:9px auto 1px auto;}
+.hkradio-selector{ margin:0px 0px 0px 8px}
+.hkradio-selector ul{ margin:0px 0px 0px 0px}
+.hk_formDetailBlock .enterhkDetail article .question_name figcaption p{ font-size:15px;}
+.questionaireBlock .question_list h1{ margin:0px 0px 10px 0px; font-size:15px;}
+.questionListImage img{opacity:0; display:none; }
+.questionaireBlock .slide{ border-radius:6px; }
+.img_16{background-image: url(/img/healthkarma/q16_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_14{background-image: url(/img/healthkarma/q14_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_19{background-image: url(/img/healthkarma/q19_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_20{background-image: url(/img/healthkarma/q20_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_12{background-image: url(/img/healthkarma/q12_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_13{background-image: url(/img/healthkarma/q13_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+
+.img_6{background-image: url(/img/healthkarma/q6_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_4{background-image: url(/img/healthkarma/q4_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_1{background-image: url(/img/healthkarma/q1_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_10{background-image: url(/img/healthkarma/q10_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_11{background-image: url(/img/healthkarma/q11_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+.img_22{background-image: url(/img/healthkarma/q21_v2_mobile.jpg); width:100vw; height:533px;background-size:cover; background-repeat:no-repeat;  background-position:top right;}
+
+.questionaireBlock .question_list .main-question h4{margin-top:-12px; margin-bottom: 17px; color:#464646; font-size:14px;}
+.questionaireBlock .question_list .main-question ul li{margin-right:50px; width: 100%;}
+
+.questionListCap{right: 0% !important; left: 0% !important; padding:0px 13px; top:3% !important;}
+.questionaireBlock .question_list .main-question h3{max-width:100%; font-size:21px !important;  margin-bottom:15px;}
+.questionaireBlock .question_list .main-question ul li font{margin-top:74px;width:100px; position:relative; margin-left:-18px;font-size:14px;line-height:15px;width:auto}
+
+.questionaireBlock .question_indicators{top:auto !important; left:0px !important; text-align:center; z-index:99; bottom:24px !important; width: 100% !important;}
+.questionaireBlock .question_indicators li{ display:inline-block !important; width:12px;height:12px;margin-right:4px;}
+.carousel-indicators li{ margin:0px;}
+.questionaireBlock .question_list .carouselCaption{padding-bottom: 5px !important; margin-right: 8px;}
+.questionaireBlock .question_indicators .active{width:11px !important; margin-left:0px; height:11px !important;margin-right:5px;}
+.questionaireBlock .question_list .carouselCaption{ padding-top:7px;}
+.movenextstep{margin: 0px 0px 10px 0; position:absolute; bottom:10px; right:19px;}
+.movenextstep .continue-step-question-two{ padding:10px 12px 7px 10px; font-size:14px;}
+.questionaireBlock .slide{min-height: 535px;}
+
+.navigator_steps{width:100%; bottom:70px; top:415px; margin:0px auto;}
+.navigator_steps ul li .hk_arrow_nextform{ width:52px; height:52px;background-size:32px;}
+.navigator_steps ul li .hk_arrow_prevform{ width:52px; height:52px;background-size:32px;}
+.qdatasuccess{ bottom:34px;}
+
+.hk_nextprev{ bottom:24px;}
+.hk_nextprev ul li .hk_arrownext{ width:42px; height:42px;background-size:26px;}
+.hk_nextprev ul li .hk_arrowprev{ width:42px; height:42px;background-size:26px;}
+
+.finalstatistic{ margin:0px; padding:0px;}
+.finalstatistic .col-md-12{ margin:0px; padding:0px;}
+.finalstatistic .col-md-7{ margin:0px; padding:0px;}
+.finalstatistic .col-md-5{ margin:0px; padding:0px;}
+.finalstatistic .blockpeers{margin-bottom:20px;padding: 15px 14px;min-height:auto;}
+.finalstatistic .blockScore .scorerightcontent p{text-align: center; line-height:20px;font-size:16px;}
+.finalstatistic .blockScore .scorerightcontent p strong{}
+.finalstatistic .blockScore .scorerightcontent h2{ font-size:24px; margin-bottom:5px;}
+.finalstatistic .blockScore .scoreleft{display: block; width: 100%; margin-right: 0;}
+.blockpeers h2{ font-size:48px;}
+.myscorenew{left: 130px;}
+.test_recommendation .riskslist ul{ margin:0px 0px 0px 16px;}
+
+.book-healthkarmatests{ padding:20px 0px; width:100%; margin-bottom:15px;}
+.health-advisor-call{ display:block; padding:20px 0px; width:100%; margin-top:10px;}
+.display_break_q6 li{ margin-right:5px;}
+
+.sleeping-info{ width: 135px !important; float: left; padding:0px;}
+.sleeping-info label{ padding:0px 6px;height:80px; font-size:13px;  line-height: 15px; }
+.sleeping-info [type="radio"]:checked+label{height: 80px !important;}
+.sleeping-info [type="radio"]:checked + label{font-size:13px;}
+.hkbox-select input[type="radio"]:checked + label{ padding:0px 6px !important;}
+
+.display_break_q4{margin-bottom: 10px; width: 50% !important;}
+.display_break_q4:nth-child(4){clear:none;}
+.digestive-problem{ width: 140px !important; float: left;}
+.digestive-problem label{height:62px; min-height:70px; font-size:13px; line-height: 15px;}
+.digestive-problem [type="radio"]:checked+label{height:68px !important; font-size:13px;}
+.display_break_q4:nth-child(4){ clear:none;}
+.display_break_q4:nth-child(10){ float:left;display:block; clear:both;}
+
+.digestive-problem{width:135px !important; float: left;}
+.digestive-problem label{line-height: 15px;}
+/*  */
+
+.display_break_q1{margin-bottom: 10px; width: 50% !important;}
+.display_break_q1:nth-child(4){clear:none;}
+.display_break_q1:nth-child(10){ float:left;display:block; clear:both;}
+.muscle-joint-pain{ width: 124px !important; float: left;}
+.muscle-joint-pain label{height:62px; min-height:70px; font-size:13px; line-height: 15px;}
+.muscle-joint-pain [type="radio"]:checked+label{height:62px !important; font-size:13px;}
+.muscle-joint-pain{ width: 135px !important; float: left;}
+.muscle-joint-pain label{min-height: auto; font-size: 12px; line-height: 15px;}
+
+.display_break_q10{margin-bottom: 10px; width: 50% !important;}
+.display_break_q10:nth-child(4){clear:none;}
+.display_break_q10:nth-child(10){ float:left;display:block; clear:both;}
+.fall-sick{ width: 124px !important; float: left;}
+.fall-sick label{height:62px; min-height:70px; font-size:13px; line-height: 15px;}
+.fall-sick [type="radio"]:checked+label{height:62px !important; font-size:13px;}
+.fall-sick{ width: 135px !important; float: left;}
+.fall-sick label{min-height: auto; font-size: 12px; line-height: 15px;}
+
+.display_break_q11{margin-bottom: 10px; width: 50% !important;}
+.display_break_q11:nth-child(4){clear:none;}
+.display_break_q11:nth-child(10){ float:left;display:block; clear:both;}
+.frequent_urinary{ width: 124px !important; float: left;}
+.frequent_urinary label{height:84px; min-height:70px; font-size:13px; line-height: 15px;}
+.frequent_urinary [type="radio"]:checked+label{height:84px !important; font-size:13px;}
+.frequent_urinary{ width: 135px !important; float: left;}
+.frequent_urinary label{min-height: auto; font-size: 12px; line-height: 15px;}
+
+.family-history-disease{ width:135px !important; float:left; margin-right:8px;}
+.family-history-disease label{min-height: auto; font-size: 12px; line-height: 15px;}
+
+.probable-risks .riskslist h2{ font-size:18px; margin:0px 0px 10px 0px;}
+.test_recommendation h2{font-size:18px; margin:0px 0px 10px 0px;}
+
+.probable-risks{ padding:20px;}
+.health-advisor-call{ padding:13px 0px; font-size:22px;}
+.book-healthkarmatests{padding:13px 0px; font-size:22px;}
+
+.display_break_q16{ margin-bottom:7px;}
+.display_break_q16:nth-child(4){ clear:none;}
+.display_break_q16:nth-child(10){ float:left;display:block; clear:both;}
+
+.display_break_q14{margin-bottom:7px;}
+.display_break_q14:nth-child(5){ clear:none;}
+.display_break_q14:nth-child(10){ float:left;display:block; clear:both;}
+.datasuccess_hk{margin-top: -63px; }
+.display_break_q19{margin-bottom:7px; width:33%; height:144px;}
+.display_break_q19:nth-child(4){ clear:none;}
+.display_break_q19:nth-child(10){ float:left;display:block; clear:both;}
+.finalstatistic .blockScore{ margin-right:0px; margin-bottom:20px; padding:10px 14px;}
+.probable-risks .riskslist ul li{ font-size:18px; font-family: 'Lato', sans-serif; padding-bottom:2px;}
+.test_recommendation .riskslist ul li{font-size:18px;  padding-bottom:3px;}
+.test_recommendation .riskslist ul li .checkbox-btn input[type=checkbox]{margin-left:-23px; margin-top:3px;}
+.test_recommendation .riskslist ul li label{font-size:18px; line-height:20px;font-family: 'Lato', sans-serif;}
+.gplaycontent{ padding-left:0px;}
+.nodisplaymob{ display:none;}
+.finalstatistic .blockScore .scorerightcontent p{ text-align:center;}
+.probable-risks{margin-right:0px;}
+.or_opt{ width:45px; height:45px; font-size:16px; line-height:45px;}
+
+.display_break_q20{margin-bottom:7px; width:50%;}
+.display_break_q20:nth-child(4){ clear:none;}
+.display_break_q20:nth-child(10){ float:left;display:block; clear:both;}
+
+.display_break_q12{margin-bottom:10px;}
+.display_break_q12:nth-child(3){ clear:none;}
+.display_break_q12:nth-child(10){ float:left;display:block; clear:both;}
+.score-value h5{ font-size:55px; }
+.center-bnt .addmember{ margin-left:0px; padding-top:9px; padding-bottom:9px; }
+.hk_booknwmain a{ padding-top:9px; padding-bottom:9px; }
+.progress-bar .checkbox-circle{ margin-top:-12px; }
+
+.display_break_q13{margin-bottom:10px; width:49%;}
+.display_break_q13:nth-child(10){ float:left;display:block; clear:both;}
+
+.display_break_q6{margin-bottom:10px; width: 50% !important;}
+.display_break_q6:nth-child(4){ clear:none;}
+.display_break_q6:nth-child(10){ float:left;display:block; clear:both;}
+.test_recommendation{ padding:20px; margin-right:0px;}
+.gplaycontent{ padding:0px 16px; font-size: 18px;}
+.finalstatistic .pull-right{ float:none !important;}
+.deal-banner-festive{ min-height: 140px; margin:0px 0px 11px 0px; height:180px;}
+.package_01{ top:0px; max-width:98px;     margin-left: 134px; top:11px;}
+.package_02{top: 12px; max-width: 98px; margin-left: 48px;}
+.hltkarma_group{ padding:25px 10px; }
+#healthkarma_form_div{ padding:0px; margin:0px; }
+.healthkarma_main h2{font-size:24px;}
+.hk_usersignup{margin-bottom:20px;}
+.hk_gendermyfamily{display: inline-block;    margin: 40px 0px 0px 0px;}
+.continuewrap a.btn.btn-danger{ display:block; padding:15px 48px; cursor:pointer; }
+.healthkarma_main .container{margin:0px; padding:0px;}
+.display_break_q6 .sleeping-info label{font-size: 13px; line-height: 14px;}
+.display_break_q4 .digestive-problem label{font-size: 13px; line-height: 14px;}
+.display_break_q1 .muscle-joint-pain label{font-size: 13px; line-height: 14px;}
+.display_break_q10 .fall-sick label{font-size: 13px; line-height: 14px;}
+.display_break_q11 .frequent_urinary label{font-size: 13px; line-height: 14px;}
+.display_break_q22 .family-history-disease label{font-size: 13px; padding:8px 10px !important; line-height: 14px;}
+.hkbox-select input[type="radio"]:checked + label{line-height:14px;}
+.sleeping-info{width:142px !important;}
+.questionaireBlock .question_list .main-question h3{font-size:18px;}
+.questionaireBlock .question_list .carouselCaption{ margin:0px; }
+.health-usear h4{ font-size:20px; }
+.health-usear h5{ font-size:23px; }
+.healthkarma_main h3{ padding-left:15px; }
+.questionaireBlock .question_list .main-question h3{ padding-left:0px; }
+.healthkarma_main h3{ font-size:22px; }
+.score-value{ float:none; width:100%; margin-right:0px; }
+.hk_booknwmain a{ width:100%; }
+.center-bnt a{ height:auto; width:100%; }
+.hltkarma_group{ border-radius:0px; }
+.question_indicators li{ width:11px !important; height:11px !important; }
+#recommend_data .cart-block p{ max-width:90%; }
+.progress-bar p{ padding-bottom:20px;}
+.risk_p{ margin-bottom:5px; }
+}
+/*Responsive CSS*/
